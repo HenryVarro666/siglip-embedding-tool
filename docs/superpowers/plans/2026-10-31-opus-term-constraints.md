@@ -1,6 +1,6 @@
 # OPUS terminology constraints implementation plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Compare original and terminology-constrained pretrained OPUS translation on new queries, preserving full evidence and continuous issue documentation.
 
@@ -61,8 +61,8 @@
 - [x] Review original/beam/constrained English terms and context without retrieval scores; independent relevance audit; preserve uncertain cases.
 - [x] Recompute all policy rankings/metrics and timing percentiles, report per-intent tradeoffs/failure rates and use matched beam comparison.
 - [x] Link every old/current issue and future recording rule; save reproduction commands and Top5 page.
-- [ ] Full offline tests, Ruff, original loss demo, wheel/sdist/package resources, independent checkout; independent review, commit, private push and GitHub CI.
+- [x] Full offline tests, Ruff, original loss demo, wheel/sdist/package resources, independent checkout; independent review, commit, private push and GitHub CI.
 
 ## Execution checkpoint
 
-Measurement implementation `b68cb99` and frozen core44b19b06 are unchanged. Both runs, blind text review, independent raw/curated audit and319 local tests/lint/demo/build/real CLI are complete. SIG-037 exporter binding was fixed after measurement without changing results. Independent checkout and private publication/remoteCI are the remaining delivery checks; receipts live in benchmark verification.json and docs/continuation.md.
+Measurement implementation `b68cb99` and frozen core44b19b06 are unchanged. Both runs, blind text review, independent raw/curated audit and319 local tests/lint/demo/build/real CLI are complete. SIG-037 exporter binding was fixed after measurement without changing results. Independent checkout319 and outside-repository wheel resource import pass. Private checkpoint bd6d394 CI41248210105 passes319. Final main handoff only updates documents/receipts; current main checks are recorded on GitHub Actions. Receipts live in benchmark verification.json and docs/continuation.md.

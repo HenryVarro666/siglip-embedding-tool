@@ -41,10 +41,30 @@
     "artifacts/terminology-constraints/dist-final/.gitignore": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1"
   },
   "independent_checkout": {
-    "status": "pending before publication"
+    "status": "passed",
+    "source_commit": "bd6d394a745ade6b71748560307a675d97df2fad",
+    "offline_tests_passed": 319,
+    "integration_deselected": 2,
+    "ruff": "passed",
+    "outside_repository_wheel_import_and_resource": "passed",
+    "log_path": "artifacts/terminology-constraints/clean-checkout-verification.log",
+    "log_sha256": "4e7386f982ad44747758471d80a75e48c2836f5094f38636627c7cb60a966b26"
   },
   "remote_ci": {
     "per_commit_record": "https://github.com/HenryVarro666/siglip-embedding-tool/actions",
     "note": "CI status is recorded by GitHub per commit; this local evidence file does not preclaim a future remote result."
+  },
+  "remote_ci_checkpoint": {
+    "commit": "bd6d394a745ade6b71748560307a675d97df2fad",
+    "branch": "feat/opus-terminology-constraints",
+    "run_id": 41248210105,
+    "url": "https://github.com/HenryVarro666/siglip-embedding-tool/actions/runs/41248210105",
+    "status": "completed",
+    "conclusion": "success",
+    "offline_tests_passed": 319,
+    "integration_deselected": 2,
+    "source_code_only_prepare_no_model_weights": true,
+    "log_sha256": "d027dba6c153157a530adc7a61241fed979483f8e849f2cb4112198d90f78045",
+    "note": "Verified checkpoint code and numerical artifacts. Subsequent handoff commit changes documents/receipts only; latest main CI is recorded by GitHub per commit."
   }
 }

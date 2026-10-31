@@ -5827,7 +5827,7 @@
   },
   "curated_consistency_review": {
     "reviewed_at_utc": "2026-10-31T22:17:27.345211+00:00",
-    "status": "passed_curated_consistency_and_resolved_exporter_guard_local_checkpoint_release",
+    "status": "passed_curated_consistency_exporter_guard_and_final_checkpoint_receipts",
     "checks": {
       "passed": 96857,
       "total": 96857,
@@ -6601,11 +6601,14 @@
       },
       {
         "severity": "P3",
-        "status": "resolved_local_state_and_legitimate_remaining_remote_work_documented",
+        "status": "resolved_final_handoff_and_checkpoint_receipts_verified",
         "location": "docs/issue-log.md:SIG-033 current-processing bullet; docs/continuation.md",
         "observation": "SIG-033 status says both runs/review completed but current-processing text still waits for So400m/review. Continuation still describes the active run/label review. Parent explicitly plans final status/handoff cleanup.",
         "necessary_fix": "Update latest state while preserving old evidence and keep final validation pending until its evidence is available.",
-        "resolution": "SIG-033 completion text and current continuation now reflect completed real runs, blind review,319 local checks and packaging/CLI evidence. Independent checkout/private publication/remote CI remain explicitly pending with parent-owned follow-up; no unsupported completion claim."
+        "resolution": "Current report, continuation, plan and ledger now document completed independent checkout319 and exact private checkpoint bd6d394 / CI41248210105 success. Final main document-only head is explicitly distinguished and its future CI is not preclaimed.",
+        "resolution_history": [
+          "SIG-033 completion text and current continuation now reflect completed real runs, blind review,319 local checks and packaging/CLI evidence. Independent checkout/private publication/remote CI remain explicitly pending with parent-owned follow-up; no unsupported completion claim."
+        ]
       }
     ],
     "claim_assessment": "The checked current report distinguishes lexical occurrence from in-context clarity and successful EOS completion, retains unconditional zero failures, labels accepted10 and without_t16 as post hoc subsets, states Chinese Base/So order reversal, discloses assistant/blinding/shared-gallery and final-weight-hash limits, and avoids claiming a causal root cause, service deployment, training or implemented future candidates. Final validation paragraph is intentionally pending and is not certified here.",
@@ -6639,6 +6642,32 @@
       "AGENTS.md": "5c1d77910c24e885fa5af7d748c56f739ca8b9d47e62c91741b99137d22a5818",
       "tests/test_term_export.py": "7c015cbdff140aa8732ec50fa831e3cb5fe7e4330f07b455fc6629124519a625",
       "benchmarks/terminology-constraints-v1/verification.json": "3a97839018afbc40d0c52bf84a71545826560e8f8f2164cc6f0a6098908d08b0"
+    },
+    "latest_reviewed_snapshot_sha256": {
+      "docs/terminology-constraints-v1.md": "cc303cb7ce7f6296b538d2179f3ac54eedc71b5525b1dac1bae2572aa628a3fd",
+      "benchmarks/terminology-constraints-v1/README.md": "398e43c619e866a23edda8313b76f1523f07cea98bad70f9e7c18292a5d4a465",
+      "benchmarks/terminology-constraints-v1/results-summary.json": "91ee7d136dd0a1fcb5a93e51c9c5797df1423d4090a9a475b8616bc37a6489e9",
+      "benchmarks/terminology-constraints-v1/translations.json": "9266d1fa02976f2a65bdca46747ccba7efdd6a532ca3e28258a546c3c0e1558a",
+      "benchmarks/terminology-constraints-v1/text-review.json": "8272f4e07f0b882f5ae4abe6da6a68f7cd43e12596381e7980a5e9bb6f39ac17",
+      "README.md": "97821d91d9715af6c4293a44310d3aeec4c1723c91a78766bdf2a12f85e90171",
+      "docs/models.md": "24b395655ae0ce102511bc7320b6bf222a1eed6d265b602058f0b72714d13db5",
+      "docs/improvements.md": "daae6b3a44a0f7a199051fd9e659bbf8e539babff015bbc085a226180fcf7d15",
+      "docs/issue-log.md": "c31dbcb4c11bffb926f4912aedb9fcac64edfd7b1426e7cb1f1648be6e00529a",
+      "docs/README.md": "912957ec232230de0e5ac92bbb3a1bbaeb93e460bdf68002222c386452dc8cd8",
+      "docs/continuation.md": "2330d1d4eb64ad003a8ce83f907d56c4ef82f7386188d1a382b92a7ddedf9157",
+      "examples/summarize_term_benchmark.py": "b09b8bc7a5458fb3c423e9117fd7f12e720e3535203cbd4677f78cf5eb7ea97b",
+      "examples/equipment_review.py": "9af2423c9dd6a402a9c6b0eb9c42c88371ff6f42776732a2ff262668866dbb08",
+      "artifacts/terminology-constraints/review.html": "6077591ebb3b2ef4a1dc226d6d3bd6d2dbb1193ee91f330d0b185e0ec525ca1a",
+      "AGENTS.md": "5c1d77910c24e885fa5af7d748c56f739ca8b9d47e62c91741b99137d22a5818",
+      "tests/test_term_export.py": "7c015cbdff140aa8732ec50fa831e3cb5fe7e4330f07b455fc6629124519a625",
+      "benchmarks/terminology-constraints-v1/verification.json": "5470645281684e2b9600871997839cc20a78236a6942cf97774c562d5ba33112",
+      "docs/superpowers/plans/2026-10-31-opus-term-constraints.md": "b922e45b5bf9d0f5dd42b6fa2c024733cabb0c9e651f52207b7c9a6799a2d340",
+      "artifacts/terminology-constraints/feature-ci-receipt.json": "370ffae21e7b59e9348428c389831b5697a21aa144d8da5fcfc80aa55284ec70",
+      "artifacts/terminology-constraints/feature-ci-complete.log": "d027dba6c153157a530adc7a61241fed979483f8e849f2cb4112198d90f78045",
+      "artifacts/terminology-constraints/clean-checkout-verification.log": "4e7386f982ad44747758471d80a75e48c2836f5094f38636627c7cb60a966b26",
+      "artifacts/terminology-constraints/final-verification-v2.log": "1f9e07a8efb107a4173cc6d407af617feb6ad1068e9c5e4a2365da3f15d94761",
+      "artifacts/terminology-constraints/cli-smoke.json": "7c720744f637e1af86776cd16cec5523b9006b008819415cc1c33f6c62e3859d",
+      "artifacts/terminology-constraints/cli-smoke.log": "088c6b42413c3b26eafeea73c0c01d1a74574e9c767998be051dad700e77281d"
     }
   },
   "final_local_evidence_refresh": {
@@ -6728,5 +6757,142 @@
     "no_new_neural_inference_download_or_training_by_auditor": true,
     "recomputation_code": "import json, math, zipfile, tarfile\nfrom pathlib import Path\nfrom hashlib import sha256\nfrom datetime import datetime,timezone\nROOT=Path('/Users/caochao/Documents/SigLIP');B=ROOT/'benchmarks/terminology-constraints-v1';R=ROOT/'artifacts/terminology-constraints'\ndef h(p):return sha256(Path(p).read_bytes()).hexdigest()\ndef read(p):return json.loads(Path(p).read_text())\ndef fp(x):return sha256(json.dumps(x,sort_keys=True,ensure_ascii=False,allow_nan=False).encode()).hexdigest()\naudit=read(B/'audit.json');v=read(B/'verification.json');q=read(R/'quality-v1/result.json');manifest=read(B/'manifest.json'); checks=[]\ndef ok(condition,message):\n checks.append({'check':message,'passed':bool(condition)})\n if not condition:raise AssertionError(message)\nok(v['measurement_implementation_sha256']==audit['method'].get('measurement_implementation_sha256',audit['file_and_runtime_bindings']['implementation_sha256']),'verification measurement implementation matches audited freeze')\nlog=ROOT/v['local_log']['path'];ok(h(log)==v['local_log']['sha256'],'final local verification log hash');body=log.read_text()\nfor marker in ['319 passed, 2 deselected','All checks passed!','Finite-difference gradcheck passed for both losses','Successfully built','FINAL319 TEST/LINT/DEMO/BUILD/RESOURCES PASSED']:ok(marker in body,'log receipt: '+marker)\nok(v['local_checks']['offline_tests']=={'passed':319,'integration_deselected':2},'verification final319 counts')\nartifact_hashes={}\nfor name,digest in v['build_artifacts'].items():ok(h(ROOT/name)==digest,'build hash '+name);artifact_hashes[name]=digest\nwheel=next((ROOT/n for n in v['build_artifacts'] if n.endswith('.whl')));sdist=next((ROOT/n for n in v['build_artifacts'] if n.endswith('.tar.gz')))\nresource_hashes={}\nwith zipfile.ZipFile(wheel) as z:\n names=z.namelist();core=[n for n in names if n.startswith('siglip_tools/') and (n.endswith('.py') or n.endswith('.json'))]\n for n in core:\n  content=z.read(n);ok(content==(ROOT/'src'/n).read_bytes(),'wheel byte identity '+n);resource_hashes[n]=sha256(content).hexdigest()\n ok('siglip_tools/power_glossary_v1.json' in names,'wheel packaged glossary')\n forbidden=('.safetensors','.bin','.npz','.npy','.jpg','.jpeg','.png','.webp','.spm')\n ok(not any(n.lower().endswith(forbidden) for n in names),'wheel no model weights/source images/index/tokenizer model blobs')\nwith tarfile.open(sdist,'r:gz') as t:\n files={m.name:m for m in t.getmembers() if m.isfile()}\n for n,digest in resource_hashes.items():\n  target='siglip_embedding_tool-0.1.0/src/'+n;ok(target in files and sha256(t.extractfile(files[target]).read()).hexdigest()==digest,'sdist resource identity '+n)\ncli=read(R/'cli-smoke.json')\nfor name,digest in v['local_checks']['real_mps_cli']['artifacts'].items():ok(h(R/name)==digest,'real CLI receipt hash '+name)\nok(cli['device']=='mps' and cli['automatic_translation']['opus_decoding']=='constrained' and cli['automatic_translation']['mode']=='auto_en','CLI explicit MPS constrained English mode')\nok(cli['automatic_translation']['english']==q['translations']['constrained']['t01'] and cli['automatic_translation']['constraint_trace']==q['constraint_traces']['constrained']['t01'],'CLI translation and full saved trace match frozen t01')\nok(cli['fingerprint']==fp(q['model_identity']) and cli['automatic_translation']['translator_fingerprint']==fp(q['translator_identities']['constrained']),'CLI retrieval/translator identity fingerprints')\npaths={r['image_id']:r['path'] for r in manifest['images']};expected=q['strategies']['constrained_en']['rankings']['t01'][:5];actual=cli['results'];ok(len(actual)==5,'CLI five actual ranked results')\nmaximum=0.\nfor a,e in zip(actual,expected):\n ok(a['path']==paths[e['image_id']] and a['rank']==e['rank'],'CLI same top5 rank/path '+e['image_id']);delta=abs(a['score']-e['score']);maximum=max(maximum,delta);ok(delta<=1e-5,'CLI score within frozen tolerance '+e['image_id'])\nfor name,digest in audit['file_and_runtime_bindings']['implementation_files'].items():ok(h(ROOT/'src/siglip_tools'/name)==digest,'measured source unchanged '+name)\nfor a in ['base','quality']:ok(h(R/f'{a}-v1/result.json')==audit['input_sha256'][f'artifacts/terminology-constraints/{a}-v1/result.json'],'raw measured result unchanged '+a)\nok(h(B/'protocol.json')==audit['file_and_runtime_bindings']['protocol_sha256'],'measured protocol unchanged')\nok(h(R/'review.html')==v['local_checks']['html_review']['sha256'],'HTML receipt hash')\ncontinuation=(ROOT/'docs/continuation.md').read_text();report=(ROOT/'docs/terminology-constraints-v1.md').read_text();ok('最终本地319' in continuation and '独立检出与远端状态尚待收尾' in continuation,'continuation local completion and pending remote/checkout accurate');ok('最终本地319项通过' in report and '独立检出与远端发布验证' in report,'report final local receipt and pending external verification accurate')\nok(v['independent_checkout']['status']=='pending before publication','verification checkout legitimately pending')\nfiles=list(audit['curated_consistency_review']['reviewed_snapshot_sha256'])+['AGENTS.md','tests/test_term_export.py','benchmarks/terminology-constraints-v1/verification.json']\ncurrent_hashes={n:h(ROOT/n) for n in files}\naudit['final_local_evidence_refresh']={'refreshed_at_utc':datetime.now(timezone.utc).isoformat(),'status':'local_evidence_verified_released_for_checkpoint_commit','local_receipts':{'verification_json_sha256':h(B/'verification.json'),'final_verification_log':v['local_log'],'offline_tests':{'passed':319,'integration_deselected':2},'ruff':'passed log marker verified','original_loss_demo_and_finite_difference_gradcheck':'passed log markers verified','build_artifacts':artifact_hashes,'packaged_source_resource_sha256':resource_hashes,'wheel_and_sdist_source_byte_identity_checked':True,'wheel_contains_weights_images_or_indexes':False,'real_MPS_CLI':{'json_sha256':h(R/'cli-smoke.json'),'log_sha256':h(R/'cli-smoke.log'),'query_id':'t01_zh','translation_and_trace_identical_to_frozen_result':True,'retrieval_and_translator_identity_fingerprints_match':True,'top5_ranks_paths_match':True,'maximum_absolute_score_difference':maximum,'scope':'A separate post-run CLI validation request, not part of the224 scored attempts or2240 benchmark timing samples.'}},'checks':{'total':len(checks),'passed':len(checks),'errors':[]},'current_artifact_document_exporter_test_sha256':current_hashes,'independent_checkout_status':'pending before checkpoint commit and clean checkout; not claimed passed','private_publication_and_remote_CI_status':'pending, no future success preclaimed; parent owns checkpoint/push/remote receipts','measured_implementation_sha256':audit['file_and_runtime_bindings']['implementation_sha256'],'measurement_commit':'b68cb99','frozen_measurement_code_data_protocol_unchanged':True,'no_new_neural_inference_download_or_training_by_auditor':True,'recomputation_code':Path(__file__).read_text(),'recomputation_code_sha256':h(__file__)}\nc=audit['curated_consistency_review'];c['status']='passed_curated_consistency_and_resolved_exporter_guard_local_checkpoint_release';c['final_local_snapshot_sha256']=current_hashes\nfor f in c['findings']:\n if f['severity']=='P3':f['status']='resolved_local_state_and_legitimate_remaining_remote_work_documented';f['resolution']='SIG-033 completion text and current continuation now reflect completed real runs, blind review,319 local checks and packaging/CLI evidence. Independent checkout/private publication/remote CI remain explicitly pending with parent-owned follow-up; no unsupported completion claim.'\n(B/'audit.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2,allow_nan=False)+'\\n')\nprint(json.dumps({'status':audit['final_local_evidence_refresh']['status'],'checks':len(checks),'CLI_max_score_difference':maximum,'core_resources':len(resource_hashes),'current_hashes':len(current_hashes),'audit_bytes':(B/'audit.json').stat().st_size},indent=2))\n",
     "recomputation_code_sha256": "de802ba8aff197fb25d023a21d9f589b42389f312a46e552380c134c68a6d019"
+  },
+  "final_checkpoint_evidence_refresh": {
+    "refreshed_at_utc": "2026-10-31T22:30:56.385558+00:00",
+    "status": "checkpoint_validation_complete_released_for_document_only_final_handoff_commit",
+    "review_scope": "Receipt and final-hash refresh only; prior independent raw/curated audit and negative result evidence remain unchanged. No additional neural inference, model download, training or broad new review.",
+    "measurement_commit": "b68cb99",
+    "measurement_implementation_sha256": "44b19b06d0ffd628ea48ef0bb7ec69c64025637e0e664e43001efdc393ded9df",
+    "accepted_checkpoint_commit": "bd6d394a745ade6b71748560307a675d97df2fad",
+    "private_checkpoint_CI": {
+      "run_id": 41248210105,
+      "url": "https://github.com/HenryVarro666/siglip-embedding-tool/actions/runs/41248210105",
+      "status": "completed",
+      "conclusion": "success",
+      "offline_tests_passed": 319,
+      "integration_deselected": 2,
+      "receipt_path": "artifacts/terminology-constraints/feature-ci-receipt.json",
+      "receipt_sha256": "370ffae21e7b59e9348428c389831b5697a21aa144d8da5fcfc80aa55284ec70",
+      "complete_log_path": "artifacts/terminology-constraints/feature-ci-complete.log",
+      "complete_log_sha256": "d027dba6c153157a530adc7a61241fed979483f8e849f2cb4112198d90f78045",
+      "scope": "Saved GitHub per-commit receipt and complete log inspected; exact accepted checkpoint bound. This auditor did not make a second live GitHub status request."
+    },
+    "independent_checkout": {
+      "status": "passed",
+      "source_commit": "bd6d394a745ade6b71748560307a675d97df2fad",
+      "offline_tests_passed": 319,
+      "integration_deselected": 2,
+      "ruff": "passed",
+      "outside_repository_wheel_import_resource_and_help": "passed saved receipt",
+      "log_path": "artifacts/terminology-constraints/clean-checkout-verification.log",
+      "log_sha256": "4e7386f982ad44747758471d80a75e48c2836f5094f38636627c7cb60a966b26"
+    },
+    "checks": {
+      "passed": 82,
+      "total": 82,
+      "errors": []
+    },
+    "tracked_source_test_example_CI_checkpoint_sha256": {
+      ".github/workflows/tests.yml": "83efd39158de528a0c3bcc1e8b37af707d2ffe885fde27c01252e2abf664a937",
+      "examples/equipment_review.py": "9af2423c9dd6a402a9c6b0eb9c42c88371ff6f42776732a2ff262668866dbb08",
+      "examples/summarize_term_benchmark.py": "b09b8bc7a5458fb3c423e9117fd7f12e720e3535203cbd4677f78cf5eb7ea97b",
+      "src/siglip_tools/__init__.py": "afcceab11e1d6b12a5905d044b5c0503d42b501d6a67a109a0541bdac4e013dd",
+      "src/siglip_tools/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "src/siglip_tools/auto_benchmark.py": "6b48b7442ee5d2a91539a0c2dda295b79351599dcc1a9b49bec495329a6253e1",
+      "src/siglip_tools/auto_retrieval.py": "bf029d19d7a12ceea4a65655a1f71dba0256580012bb42a4a1cb9d0cc2ded657",
+      "src/siglip_tools/benchmark.py": "2f250feeabbaa439f7e0c032849ab8313b81cad9c07417cb537f3c16ce3a5ecd",
+      "src/siglip_tools/cli.py": "b6c3e5ab6160c2dae8734459a5015c459460f267af88121e87b8cfc9f980c10c",
+      "src/siglip_tools/commons.py": "3d0aab0e390866bc682e027f55d5aec695387e990de6a8ed75c8190c796c05ad",
+      "src/siglip_tools/encoder.py": "e9163aadf62ffd26fc543f9e3f31fb266eaab7eba6c48cf524e30f923f929dab",
+      "src/siglip_tools/evaluation.py": "f51e75cd1b51529b57b55f094724960806509b4793fc4ddebb54818437483e7f",
+      "src/siglip_tools/finetune.py": "06e8cecbc89206097727a5833df2db788ced6ca2bbe442627962d2ba37cb940d",
+      "src/siglip_tools/fusion.py": "ac91eba4902a40b8a40d4bfc4f0da07b5eb8d3d814cc9b15ed60824a7b627d13",
+      "src/siglip_tools/fusion_benchmark.py": "a4f349561b997ee67f85165b3733aa27a40a9fedbad5bef40bc564a7a1655b83",
+      "src/siglip_tools/images.py": "a7c9fd2313faa361ba93deaf92239708e78f979de0225f973a44d3bc4c01941e",
+      "src/siglip_tools/index.py": "24c9457d1b6f8d7889983f8e1b5348b31e62b7f446d8a5d1dc2df2a276d0eaf2",
+      "src/siglip_tools/losses.py": "da5112264d904b981fd046385bb4e73eb1a3afd8b2c86ef98e96934d7b9ea99a",
+      "src/siglip_tools/nllb_translation.py": "c111f75eccf44a9c2944aff0e4df208aff1485418a1b05e4bc6cdbd54f9ec663",
+      "src/siglip_tools/opus_constraints.py": "b92c787e70703f8bd620ebd7d3ce55b59a7d8301e46d77fec23791e44984b9dc",
+      "src/siglip_tools/power_glossary_v1.json": "20fef944133fe8453e9b60d5d7a6ccabb93ce3a4ffe0565038caaf8f51e3c42e",
+      "src/siglip_tools/term_benchmark.py": "9bff5e2fcc5d21c67bbb84163a980eda641a4033e963ee676634cc47d7b99ff5",
+      "src/siglip_tools/translation.py": "ba21dedd1e9ffb166f4731df8567f9ccba5cf6c37232104991262c9cc16b1fa7",
+      "tests/test_auto_benchmark.py": "c3d244b0a9c7dabbc5b96dcece5edb3ecc26be3a5112b72e984f1cb2b0e3b7d5",
+      "tests/test_auto_retrieval.py": "eb610216e3af4968f728a610fe6bf59ac636fc34e7329c810ad6298caf92fa5b",
+      "tests/test_benchmark.py": "319bab66ff960765e56652996c2bc81d00cb2e1a2cebfb135f7a31a79440c1d6",
+      "tests/test_cli.py": "e4019a733535c02b54ee12c3425f9cdc1244fc146cbe3671024c31499bc545e0",
+      "tests/test_commons.py": "41f49b7ebee90080b2e1a15e6f69b79bc07ff0fae85219f14467644987d3b74c",
+      "tests/test_encoder.py": "48f80910891fe2bf795094070773898a308fabfe7ddc1e4721a9f9b09494c2e0",
+      "tests/test_evaluation.py": "ae3ea21b74983668cf48795250d67d69ad71041a2b892a4c55b67f521f2638da",
+      "tests/test_fusion.py": "2783fb6f31600fe804b854e2d5c174234c513d295e334ac29e0722d32b8ad97b",
+      "tests/test_fusion_benchmark.py": "dab62320520b1698349e25d3fa36f34219a79d30d0b238f9794401559a8e5625",
+      "tests/test_images.py": "5686804a2e86617c28e6548ce4a73789685600b6492d638c4d3067e186f0aaa3",
+      "tests/test_index.py": "1e6a763c252f74dbf3c61004af5d977648cca326e05dd1ae66e4e60d87ed416a",
+      "tests/test_mutating_inputs.py": "5cf25e34f74e1d468294cfce5bc5336747cb3c992fcac2ad623863595966620e",
+      "tests/test_nllb_translation.py": "8dce3e78cf53af1aaf0c821965540311a1f7712fe6258e64dcb3652611b79452",
+      "tests/test_opus_constraint_cli.py": "f1fd3da983fd0863a050a3fa485828206077b717e1ac450b0ae31620a2044028",
+      "tests/test_opus_constraints.py": "7411e444ce7961ba4bb80ab2daf5a3854ffaa4950cf50d366925ea26290bbee9",
+      "tests/test_packaging.py": "4e0e3e51a6795dbec7a8dcbd78334a962c9db5d85ec75362c784df9a32bd7df5",
+      "tests/test_pretrained.py": "502ca112113afb6b55a890206eef14ccb2d8d9951b9e891de623c2120479a9ba",
+      "tests/test_stronger_translation.py": "c82b5261e284336feac734df882cdd50a5b77a44148a38b711ad2378ea9ba49f",
+      "tests/test_term_benchmark.py": "1482063572335b392ddc813cd5351dc7311619683d7635c01e9cabcfa808616e",
+      "tests/test_term_export.py": "7c015cbdff140aa8732ec50fa831e3cb5fe7e4330f07b455fc6629124519a625",
+      "tests/test_training.py": "f4f61d9fc90f3d86bf6effce0fe25137e1154c8ce190c293da4ee90e6f19a88a",
+      "tests/test_translation.py": "73ff0a6b22b0766452cc9666ac8e6e7384b1d41baa8be51b9c0c1489324c4d82"
+    },
+    "current_artifact_document_exporter_test_receipt_sha256": {
+      "docs/terminology-constraints-v1.md": "cc303cb7ce7f6296b538d2179f3ac54eedc71b5525b1dac1bae2572aa628a3fd",
+      "benchmarks/terminology-constraints-v1/README.md": "398e43c619e866a23edda8313b76f1523f07cea98bad70f9e7c18292a5d4a465",
+      "benchmarks/terminology-constraints-v1/results-summary.json": "91ee7d136dd0a1fcb5a93e51c9c5797df1423d4090a9a475b8616bc37a6489e9",
+      "benchmarks/terminology-constraints-v1/translations.json": "9266d1fa02976f2a65bdca46747ccba7efdd6a532ca3e28258a546c3c0e1558a",
+      "benchmarks/terminology-constraints-v1/text-review.json": "8272f4e07f0b882f5ae4abe6da6a68f7cd43e12596381e7980a5e9bb6f39ac17",
+      "README.md": "97821d91d9715af6c4293a44310d3aeec4c1723c91a78766bdf2a12f85e90171",
+      "docs/models.md": "24b395655ae0ce102511bc7320b6bf222a1eed6d265b602058f0b72714d13db5",
+      "docs/improvements.md": "daae6b3a44a0f7a199051fd9e659bbf8e539babff015bbc085a226180fcf7d15",
+      "docs/issue-log.md": "c31dbcb4c11bffb926f4912aedb9fcac64edfd7b1426e7cb1f1648be6e00529a",
+      "docs/README.md": "912957ec232230de0e5ac92bbb3a1bbaeb93e460bdf68002222c386452dc8cd8",
+      "docs/continuation.md": "2330d1d4eb64ad003a8ce83f907d56c4ef82f7386188d1a382b92a7ddedf9157",
+      "examples/summarize_term_benchmark.py": "b09b8bc7a5458fb3c423e9117fd7f12e720e3535203cbd4677f78cf5eb7ea97b",
+      "examples/equipment_review.py": "9af2423c9dd6a402a9c6b0eb9c42c88371ff6f42776732a2ff262668866dbb08",
+      "artifacts/terminology-constraints/review.html": "6077591ebb3b2ef4a1dc226d6d3bd6d2dbb1193ee91f330d0b185e0ec525ca1a",
+      "AGENTS.md": "5c1d77910c24e885fa5af7d748c56f739ca8b9d47e62c91741b99137d22a5818",
+      "tests/test_term_export.py": "7c015cbdff140aa8732ec50fa831e3cb5fe7e4330f07b455fc6629124519a625",
+      "benchmarks/terminology-constraints-v1/verification.json": "5470645281684e2b9600871997839cc20a78236a6942cf97774c562d5ba33112",
+      "docs/superpowers/plans/2026-10-31-opus-term-constraints.md": "b922e45b5bf9d0f5dd42b6fa2c024733cabb0c9e651f52207b7c9a6799a2d340",
+      "artifacts/terminology-constraints/feature-ci-receipt.json": "370ffae21e7b59e9348428c389831b5697a21aa144d8da5fcfc80aa55284ec70",
+      "artifacts/terminology-constraints/feature-ci-complete.log": "d027dba6c153157a530adc7a61241fed979483f8e849f2cb4112198d90f78045",
+      "artifacts/terminology-constraints/clean-checkout-verification.log": "4e7386f982ad44747758471d80a75e48c2836f5094f38636627c7cb60a966b26",
+      "artifacts/terminology-constraints/final-verification-v2.log": "1f9e07a8efb107a4173cc6d407af617feb6ad1068e9c5e4a2365da3f15d94761",
+      "artifacts/terminology-constraints/cli-smoke.json": "7c720744f637e1af86776cd16cec5523b9006b008819415cc1c33f6c62e3859d",
+      "artifacts/terminology-constraints/cli-smoke.log": "088c6b42413c3b26eafeea73c0c01d1a74574e9c767998be051dad700e77281d"
+    },
+    "handoff_and_P3": "Resolved: current report, continuation, issue ledger and completed plan reflect actual checkpoint/checkout evidence and preserve latest-main-CI caveat.",
+    "final_document_only_commit_and_latest_main_CI": "Not yet observed by this auditor. Parent will commit the final document/receipt/audit update, fast-forward/push main and verify the exact latest-main head. The successful checkpoint CI is not attributed to that future head.",
+    "recomputation_code": "import json,subprocess,re\nfrom pathlib import Path\nfrom hashlib import sha256\nfrom datetime import datetime,timezone\nROOT=Path('/Users/caochao/Documents/SigLIP');B=ROOT/'benchmarks/terminology-constraints-v1';R=ROOT/'artifacts/terminology-constraints'\ndef h(p):return sha256(Path(p).read_bytes()).hexdigest()\ndef read(p):return json.loads(Path(p).read_text())\naudit=read(B/'audit.json');v=read(B/'verification.json');receipt=read(R/'feature-ci-receipt.json');ci=v['remote_ci_checkpoint'];checkout=v['independent_checkout'];checks=[]\ndef ok(value,label):\n checks.append(label)\n if not value:raise AssertionError(label)\ncheckpoint=subprocess.check_output(['git','rev-parse','bd6d394'],cwd=ROOT,text=True).strip()\nok(checkpoint==ci['commit']==checkout['source_commit']==receipt['headSha'],'exact checkpoint commit binding across saved receipts')\nok(ci['status']==receipt['status']=='completed' and ci['conclusion']==receipt['conclusion']=='success','checkpoint CI complete/success')\nok(ci['run_id']==41248210105 and ci['url']==receipt['url'] and str(ci['run_id']) in receipt['url'],'exact CI run URL/id binding')\nci_log=R/'feature-ci-complete.log';ok(h(ci_log)==ci['log_sha256'],'complete checkpoint CI log SHA');ci_text=ci_log.read_text();ok('319 passed, 2 deselected' in ci_text and 'All checks passed!' in ci_text,'CI319/Ruff log receipts');ok(ci['offline_tests_passed']==319 and ci['integration_deselected']==2,'CI summary counts')\nclone_log=ROOT/checkout['log_path'];ok(h(clone_log)==checkout['log_sha256'],'independent checkout log SHA');clone_text=clone_log.read_text()\nfor marker in ['Cloning into','rootdir: /private/var/folders/','/repo/src/siglip_tools/__init__.py','319 passed, 2 deselected','All checks passed!','CLEAN CHECKOUT319 AND OUTSIDE-REPO WHEEL IMPORT PASSED','20fef944133fe8453e9b60d5d7a6ccabb93ce3a4ffe0565038caaf8f51e3c42e']:\n ok(marker in clone_text,'checkout receipt '+marker)\nok(checkout['status']=='passed' and checkout['offline_tests_passed']==319 and checkout['integration_deselected']==2 and checkout['ruff']=='passed' and checkout['outside_repository_wheel_import_and_resource']=='passed','checkout summary counts/resource status')\nchanged=subprocess.check_output(['git','diff','--name-only',checkpoint,'--','src','tests','examples','.github'],cwd=ROOT,text=True).strip();ok(not changed,'source/tests/examples/CI unchanged from accepted checkpoint')\ntracked=subprocess.check_output(['git','ls-tree','-r','--name-only',checkpoint,'--','src','tests','examples','.github'],cwd=ROOT,text=True).splitlines();tracked_hashes={}\nfor n in tracked:\n content=subprocess.check_output(['git','show',checkpoint+':'+n],cwd=ROOT);expected=sha256(content).hexdigest();ok(h(ROOT/n)==expected,'checkpoint source byte identity '+n);tracked_hashes[n]=expected\nfor n,digest in audit['file_and_runtime_bindings']['implementation_files'].items():ok(h(ROOT/'src/siglip_tools'/n)==digest,'frozen measured source unchanged '+n)\nfor a in ['base','quality']:ok(h(R/f'{a}-v1/result.json')==audit['input_sha256'][f'artifacts/terminology-constraints/{a}-v1/result.json'],'raw result unchanged '+a)\nok(h(B/'protocol.json')==audit['file_and_runtime_bindings']['protocol_sha256'],'frozen protocol unchanged')\ncontinuation=(ROOT/'docs/continuation.md').read_text();report=(ROOT/'docs/terminology-constraints-v1.md').read_text();issue=(ROOT/'docs/issue-log.md').read_text();plan=(ROOT/'docs/superpowers/plans/2026-10-31-opus-term-constraints.md').read_text()\nok('私有代码提交验收完成' in continuation and '独立检出319项通过' in continuation and '41248210105' in continuation and '最后文档提交不冒用此前CI作为未来HEAD结果' in continuation,'current continuation complete with exact checkpoint and future-CI caveat')\nok('独立检出与远端状态尚待收尾' not in continuation and 'So400m已启动' not in continuation and '第二助手正在复核标签' not in continuation,'no stale handoff/P3 waiting statements')\nok('独立检出319项及仓库外wheel导入通过' in report and 'bd6d394' in report and '41248210105' in report and '最新CI仍以Actions为准' in report,'report actual checkpoint validation and latest-CI scope')\nok('等待同协议So400m对照' not in issue and '## 最终验收与下一次接续' in issue,'issue ledger current completion state')\nok('- [ ]' not in plan and len(re.findall(r'^- \\[x\\]',plan,flags=re.M))==13 and 'bd6d394' in plan and '41248210105' in plan,'plan13 checklist items completed and checkpoint-linked')\nprevious=list(audit['final_local_evidence_refresh']['current_artifact_document_exporter_test_sha256']);names=previous+['docs/superpowers/plans/2026-10-31-opus-term-constraints.md'];current_hashes={n:h(ROOT/n) for n in names}\nfor n in ['feature-ci-receipt.json','feature-ci-complete.log','clean-checkout-verification.log','final-verification-v2.log','cli-smoke.json','cli-smoke.log']:current_hashes[str((R/n).relative_to(ROOT))]=h(R/n)\nstate={'refreshed_at_utc':datetime.now(timezone.utc).isoformat(),'status':'checkpoint_validation_complete_released_for_document_only_final_handoff_commit','review_scope':'Receipt and final-hash refresh only; prior independent raw/curated audit and negative result evidence remain unchanged. No additional neural inference, model download, training or broad new review.','measurement_commit':'b68cb99','measurement_implementation_sha256':audit['file_and_runtime_bindings']['implementation_sha256'],'accepted_checkpoint_commit':checkpoint,'private_checkpoint_CI':{'run_id':ci['run_id'],'url':ci['url'],'status':'completed','conclusion':'success','offline_tests_passed':319,'integration_deselected':2,'receipt_path':'artifacts/terminology-constraints/feature-ci-receipt.json','receipt_sha256':h(R/'feature-ci-receipt.json'),'complete_log_path':str(ci_log.relative_to(ROOT)),'complete_log_sha256':h(ci_log),'scope':'Saved GitHub per-commit receipt and complete log inspected; exact accepted checkpoint bound. This auditor did not make a second live GitHub status request.'},'independent_checkout':{'status':'passed','source_commit':checkpoint,'offline_tests_passed':319,'integration_deselected':2,'ruff':'passed','outside_repository_wheel_import_resource_and_help':'passed saved receipt','log_path':str(clone_log.relative_to(ROOT)),'log_sha256':h(clone_log)},'checks':{'passed':len(checks),'total':len(checks),'errors':[]},'tracked_source_test_example_CI_checkpoint_sha256':tracked_hashes,'current_artifact_document_exporter_test_receipt_sha256':current_hashes,'handoff_and_P3':'Resolved: current report, continuation, issue ledger and completed plan reflect actual checkpoint/checkout evidence and preserve latest-main-CI caveat.','final_document_only_commit_and_latest_main_CI':'Not yet observed by this auditor. Parent will commit the final document/receipt/audit update, fast-forward/push main and verify the exact latest-main head. The successful checkpoint CI is not attributed to that future head.','recomputation_code':Path(__file__).read_text(),'recomputation_code_sha256':h(__file__)}\naudit['final_checkpoint_evidence_refresh']=state\naudit['latest_validation_state']={'measurement_and_independent_audits':'complete within declared limits','local319_build_CLI':'passed','independent_checkout319_and_outside_wheel':'passed','private_checkpoint_commit':checkpoint,'private_checkpoint_CI_run':41248210105,'private_checkpoint_CI':'success','exporter_P2':'resolved','handoff_P3':'resolved','final_document_only_commit_latest_main_CI':'pending parent action, not preclaimed','latest_receipt_section':'final_checkpoint_evidence_refresh'}\nc=audit['curated_consistency_review'];c['status']='passed_curated_consistency_exporter_guard_and_final_checkpoint_receipts';c['latest_reviewed_snapshot_sha256']=current_hashes\nfor finding in c['findings']:\n if finding['severity']=='P3':\n  finding.setdefault('resolution_history',[]).append(finding.get('resolution',''));finding['status']='resolved_final_handoff_and_checkpoint_receipts_verified';finding['resolution']='Current report, continuation, plan and ledger now document completed independent checkout319 and exact private checkpoint bd6d394 / CI41248210105 success. Final main document-only head is explicitly distinguished and its future CI is not preclaimed.'\n(B/'audit.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2,allow_nan=False)+'\\n')\nprint(json.dumps({'status':state['status'],'checks':len(checks),'source_files_bound':len(tracked_hashes),'current_hashes':len(current_hashes),'audit_bytes':(B/'audit.json').stat().st_size},indent=2))\n",
+    "recomputation_code_sha256": "8ab7e832c93dc137b34ac729b80381c294413c6eb126ec4a21602912501c373f",
+    "auditor_validation_attempts": [
+      {
+        "attempt": 1,
+        "result": "aborted before writing audit.json",
+        "cause": "The temporary receipt-audit harness counted the illustrative checkbox string in the plan header together with actual task lines. The plan itself had all13 task checklist items checked.",
+        "correction": "Count only line-start task checkboxes using an anchored regular expression; no project source/docs/protocol or measured results changed."
+      },
+      {
+        "attempt": 2,
+        "result": "82 checks passed; final receipt/hash refresh written"
+      }
+    ]
+  },
+  "latest_validation_state": {
+    "measurement_and_independent_audits": "complete within declared limits",
+    "local319_build_CLI": "passed",
+    "independent_checkout319_and_outside_wheel": "passed",
+    "private_checkpoint_commit": "bd6d394a745ade6b71748560307a675d97df2fad",
+    "private_checkpoint_CI_run": 41248210105,
+    "private_checkpoint_CI": "success",
+    "exporter_P2": "resolved",
+    "handoff_P3": "resolved",
+    "final_document_only_commit_latest_main_CI": "pending parent action, not preclaimed",
+    "latest_receipt_section": "final_checkpoint_evidence_refresh"
   }
 }

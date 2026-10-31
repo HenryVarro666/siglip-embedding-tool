@@ -1,6 +1,6 @@
 # 工作接续状态
 
-更新：2026-10-31。本轮测量、分析和本地核验完成，正在做独立检出与私有发布核验。目录：`/Users/caochao/Documents/SigLIP`，私有远端`HenryVarro666/siglip-embedding-tool`，开发分支`feat/opus-terminology-constraints`。
+更新：2026-10-31。本轮测量、分析、本地/独立检出和私有代码提交验收完成。测量实现为b68cb99，代码/结果验收提交为bd6d394；主分支最后交接提交只补文档与凭证，不改变程序/冻结输入。目录：`/Users/caochao/Documents/SigLIP`，私有远端`HenryVarro666/siglip-embedding-tool`，开发分支`feat/opus-terminology-constraints`。
 
 ## 先读什么
 
@@ -22,7 +22,7 @@
 - 真实MPS CLI约束t01成功，英文/轨迹/Top5在`artifacts/terminology-constraints/cli-smoke.json`。源参数、规则、权重没有训练或手改。
 - 原始结果：`artifacts/terminology-constraints/{base-v1,quality-v1}/result.json`；对照`comparison.json`。审查页`artifacts/terminology-constraints/review.html`：1360卡片、24失败区，中文控制重复仅为展示。
 - Git内输入、摘要、译文与审阅：`benchmarks/terminology-constraints-v1/`；外部解码来源四文件在`models/opus-constrained-decoder`，OPUS在`models/opus-mt-zh-en`；Base/So索引仍在`artifacts/equipment-benchmark/{base-v1,quality-v1}/index.npz`。
-- 独立检出与远端状态尚待收尾，不能据本地绿测试假定已推送。完成后本文件会删除此待办；当前真实远端提交/CI以[提交记录](https://github.com/HenryVarro666/siglip-embedding-tool/commits/main/)和[GitHub Actions](https://github.com/HenryVarro666/siglip-embedding-tool/actions)为准。
+- 独立检出319项通过，仓库外wheel导入/词表资源也通过；验收代码提交bd6d394已推送私有仓库且[CI41248210105](https://github.com/HenryVarro666/siglip-embedding-tool/actions/runs/41248210105)为success（319通过、2排除）。具体证据见benchmark verification.json。最后文档提交不冒用此前CI作为未来HEAD结果；最新真实主分支提交/CI以[提交记录](https://github.com/HenryVarro666/siglip-embedding-tool/commits/main/)和[GitHub Actions](https://github.com/HenryVarro666/siglip-embedding-tool/actions)为准。
 
 ## 后续建议（未执行，不训练）
 

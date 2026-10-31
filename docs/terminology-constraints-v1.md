@@ -173,6 +173,6 @@ So400m在成功子集的英文确有局部收益（0.7583→0.8000），但融�
 
 审计并不重新观察全部执行：每次重复只有计时/状态被持久化，排名/轨迹一致性由运行期断言和漂移汇总提供；检索权重字节SHA是最终复核补充。processor的现有BOS/EOS越界提示保留，但身份复现一致，不能据提示断定本次向量损坏。[独立审计及复算代码](../benchmarks/terminology-constraints-v1/audit.json)明确这些边界。
 
-冻结前315项离线测试及Ruff通过；事后导出器SIG-037修复增加4项边界回归，最终本地319项通过、2项真实模型测试默认排除，Ruff和原始损失/有限差分演示通过。wheel/sdist构建成功，词表JSON与新模块逐字核对且没有权重/图片/索引入包；真实MPS CLI约束查询成功返回英文/轨迹/Top5。日志为本机artifacts/terminology-constraints/final-verification-v2.log与cli-smoke.json。独立检出与远端发布验证在接续状态完成后记录；原始学习笔记与备用训练代码保留。
+冻结前315项离线测试及Ruff通过；事后导出器SIG-037修复增加4项边界回归，最终本地319项通过、2项真实模型测试默认排除，Ruff和原始损失/有限差分演示通过。wheel/sdist构建成功，词表JSON与新模块逐字核对且没有权重/图片/索引入包；真实MPS CLI约束查询成功返回英文/轨迹/Top5。日志为本机artifacts/terminology-constraints/final-verification-v2.log与cli-smoke.json。独立检出319项及仓库外wheel导入通过；验收提交bd6d394已推送私有仓库，[CI41248210105](https://github.com/HenryVarro666/siglip-embedding-tool/actions/runs/41248210105)通过319项，后续文档提交的最新CI仍以Actions为准。[验证凭证](../benchmarks/terminology-constraints-v1/verification.json)与接续状态记录具体范围；原始学习笔记与备用训练代码保留。
 
 用户要求的历史、当前、未来问题已建立持久衔接：[总索引](README.md) → [历史SIG-001–019](historical-issues.md) / [当前问题台账](issue-log.md) → [改进路线](improvements.md) → [接续状态](continuation.md)。`AGENTS.md`规定发现即登记、修复补验证、结束更新索引与交接；不只留聊天，也不把未执行候选写成已完成。
