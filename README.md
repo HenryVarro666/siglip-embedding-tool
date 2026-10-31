@@ -129,7 +129,19 @@ uv run siglip-tools inspect --index artifacts/gallery.npz
 
 首次检查时，2Dto3D runtime 的 10 张 JPG 只有 2 种图片内容；实现过程中新增了一张室内设备图，复核为 11 张 JPG、3 种内容，仍有 8 个重复副本。原始候选照片目录有两张图片。可以检查真实模型的编码、索引和查询流程，但不能据此判断一般检索准确率。原图、模型权重和索引均不进入 Git。
 
-需要补充不同设备、相似外观干扰项和人工确认的查询标签。具体检查结果和起步数据方案见 [数据评估](docs/data-assessment.md)，本机验证见 [验证记录](docs/validation.md)。
+上述记录保留原始数据的局限。新增的公开设备检索集及模型比较见下节；原数据检查结果见 [数据评估](docs/data-assessment.md)，原始 smoke test 见 [验证记录](docs/validation.md)。
+
+## 40 图中英文检索评估
+
+新增 [设备评估集 v1](benchmarks/equipment-v1/README.md)：40 张来自 Wikimedia Commons 的逆变器、配电/控制设备、变压器、UPS 和光伏场景；16 条查询是 8 个意图的中英文对照。逐图保存作者、许可、来源页面 revision、下载 URL 和内容哈希。标签为助手目视与来源核对，未经过独立人类审核。
+
+```bash
+uv run python -m siglip_tools.commons \
+  --manifest benchmarks/equipment-v1/manifest.json --data-root data/equipment-v1
+uv run python examples/equipment_review.py
+```
+
+图片保存在本机 `data/equipment-v1/`，审查 HTML 输出至 `artifacts/equipment-review.html`。两个预训练模型的固定版本、依次运行的完整命令和计时口径见 [复现说明](benchmarks/equipment-v1/README.md)。模型下载与测试分开，不调用训练入口。Top-K 命中率与多正例 Recall 分开计算，分别报告中英文结果。
 
 ## 保留的训练代码与学习资料
 
@@ -145,7 +157,7 @@ uv run siglip-tools inspect --index artifacts/gallery.npz
 
 ```bash
 uv run pytest -m 'not integration'
-uv run ruff check src tests training
+uv run ruff check src tests training examples
 uv run python clip_siglip_demo.py
 ```
 

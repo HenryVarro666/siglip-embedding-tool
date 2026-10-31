@@ -1,0 +1,34 @@
+{
+  "dataset_id": "commons-equipment-pilot-v1",
+  "frozen_at_utc": "2026-10-31T07:18:24.952023+00:00",
+  "dataset_hashes": {
+    "manifest": "3487fdf62b90971619ec098b2ec5bbad00e5af2d22ec9183d258bc1a24916975",
+    "queries": "b29fe8b26c8618c38b0154871b1a288179e0e2be2e7686e07a2d958ebe15556f",
+    "qrels": "119bc4cbc7aecf9c57c3170a694c41132cf41daca091c325fb667af9b994ef52"
+  },
+  "implementation_sha256": "747c9b999b3bee4854809f660382e38d597b36a9a05be1af57175cd3a704f944",
+  "starting_git_commit": "94f1d8e40003edc255a5b75670069097c73f00bc",
+  "model_revisions": {
+    "base": {
+      "model_id": "google/siglip2-base-patch16-224",
+      "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2"
+    },
+    "quality": {
+      "model_id": "google/siglip2-so400m-patch14-384",
+      "revision": "e8e487298228002f3d8a82e0cd5c8ea9c567f57f"
+    }
+  },
+  "protocol": {
+    "device": "mps",
+    "dtype": "float32",
+    "image_batch_size": 4,
+    "query_batch_size": 1,
+    "query_warmup": 3,
+    "query_repeats": 10,
+    "image_extra_warmup": 1,
+    "execution": "separate sequential processes, local cached weights only",
+    "training": false
+  },
+  "label_review": "Root visual/source review plus blind second-assistant review; e002 added to i04 and e024 removed from i07 before any target-model scoring. No independent human audit.",
+  "results_existed_at_freeze": false
+}

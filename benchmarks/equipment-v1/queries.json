@@ -1,0 +1,100 @@
+{
+  "queries": [
+    {
+      "query_id": "i01_en",
+      "intent_id": "i01",
+      "language": "en",
+      "text": "A compact solar microinverter with electrical connectors."
+    },
+    {
+      "query_id": "i01_zh",
+      "intent_id": "i01",
+      "language": "zh",
+      "text": "带电气连接接口的小型太阳能微型逆变器。"
+    },
+    {
+      "query_id": "i02_en",
+      "intent_id": "i02",
+      "language": "en",
+      "text": "A solar inverter mounted on a wall, with its casing closed."
+    },
+    {
+      "query_id": "i02_zh",
+      "intent_id": "i02",
+      "language": "zh",
+      "text": "安装在墙上、外壳闭合的太阳能逆变器。"
+    },
+    {
+      "query_id": "i03_en",
+      "intent_id": "i03",
+      "language": "en",
+      "text": "An open solar inverter showing circuit boards and blue capacitors."
+    },
+    {
+      "query_id": "i03_zh",
+      "intent_id": "i03",
+      "language": "zh",
+      "text": "打开外壳后露出电路板和蓝色电容的太阳能逆变器。"
+    },
+    {
+      "query_id": "i04_en",
+      "intent_id": "i04",
+      "language": "en",
+      "text": "Solar inverters installed below or behind photovoltaic panels."
+    },
+    {
+      "query_id": "i04_zh",
+      "intent_id": "i04",
+      "language": "zh",
+      "text": "安装在光伏板下方或背面的太阳能逆变器。"
+    },
+    {
+      "query_id": "i05_en",
+      "intent_id": "i05",
+      "language": "en",
+      "text": "An open electrical distribution or control cabinet with visible wiring."
+    },
+    {
+      "query_id": "i05_zh",
+      "intent_id": "i05",
+      "language": "zh",
+      "text": "打开柜门后能看到接线的电气配电柜或控制柜。"
+    },
+    {
+      "query_id": "i06_en",
+      "intent_id": "i06",
+      "language": "en",
+      "text": "An aisle between rows of industrial electrical switchgear cabinets."
+    },
+    {
+      "query_id": "i06_zh",
+      "intent_id": "i06",
+      "language": "zh",
+      "text": "成排工业电气开关柜之间的通道。"
+    },
+    {
+      "query_id": "i07_en",
+      "intent_id": "i07",
+      "language": "en",
+      "text": "An outdoor power transformer with visible bushings or cooling fins."
+    },
+    {
+      "query_id": "i07_zh",
+      "intent_id": "i07",
+      "language": "zh",
+      "text": "能看到套管或散热片的室外电力变压器。"
+    },
+    {
+      "query_id": "i08_en",
+      "intent_id": "i08",
+      "language": "en",
+      "text": "A UPS battery backup power supply for computers or servers."
+    },
+    {
+      "query_id": "i08_zh",
+      "intent_id": "i08",
+      "language": "zh",
+      "text": "给电脑或服务器提供断电备用电源的 UPS 不间断电源。"
+    }
+  ]
+}

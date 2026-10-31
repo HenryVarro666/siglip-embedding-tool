@@ -1,0 +1,137 @@
+{
+  "label_version": "v1",
+  "human_audited": false,
+  "model_results_used_for_labels": false,
+  "intent_rules": [
+    {
+      "intent_id": "i01",
+      "positive_image_ids": [
+        "e003",
+        "e007",
+        "e011"
+      ],
+      "decision_rule": "Microinverter class confirmed by source; compact box/connectors visible. Enphase is on an installation rail, not yet covered by its panel."
+    },
+    {
+      "intent_id": "i02",
+      "positive_image_ids": [
+        "e004",
+        "e005",
+        "e008",
+        "e009",
+        "e014"
+      ],
+      "decision_rule": "Closed wall-mounted inverter photographs. Excludes open inverter, standalone/rail-mounted microinverters, station enclosures and MPPT charge controller."
+    },
+    {
+      "intent_id": "i03",
+      "positive_image_ids": [
+        "e012"
+      ],
+      "decision_rule": "Visible blue capacitors/PCBs; source confirms inverter. Open breaker cabinets are negatives."
+    },
+    {
+      "intent_id": "i04",
+      "positive_image_ids": [
+        "e002",
+        "e006",
+        "e010"
+      ],
+      "decision_rule": "All three show inverter units installed with photovoltaic panels directly above/behind; panel backs/racking are visible in central-inverter crop e002. Enphase e003 is before its panel is placed; handheld e007 is not installed."
+    },
+    {
+      "intent_id": "i05",
+      "positive_image_ids": [
+        "e015",
+        "e017",
+        "e018",
+        "e019",
+        "e022"
+      ],
+      "decision_rule": "Visible internal switchgear/PLC/breaker/terminal wiring. An opened inverter is not a distribution/control cabinet; socket boxes with closed covers excluded."
+    },
+    {
+      "intent_id": "i06",
+      "positive_image_ids": [
+        "e021"
+      ],
+      "decision_rule": "Switchgear rows on both sides with a central aisle. Single open cabinets and datacenter UPS rows are different equipment classes."
+    },
+    {
+      "intent_id": "i07",
+      "positive_image_ids": [
+        "e025",
+        "e026",
+        "e027",
+        "e028",
+        "e029"
+      ],
+      "decision_rule": "At least bushings or radiator fins visible, class supported by source. CERN red transformer housings e023 and locked ventilated transformer enclosure e024 hide these attributes; both are negative for this specific query."
+    },
+    {
+      "intent_id": "i08",
+      "positive_image_ids": [
+        "e030",
+        "e031",
+        "e032",
+        "e033",
+        "e034",
+        "e035"
+      ],
+      "decision_rule": "Tower, socket-strip and datacenter UPS are relevant; source confirms UPS role. Solar inverter/charge controller are not computer UPS positives."
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "commons_page_id": 99521929,
+      "reason": "Advertising/product composite, not a scene photograph."
+    },
+    {
+      "commons_page_id": 153171593,
+      "reason": "Advertising poster with promotional text."
+    },
+    {
+      "commons_page_id": 99436216,
+      "reason": "Source says solar installation; exact type of wall power unit insufficiently established for binary inverter labels."
+    },
+    {
+      "commons_page_id": 30148869,
+      "reason": "Combined front/back product views rather than one scene photograph."
+    },
+    {
+      "commons_page_id": 35895413,
+      "reason": "Multi-product promotional composite."
+    },
+    {
+      "commons_page_id": 59237466,
+      "reason": "Not selected: transformer devices obscured behind fence; enough clearer candidates."
+    },
+    {
+      "commons_page_id": 98880358,
+      "reason": "Not selected: redundant rooftop-panel background category."
+    },
+    {
+      "commons_page_id": 136170476,
+      "reason": "Not selected: redundant rooftop-panel background category."
+    },
+    {
+      "commons_page_id": 107941642,
+      "reason": "Not selected: redundant panel-field background category."
+    }
+  ],
+  "pre_freeze_review_corrections": [
+    {
+      "intent_id": "i04",
+      "change": "Add e002 to both language positive sets",
+      "reason": "Second-assistant review and root full-image inspection confirm visible PV-panel backs/racking above/behind central inverter.",
+      "model_results_existed": false
+    },
+    {
+      "intent_id": "i07",
+      "change": "Remove e024 from both language positive sets",
+      "reason": "Second-assistant review and root full-image inspection show locked ventilation-grille exterior doors; no exposed bushings or cooling-radiator fins. This follows the same visible-attribute rule used for e023.",
+      "model_results_existed": false
+    }
+  ],
+  "query_origin": "Assistant-authored category/attribute queries based on visual/source inspection, not independent real-user query logs."
+}
