@@ -1,0 +1,239 @@
+{
+  "schema_version": 1,
+  "dataset_id": "equipment-terminology-constraints-v1",
+  "query_set_id": "new-compositional-intents-t01-t16-v1",
+  "created_at": "2026-10-31T21:43:43.657458+00:00",
+  "author": "assistant_only_visual_source_curation",
+  "frozen_before_new_query_translation_or_model_scoring": true,
+  "purpose": "New Chinese compositional/attribute/relational retrieval intents against the shared original40-image gallery; no training.",
+  "independent_intents": 16,
+  "paired_language_queries": 32,
+  "english_reference_policy": "Paired English is annotation/reference only. It must not be supplied to translation generation or substituted for generated English.",
+  "independence_scope": "Independently authored by an assistant without old query/qrel files or model outputs; gallery is shared, not independent field data, and labels are not human-audited gold.",
+  "queries": [
+    {
+      "query_id": "t01_zh",
+      "intent_id": "t01",
+      "language": "zh",
+      "text": "微型逆变器固定在横向金属导轨上，机身上方有一根裸露铜线，右侧连着黑色电缆。",
+      "role": "evaluation_source"
+    },
+    {
+      "query_id": "t01_en",
+      "intent_id": "t01",
+      "language": "en",
+      "text": "A microinverter fixed to a horizontal metal rail, with a bare copper wire above its casing and black cables connected on its right.",
+      "role": "reference_only_not_for_translation_generation"
+    },
+    {
+      "query_id": "t02_zh",
+      "intent_id": "t02",
+      "language": "zh",
+      "text": "手掌托着一台微逆，白色电缆从机身引出，背后能看见太阳能电池片。",
+      "role": "evaluation_source"
+    },
+    {
+      "query_id": "t02_en",
+      "intent_id": "t02",
+      "language": "en",
+      "text": "A microinverter resting in a hand, with a white cable emerging from its casing and solar cells visible behind it.",
+      "role": "reference_only_not_for_translation_generation"
+    },
+    {
+      "query_id": "t03_zh",
+      "intent_id": "t03",
+      "language": "zh",
+      "text": "白色背景中的微型太阳能逆变器外壳闭合，一侧有三个电缆接头，但没有接出的电线。",
+      "role": "evaluation_source"
+    },
+    {
+      "query_id": "t03_en",
+      "intent_id": "t03",
+      "language": "en",
+      "text": "A closed microinverter against a white background, with three cable fittings on one edge but no wires emerging from them.",
+      "role": "reference_only_not_for_translation_generation"
+    },
+    {
+      "query_id": "t04_zh",
+      "intent_id": "t04",
+      "language": "zh",
+      "text": "壁挂逆变器的外壳闭合，底部伸出多根能看清的独立导线或电缆。",
+      "role": "evaluation_source"
+    },
+    {
+      "query_id": "t04_en",
+      "intent_id": "t04",
+      "language": "en",
+      "text": "A wall-mounted inverter with its casing closed and several individual wires or cables visibly emerging from the bottom.",
+      "role": "reference_only_not_for_translation_generation"
+    },
+    {
+      "query_id": "t05_zh",
+      "intent_id": "t05",
+      "language": "zh",
+      "text": "逆变器前盖已拆下，绿色电路板上排列着许多蓝色圆柱电容，底部还能看见接线。",
+      "role": "evaluation_source"
+    },
+    {
+      "query_id": "t05_en",
+      "intent_id": "t05",
+      "language": "en",
+      "text": "An inverter with its front cover removed, showing many blue cylindrical capacitors on a green circuit board and visible wiring at the bottom.",
+      "role": "reference_only_not_for_translation_generation"
+    },
+    {
+      "query_id": "t06_zh",
+      "intent_id": "t06",
+      "language": "zh",
+      "text": "单台黄色逆变器安装在光伏板背面下方的金属支架上，机壳闭合，旁边能看见竖直立柱。",
+      "role": "evaluation_source"
+    },
+    {
+      "query_id": "t06_en",
+      "intent_id": "t06",
+      "language": "en",
+      "text": "A single yellow inverter mounted on a metal support below the back of photovoltaic panels, with its casing closed and a vertical post visible beside it.",
+      "role": "reference_only_not_for_translation_generation"
+    },
+    {
+      "query_id": "t07_zh",
+      "intent_id": "t07",
+      "language": "zh",
+      "text": "一排黄色逆变器沿横向支架安装在光伏板背面，各台之间留有间隔。",
+      "role": "evaluation_source"
+    },
+    {
+      "query_id": "t07_en",
+      "intent_id": "t07",
+      "language": "en",
+      "text": "A row of yellow inverters spaced apart along a horizontal support behind photovoltaic panels.",
+      "role": "reference_only_not_for_translation_generation"
+    },
+    {
+      "query_id": "t08_zh",
+      "intent_id": "t08",
+      "language": "zh",
+      "text": "黄色逆变器固定在木板墙上，圆形电表在它右侧，两者下方都有灰色保护管。",
+      "role": "evaluation_source"
+    },
+    {
+      "query_id": "t08_en",
+      "intent_id": "t08",
+      "language": "en",
+      "text": "A yellow inverter fixed to a wooden wall, with a round electricity meter to its right and gray protective conduits below both devices.",
+      "role": "reference_only_not_for_translation_generation"
+    },
+    {
+      "query_id": "t09_zh",
+      "intent_id": "t09",
+      "language": "zh",
+      "text": "银灰色逆变器的机壳表面有竖向筋条，蓝色指示面板在右侧，并有导线从底部引出。",
+      "role": "evaluation_source"
+    },
+    {
+      "query_id": "t09_en",
+      "intent_id": "t09",
+      "language": "en",
+      "text": "A silver-gray inverter with vertical ribs on its casing, a blue indicator panel on the right, and wires emerging from the bottom.",
+      "role": "reference_only_not_for_translation_generation"
+    },
+    {
+      "query_id": "t10_zh",
+      "intent_id": "t10",
+      "language": "zh",
+      "text": "同一台变压器上，顶部套管连接着导线，侧面还能看到散热鳍片。",
+      "role": "evaluation_source"
+    },
+    {
+      "query_id": "t10_en",
+      "intent_id": "t10",
+      "language": "en",
+      "text": "A transformer with wires connected to its top bushings and visible cooling fins on its side, all on the same device.",
+      "role": "reference_only_not_for_translation_generation"
+    },
+    {
+      "query_id": "t11_zh",
+      "intent_id": "t11",
+      "language": "zh",
+      "text": "找一台筒身光滑、看不到散热片的圆筒形变压器，套管和接线位于它的上部。",
+      "role": "evaluation_source"
+    },
+    {
+      "query_id": "t11_en",
+      "intent_id": "t11",
+      "language": "en",
+      "text": "A cylindrical transformer with a smooth tank and no visible cooling fins, with bushings and wiring at its upper part.",
+      "role": "reference_only_not_for_translation_generation"
+    },
+    {
+      "query_id": "t12_zh",
+      "intent_id": "t12",
+      "language": "zh",
+      "text": "变压器的冷却鳍片前垂着几根粗黑电缆，电缆上端接在顶部套管上。",
+      "role": "evaluation_source"
+    },
+    {
+      "query_id": "t12_en",
+      "intent_id": "t12",
+      "language": "en",
+      "text": "Several thick black cables hang in front of a transformer’s cooling fins, with their upper ends connected to bushings on top.",
+      "role": "reference_only_not_for_translation_generation"
+    },
+    {
+      "query_id": "t13_zh",
+      "intent_id": "t13",
+      "language": "zh",
+      "text": "灰色变压器箱体的两扇百叶门上着锁，顶部没有可见的套管。",
+      "role": "evaluation_source"
+    },
+    {
+      "query_id": "t13_en",
+      "intent_id": "t13",
+      "language": "en",
+      "text": "A gray transformer enclosure with two locked louvered doors and no visible bushings on top.",
+      "role": "reference_only_not_for_translation_generation"
+    },
+    {
+      "query_id": "t14_zh",
+      "intent_id": "t14",
+      "language": "zh",
+      "text": "室内通道夹在左右两排灰白色开关柜之间，柜门上有许多红色操作手柄。",
+      "role": "evaluation_source"
+    },
+    {
+      "query_id": "t14_en",
+      "intent_id": "t14",
+      "language": "en",
+      "text": "An indoor aisle between two rows of light-gray switchgear cabinets, with many red operating handles on the cabinet fronts.",
+      "role": "reference_only_not_for_translation_generation"
+    },
+    {
+      "query_id": "t15_zh",
+      "intent_id": "t15",
+      "language": "zh",
+      "text": "放在室外地面上的便携配电箱，蓝色面板装在金属提架里，前方接着两根粗黑电缆。",
+      "role": "evaluation_source"
+    },
+    {
+      "query_id": "t15_en",
+      "intent_id": "t15",
+      "language": "en",
+      "text": "A portable distribution box on the outdoor ground, with a blue front panel in a metal carrying frame and two thick black cables plugged into its front.",
+      "role": "reference_only_not_for_translation_generation"
+    },
+    {
+      "query_id": "t16_zh",
+      "intent_id": "t16",
+      "language": "zh",
+      "text": "透过玻璃柜门能看到机柜下方的不间断电源，上方装着横放的服务器。",
+      "role": "evaluation_source"
+    },
+    {
+      "query_id": "t16_en",
+      "intent_id": "t16",
+      "language": "en",
+      "text": "An uninterruptible power supply visible at the bottom of a cabinet through its glass door, with horizontal rack servers mounted above it.",
+      "role": "reference_only_not_for_translation_generation"
+    }
+  ]
+}

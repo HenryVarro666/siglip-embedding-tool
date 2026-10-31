@@ -217,6 +217,7 @@ class LocalTranslator:
             "generation": settings.to_dict(),
             "pipeline_version": 1,
         }
+        self.last_trace: dict = {}
 
     @property
     def identity(self) -> dict:
@@ -224,27 +225,48 @@ class LocalTranslator:
 
     def translate(self, text: str) -> str:
         """Translate a Chinese query, rejecting silent input or output truncation."""
-        if not isinstance(text, str) or not text.strip():
-            raise ValueError("Translation requires a nonempty Chinese query")
-        if not _CHINESE.search(text):
-            raise ValueError("Translation source must contain Chinese text")
-        inputs = self.tokenizer(text.strip(), padding=False, truncation=False, return_tensors="pt")
-        if inputs["input_ids"].shape[-1] > MAX_INPUT_TOKENS:
-            raise ValueError(f"Translation input exceeds {MAX_INPUT_TOKENS} tokens")
-        inputs = {key: value.to(self.device) for key, value in inputs.items()}
-        with torch.inference_mode():
-            result = self.model.generate(
-                **inputs, generation_config=deepcopy(self._generation_config)
+        self.last_trace = {
+            "source_text": text,
+            "sequence": None,
+            "raw_decoded_output": None,
+            "output": None,
+            "eos_terminated": False,
+            "status": "pending",
+        }
+        try:
+            if not isinstance(text, str) or not text.strip():
+                raise ValueError("Translation requires a nonempty Chinese query")
+            if not _CHINESE.search(text):
+                raise ValueError("Translation source must contain Chinese text")
+            inputs = self.tokenizer(
+                text.strip(), padding=False, truncation=False, return_tensors="pt"
             )
-        sequence = result[0].detach().cpu().tolist()
-        if not any(token in self._eos_ids for token in sequence[1:]):
-            raise ValueError(
-                f"Translation did not terminate with EOS within {MAX_NEW_TOKENS} tokens"
+            if inputs["input_ids"].shape[-1] > MAX_INPUT_TOKENS:
+                raise ValueError(f"Translation input exceeds {MAX_INPUT_TOKENS} tokens")
+            inputs = {key: value.to(self.device) for key, value in inputs.items()}
+            with torch.inference_mode():
+                result = self.model.generate(
+                    **inputs, generation_config=deepcopy(self._generation_config)
+                )
+            sequence = result[0].detach().cpu().tolist()
+            self.last_trace["sequence"] = sequence
+            self.last_trace["eos_terminated"] = any(
+                token in self._eos_ids for token in sequence[1:]
             )
-        english = self.tokenizer.decode(sequence, skip_special_tokens=True).strip()
-        if not english:
-            raise ValueError("Translator returned an empty translation")
-        return english
+            raw_english = self.tokenizer.decode(sequence, skip_special_tokens=True)
+            self.last_trace.update({"raw_decoded_output": raw_english, "output": raw_english})
+            if not self.last_trace["eos_terminated"]:
+                raise ValueError(
+                    f"Translation did not terminate with EOS within {MAX_NEW_TOKENS} tokens"
+                )
+            english = raw_english.strip()
+            if not english:
+                raise ValueError("Translator returned an empty translation")
+            self.last_trace.update({"output": english, "status": "success"})
+            return english
+        except Exception as exc:
+            self.last_trace.update({"status": "failed", "error": str(exc)})
+            raise
 
 
 def main(argv: list[str] | None = None) -> int:

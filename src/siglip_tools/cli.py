@@ -68,6 +68,17 @@ def _parser() -> argparse.ArgumentParser:
             )
             query.add_argument("--translator", choices=("opus", "nllb"), default="opus")
             query.add_argument("--translation-dir", type=Path)
+            query.add_argument(
+                "--opus-decoding",
+                choices=("original", "beam", "constrained"),
+                default="original",
+                help="OPUS greedy, beam4, or domain-constrained beam4",
+            )
+            query.add_argument(
+                "--constraint-decoder-dir",
+                type=Path,
+                default=Path("models/opus-constrained-decoder"),
+            )
         query.set_defaults(handler=_search)
 
     inspect = sub.add_parser("inspect", help="Inspect index metadata without downloading a model")
@@ -116,6 +127,12 @@ def _build(args) -> None:
 
 
 def _search(args) -> None:
+    if (
+        args.command == "search-text"
+        and args.opus_decoding != "original"
+        and (not args.auto_translate or args.translator != "opus")
+    ):
+        raise ValueError("--opus-decoding requires --auto-translate and --translator opus")
     started = perf_counter()
     index = ImageIndex.load(args.index)
     identity = index.model_identity
@@ -129,6 +146,14 @@ def _search(args) -> None:
             translator = LocalTranslator(
                 args.translation_dir or Path("models/opus-mt-zh-en"), device=str(encoder.device)
             )
+            if args.opus_decoding != "original":
+                from .opus_constraints import OPUSConstraintTranslator
+
+                translator = OPUSConstraintTranslator(
+                    translator,
+                    constrained=args.opus_decoding == "constrained",
+                    decoder_dir=args.constraint_decoder_dir,
+                )
         else:
             from .nllb_translation import NLLBTranslator
 
@@ -149,6 +174,12 @@ def _search(args) -> None:
             "mode": mode,
             "translator": args.translator,
             "translator_fingerprint": identity_fingerprint(translator.identity),
+            **({"opus_decoding": args.opus_decoding} if args.translator == "opus" else {}),
+            **(
+                {"constraint_trace": translator.last_trace}
+                if hasattr(translator, "last_trace")
+                else {}
+            ),
         }
     elif args.command == "search-text" and args.english_query is not None:
         matches = search_texts(index, encoder, [args.query, args.english_query], top_k=args.top_k)

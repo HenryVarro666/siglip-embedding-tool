@@ -1,0 +1,740 @@
+{
+  "schema_version": 1,
+  "dataset_id": "equipment-terminology-constraints-v1",
+  "query_set_id": "new-compositional-intents-t01-t16-v1",
+  "reviewed_at": "2026-10-31T21:46:49.547513+00:00",
+  "reviewer": "independent_assistant_term_design_check",
+  "status": "qrels_verified_with_minor_annotation_metadata_comments",
+  "summary": {
+    "definite_qrel_errors_found": 0,
+    "required_qrel_changes": 0,
+    "required_query_text_changes": 0,
+    "minor_annotation_metadata_comments": 2,
+    "new_query_output_access": false,
+    "human_or_electrical_engineering_audit": false
+  },
+  "scope": {
+    "authorized_write_path": "benchmarks/terminology-constraints-v1/label-review.json",
+    "inputs_modified": false,
+    "models_translation_training_downloads_executed": false,
+    "code_explored": false,
+    "graph_entry_needed": false,
+    "graph_note": "This review inspected documentation, JSON data and original images only; no source-code exploration was performed."
+  },
+  "independence": {
+    "different_assistant_from_label_author": true,
+    "assistant_only_not_human_ground_truth": true,
+    "independent_of_new_query_translation_and_retrieval_outputs": true,
+    "historical_query_or_qrel_files_opened": false,
+    "generated_translation_or_retrieval_output_or_report_files_opened": false,
+    "required_readme_exposure": "The reviewer read the workspace README and SigLIP AGENTS/README as required by workspace instructions. The SigLIP README embeds historical aggregate comparison metrics and a few historical terminology-output summaries. Consequently this is not a claim of complete blindness to every historical summary; no historical query/qrel file, generated-output file, result report, or new-query output was opened.",
+    "source_metadata_exposure": "The original unchanged manifest includes earlier coarse visual annotations; these were permitted inputs. Original image pixels control the attribute and relationship decisions.",
+    "review_timing_basis": "Parent explicitly stated that no new-query translation/scoring had run when this review was assigned; this review executed neither operation and did not inspect output locations.",
+    "reference_english_policy": "Read only as paired annotation/reference; never used as a translator input or substituted for generated English."
+  },
+  "input_sha256": {
+    "benchmarks/terminology-constraints-v1/queries.json": "19a1da3d4fa9d961f379af0d56dad9274e698895af0d2800d35ad44dfad445db",
+    "benchmarks/terminology-constraints-v1/qrels.json": "0a6c9486084c5108439f642f4440d8ec4191ff8221a2ee0c553f8589f12daf95",
+    "benchmarks/terminology-constraints-v1/annotation-notes.json": "717d4ff5bcaeeadb395f14109fb1e6438db2eb5497cb740b5e68d188ed170c6d",
+    "benchmarks/equipment-v1/manifest.json": "3487fdf62b90971619ec098b2ec5bbad00e5af2d22ec9183d258bc1a24916975"
+  },
+  "input_hashes_unchanged_during_review": true,
+  "original_images": [
+    {
+      "image_id": "e001",
+      "path": "data/equipment-v1/images/e001.jpg",
+      "sha256": "d6b608ebe5deda3208ebcab84001353282d18213d7b37266aca33d8169d062bb",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e002",
+      "path": "data/equipment-v1/images/e002.jpg",
+      "sha256": "50ea0df124634329a46035396fb97612bdb9b74d234069b8fa3493d53d07bac5",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e003",
+      "path": "data/equipment-v1/images/e003.jpg",
+      "sha256": "35b9441e5ce48719d0fd32e0f7a41c6697b958a5d8d09473108f1ad9c7edd668",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e004",
+      "path": "data/equipment-v1/images/e004.jpg",
+      "sha256": "b5365058e74657464b5e76c869df747596715bf98bf7219c9fa3df183bc16358",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e005",
+      "path": "data/equipment-v1/images/e005.jpg",
+      "sha256": "43eb26b74dbcf91b305b9399ef08928ff7b4c93b6cb90d65a3ff7230511c199c",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e006",
+      "path": "data/equipment-v1/images/e006.jpg",
+      "sha256": "dd18de13193cc5ebdad1dd80f28480516afb84291350efcfb4288446495ce110",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e007",
+      "path": "data/equipment-v1/images/e007.jpg",
+      "sha256": "49535db3820897ae048574cdbabab2086b5775212949f151a3f552514885ffcd",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e008",
+      "path": "data/equipment-v1/images/e008.jpg",
+      "sha256": "dd19ba57a1a7274c034275f7b3086145026f08e91943194fc0ea4d675986a1b1",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e009",
+      "path": "data/equipment-v1/images/e009.jpg",
+      "sha256": "243f25273c001d50a515bd6e05cdd780d071cb0c92d75845554710f2a7ecb413",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e010",
+      "path": "data/equipment-v1/images/e010.jpg",
+      "sha256": "ac157404eced042a9e4f84861e4a93939395f59d464217b74ceebeae9545bd46",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e011",
+      "path": "data/equipment-v1/images/e011.jpg",
+      "sha256": "fda09e518ea395d9a55d7d8d156d6fbd63c896c10caeb018a8304cb6703802b7",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e012",
+      "path": "data/equipment-v1/images/e012.jpg",
+      "sha256": "823d2bf0220c656fb65cb40f6f244725318ac427ca02ee7e206cd21bfa997466",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e013",
+      "path": "data/equipment-v1/images/e013.jpg",
+      "sha256": "506ed9c858cb8b0d5b16eab603f1c15de6cd567caac35edc0bbd68c3a107a386",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e014",
+      "path": "data/equipment-v1/images/e014.jpg",
+      "sha256": "d5fb0d82894c90953f067c9e477051ed338a23bb2352ed72f06650b3b94a11ec",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e015",
+      "path": "data/equipment-v1/images/e015.jpg",
+      "sha256": "466334aded52fb6e01ecf5d11aa8f223e5225702dbcd2a3c580c7ad081af6e0e",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e016",
+      "path": "data/equipment-v1/images/e016.jpg",
+      "sha256": "c43c94c2272f003f0f8a875b344a5cd7bb1fa33719f528965127dcd4e1444678",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e017",
+      "path": "data/equipment-v1/images/e017.jpg",
+      "sha256": "b76fed4bb232162630dd55632aa0e7ec094b6e18839b816712ef761f62eae357",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e018",
+      "path": "data/equipment-v1/images/e018.jpg",
+      "sha256": "614e6260da3b7560246fda19a34789f2c49069fc26dd7ccfb914a1e21121cdb5",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e019",
+      "path": "data/equipment-v1/images/e019.jpg",
+      "sha256": "3e3402b44eecef2427297ee0d61a0a6bc660f6aa41bfd6ccdc4d351bfabe1a92",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e020",
+      "path": "data/equipment-v1/images/e020.jpg",
+      "sha256": "0edf365a7c3c44b31fe0948805bce7981d5bd6099a8a6f9a446fc1d5272d7fdf",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e021",
+      "path": "data/equipment-v1/images/e021.jpg",
+      "sha256": "11d41f2b7d2476d56480e95ca713537fba2ced8ae4f2efa5ae57fd1c7e73a4d6",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e022",
+      "path": "data/equipment-v1/images/e022.jpg",
+      "sha256": "8d43b9589b82da6a65c15ccfd316b6b8d6972c75bb6b29af5e85f0ffc78b172e",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e023",
+      "path": "data/equipment-v1/images/e023.jpg",
+      "sha256": "5604ee99f108bddb4d7c00ef97d71271732c6af617763700b9b9467c2d3fb242",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e024",
+      "path": "data/equipment-v1/images/e024.jpg",
+      "sha256": "c50d9da92736ab3ad3d3c812a42976b1fae94759dfeb2d4fdea4601ecee7051a",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e025",
+      "path": "data/equipment-v1/images/e025.jpg",
+      "sha256": "a8c13470441f457b6a7a1f84cc97059470e0fae2a514016e5b443341111dce80",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e026",
+      "path": "data/equipment-v1/images/e026.jpg",
+      "sha256": "baf0aec7faffcc0811c8e05d567cff3606bd441a69ae7eebe53e1dd9f045cc4c",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e027",
+      "path": "data/equipment-v1/images/e027.jpg",
+      "sha256": "66c8b891b84c6dc3536e2e52d747dc871c78f7f0f9ec4a2f6ee11f47ff4f7829",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e028",
+      "path": "data/equipment-v1/images/e028.jpg",
+      "sha256": "a8d960f4be514ebb0353b0b18fef8ac79b7991118801bbf6923632cec4546795",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e029",
+      "path": "data/equipment-v1/images/e029.jpg",
+      "sha256": "b47f5d58a3d7ee865f48ee2d0400a380b6e7cce3953f4f1fc6f2f935a7f839d1",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e030",
+      "path": "data/equipment-v1/images/e030.jpg",
+      "sha256": "a2ff57998b5bc6b4936c9dd27f3e3cba0268032a555989ac16700fd4dc55f77e",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e031",
+      "path": "data/equipment-v1/images/e031.jpg",
+      "sha256": "cac92362a6d83511f5b3a344dc7959e6b6ab307e8dd495f0ccec00082ff8261a",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e032",
+      "path": "data/equipment-v1/images/e032.jpg",
+      "sha256": "1f9c2ef18ce59cb86a9aac0a3de74e2fd54c5ecd4f95e12992b4b927c3f52f79",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e033",
+      "path": "data/equipment-v1/images/e033.jpg",
+      "sha256": "c973e2e03fa991658c229c77d4c06786d34b9e34d4beafad462bbf3a9ef1a7b4",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e034",
+      "path": "data/equipment-v1/images/e034.jpg",
+      "sha256": "a3d33849a19a71b0b828ec024a741b82ac53cd8544a97278686ec084df1f4458",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e035",
+      "path": "data/equipment-v1/images/e035.jpg",
+      "sha256": "048edcbd410ddc40c010621d72507992f2d1e920abde4a21936a203290194498",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e036",
+      "path": "data/equipment-v1/images/e036.jpg",
+      "sha256": "c7e9b5007211c22854f8a1367af4b2f9afe6116f64914180ef68aad9c730b378",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e037",
+      "path": "data/equipment-v1/images/e037.jpg",
+      "sha256": "239d4742d23c76aa944621daa1acca291bb1b64667f3c3317fd75a0a73aa5315",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e038",
+      "path": "data/equipment-v1/images/e038.jpg",
+      "sha256": "66da716ccc30fc745edae940c5a0c7929ee62937590815356a93f8c968e79a5d",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e039",
+      "path": "data/equipment-v1/images/e039.jpg",
+      "sha256": "e904b5b81b5115f83031c2eb96c61bee1ca473fd3671b841e07285076eb94479",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    },
+    {
+      "image_id": "e040",
+      "path": "data/equipment-v1/images/e040.jpg",
+      "sha256": "e2357dc8994f9515955634a3d48437f4bac42411455f341aed1b4fe451d7bd8c",
+      "matches_original_manifest": true,
+      "directly_viewed_original_with_view_image": true
+    }
+  ],
+  "structural_validation": {
+    "passed": true,
+    "unique_intents": 16,
+    "paired_language_queries": 32,
+    "gallery_images": 40,
+    "explicit_binary_cells": 1280,
+    "independent_intent_image_judgments": 640,
+    "positive_binary_cells_including_bilingual_duplication": 46,
+    "positive_intent_image_judgments": 23,
+    "all_values_are_integer_zero_or_one": true,
+    "every_query_has_exact_original_40_image_ids": true,
+    "positive_lists_exactly_match_binary_one_cells": true,
+    "no_duplicate_positive_ids": true,
+    "bilingual_pairs_have_identical_positive_lists_and_binary_rows": true,
+    "annotation_texts_match_query_texts": true,
+    "annotation_positive_evidence_keys_match_qrels": true,
+    "annotation_positive_close_negative_and_other_negative_sets_partition_all_40": true,
+    "all_40_original_image_byte_hashes_match_original_manifest": true,
+    "errors": []
+  },
+  "visual_method": "Direct view_image inspection of every unmodified original e001-e040 image, followed by clause-level review of every listed positive and every close negative. Remaining gallery images were screened against each full compositional intent. The review preserves functional classes supported by original source metadata and does not infer SKU, ratings or hidden hardware.",
+  "intent_reviews": [
+    {
+      "intent_id": "t01",
+      "query_ids": [
+        "t01_zh",
+        "t01_en"
+      ],
+      "verdict": "agree_with_all_current_binary_labels",
+      "positive_image_ids_verified": [
+        "e003"
+      ],
+      "close_negative_image_ids_verified": [
+        "e007",
+        "e011",
+        "e008",
+        "e001"
+      ],
+      "all_40_images_considered_against_full_query": true,
+      "positive_evidence_from_reviewer": "e003 visibly has the attached black right-side cables, bare copper conductor above the casing, and two mounting bolts to the horizontal metal rail. Original source metadata independently supports rail mounting and grounding wire.",
+      "close_negative_evidence_from_reviewer": "The other microinverters are held in a hand or isolated on white; the wall inverter/controller alternatives do not supply the required rail and conductor composition.",
+      "qrel_disagreements": []
+    },
+    {
+      "intent_id": "t02",
+      "query_ids": [
+        "t02_zh",
+        "t02_en"
+      ],
+      "verdict": "agree_with_all_current_binary_labels",
+      "positive_image_ids_verified": [
+        "e007"
+      ],
+      "close_negative_image_ids_verified": [
+        "e003",
+        "e011",
+        "e040"
+      ],
+      "all_40_images_considered_against_full_query": true,
+      "positive_evidence_from_reviewer": "e007 rests across a hand/fingers, has a white cable emerging from the casing, and solar cells behind. Source metadata supports microinverter identity.",
+      "close_negative_evidence_from_reviewer": "e003 is rail mounted with dark cables; e011 has no connected wires or hand; e040 is a solar panel with a dark lead, without a microinverter.",
+      "qrel_disagreements": []
+    },
+    {
+      "intent_id": "t03",
+      "query_ids": [
+        "t03_zh",
+        "t03_en"
+      ],
+      "verdict": "agree_with_all_current_binary_labels",
+      "positive_image_ids_verified": [
+        "e011"
+      ],
+      "close_negative_image_ids_verified": [
+        "e003",
+        "e007",
+        "e004",
+        "e040"
+      ],
+      "all_40_images_considered_against_full_query": true,
+      "positive_evidence_from_reviewer": "e011 shows a closed silver microinverter on white with exactly three compression fittings on one edge and no wires emerging from those fittings.",
+      "close_negative_evidence_from_reviewer": "e003 and e007 have connected cables; e004 is a larger installed wall inverter with bottom cables; e040 is a panel rather than an inverter.",
+      "qrel_disagreements": []
+    },
+    {
+      "intent_id": "t04",
+      "query_ids": [
+        "t04_zh",
+        "t04_en"
+      ],
+      "verdict": "agree_with_all_current_binary_labels",
+      "positive_image_ids_verified": [
+        "e004",
+        "e005",
+        "e008",
+        "e009"
+      ],
+      "close_negative_image_ids_verified": [
+        "e012",
+        "e014",
+        "e006",
+        "e002",
+        "e001",
+        "e015"
+      ],
+      "all_40_images_considered_against_full_query": true,
+      "positive_evidence_from_reviewer": "e004, e005, e008, and e009 each visibly show a closed wall-mounted inverter and multiple distinct exposed leads from below.",
+      "close_negative_evidence_from_reviewer": "e012 has its front removed; e014 routes the lower electrical connections through protective conduits rather than exposed individual bottom leads; e006 and e002 are array-support installations; e001 is a charge controller without attached external leads.",
+      "qrel_disagreements": []
+    },
+    {
+      "intent_id": "t05",
+      "query_ids": [
+        "t05_zh",
+        "t05_en"
+      ],
+      "verdict": "agree_with_all_current_binary_labels",
+      "positive_image_ids_verified": [
+        "e012"
+      ],
+      "close_negative_image_ids_verified": [
+        "e015",
+        "e017",
+        "e018",
+        "e019",
+        "e022",
+        "e001"
+      ],
+      "all_40_images_considered_against_full_query": true,
+      "positive_evidence_from_reviewer": "e012 exposes a green inverter board with many blue cylindrical capacitors, plus lower terminals and visible wiring; the front cover is absent.",
+      "close_negative_evidence_from_reviewer": "The open PLC, breaker, fuse and switchboard images show different internal hardware, and e001 retains its ventilated cover.",
+      "qrel_disagreements": []
+    },
+    {
+      "intent_id": "t06",
+      "query_ids": [
+        "t06_zh",
+        "t06_en"
+      ],
+      "verdict": "agree_with_all_current_binary_labels",
+      "positive_image_ids_verified": [
+        "e006"
+      ],
+      "close_negative_image_ids_verified": [
+        "e010",
+        "e014",
+        "e002",
+        "e003",
+        "e038"
+      ],
+      "all_40_images_considered_against_full_query": true,
+      "positive_evidence_from_reviewer": "e006 has one clearly pictured foreground yellow closed inverter below/behind tilted panel backs with adjacent visible vertical metal array supports. Mounting is supported by the installation geometry, though the direct fastening interface is partly hidden.",
+      "close_negative_evidence_from_reviewer": "e010 deliberately shows multiple spaced yellow units, e014 uses a wooden wall without panel backs, and e002 is a white/gray central enclosure; panel-only e038 lacks a visible inverter.",
+      "qrel_disagreements": []
+    },
+    {
+      "intent_id": "t07",
+      "query_ids": [
+        "t07_zh",
+        "t07_en"
+      ],
+      "verdict": "agree_with_all_current_binary_labels",
+      "positive_image_ids_verified": [
+        "e010"
+      ],
+      "close_negative_image_ids_verified": [
+        "e006",
+        "e014",
+        "e002",
+        "e013",
+        "e021",
+        "e031",
+        "e038"
+      ],
+      "all_40_images_considered_against_full_query": true,
+      "positive_evidence_from_reviewer": "e010 clearly shows a row of multiple separated yellow inverter units along a horizontal support behind panel backs.",
+      "close_negative_evidence_from_reviewer": "e006 shows one foreground yellow unit, e014 one unit on wood, e013 distant station enclosures, and cabinet/panel rows in other photos do not satisfy the yellow inverter composition.",
+      "qrel_disagreements": []
+    },
+    {
+      "intent_id": "t08",
+      "query_ids": [
+        "t08_zh",
+        "t08_en"
+      ],
+      "verdict": "agree_with_all_current_binary_labels",
+      "positive_image_ids_verified": [
+        "e014"
+      ],
+      "close_negative_image_ids_verified": [
+        "e006",
+        "e010",
+        "e005",
+        "e009",
+        "e018"
+      ],
+      "all_40_images_considered_against_full_query": true,
+      "positive_evidence_from_reviewer": "e014 places the yellow inverter on horizontal wooden planks, a round meter to its right, and gray conduits below both device areas.",
+      "close_negative_evidence_from_reviewer": "Other yellow units lack this wall/meter relation. The round rotary disconnect in e009 is not a round electricity meter.",
+      "qrel_disagreements": []
+    },
+    {
+      "intent_id": "t09",
+      "query_ids": [
+        "t09_zh",
+        "t09_en"
+      ],
+      "verdict": "agree_with_all_current_binary_labels",
+      "positive_image_ids_verified": [
+        "e005"
+      ],
+      "close_negative_image_ids_verified": [
+        "e008",
+        "e004",
+        "e001",
+        "e011"
+      ],
+      "all_40_images_considered_against_full_query": true,
+      "positive_evidence_from_reviewer": "e005 has silver-gray vertical casing ribs, a blue indicator area on its right, and visible bottom leads. The review does not assign an unverified cooling function to the ribs.",
+      "close_negative_evidence_from_reviewer": "e008 has a central light display rather than a right blue panel; e004, e001, and e011 fail the right-panel, ribs, or wiring conditions.",
+      "qrel_disagreements": []
+    },
+    {
+      "intent_id": "t10",
+      "query_ids": [
+        "t10_zh",
+        "t10_en"
+      ],
+      "verdict": "agree_with_all_current_binary_labels",
+      "positive_image_ids_verified": [
+        "e025",
+        "e026",
+        "e027",
+        "e029"
+      ],
+      "close_negative_image_ids_verified": [
+        "e028",
+        "e023",
+        "e024",
+        "e005",
+        "e019"
+      ],
+      "all_40_images_considered_against_full_query": true,
+      "positive_evidence_from_reviewer": "e025 supplies the lower transformer with upper bushings/wire connections and a side radiator bank; e026 supplies the separate right-hand finned transformer with its own top connections; e027 and e029 visibly combine connected top bushings and exposed radiator fins on the same assembly.",
+      "close_negative_evidence_from_reviewer": "e028 has no exposed fin bank on the selected cylinder. e023/e024 have covered enclosures and door ventilation rather than exposed bushings plus radiator fins. Ribbed inverters and wired switchboards are wrong-device negatives.",
+      "qrel_disagreements": []
+    },
+    {
+      "intent_id": "t11",
+      "query_ids": [
+        "t11_zh",
+        "t11_en"
+      ],
+      "verdict": "agree_with_all_current_binary_labels",
+      "positive_image_ids_verified": [
+        "e026",
+        "e028"
+      ],
+      "close_negative_image_ids_verified": [
+        "e025",
+        "e027",
+        "e029",
+        "e024",
+        "e023"
+      ],
+      "all_40_images_considered_against_full_query": true,
+      "positive_evidence_from_reviewer": "e026 supplies its LEFT smooth cylinder with upper bushings/wiring; its looped external pipes are not a repeated fin bank. e028 supplies the smooth main cylinder and upper-side bushings/wiring. The negation is scoped to the selected device and the visible photograph.",
+      "close_negative_evidence_from_reviewer": "The right e026 transformer does not supply this positive. e025/e027/e029 visibly show radiator elements; e023/e024 do not expose a qualifying cylindrical tank with the requested upper connections.",
+      "qrel_disagreements": []
+    },
+    {
+      "intent_id": "t12",
+      "query_ids": [
+        "t12_zh",
+        "t12_en"
+      ],
+      "verdict": "agree_with_all_current_binary_labels",
+      "positive_image_ids_verified": [
+        "e029"
+      ],
+      "close_negative_image_ids_verified": [
+        "e025",
+        "e026",
+        "e027",
+        "e028",
+        "e024"
+      ],
+      "all_40_images_considered_against_full_query": true,
+      "positive_evidence_from_reviewer": "e029 shows several thick dark cables arching from the upper terminations and hanging down in front of the prominent fin bank.",
+      "close_negative_evidence_from_reviewer": "e025/e026 lack the required thick hanging front-cable composition; e027 wires lead upward; e028 lacks a visible fin bank; e024 has covered top hardware.",
+      "qrel_disagreements": []
+    },
+    {
+      "intent_id": "t13",
+      "query_ids": [
+        "t13_zh",
+        "t13_en"
+      ],
+      "verdict": "agree_with_all_current_binary_labels",
+      "positive_image_ids_verified": [
+        "e024"
+      ],
+      "close_negative_image_ids_verified": [
+        "e023",
+        "e002",
+        "e027",
+        "e028",
+        "e031"
+      ],
+      "all_40_images_considered_against_full_query": true,
+      "positive_evidence_from_reviewer": "e024 is source-identified as a transformer enclosure, has a gray covered body, paired vertically louvered doors with a visible securing lock, and no visible top bushings.",
+      "close_negative_evidence_from_reviewer": "e023 is burgundy/red; e002 is a source-identified inverter without the specified double-door view; e027/e028 have exposed bushings; e031 is a UPS cabinet row.",
+      "qrel_disagreements": []
+    },
+    {
+      "intent_id": "t14",
+      "query_ids": [
+        "t14_zh",
+        "t14_en"
+      ],
+      "verdict": "agree_with_all_current_binary_labels",
+      "positive_image_ids_verified": [
+        "e021"
+      ],
+      "close_negative_image_ids_verified": [
+        "e031",
+        "e015",
+        "e023",
+        "e013"
+      ],
+      "all_40_images_considered_against_full_query": true,
+      "positive_evidence_from_reviewer": "e021 shows an indoor aisle between two facing light-gray switchgear rows with many red operating handles on their fronts.",
+      "close_negative_evidence_from_reviewer": "The e031 cabinet row lacks the red handles and the same facing-row composition. e015 is one open cabinet; e023/e013 are outdoor enclosure scenes.",
+      "qrel_disagreements": []
+    },
+    {
+      "intent_id": "t15",
+      "query_ids": [
+        "t15_zh",
+        "t15_en"
+      ],
+      "verdict": "agree_with_all_current_binary_labels",
+      "positive_image_ids_verified": [
+        "e016"
+      ],
+      "close_negative_image_ids_verified": [
+        "e020",
+        "e035",
+        "e017",
+        "e001"
+      ],
+      "all_40_images_considered_against_full_query": true,
+      "positive_evidence_from_reviewer": "e016 visibly has a BLUE FRONT PANEL in a metal carrying frame on outdoor pavement and two thick black cables plugged into the lower front. This does not rely on the original coarse caption claiming blue sockets.",
+      "close_negative_evidence_from_reviewer": "e020 has fixed red/pink enclosures; e035 is a desk UPS; e017 is an open breaker panel; e001 is a vertical controller without the carrying frame or two front cables.",
+      "qrel_disagreements": []
+    },
+    {
+      "intent_id": "t16",
+      "query_ids": [
+        "t16_zh",
+        "t16_en"
+      ],
+      "verdict": "agree_with_all_current_binary_labels",
+      "positive_image_ids_verified": [
+        "e034"
+      ],
+      "close_negative_image_ids_verified": [
+        "e030",
+        "e031",
+        "e032",
+        "e033",
+        "e035",
+        "e015"
+      ],
+      "all_40_images_considered_against_full_query": true,
+      "positive_evidence_from_reviewer": "e034 visibly has a lower-left UPS inside the glass-front cabinet with horizontal rack server hardware above it; source metadata supports the UPS/server interpretation.",
+      "close_negative_evidence_from_reviewer": "The standalone/desk/industrial UPS alternatives lack this same-cabinet glass-door above/below relation, and e015 is a control cabinet.",
+      "qrel_disagreements": []
+    }
+  ],
+  "exact_qrel_disagreements": [],
+  "annotation_metadata_comments": [
+    {
+      "id": "LR-001",
+      "severity": "minor",
+      "intent_id": "t01",
+      "field": "annotation-notes.json:intents[t01].expected_context_slots.housing",
+      "current_value": "closed",
+      "issue": "The source query and paired English do not ask for a closed housing. The photo is closed, but treating that observed property as a mandatory translation-fidelity slot would penalize an otherwise faithful translation.",
+      "recommendation": "Before using these slots as a mandatory semantic-audit rubric, mark closed as observed-only or omit it from the required source-query slots. No query or qrel change is recommended.",
+      "qrel_impact": false
+    },
+    {
+      "id": "LR-002",
+      "severity": "minor",
+      "intent_id": "t09",
+      "field": "annotation-notes.json:intents[t09].expected_context_slots.housing",
+      "current_value": "closed silver-gray vertically ribbed casing",
+      "issue": "Silver-gray casing and vertical ribs are stated in the source, but closed is not. Closed is a visible photo property rather than an explicit query requirement.",
+      "recommendation": "A translation-fidelity audit should require silver-gray casing/ribs and the stated panel/wiring relations, and should not require an explicit closed-housing claim. No query or qrel change is recommended.",
+      "qrel_impact": false
+    }
+  ],
+  "focused_risk_checks": {
+    "e026_device_ownership": "PASS: t10 uses the right finned transformer; t11 uses the separate left smooth cylinder. Positive ownership is not mixed between devices.",
+    "visibility_negation": "PASS: t03 requires no wires emerging from the shown fittings; t11 requires no visible fins on the selected tank; t13 requires no visible top bushings. None proves physical absence beyond the photo.",
+    "e016_caption_ambiguity": "PASS: the new t15 query claims a blue panel and two connected front cables, both visible; it does not assert blue sockets.",
+    "mounting_support": "PASS with declared limit: e003 rail bolts and e014 wall installation are directly visible. e006 metal array supports and spatial placement are visible, while its direct fastener interface is partly hidden; no wooden-post or exact attachment-point claim is made.",
+    "wiring": "PASS: connected exposed leads are distinguished from protective conduits, isolated fittings and printed labels; the e029 hanging-front-cable relation is visible.",
+    "e025_resolution": "Accepted at gallery resolution: the lower transformer has a visible radiator bank and upper bushing/connection hardware. Fine conductor paths are less clear than in close-up e026/e027/e029, so this remains assistant visual interpretation rather than an engineering certification."
+  },
+  "recommendations": [
+    "Retain the current query texts and qrels; this independent assistant review found no definite correction to either.",
+    "Keep the two minor expected-context-slot comments visible when building the translation semantic audit so that photograph-only properties are not mistaken for source-query requirements.",
+    "Carry this review and its exact input hashes into the benchmark freeze before any new-query inference. Preserve the assistant-only, shared-gallery, small-positive-count and historical-README-exposure qualifications in reporting."
+  ]
+}

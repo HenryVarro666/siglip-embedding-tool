@@ -1,0 +1,56 @@
+{
+  "experiment_id": "equipment-terminology-constraints-v1",
+  "frozen_at_utc": "2026-10-31T21:51:54.344413+00:00",
+  "starting_git_commit": "3e0da59d72d40e9681547a18460176777c11c98d",
+  "glossary_and_rubric_commit": "3e0da59",
+  "automatic_new_query_translations_or_results_existed": false,
+  "training_executed": false,
+  "implementation_sha256": "44b19b06d0ffd628ea48ef0bb7ec69c64025637e0e664e43001efdc393ded9df",
+  "protocol_sha256": "807dddddef6282aa57e93afc7754a40e67bb54f919c8b33296cd63f3e9c806b2",
+  "dataset_hashes": {
+    "manifest": "3487fdf62b90971619ec098b2ec5bbad00e5af2d22ec9183d258bc1a24916975",
+    "queries": "19a1da3d4fa9d961f379af0d56dad9274e698895af0d2800d35ad44dfad445db",
+    "qrels": "0a6c9486084c5108439f642f4440d8ec4191ff8221a2ee0c553f8589f12daf95"
+  },
+  "supporting_hashes": {
+    "annotation-notes.json": "717d4ff5bcaeeadb395f14109fb1e6438db2eb5497cb740b5e68d188ed170c6d",
+    "review-rules.json": "1feccdda7885c3d6f830c63b5613fbf23dbae8b22e9b09a5da839eb3e859829a",
+    "glossary.json": "20fef944133fe8453e9b60d5d7a6ccabb93ce3a4ffe0565038caaf8f51e3c42e",
+    "label-review.json": "f721ca9cc296ccf2fec0c2aa10be121982f85736c69e1242e83229c1803460e7"
+  },
+  "source_indexes": {
+    "base": "05ce68f3d5128012636b22fbf05120f3bc45e1f03aa7fd4abc9b1f76fdcd92e2",
+    "quality": "9ebe8155fbe313989d19af093029379c39f9329a5df6036cde6aee9490e8f193"
+  },
+  "translator_files": {
+    "README.md": "7f4b7f90672cd55b85b213bbe21f4b2d0c92327e885734b7e86b019feb145a6b",
+    "config.json": "cee48d4f205210cec6a7cfedf609acd605949ac5392a7e6e9c8c4c0b6670c27c",
+    "generation_config.json": "4f64a04e3bcf3f2f97ea552f83fe1f08a04a52402d29af3008d1644d9f29178c",
+    "model.safetensors": "9866cb7fcb30bca4c91f0ad2bde4183722bf015461aab8a7a6bea0c2cd030250",
+    "source.spm": "e27a3a1b539f4959ec72ea60e453f49156289f95d4e6000b29332efc45616203",
+    "target.spm": "6a881f4717cd7265f53fea54fd3dc689c767c05338fac7a4590f3088cb2d7855",
+    "tokenizer_config.json": "28e575e0beba8b2d4b6f789e91a219cff031e94a9254f027ce7170a48163c01d",
+    "translation_provenance.json": "39f8c8bd807176f60cfaa87af7ff196bc1dd82d6dde9be5c5500547ab4dcda38",
+    "vocab.json": "08a119a1defd522fa047cb5e3bfe3e89633e96caa38ced0dc9cee7ef1021a011"
+  },
+  "decoder_files": {
+    "README.md": "0b550f52f5ffb16b8f36a34b2e5c9cb40076994063dd72b283552370eb43d903",
+    "custom_generate/beam_constraints.py": "72da73e8f601167c895974bbb6064f1be7d14f33247f6a8ea0acc6c162b62704",
+    "custom_generate/beam_search.py": "247baefee037b9cebda29140abcc298ed2d4fdb32b79a40550a06b004a03bda5",
+    "custom_generate/generate.py": "3f2975a90ef9f506077d8e54d0e145cfd735088c9c082c595d546cfe5cd7eb64",
+    "decoder_provenance.json": "784dd5143ec4b19689bc4fc8991181c9ea1c5e07116f77bfaf2d533cad7d30be"
+  },
+  "provenance_sha256": {
+    "decoder-provenance.json": "784dd5143ec4b19689bc4fc8991181c9ea1c5e07116f77bfaf2d533cad7d30be",
+    "translator-provenance.json": "39f8c8bd807176f60cfaa87af7ff196bc1dd82d6dde9be5c5500547ab4dcda38"
+  },
+  "development_smoke_sha256": "8d3001793afadd137b29a356869276e8116715d29d27bedb4b467c52938f4d58",
+  "development_only_output_note": "Old8 queries only; final diagnostic fix left all24 outputs/errors unchanged. i07 constrained covers terms but repeats and caps without EOS. No budget/beam/profile tuning after this observation.",
+  "pre_run_tests": {
+    "passed": 315,
+    "integration_deselected": 2,
+    "ruff": "passed",
+    "log_path": "artifacts/terminology-constraints/final-pre-run-checks.log",
+    "log_sha256": "7d2ebf6762e43e78dbde0d21cf4195b5e2ff92eca93ed207b45791da503b8a13"
+  }
+}

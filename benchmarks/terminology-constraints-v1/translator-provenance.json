@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "source": {
+    "model_id": "Helsinki-NLP/opus-mt-zh-en",
+    "revision": "cf109095479db38d6df799875e34039d4938aaa6",
+    "license": "cc-by-4.0",
+    "weight_filename": "pytorch_model.bin",
+    "weight_sha256": "9d8ceb91d103ef89400c9d9d62328b4858743cf8924878aee3b8afc594242ce0"
+  },
+  "conversion": {
+    "format": "safetensors",
+    "dtype": "float32",
+    "training": false,
+    "runtime_versions": {
+      "torch": "2.15.0",
+      "transformers": "5.22.1",
+      "tokenizers": "0.23.3",
+      "sentencepiece": "0.2.2",
+      "sacremoses": "0.1.1"
+    }
+  },
+  "artifacts": {
+    "README.md": "7f4b7f90672cd55b85b213bbe21f4b2d0c92327e885734b7e86b019feb145a6b",
+    "config.json": "cee48d4f205210cec6a7cfedf609acd605949ac5392a7e6e9c8c4c0b6670c27c",
+    "generation_config.json": "4f64a04e3bcf3f2f97ea552f83fe1f08a04a52402d29af3008d1644d9f29178c",
+    "model.safetensors": "9866cb7fcb30bca4c91f0ad2bde4183722bf015461aab8a7a6bea0c2cd030250",
+    "source.spm": "e27a3a1b539f4959ec72ea60e453f49156289f95d4e6000b29332efc45616203",
+    "target.spm": "6a881f4717cd7265f53fea54fd3dc689c767c05338fac7a4590f3088cb2d7855",
+    "tokenizer_config.json": "28e575e0beba8b2d4b6f789e91a219cff031e94a9254f027ce7170a48163c01d",
+    "vocab.json": "08a119a1defd522fa047cb5e3bfe3e89633e96caa38ced0dc9cee7ef1021a011"
+  }
+}

@@ -1,4 +1,5 @@
 import json
+from copy import deepcopy
 from hashlib import sha256
 from pathlib import Path
 
@@ -245,6 +246,83 @@ def test_unterminated_or_empty_translation_is_rejected(tmp_path, boundaries):
     boundaries[0].decoded = " "
     with pytest.raises(ValueError, match="empty"):
         translator.translate("中文查询")
+
+
+def test_unterminated_output_is_decoded_and_retained_in_the_failure_trace(tmp_path, boundaries):
+    """EOS failure must leave the generated sequence and unedited English auditable."""
+    from siglip_tools.translation import LocalTranslator
+
+    translator = LocalTranslator(prepare(tmp_path, boundaries), device="cpu")
+    boundaries[1].unterminated = True
+    boundaries[0].decoded = "  The incomplete generated English.\n"
+    with pytest.raises(ValueError, match="EOS"):
+        translator.translate("中文截断查询")
+    trace = translator.last_trace
+    assert trace["source_text"] == "中文截断查询"
+    assert trace["sequence"] == [2] + [21] * 64
+    assert trace["raw_decoded_output"] == "  The incomplete generated English.\n"
+    assert trace["output"] == "  The incomplete generated English.\n"
+    assert trace["eos_terminated"] is False
+    assert trace["status"] == "failed"
+    assert "EOS" in trace["error"]
+    json.dumps(trace, allow_nan=False)
+
+
+def test_diagnostics_preserve_successful_trimming_identity_and_generation(tmp_path, boundaries):
+    """Recording diagnostics must not change original beam1 inference or its identity."""
+    from siglip_tools.translation import LocalTranslator
+
+    translator = LocalTranslator(prepare(tmp_path, boundaries), device="cpu")
+    identity = translator.identity
+    generation = deepcopy(translator.model.generation_config.to_dict())
+    request_generation = deepcopy(translator._generation_config.to_dict())
+    boundaries[0].decoded = "  The generated English.\n"
+    assert translator.last_trace == {}
+    assert translator.translate("中文成功查询") == "The generated English."
+    assert translator.last_trace["raw_decoded_output"] == "  The generated English.\n"
+    assert translator.last_trace["output"] == "The generated English."
+    assert translator.last_trace["sequence"] == [2, 21, 0]
+    assert translator.last_trace["eos_terminated"] is True
+    assert translator.last_trace["status"] == "success"
+    boundaries[1].unterminated = True
+    with pytest.raises(ValueError, match="EOS"):
+        translator.translate("中文截断查询")
+    assert translator.identity == identity
+    assert translator.model.generation_config.to_dict() == generation
+    assert translator._generation_config.to_dict() == request_generation
+
+
+def test_failed_requests_refresh_trace_and_preserve_previous_request_evidence(tmp_path, boundaries):
+    """A validation failure must not inherit successful output or an earlier failure."""
+    from siglip_tools.translation import LocalTranslator
+
+    translator = LocalTranslator(prepare(tmp_path, boundaries), device="cpu")
+    assert translator.translate("首个中文查询") == "a red car"
+    successful_trace = translator.last_trace
+    with pytest.raises(ValueError, match="nonempty"):
+        translator.translate("")
+    invalid_trace = translator.last_trace
+    assert invalid_trace is not successful_trace
+    assert invalid_trace["source_text"] == ""
+    assert invalid_trace["sequence"] is None
+    assert invalid_trace["raw_decoded_output"] is None
+    assert invalid_trace["output"] is None
+    assert invalid_trace["eos_terminated"] is False
+    assert invalid_trace["status"] == "failed"
+    boundaries[0].decoded = " \n"
+    with pytest.raises(ValueError, match="empty translation"):
+        translator.translate("中文空译文")
+    empty_trace = translator.last_trace
+    assert empty_trace is not invalid_trace
+    assert empty_trace["source_text"] == "中文空译文"
+    assert empty_trace["output"] == " \n"
+    assert empty_trace["raw_decoded_output"] == " \n"
+    assert empty_trace["eos_terminated"] is True
+    assert empty_trace["error"] == "Translator returned an empty translation"
+    assert successful_trace["source_text"] == "首个中文查询"
+    assert successful_trace["output"] == "a red car"
+    assert successful_trace["status"] == "success"
+    assert "nonempty" in invalid_trace["error"]
 
 
 def test_prepare_never_overwrites_an_existing_output(tmp_path, boundaries):

@@ -22,6 +22,8 @@ jobs:
           python -m pip install -e '.[dev,translation]'
       - name: Lint
         run: ruff check src tests training examples
+      - name: Prepare pinned decoder code (no model weights)
+        run: python -m siglip_tools.opus_constraints prepare --output models/opus-constrained-decoder
       - name: Test without pretrained downloads
         run: pytest -m 'not integration'
       - name: Check original loss example

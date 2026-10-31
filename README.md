@@ -4,6 +4,8 @@
 
 默认模型是 `google/siglip2-base-patch16-224`。另提供 `quality` 选项加载 `google/siglip2-so400m-patch14-384`；已在 40 图公开设备试验集中完成效果/耗时比较，实际现场图片仍需复核。[模型选择与版本](docs/models.md)
 
+文档接续从[总索引](docs/README.md)、[当前状态](docs/continuation.md)和[问题台账](docs/issue-log.md)开始；历史、当前与未来的问题/改进按编号持续保存。
+
 ## 安装
 
 推荐 Python 3.12 和 uv，使用仓库中的依赖锁文件：
