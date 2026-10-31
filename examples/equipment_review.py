@@ -58,7 +58,7 @@ def main():
         ".columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}"
         "code{word-break:break-all}</style><main><h1>40-image equipment retrieval pilot</h1>"
         "<p>Labels were frozen before scoring. AI-assisted visual/source annotation; "
-        "not independent human ground truth. Green/relevant labels are binary source judgments, "
+        "not independent human ground truth. Relevant labels are binary source judgments, "
         "not model confidence. Images are local downloads, individually credited below.</p>"
     ]
     if results:

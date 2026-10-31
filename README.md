@@ -2,7 +2,7 @@
 
 使用预训练 SigLIP / SigLIP 2 进行本地图片批量编码、文字搜图和以图搜图。默认直接加载训练好的模型，不需要先训练。输出是 L2 归一化的 CPU float32 NumPy 向量；索引会记录权重版本和预处理身份，阻止不兼容向量混用。
 
-默认模型是 `google/siglip2-base-patch16-224`。另提供 `quality` 选项加载 `google/siglip2-so400m-patch14-384`；这个名称表示更高资源需求的候选配置，不表示已证明它对你的设备图片更好。[模型选择与版本](docs/models.md)
+默认模型是 `google/siglip2-base-patch16-224`。另提供 `quality` 选项加载 `google/siglip2-so400m-patch14-384`；已在 40 图公开设备试验集中完成效果/耗时比较，实际现场图片仍需复核。[模型选择与版本](docs/models.md)
 
 ## 安装
 
@@ -142,6 +142,8 @@ uv run python examples/equipment_review.py
 ```
 
 图片保存在本机 `data/equipment-v1/`，审查 HTML 输出至 `artifacts/equipment-review.html`。两个预训练模型的固定版本、依次运行的完整命令和计时口径见 [复现说明](benchmarks/equipment-v1/README.md)。模型下载与测试分开，不调用训练入口。Top-K 命中率与多正例 Recall 分开计算，分别报告中英文结果。
+
+本机 M4 Pro / MPS 结果：Base / So400m 的 Hit@1 为 **68.75% / 87.50%**，mAP 为 **0.693 / 0.824**，常驻查询 p50 为 **6.84 / 21.29 ms**。So400m 部分中文查询退步；16 条查询只代表 8 个意图。详见 [完整评估报告与待解决问题](docs/equipment-benchmark-v1.md)。本轮没有训练，默认模型保持 Base。
 
 ## 保留的训练代码与学习资料
 

@@ -12,7 +12,9 @@
 - [queries.json](queries.json)、[qrels.json](qrels.json)：查询与完整二元正例；中文和英文同意图使用同一标签。
 - [annotation-notes.json](annotation-notes.json)：8 个意图的相关性规则、边界案例与候选排除理由。
 - [duplicate-review.json](duplicate-review.json)：源哈希、规范化像素哈希、64 位 dHash 检查。阈值内候选另做目视检查；感知哈希不能证明不同实物或完全消除近重复。
-- `freeze.json`：运行目标模型前记录的数据/代码哈希与冻结时间。
+- [label-review.json](label-review.json)：第二助手逐图/意图盲审记录、320 对相关性检查与边界限制。
+- [freeze.json](freeze.json)：运行目标模型前的数据/查询/标签哈希与冻结时间，另记录不改数据的序列化修复及实现哈希。
+- [results-summary.json](results-summary.json)、[完整报告](../../docs/equipment-benchmark-v1.md)：本轮实际指标、计时、逐条错误与后续问题。
 
 查询由助手根据可见设备类别/属性编写，并非采集到的真实用户查询日志。标签由助手逐图目视并结合来源说明整理，另有第二助手盲审；**未经过独立人类标注审核**。未用待比较模型生成标签或据其排序修改标签。不是官方或通用逆变器基准。
 
@@ -36,21 +38,21 @@ uv run python -m siglip_tools.benchmark prepare --model quality
 uv run python -m siglip_tools.benchmark run --model base --device mps \
   --manifest benchmarks/equipment-v1/manifest.json \
   --queries benchmarks/equipment-v1/queries.json --qrels benchmarks/equipment-v1/qrels.json \
-  --data-root data/equipment-v1 --output artifacts/equipment-benchmark/base
+  --data-root data/equipment-v1 --output artifacts/equipment-benchmark/base-v1
 
 uv run python -m siglip_tools.benchmark run --model quality --device mps \
   --manifest benchmarks/equipment-v1/manifest.json \
   --queries benchmarks/equipment-v1/queries.json --qrels benchmarks/equipment-v1/qrels.json \
-  --data-root data/equipment-v1 --output artifacts/equipment-benchmark/quality
+  --data-root data/equipment-v1 --output artifacts/equipment-benchmark/quality-v1
 
 uv run python -m siglip_tools.benchmark compare \
-  --base artifacts/equipment-benchmark/base/result.json \
-  --quality artifacts/equipment-benchmark/quality/result.json \
+  --base artifacts/equipment-benchmark/base-v1/result.json \
+  --quality artifacts/equipment-benchmark/quality-v1/result.json \
   --output artifacts/equipment-benchmark/comparison.json
 
 uv run python examples/equipment_review.py \
-  --result artifacts/equipment-benchmark/base/result.json \
-  --result artifacts/equipment-benchmark/quality/result.json
+  --result artifacts/equipment-benchmark/base-v1/result.json \
+  --result artifacts/equipment-benchmark/quality-v1/result.json
 ```
 
 其他硬件可同时将两条 run 命令改为 `--device cuda` 或 `--device cpu`；不要将不同设备结果混作公平耗时比较。默认图片 batch=4、文本 batch=1，文本预热 3 次，每条重复 10 次。输出目录已有结果会拒绝覆盖；复跑使用新目录。下载器默认逐张间隔 7 秒、遵守 HTTP Retry-After，存在且哈希相同的文件跳过，哈希不同则停止。来源或缩略服务发生变化导致哈希不同，应审查后建立新版本，不能静默替换 v1。
