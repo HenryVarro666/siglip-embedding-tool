@@ -8,7 +8,7 @@
     "qrels": "119bc4cbc7aecf9c57c3170a694c41132cf41daca091c325fb667af9b994ef52"
   },
   "protocol_sha256": "99ca11299a2167d0965c2781fb435e180afc95feac12f70fafdb9804babe0952",
-  "implementation_sha256": "7be0d1da234bc571def3ec786ad7d5edc02f31268017b70d1094e3e4bafd0598",
+  "implementation_sha256": "55464bd7005dcb62fa2fe46d41df276111ccc8bd8c58fefb00bbd84708527aa0",
   "translator_files": {
     "README.md": "7f4b7f90672cd55b85b213bbe21f4b2d0c92327e885734b7e86b019feb145a6b",
     "config.json": "cee48d4f205210cec6a7cfedf609acd605949ac5392a7e6e9c8c4c0b6670c27c",
@@ -25,5 +25,15 @@
     "quality": "9ebe8155fbe313989d19af093029379c39f9329a5df6036cde6aee9490e8f193"
   },
   "automatic_translations_or_results_existed": false,
-  "training_executed": false
+  "training_executed": false,
+  "initial_implementation_sha256": "7be0d1da234bc571def3ec786ad7d5edc02f31268017b70d1094e3e4bafd0598",
+  "implementation_updated_at_utc": "2026-10-31T20:27:22.922232+00:00",
+  "implementation_correction": {
+    "reason": "Clear inherited max_length512 when max_new_tokens64 is fixed, removing a warning logged on each translation; same generation bound. Old Base attempt excluded from timingcomparison. Source weights, images, Chinese queries, labels and 50/50fusion unchanged.",
+    "discarded_run": "artifacts/auto-translation/base-v1",
+    "comparison_runs": [
+      "artifacts/auto-translation/base-v2",
+      "artifacts/auto-translation/quality-v2"
+    ]
+  }
 }

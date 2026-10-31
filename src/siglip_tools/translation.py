@@ -174,6 +174,7 @@ class LocalTranslator:
         settings.num_beams = 1
         settings.num_return_sequences = 1
         settings.max_new_tokens = MAX_NEW_TOKENS
+        settings.max_length = None
         settings.use_cache = True
         # Marian normally forces EOS at the generation cap, hiding truncation.
         settings.forced_eos_token_id = None

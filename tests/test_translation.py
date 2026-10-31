@@ -36,7 +36,11 @@ class TinyModel(torch.nn.Module):
         super().__init__()
         self.weight = torch.nn.Parameter(torch.ones(2, dtype=torch.float64))
         self.generation_config = GenerationConfig(
-            eos_token_id=0, pad_token_id=2, decoder_start_token_id=2, forced_eos_token_id=0
+            eos_token_id=0,
+            pad_token_id=2,
+            decoder_start_token_id=2,
+            forced_eos_token_id=0,
+            max_length=512,
         )
         self.calls = []
         self.unterminated = False
@@ -49,6 +53,7 @@ class TinyModel(torch.nn.Module):
         assert settings.do_sample is False
         assert settings.num_beams == 1
         assert settings.max_new_tokens == 64
+        assert settings.max_length is None
         assert settings.use_cache is True
         assert settings.forced_eos_token_id is None
         self.calls.append(kwargs)
@@ -179,6 +184,7 @@ def test_local_inference_identity_and_no_query_memoization(tmp_path, boundaries)
     assert identity["model_id"] == "Helsinki-NLP/opus-mt-zh-en"
     assert identity["device"] == "cpu"
     assert identity["generation_config"]["max_new_tokens"] == 64
+    assert identity["generation_config"]["max_length"] is None
     assert identity["artifact_fingerprint"]
     assert identity["tokenizer_sha256"]
     assert identity["runtime_versions"]["torch"]
