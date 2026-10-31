@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass, replace
 from hashlib import sha256
+from io import BytesIO
 from pathlib import Path
 
 from PIL import Image, ImageOps
@@ -44,6 +45,29 @@ def file_sha256(path: str | Path) -> str:
     return digest.hexdigest()
 
 
+def read_image_snapshot(path: str | Path) -> tuple[Image.Image, str]:
+    """Bind decoded pixels and container hash to one immutable byte snapshot."""
+    try:
+        content = Path(path).read_bytes()
+        with Image.open(BytesIO(content)) as opened:
+            rgb = load_rgb(opened)
+        return rgb, sha256(content).hexdigest()
+    except (OSError, ValueError) as exc:
+        raise ValueError(f"Could not decode image {path}: {exc}") from exc
+
+
+def validate_records(root: Path, records: list[ImageRecord]) -> None:
+    """Verify canonical files and every exact-pixel alias before publishing an index."""
+    for record in records:
+        image, digest = read_image_snapshot(root / record.path)
+        if digest != record.sha256 or pixel_sha256(image) != record.pixel_sha256:
+            raise ValueError(f"Image changed during indexing: {record.path}; retry")
+        for alias in record.aliases:
+            image, _ = read_image_snapshot(root / alias)
+            if pixel_sha256(image) != record.pixel_sha256:
+                raise ValueError(f"Duplicate image changed during indexing: {alias}; retry")
+
+
 def pixel_sha256(image: Image.Image) -> str:
     """Hash dimensions and canonical RGB bytes, ignoring container metadata."""
     image = load_rgb(image)
@@ -69,11 +93,12 @@ def scan_images(root: str | Path) -> list[ImageRecord]:
         raise ValueError(f"No supported images found in {root}")
     records: dict[str, ImageRecord] = {}
     for path in candidates:
-        pixels = pixel_sha256(load_rgb(path))
+        image, digest = read_image_snapshot(path)
+        pixels = pixel_sha256(image)
         relative = path.relative_to(root).as_posix()
         if pixels in records:
             previous = records[pixels]
             records[pixels] = replace(previous, aliases=(*previous.aliases, relative))
         else:
-            records[pixels] = ImageRecord(relative, file_sha256(path), pixels)
+            records[pixels] = ImageRecord(relative, digest, pixels)
     return list(records.values())

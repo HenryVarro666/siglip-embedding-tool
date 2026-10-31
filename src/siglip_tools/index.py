@@ -5,12 +5,12 @@ import os
 import tempfile
 from dataclasses import asdict, dataclass
 from numbers import Integral
-from pathlib import Path, PurePosixPath
+from pathlib import Path, PurePosixPath, PureWindowsPath
 
 import numpy as np
 
 from .encoder import identity_fingerprint
-from .images import ImageRecord
+from .images import ImageRecord, pixel_sha256, read_image_snapshot, scan_images, validate_records
 
 SCHEMA_VERSION = 1
 
@@ -24,14 +24,45 @@ class SearchResult:
 
 
 def _relative_path(path: str) -> None:
-    if not isinstance(path, str) or not path or "\\" in path:
+    if not isinstance(path, str) or not path or "\\" in path or "\x00" in path:
         raise ValueError("Image paths must be safe relative POSIX paths")
     parsed = PurePosixPath(path)
-    if parsed.is_absolute() or ".." in parsed.parts or path in {".", ""}:
+    if (
+        parsed.is_absolute()
+        or ".." in parsed.parts
+        or path in {".", ""}
+        or PureWindowsPath(path).drive
+        or PureWindowsPath(path).root
+    ):
         raise ValueError("Image paths must be safe relative paths")
 
 
 class ImageIndex:
+    @classmethod
+    def from_directory(cls, encoder, image_root, batch_size=8, *, records=None):
+        """Encode verified RGB snapshots, then validate every canonical/alias path."""
+        if isinstance(batch_size, bool) or not isinstance(batch_size, Integral) or batch_size < 1:
+            raise ValueError("batch_size must be a positive integer")
+        root = Path(image_root).expanduser().resolve()
+        records = scan_images(root) if records is None else list(records)
+        if not records:
+            raise ValueError("No supported images to encode")
+        for record in records:
+            for path in (record.path, *record.aliases):
+                _relative_path(path)
+        matrices = []
+        for start in range(0, len(records), batch_size):
+            batch = records[start : start + batch_size]
+            snapshots = []
+            for record in batch:
+                image, digest = read_image_snapshot(root / record.path)
+                if digest != record.sha256 or pixel_sha256(image) != record.pixel_sha256:
+                    raise ValueError(f"Image changed during indexing: {record.path}; retry")
+                snapshots.append(image)
+            matrices.append(encoder.encode_images(snapshots, batch_size=batch_size))
+        validate_records(root, records)
+        return cls(np.concatenate(matrices), records, encoder.identity, root)
+
     def __init__(self, vectors, records, model_identity: dict, image_root: str | Path):
         vectors = np.array(vectors, dtype=np.float32, copy=True)
         if vectors.ndim != 2 or min(vectors.shape) == 0:

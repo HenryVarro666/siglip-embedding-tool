@@ -34,7 +34,7 @@ uv run siglip-tools index \
 
 `embed-images` 是 `index` 的别名，输出文件同时包含向量与检索所需元数据。默认递归扫描 JPG、JPEG、PNG、WebP、BMP、TIF、TIFF，按路径排序。按 EXIF 方向读取图片，将透明背景合成为白色并统一为 RGB，再执行模型预处理。
 
-规范化后像素完全相同的图片只编码一次，其他路径保存为 aliases。坏图会明确报错，已有索引默认不覆盖；确定要重建时加 `--overwrite`。近重复图片尚不自动合并。
+规范化后像素完全相同的图片只编码一次，其他路径保存为 aliases。读取时将文件哈希和像素绑定到同一字节快照，编码已核对的 RGB 快照，发布前重新检查所有原图及别名；发现输入变化则中止并保留旧索引。坏图会明确报错，已有索引默认不覆盖；确定要重建时加 `--overwrite`。近重复图片尚不自动合并。
 
 选择其他预训练模型：
 
@@ -76,15 +76,12 @@ uv run siglip-tools search-image \
 ```python
 from pathlib import Path
 from siglip_tools.encoder import SigLIPEmbedder
-from siglip_tools.images import scan_images
 from siglip_tools.index import ImageIndex
 
 root = Path("/path/to/images")
 encoder = SigLIPEmbedder(device="auto")
-records = scan_images(root)
-vectors = encoder.encode_images([root / r.path for r in records], batch_size=8)
-
-index = ImageIndex(vectors, records, encoder.identity, root)
+index = ImageIndex.from_directory(encoder, root, batch_size=8)
+vectors = index.vectors  # 可直接用于后续分析的 [N, D] NumPy 数组
 index.save("artifacts/gallery.npz")
 
 # 在同一个进程中复用 encoder，避免每次查询都重新加载模型。
@@ -115,7 +112,9 @@ index.assert_compatible(encoder.identity)
 uv run siglip-tools inspect --index artifacts/gallery.npz
 ```
 
-`inspect` 读取图片数、向量维度、去重数量和模型身份，不加载预训练权重。`.npz` 使用 `allow_pickle=False` 读取，并检查元数据、相对路径、向量维度、有限值和单位范数。
+`inspect` 读取图片数、向量维度、去重数量和模型身份，不加载预训练权重。`.npz` 使用 `allow_pickle=False` 读取，并检查元数据、跨平台安全的相对路径、向量维度、有限值和单位范数。
+
+索引是某次建库的快照，之后改变图库内容需要重建。`ImageIndex.from_directory` 提供输入一致性检查；直接调用低层 `ImageIndex(vectors, records, ...)` 时，调用者负责确保向量与记录来自同一批输入。
 
 当前使用 NumPy 精确搜索，适合先建立可解释的小图库基线。大规模图库的 ANN、流式编码、增量更新与 OCR 融合见 [改进点](docs/improvements.md)。
 

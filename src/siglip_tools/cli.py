@@ -7,7 +7,7 @@ from pathlib import Path
 from time import perf_counter
 
 from .encoder import DEFAULT_MODEL, QUALITY_MODEL, SigLIPEmbedder
-from .images import file_sha256, load_rgb, pixel_sha256, scan_images
+from .images import load_rgb, pixel_sha256, scan_images
 from .index import ImageIndex
 
 
@@ -77,13 +77,9 @@ def _build(args) -> None:
     encoder = SigLIPEmbedder(model_id, args.revision, args.device, args.local_files_only)
     loaded = perf_counter()
     root = args.images.resolve()
-    vectors = encoder.encode_images([root / record.path for record in records], args.batch_size)
-    # Refuse to bind an embedding to stale file provenance if an input changed during encoding.
-    for record in records:
-        if file_sha256(root / record.path) != record.sha256:
-            raise ValueError(f"Image changed during indexing: {record.path}; retry")
+    index = ImageIndex.from_directory(encoder, root, args.batch_size, records=records)
+    vectors = index.vectors
     encoded = perf_counter()
-    index = ImageIndex(vectors, records, encoder.identity, root)
     index.save(args.output, overwrite=args.overwrite)
     _print(
         {

@@ -65,7 +65,17 @@ def test_index_rejects_invalid_vectors_or_record_count(tmp_path, vectors):
         ImageIndex(vectors, RECORDS, IDENTITY, tmp_path)
 
 
-@pytest.mark.parametrize("bad_path", ["../outside.png", "/absolute.png", "a/../../outside.png"])
+@pytest.mark.parametrize(
+    "bad_path",
+    [
+        "../outside.png",
+        "/absolute.png",
+        "a/../../outside.png",
+        "C:/outside.png",
+        "C:outside.png",
+        "folder/\x00.png",
+    ],
+)
 def test_index_rejects_unsafe_record_paths(tmp_path, bad_path):
     records = [ImageRecord(bad_path, "1" * 64, "a" * 64)]
     with pytest.raises(ValueError, match="relative"):
@@ -112,4 +122,17 @@ def test_load_rejects_pickle_arrays(tmp_path):
     path = tmp_path / "bad.npz"
     np.savez(path, embeddings=np.array([object()], dtype=object), metadata=np.array("{}"))
     with pytest.raises(ValueError):
+        ImageIndex.load(path)
+
+
+@pytest.mark.parametrize("bad_path", ["C:/outside.png", "folder/\x00.png"])
+def test_load_rejects_cross_platform_unsafe_paths(tmp_path, bad_path):
+    path = tmp_path / "tampered.npz"
+    original = tmp_path / "original.npz"
+    make_index(tmp_path).save(original)
+    with np.load(original, allow_pickle=False) as stored:
+        metadata = json.loads(stored["metadata"].item())
+    metadata["records"][0]["path"] = bad_path
+    np.savez(path, embeddings=VECTORS, metadata=np.array(json.dumps(metadata)))
+    with pytest.raises(ValueError, match="relative"):
         ImageIndex.load(path)
