@@ -86,6 +86,17 @@ uv run siglip-tools search-text --index artifacts/gallery.npz \
 
 将`english`改为`fusion`即可融合中文与自动译文；与提供英文的`--english-query`互斥。固定小集上，So400m自动英文mAP0.917、端到端p50约72.40ms；自动融合mAP0.887、p50约82.80ms，首位8/8命中。每次请求真实执行翻译，耗时含翻译；模型加载另列。[完整分析与改进点](docs/auto-translation-v1.md) · [三策略复现](benchmarks/auto-translation-v1/README.md)
 
+已追加更大预训练译者 **NLLB-200 1.3B** 的四组合对照。它修复了三处逆变器译法，但套管仍为 `tube`，散热片为宽泛的 `heat sink`；So400m 自动英文 mAP 从 OPUS 的 0.917 降至 0.810，融合约 0.887 持平。新跑的 OPUS / NLLB 自动英文端到端 p50 为 70.97 / 420.60 ms。当前保留 OPUS 默认，NLLB 可显式选择；没有训练或手改英文。[术语、全部结果及改进点](docs/stronger-translation-v1.md) · [四组合复现](benchmarks/stronger-translation-v1/README.md)
+
+```bash
+uv run python -m siglip_tools.nllb_translation prepare --output models/nllb-200-1.3B
+uv run siglip-tools search-text --index artifacts/gallery.npz \
+  --query "能看到套管或散热片的室外电力变压器。" \
+  --auto-translate english --translator nllb --device mps --local-files-only
+```
+
+NLLB 使用 CC-BY-NC-4.0 研究模型，权重仅保存在本机；模型来源、固定 revision、语言控制和适用范围记录在上述复现说明。两种自动策略都包含实际翻译时间，未提供英文字符串缓存。
+
 文本上限来自 checkpoint，已验证的默认模型为 64 tokens。过长查询会报错，避免静默截断。长文档的纯文本检索应使用单独的文本 embedding 模型。
 
 ## 以图搜图

@@ -1,0 +1,22 @@
+{
+  "opus": {
+    "i01": "Small solar microreversers with electrical interfaces.",
+    "i02": "Solar inverters installed on walls and closed in the outer shell.",
+    "i03": "Open the shell and display solar reverses of circuit boards and blue capacitors.",
+    "i04": "Solar reverseers installed below or on the back of the photovoltaic panels.",
+    "i05": "The electrical distribution or control cabinets with the wires can be seen when the door is open.",
+    "i06": "The passage between the electrical switchboards of the platoon industry.",
+    "i07": "Outdoor electrical transformers can be seen in a holster or radiator.",
+    "i08": "UPS uninterruptible power supply for computers or servers."
+  },
+  "nllb": {
+    "i01": "Small solar microinverters with electrical connections.",
+    "i02": "The solar inverters are installed on the walls and enclosed in the shell.",
+    "i03": "The solar inverter with the circuit board and blue capacitor exposed after opening the casing.",
+    "i04": "Solar inverters installed under or behind the photovoltaic panel.",
+    "i05": "The electrical distribution cabinet or control cabinet can be seen after opening the cabinet door.",
+    "i06": "The channel between the industrial electrical switch cabinet.",
+    "i07": "The outdoor power transformer with a tube or a heat sink is visible.",
+    "i08": "UPSs that provide power to computers or servers without interruption."
+  }
+}

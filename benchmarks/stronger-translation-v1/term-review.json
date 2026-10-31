@@ -1,0 +1,297 @@
+{
+  "schema_version": 1,
+  "benchmark": "stronger-translation-v1",
+  "reviewed_at_utc": "2026-10-31T20:52:53.211432+00:00",
+  "reviewer": "assistant_only",
+  "model_labels_blinded": false,
+  "scope": "Qualitative raw-text review using the frozen six-opportunity terminology rubric, with a separate context check for all eight Chinese queries.",
+  "inputs": {
+    "queries": {
+      "path": "benchmarks/equipment-v1/queries.json",
+      "sha256": "b29fe8b26c8618c38b0154871b1a288179e0e2be2e7686e07a2d958ebe15556f"
+    },
+    "rules": {
+      "path": "benchmarks/stronger-translation-v1/term-review-rules.json",
+      "sha256": "45a4886b7c0de0f7adbc4f0090f68afe01a05ecb69ff8add192da559b241d49e"
+    },
+    "translations": {
+      "path": "artifacts/stronger-translation/translations-only.json",
+      "sha256": "b64aa8e70df5e0e0b38672ab14b18e3ff8ff7d50c47fbbe10be11fd2ecdda410",
+      "repository_copy": "benchmarks/stronger-translation-v1/translations-only.json"
+    }
+  },
+  "review_boundary": {
+    "retrieval_results_or_logs_inspected_before_grading": false,
+    "model_inference_or_network_used_for_review": false,
+    "translations_hand_corrected": false,
+    "revised_translations_created": false,
+    "rules_queries_gallery_or_qrels_changed": false
+  },
+  "term_counts": {
+    "opus": {
+      "clear": 1,
+      "partial": 1,
+      "incorrect": 4,
+      "omitted": 0,
+      "total_opportunities": 6
+    },
+    "nllb": {
+      "clear": 4,
+      "partial": 1,
+      "incorrect": 1,
+      "omitted": 0,
+      "total_opportunities": 6
+    }
+  },
+  "term_review": [
+    {
+      "opportunity_id": "i01_inverter",
+      "query_id": "i01_zh",
+      "source_span": "微型逆变器",
+      "opus": {
+        "label": "incorrect",
+        "evidence": "microreversers",
+        "rationale": "Micro is present, but reversers expresses a reverse-device sense rather than the required microinverter component."
+      },
+      "nllb": {
+        "label": "clear",
+        "evidence": "solar microinverters",
+        "rationale": "Explicit solar microinverter subtype, including the required micro qualifier."
+      }
+    },
+    {
+      "opportunity_id": "i02_inverter",
+      "query_id": "i02_zh",
+      "source_span": "逆变器",
+      "opus": {
+        "label": "clear",
+        "evidence": "Solar inverters",
+        "rationale": "Explicit inverter in the solar context."
+      },
+      "nllb": {
+        "label": "clear",
+        "evidence": "solar inverters",
+        "rationale": "Explicit inverter in the solar context."
+      }
+    },
+    {
+      "opportunity_id": "i03_inverter",
+      "query_id": "i03_zh",
+      "source_span": "逆变器",
+      "opus": {
+        "label": "incorrect",
+        "evidence": "solar reverses",
+        "rationale": "Reverses does not unambiguously name an inverter; the frozen rubric rejects the inverse/reverse-device sense."
+      },
+      "nllb": {
+        "label": "clear",
+        "evidence": "solar inverter",
+        "rationale": "Explicit inverter in the solar context."
+      }
+    },
+    {
+      "opportunity_id": "i04_inverter",
+      "query_id": "i04_zh",
+      "source_span": "逆变器",
+      "opus": {
+        "label": "incorrect",
+        "evidence": "Solar reverseers",
+        "rationale": "Malformed reverseers does not explicitly retain the inverter component and falls under the frozen reverse-device exclusion."
+      },
+      "nllb": {
+        "label": "clear",
+        "evidence": "Solar inverters",
+        "rationale": "Explicit inverter in the photovoltaic-panel context."
+      }
+    },
+    {
+      "opportunity_id": "i07_bushing",
+      "query_id": "i07_zh",
+      "source_span": "套管",
+      "opus": {
+        "label": "incorrect",
+        "evidence": "a holster",
+        "rationale": "Holster is an explicitly excluded wrong sense of 套管, not a transformer bushing."
+      },
+      "nllb": {
+        "label": "incorrect",
+        "evidence": "a tube",
+        "rationale": "Tube is unqualified and supplies no insulating-component sense. Transformer context alone does not establish bushing; the frozen rubric rates such tube/sleeve wording incorrect. An insulating sleeve would only be partial under the rule."
+      }
+    },
+    {
+      "opportunity_id": "i07_cooling_fins",
+      "query_id": "i07_zh",
+      "source_span": "散热片",
+      "opus": {
+        "label": "partial",
+        "evidence": "radiator",
+        "rationale": "Recognizable transformer cooling component, but radiator is broader than explicit fins and receives no clear-fin credit."
+      },
+      "nllb": {
+        "label": "partial",
+        "evidence": "a heat sink",
+        "rationale": "Recognizable cooling component, but a heat sink does not explicitly specify fins. It receives the same partial label as broader radiator wording."
+      }
+    }
+  ],
+  "context_review": [
+    {
+      "query_id": "i01_zh",
+      "expected_context": "Small solar component with electrical connection interfaces; micro subtype is graded in the term table.",
+      "opus": {
+        "status": "preserved",
+        "evidence": [
+          "Small solar",
+          "with electrical interfaces"
+        ],
+        "note": "Size, solar context and electrical interfaces survive. This context label does not credit the incorrect component term."
+      },
+      "nllb": {
+        "status": "preserved",
+        "evidence": [
+          "Small solar",
+          "with electrical connections"
+        ],
+        "note": "Size, solar context and electrical connections survive."
+      }
+    },
+    {
+      "query_id": "i02_zh",
+      "expected_context": "Solar inverter mounted on a wall, with its casing closed.",
+      "opus": {
+        "status": "partially_preserved",
+        "evidence": [
+          "installed on walls",
+          "closed in the outer shell"
+        ],
+        "note": "Solar context and wall mounting survive. Closed in the shell suggests enclosure but is ambiguous about the casing itself being closed."
+      },
+      "nllb": {
+        "status": "partially_preserved",
+        "evidence": [
+          "installed on the walls",
+          "enclosed in the shell"
+        ],
+        "note": "Solar context and wall mounting survive. Enclosed in a shell is less explicit than the source closed-casing state."
+      }
+    },
+    {
+      "query_id": "i03_zh",
+      "expected_context": "Open casing exposes circuit boards and blue capacitors on a solar inverter.",
+      "opus": {
+        "status": "partially_preserved",
+        "evidence": [
+          "Open the shell",
+          "circuit boards and blue capacitors"
+        ],
+        "note": "Opening, boards and blue capacitors survive lexically, but the descriptive exposure relation becomes a garbled imperative and display relation."
+      },
+      "nllb": {
+        "status": "preserved",
+        "evidence": [
+          "circuit board and blue capacitor exposed after opening the casing"
+        ],
+        "note": "Opening the casing and exposing the board and blue capacitor are explicit. Chinese does not require an English plural here."
+      }
+    },
+    {
+      "query_id": "i04_zh",
+      "expected_context": "Solar component installed below or behind photovoltaic panels, retaining OR.",
+      "opus": {
+        "status": "preserved",
+        "evidence": [
+          "installed below or on the back of the photovoltaic panels"
+        ],
+        "note": "Both alternative spatial relations and the photovoltaic-panel context survive; the component term is graded separately."
+      },
+      "nllb": {
+        "status": "preserved",
+        "evidence": [
+          "installed under or behind the photovoltaic panel"
+        ],
+        "note": "Both alternative spatial relations and photovoltaic-panel context survive."
+      }
+    },
+    {
+      "query_id": "i05_zh",
+      "expected_context": "Opening the cabinet door makes the wiring visible; electrical distribution OR control cabinet.",
+      "opus": {
+        "status": "partially_preserved",
+        "evidence": [
+          "electrical distribution or control cabinets with the wires",
+          "can be seen when the door is open"
+        ],
+        "note": "Cabinet alternatives, wires and open-door condition remain. Visibility grammatically targets the cabinets with wires, so visible wiring is suggested but not unambiguous."
+      },
+      "nllb": {
+        "status": "partially_preserved",
+        "evidence": [
+          "electrical distribution cabinet or control cabinet can be seen after opening the cabinet door"
+        ],
+        "note": "Cabinet alternatives and door opening survive, but wiring is omitted and visibility targets the cabinet instead."
+      }
+    },
+    {
+      "query_id": "i06_zh",
+      "expected_context": "A passage between rows of industrial electrical switchgear cabinets.",
+      "opus": {
+        "status": "partially_preserved",
+        "evidence": [
+          "passage between the electrical switchboards",
+          "of the platoon industry"
+        ],
+        "note": "Passage, between and electrical equipment survive. Platoon industry garbles the industrial/rows modifiers; rows of cabinets is not preserved."
+      },
+      "nllb": {
+        "status": "partially_preserved",
+        "evidence": [
+          "channel between the industrial electrical switch cabinet"
+        ],
+        "note": "Industrial electrical cabinet and a between relation survive, but rows and multiple cabinets are absent; between a singular cabinet does not retain the source layout."
+      }
+    },
+    {
+      "query_id": "i07_zh",
+      "expected_context": "Outdoor power transformer with visible bushings OR cooling fins, retaining component visibility and OR.",
+      "opus": {
+        "status": "contradicted",
+        "evidence": [
+          "Outdoor electrical transformers can be seen in a holster or radiator"
+        ],
+        "note": "Outdoor transformer and OR survive, but in reverses the component relation into transformer containment. Visibility targets the transformers rather than the components."
+      },
+      "nllb": {
+        "status": "partially_preserved",
+        "evidence": [
+          "outdoor power transformer with a tube or a heat sink is visible"
+        ],
+        "note": "Outdoor power transformer, with-component relation and OR survive. Visibility targets the transformer, without explicitly retaining visible components; component terminology is graded separately."
+      }
+    },
+    {
+      "query_id": "i08_zh",
+      "expected_context": "UPS provides outage backup power for computers OR servers.",
+      "opus": {
+        "status": "partially_preserved",
+        "evidence": [
+          "UPS uninterruptible power supply for computers or servers"
+        ],
+        "note": "UPS, continuity and computer/server alternatives survive. Outage-triggered backup is only implicit in UPS terminology, not explicitly retained."
+      },
+      "nllb": {
+        "status": "partially_preserved",
+        "evidence": [
+          "UPSs that provide power to computers or servers without interruption"
+        ],
+        "note": "UPS, continuity and computer/server alternatives survive. The explicit outage/backup condition is absent."
+      }
+    }
+  ],
+  "findings": [
+    "Clear terminology increases from 1/6 for OPUS to 4/6 for NLLB under this rubric. The three changes are i01, i03 and i04 inverter renderings; i02 is clear for both.",
+    "Neither model clearly retains the i07 bushing or explicit-fin terminology: holster/tube are incorrect; radiator/heat sink are partial.",
+    "NLLB i05 omits wiring, whereas OPUS retains wires with ambiguous visibility scope. Both i06 translations fail to retain rows of cabinets.",
+    "These are assistant-only text judgments on eight queries, with known model labels. They are not human engineering certification, general translation-quality evidence, or a causal explanation of retrieval behavior."
+  ]
+}

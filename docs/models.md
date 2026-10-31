@@ -28,7 +28,11 @@ Base 提供较轻量的可复现基线。2026-10-31 已在冻结的同一份 40 
 
 随后追加的固定等权中英融合，在同一8个意图上得到Base/So400m融合mAP 0.812/0.942，本机融合p50为8.60/30.10ms；So400m英文单独mAP 0.958更高，Base融合也有个别AP回退。这些分数与上面的16条混合语言总体分数口径不同。英文由调用者事先提供，默认行为保留单查询，使用`--english-query`启用融合。[中英融合与退步分析](bilingual-fusion-v1.md)
 
-自动中译英已追加完整端到端测试：固定小型OPUS-MT，原样译文且每请求重新生成。So400m自动英文mAP0.917/约72ms，自动融合0.887/约83ms；Base为0.710/约64ms与0.735/约66ms。质量/速度依赖译者和查询，当前只是单个预训练译者的试验。模型加载及首次请求另列，保持默认Base和单查询，自动路径显式选择。[自动翻译结果](auto-translation-v1.md)
+自动中译英已追加完整端到端测试：固定小型OPUS-MT，原样译文且每请求重新生成。首轮 So400m 自动英文 mAP0.917/约72ms，自动融合0.887/约83ms；Base为0.710/约64ms与0.735/约66ms。模型加载及首次请求另列，保持默认Base和单查询，自动路径显式选择。[首轮自动翻译结果](auto-translation-v1.md)
+
+随后用固定 **NLLB-200 1.3B**（`facebook/nllb-200-1.3B`，revision `b0de46b488af0cf31749cd8da5ed3171e11b2309`）与新跑的 OPUS 对照。NLLB 修复三处逆变器译法，但套管/明确可见鳍片仍未解决，i05 丢失接线信息。So400m 自动英文 OPUS/NLLB mAP **0.917/0.810**，端到端 p50 **70.97/420.60ms**；融合约 0.887 持平但 NLLB 慢 5.44 倍。Base 两种自动策略也未超过 OPUS。更大的通用译者不能保证图文检索更好，当前 OPUS 默认不变，`--translator nllb` 可选。[完整比较与术语审核](stronger-translation-v1.md)
+
+NLLB 是 CC-BY-NC-4.0 研究模型，来源、文件哈希和本地转换保留在 `benchmarks/stronger-translation-v1/nllb-provenance.json`，不随仓库分发权重。显式使用 `zho_Hans` 源语言和 `eng_Latn` 目标 BOS，贪心解码，与 OPUS 同样每请求翻译；这个小集没有证明领域可靠性或生产适用性。[官方模型卡](https://huggingface.co/facebook/nllb-200-1.3B)
 
 SigLIP 2 论文报告了相对初代模型的多项改进，但论文结果不能证明哪个 checkpoint 最适合当前逆变器图片。[SigLIP 2 论文](https://arxiv.org/abs/2502.14786)
 

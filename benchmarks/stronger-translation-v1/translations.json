@@ -1,0 +1,123 @@
+{
+  "experiment_id": "equipment-stronger-translation-v1",
+  "created_at_utc": "2026-10-31T20:56:09.595654+00:00",
+  "generated_text_edited": false,
+  "reference_english_used_for_generation": false,
+  "training_executed": false,
+  "text_only_review_input": {
+    "path": "benchmarks/stronger-translation-v1/translations-only.json",
+    "sha256": "b64aa8e70df5e0e0b38672ab14b18e3ff8ff7d50c47fbbe10be11fd2ecdda410"
+  },
+  "translators": {
+    "opus": {
+      "model_id": "Helsinki-NLP/opus-mt-zh-en",
+      "revision": "cf109095479db38d6df799875e34039d4938aaa6",
+      "license": "CC-BY-4.0",
+      "queries": [
+        {
+          "intent_id": "i01",
+          "query_id": "i01_zh",
+          "chinese": "带电气连接接口的小型太阳能微型逆变器。",
+          "generated_english": "Small solar microreversers with electrical interfaces."
+        },
+        {
+          "intent_id": "i02",
+          "query_id": "i02_zh",
+          "chinese": "安装在墙上、外壳闭合的太阳能逆变器。",
+          "generated_english": "Solar inverters installed on walls and closed in the outer shell."
+        },
+        {
+          "intent_id": "i03",
+          "query_id": "i03_zh",
+          "chinese": "打开外壳后露出电路板和蓝色电容的太阳能逆变器。",
+          "generated_english": "Open the shell and display solar reverses of circuit boards and blue capacitors."
+        },
+        {
+          "intent_id": "i04",
+          "query_id": "i04_zh",
+          "chinese": "安装在光伏板下方或背面的太阳能逆变器。",
+          "generated_english": "Solar reverseers installed below or on the back of the photovoltaic panels."
+        },
+        {
+          "intent_id": "i05",
+          "query_id": "i05_zh",
+          "chinese": "打开柜门后能看到接线的电气配电柜或控制柜。",
+          "generated_english": "The electrical distribution or control cabinets with the wires can be seen when the door is open."
+        },
+        {
+          "intent_id": "i06",
+          "query_id": "i06_zh",
+          "chinese": "成排工业电气开关柜之间的通道。",
+          "generated_english": "The passage between the electrical switchboards of the platoon industry."
+        },
+        {
+          "intent_id": "i07",
+          "query_id": "i07_zh",
+          "chinese": "能看到套管或散热片的室外电力变压器。",
+          "generated_english": "Outdoor electrical transformers can be seen in a holster or radiator."
+        },
+        {
+          "intent_id": "i08",
+          "query_id": "i08_zh",
+          "chinese": "给电脑或服务器提供断电备用电源的 UPS 不间断电源。",
+          "generated_english": "UPS uninterruptible power supply for computers or servers."
+        }
+      ]
+    },
+    "nllb": {
+      "model_id": "facebook/nllb-200-1.3B",
+      "revision": "b0de46b488af0cf31749cd8da5ed3171e11b2309",
+      "license": "CC-BY-NC-4.0",
+      "queries": [
+        {
+          "intent_id": "i01",
+          "query_id": "i01_zh",
+          "chinese": "带电气连接接口的小型太阳能微型逆变器。",
+          "generated_english": "Small solar microinverters with electrical connections."
+        },
+        {
+          "intent_id": "i02",
+          "query_id": "i02_zh",
+          "chinese": "安装在墙上、外壳闭合的太阳能逆变器。",
+          "generated_english": "The solar inverters are installed on the walls and enclosed in the shell."
+        },
+        {
+          "intent_id": "i03",
+          "query_id": "i03_zh",
+          "chinese": "打开外壳后露出电路板和蓝色电容的太阳能逆变器。",
+          "generated_english": "The solar inverter with the circuit board and blue capacitor exposed after opening the casing."
+        },
+        {
+          "intent_id": "i04",
+          "query_id": "i04_zh",
+          "chinese": "安装在光伏板下方或背面的太阳能逆变器。",
+          "generated_english": "Solar inverters installed under or behind the photovoltaic panel."
+        },
+        {
+          "intent_id": "i05",
+          "query_id": "i05_zh",
+          "chinese": "打开柜门后能看到接线的电气配电柜或控制柜。",
+          "generated_english": "The electrical distribution cabinet or control cabinet can be seen after opening the cabinet door."
+        },
+        {
+          "intent_id": "i06",
+          "query_id": "i06_zh",
+          "chinese": "成排工业电气开关柜之间的通道。",
+          "generated_english": "The channel between the industrial electrical switch cabinet."
+        },
+        {
+          "intent_id": "i07",
+          "query_id": "i07_zh",
+          "chinese": "能看到套管或散热片的室外电力变压器。",
+          "generated_english": "The outdoor power transformer with a tube or a heat sink is visible."
+        },
+        {
+          "intent_id": "i08",
+          "query_id": "i08_zh",
+          "chinese": "给电脑或服务器提供断电备用电源的 UPS 不间断电源。",
+          "generated_english": "UPSs that provide power to computers or servers without interruption."
+        }
+      ]
+    }
+  }
+}

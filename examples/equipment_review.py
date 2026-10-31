@@ -84,7 +84,9 @@ def main():
                 + '<div class="columns">'
             )
             for result in fusion_results:
-                parts.append(f"<div><h2>{escape(result['model_alias'])}</h2>")
+                translator = result.get("translator_alias")
+                suffix = f" / {escape(translator)}" if translator else ""
+                parts.append(f"<div><h2>{escape(result['model_alias'])}{suffix}</h2>")
                 if automatic:
                     parts.append(
                         f"<p>Automatic English: {escape(result['translations'][intent])}</p>"
