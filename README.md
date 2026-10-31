@@ -74,6 +74,18 @@ uv run siglip-tools search-text --index artifacts/gallery.npz \
 
 工具在同一模型空间内平均两个余弦分数；英文由调用者提供。固定8意图试验中，Base中文/融合mAP为0.587/0.812，So400m为0.690/0.942；本机融合p50约8.60/30.10ms。So400m英文单独mAP为0.958，Base融合也有个别AP下降，实际应保留对照。[分析与完整结果](docs/bilingual-fusion-v1.md) · [复现说明](benchmarks/bilingual-fusion-v1/README.md)
 
+只有中文输入时，可选本地自动翻译，再检索英文或做等权融合：
+
+```bash
+uv sync --frozen --extra dev --extra translation
+uv run python -m siglip_tools.translation prepare --output models/opus-mt-zh-en
+uv run siglip-tools search-text --index artifacts/gallery.npz \
+  --query "打开柜门后能看到接线的电气配电柜或控制柜。" \
+  --auto-translate english --device mps --local-files-only
+```
+
+将`english`改为`fusion`即可融合中文与自动译文；与提供英文的`--english-query`互斥。固定小集上，So400m自动英文mAP0.917、端到端p50约72.40ms；自动融合mAP0.887、p50约82.80ms，首位8/8命中。每次请求真实执行翻译，耗时含翻译；模型加载另列。[完整分析与改进点](docs/auto-translation-v1.md) · [三策略复现](benchmarks/auto-translation-v1/README.md)
+
 文本上限来自 checkpoint，已验证的默认模型为 64 tokens。过长查询会报错，避免静默截断。长文档的纯文本检索应使用单独的文本 embedding 模型。
 
 ## 以图搜图
@@ -168,7 +180,10 @@ uv run python examples/equipment_review.py
 
 ## 验证命令
 
+完整测试包含可选翻译模块，先安装`translation` extra；基础图片检索不需要这个extra。
+
 ```bash
+uv sync --frozen --extra dev --extra translation
 uv run pytest -m 'not integration'
 uv run ruff check src tests training examples
 uv run python clip_siglip_demo.py

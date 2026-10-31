@@ -18,3 +18,10 @@ User request: compare direct Chinese, automatic English, and Chinese+automatic-E
 3. TDD frozen auto_benchmark runner and compatibility comparison. Use existing metrics/stability helpers; metadata/code/index/translation provenance frozen before target scoring.
 4. Sequential real Base and So400m runs. Inspect all8unedited translations, all6ranking sets and all480requests; compare against last round's supplied-English controls with clear denominators.
 5. Independent review, full offline suite/lint/build/clean clone; docs, Top5 review, private GitHub push and CI. No training.
+
+## Completed experiment record
+
+- Final inference code9e64487;217offline tests,lint/buildpassed. Frozen data,translator artifacts and two modelindexesverified.
+- A GenerationMixin regression found None fields were restored from model defaults; bothcall-level andmodel-levelconfigsarenowsanitized. EarlyBasev1/v2timingsdiscarded;their8translations/all24rankingsandscoresmatchfinalv3exactly. No dataset/query/weight edits.
+- FinalBasev3/So400mv3 sequentialruns,480warmrequests,identicaltranslator/8rawtranslations,allrepeatedscores/ranksstable. Independent audit verified metrics,stageandtotalpercentiles,sourcehashesandreport.
+- Fullreport,curatedsummary,originaltranslations,reproductioninstructionsandTop5reviewarewritten. Release verification uses the final clean-clone test and GitHub Actions record.

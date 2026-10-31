@@ -64,11 +64,15 @@ def main():
         "not model confidence. Images are local downloads, individually credited below.</p>"
     ]
     if fusion_results:
+        automatic = "auto_en" in fusion_results[0]["strategies"]
         paired = {}
         for query in queries:
             paired.setdefault(query["intent_id"], {})[query["language"]] = query
         parts.append(
-            "<p>Fixed policies: Chinese only / English only / equal mean cosine. "
+            "<p>Policies: direct Chinese / automatic English / Chinese+automatic English. "
+            "Every automatic request retranslates; end-to-end timing includes translation.</p>"
+            if automatic
+            else "<p>Fixed policies: Chinese only / English only / equal mean cosine. "
             "English is supplied in advance; translation time is excluded.</p>"
         )
         for intent, pair in sorted(paired.items()):
@@ -76,14 +80,25 @@ def main():
             parts.append(
                 f"<section><details{opened}><summary><b>{intent}: "
                 f"{escape(pair['zh']['text'])}</b></summary>"
-                f'<p>{escape(pair["en"]["text"])}</p><div class="columns">'
+                + ("" if automatic else f"<p>{escape(pair['en']['text'])}</p>")
+                + '<div class="columns">'
             )
             for result in fusion_results:
                 parts.append(f"<div><h2>{escape(result['model_alias'])}</h2>")
-                for strategy in ("zh", "en", "fusion"):
+                if automatic:
+                    parts.append(
+                        f"<p>Automatic English: {escape(result['translations'][intent])}</p>"
+                    )
+                for strategy in (
+                    ("zh", "auto_en", "auto_fusion") if automatic else ("zh", "en", "fusion")
+                ):
                     policy = result["strategies"][strategy]
                     ap = policy["metrics"]["per_query"][intent]["average_precision"]
-                    parts.append(f'<h3>{strategy} · AP {ap:.3f}</h3><div class="grid">')
+                    timing = policy["timing"].get("total_ms", policy["timing"])
+                    parts.append(
+                        f"<h3>{strategy} · AP {ap:.3f} · policy p50 {timing['p50']:.1f}ms</h3>"
+                        '<div class="grid">'
+                    )
                     for row in policy["rankings"][intent][:5]:
                         parts.append(
                             card(row["image_id"], row["relevant"], row["rank"], row["score"])
