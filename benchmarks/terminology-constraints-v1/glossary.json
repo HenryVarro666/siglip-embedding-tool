@@ -1,0 +1,95 @@
+{
+  "profile_id": "power-equipment-v1",
+  "version": 1,
+  "scope": "Source-triggered OPUS-MT lexical inclusion constraints; no translation post-editing or model training.",
+  "matching": {
+    "longest_source_first": true,
+    "micro_matches_exclude_generic_inverter": true,
+    "bushing_requires_source_context": "变压器",
+    "bushing_excluded_source_phrases": [
+      "电缆套管",
+      "线缆套管"
+    ],
+    "target_case_variants": [
+      "lowercase",
+      "sentence_initial_capital"
+    ],
+    "no_target_behavior": "ordinary unconstrained beam4; do not inject vocabulary"
+  },
+  "entries": [
+    {
+      "id": "microinverter",
+      "sources": [
+        "微型太阳能逆变器",
+        "微型光伏逆变器",
+        "微型逆变器",
+        "微逆"
+      ],
+      "target_forms": [
+        "microinverter",
+        "microinverters"
+      ]
+    },
+    {
+      "id": "inverter",
+      "sources": [
+        "逆变器"
+      ],
+      "target_forms": [
+        "inverter",
+        "inverters"
+      ]
+    },
+    {
+      "id": "transformer_bushing",
+      "sources": [
+        "套管"
+      ],
+      "target_forms": [
+        "bushing",
+        "bushings"
+      ],
+      "required_context": "变压器",
+      "exclude_within": [
+        "电缆套管",
+        "线缆套管"
+      ]
+    },
+    {
+      "id": "cooling_fins",
+      "sources": [
+        "散热鳍片",
+        "冷却鳍片",
+        "散热片"
+      ],
+      "target_forms": [
+        "cooling fins",
+        "radiator fins"
+      ]
+    }
+  ],
+  "context_not_guaranteed": [
+    "negation",
+    "open or closed casing",
+    "visible wiring",
+    "mounting on wall or post",
+    "under or behind PV panels",
+    "between rows of cabinets",
+    "visibility and OR relationship"
+  ],
+  "frozen_before_new_queries": true,
+  "sources": [
+    {
+      "title": "Enphase microinverters",
+      "url": "https://enphase.com/store/microinverters/iq8-series/iq8ac-microinverter"
+    },
+    {
+      "title": "Hitachi transformer bushings",
+      "url": "https://www.hitachienergy.com/us/en/products-and-solutions/insulation-and-components/transformer-insulation-components/transformer-bushings/bushings-product-selection/ac-bushing-type-goe"
+    },
+    {
+      "title": "Hitachi cooling fins, printed page12",
+      "url": "https://hitachi.asia/ice/brochures/pdf/transformer_accessories.pdf"
+    }
+  ]
+}

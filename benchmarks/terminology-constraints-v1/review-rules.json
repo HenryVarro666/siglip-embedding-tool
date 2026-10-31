@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "experiment_id": "equipment-terminology-constraints-v1",
+  "frozen_before_new_queries": true,
+  "reviewer": "assistant_only; text/context review independently of retrieval rankings",
+  "term_grades": [
+    "clear",
+    "partial",
+    "incorrect",
+    "omitted"
+  ],
+  "context_grades": [
+    "preserved",
+    "partially_preserved",
+    "contradicted",
+    "omitted",
+    "not_applicable"
+  ],
+  "terminology": {
+    "microinverter": "Explicit microinverter(s); small generic inverter alone is partial.",
+    "inverter": "Explicit inverter(s), including contextually valid microinverter subtype; inverse/reverser is incorrect.",
+    "transformer_bushing": "Explicit electrical/transformer bushing(s). Generic tube/holster is incorrect; insulating sleeve is partial.",
+    "cooling_fins": "Explicit cooling/radiator/heat-dissipating fins. Broader heat sink or radiator is partial, not explicit visible-fin credit."
+  },
+  "context": [
+    "Evaluate original Chinese wording and unedited generated English without using rankings or model scores.",
+    "Grade wiring presence, opening/closure, mounting support and under/behind/between relationships separately when source asks for them.",
+    "A required word present in an appended fragment is not automatically a faithful term-in-context or whole-sentence translation.",
+    "For negation, visibility, AND/OR or device ownership, check attachment and polarity, not only substring presence.",
+    "Never rewrite outputs, change the glossary or tune per-query weights after seeing test results.",
+    "Use new query annotation-notes for source expectations; do not feed reference English to the translator."
+  ],
+  "limitations": [
+    "Assistant review is not independent human domain truth.",
+    "Terminology constraints do not guarantee relational semantics."
+  ]
+}

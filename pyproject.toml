@@ -30,6 +30,9 @@ siglip-tools = "siglip_tools.cli:main"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+siglip_tools = ["*.json"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests", "test_clip_siglip_demo.py"]
 markers = ["integration: optional real pretrained model checks using the local HF cache"]
