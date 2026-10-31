@@ -63,6 +63,17 @@ uv run siglip-tools search-text \
 
 查询会自动使用索引中记录的 checkpoint commit，并检查模型、processor 和运行版本指纹。输出 JSON，包含 rank、相似度、相对路径和完整路径。相似度是余弦分数，不是经过校准的匹配概率。
 
+如果已提供对应英文查询，可显式启用等权中英文分数融合：
+
+```bash
+uv run siglip-tools search-text --index artifacts/gallery.npz \
+  --query "打开柜门后能看到接线的电气配电柜或控制柜。" \
+  --english-query "An open electrical distribution or control cabinet with visible wiring." \
+  --top-k 5
+```
+
+工具在同一模型空间内平均两个余弦分数；英文由调用者提供。固定8意图试验中，Base中文/融合mAP为0.587/0.812，So400m为0.690/0.942；本机融合p50约8.60/30.10ms。So400m英文单独mAP为0.958，Base融合也有个别AP下降，实际应保留对照。[分析与完整结果](docs/bilingual-fusion-v1.md) · [复现说明](benchmarks/bilingual-fusion-v1/README.md)
+
 文本上限来自 checkpoint，已验证的默认模型为 64 tokens。过长查询会报错，避免静默截断。长文档的纯文本检索应使用单独的文本 embedding 模型。
 
 ## 以图搜图

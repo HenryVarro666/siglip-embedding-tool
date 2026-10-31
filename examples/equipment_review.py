@@ -12,6 +12,7 @@ def main():
     parser.add_argument("--metadata", type=Path, default=Path("benchmarks/equipment-v1"))
     parser.add_argument("--data-root", type=Path, default=Path("data/equipment-v1"))
     parser.add_argument("--result", type=Path, action="append", default=[])
+    parser.add_argument("--fusion-result", type=Path, action="append", default=[])
     parser.add_argument("--output", type=Path, default=Path("artifacts/equipment-review.html"))
     args = parser.parse_args()
     documents, hashes = {}, {}
@@ -23,7 +24,8 @@ def main():
     queries = documents["queries"]["queries"]
     qrels = documents["qrels"]["qrels"]
     results = [json.loads(path.read_text()) for path in args.result]
-    for result in results:
+    fusion_results = [json.loads(path.read_text()) for path in args.fusion_result]
+    for result in results + fusion_results:
         if result["dataset_hashes"] != hashes:
             raise ValueError("Result does not use these frozen labels/images")
 
@@ -37,10 +39,10 @@ def main():
         number = "" if score is None else f" · cosine {score:.3f}"
         return (
             f'<figure><img src="{escape(path.as_uri())}" alt="{escape(row["title"])}">'
-            f'<figcaption><b>{heading}{status}</b>{number}<br>'
-            f'{escape(row["visual_description"])}<br>'
+            f"<figcaption><b>{heading}{status}</b>{number}<br>"
+            f"{escape(row['visual_description'])}<br>"
             f'<a href="{escape(row["source_page"])}">Source</a> · '
-            f'{escape(row["author"])} · '
+            f"{escape(row['author'])} · "
             f'<a href="{escape(row["license_url"])}">{escape(row["license_name"])}</a>'
             "</figcaption></figure>"
         )
@@ -61,11 +63,39 @@ def main():
         "not independent human ground truth. Relevant labels are binary source judgments, "
         "not model confidence. Images are local downloads, individually credited below.</p>"
     ]
-    if results:
+    if fusion_results:
+        paired = {}
+        for query in queries:
+            paired.setdefault(query["intent_id"], {})[query["language"]] = query
+        parts.append(
+            "<p>Fixed policies: Chinese only / English only / equal mean cosine. "
+            "English is supplied in advance; translation time is excluded.</p>"
+        )
+        for intent, pair in sorted(paired.items()):
+            opened = " open" if intent in {"i04", "i05", "i07"} else ""
+            parts.append(
+                f"<section><details{opened}><summary><b>{intent}: "
+                f"{escape(pair['zh']['text'])}</b></summary>"
+                f'<p>{escape(pair["en"]["text"])}</p><div class="columns">'
+            )
+            for result in fusion_results:
+                parts.append(f"<div><h2>{escape(result['model_alias'])}</h2>")
+                for strategy in ("zh", "en", "fusion"):
+                    policy = result["strategies"][strategy]
+                    ap = policy["metrics"]["per_query"][intent]["average_precision"]
+                    parts.append(f'<h3>{strategy} · AP {ap:.3f}</h3><div class="grid">')
+                    for row in policy["rankings"][intent][:5]:
+                        parts.append(
+                            card(row["image_id"], row["relevant"], row["rank"], row["score"])
+                        )
+                    parts.append("</div>")
+                parts.append("</div>")
+            parts.append("</div></details></section>")
+    elif results:
         for query in queries:
             qid = query["query_id"]
             parts.append(
-                f'<section><h2>{qid}: {escape(query["text"])}</h2>'
+                f"<section><h2>{qid}: {escape(query['text'])}</h2>"
                 f'<p>Relevant gallery IDs: {", ".join(qrels[qid])}</p><div class="columns">'
             )
             for result in results:
@@ -77,7 +107,7 @@ def main():
     else:
         for query in queries:
             parts.append(
-                f'<section><h2>{query["query_id"]}: {escape(query["text"])}</h2>'
+                f"<section><h2>{query['query_id']}: {escape(query['text'])}</h2>"
                 '<p>Frozen positive images:</p><div class="grid">'
             )
             parts.extend(card(image_id, True) for image_id in qrels[query["query_id"]])

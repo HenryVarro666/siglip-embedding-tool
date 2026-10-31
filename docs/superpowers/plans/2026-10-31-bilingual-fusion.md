@@ -38,12 +38,14 @@
 
 - [x] Write tests for frozen index validation, protocol/dataset drift, same-checkpoint comparison, intent pairing and a complete mocked-model persisted run:7 RED then7 GREEN.
 - [x] Add `src/siglip_tools/fusion_benchmark.py` run/compare CLI. Reuse evaluation metrics and baseline synchronization/environment utilities. Record single-language baselines, bilingual full rankings, token counts, query-vector cosine, timing samples and identity/input/code hashes.
-- [ ] Verify tests, commit implementation/protocol, save a pre-run freeze of data/protocol/code/index hashes.
-- [ ] Run both models sequentially using existing cached checkpoints and own indexes. Independently compare new zh/en baseline ranks to historical results; do not alter inputs or weight after results.
+- [x] Verify tests, commit implementation/protocol, save a pre-run freeze of data/protocol/code/index hashes. Review's score-stability finding fixed with4RED→GREEN tests;186offlinepassed; frozen atcf4647a.
+- [x] Run both models sequentially using existing cached checkpoints and own indexes. All16historicalsingle-language ranks permodelmatch, scoreerror<=2.98e-8;480warmmeasurementsstable, no input/weight changes.
 
 ## Task3: Analysis, reporting and publication
 
-- [ ] Inspect the three Chinese regressions, preserve rank evidence, English controls, visual/source boundaries and uncertainty about causes.
-- [ ] Report all eight intents and strategies, AP/Recall changes and per-query latency p50/p95. Check if fusion beats Chinese-only and whether English-only is already better.
-- [ ] Save tracked summary/report, reproducible commands, local Top-K review and updated improvements/README. Keep the previous experiment intact.
-- [ ] Independent read-only code/results audit, full offline tests/lint, clean-clone check, push to the existing private repo and verify CI.
+- [x] Inspect the three Chinese regressions, preserve rank evidence, English controls, visual/source boundaries and uncertainty about causes.
+- [x] Report all eight intents and strategies, AP/Recall changes and per-query latency p50/p95. English-onlySo400m remainsbetterthan fusion;Basefusioni04/i07regressionsdocumented.
+- [x] Save tracked summary/report, reproducible commands, local Top-K review and updated improvements/README. Keep the previous experiment intact.
+- [x] Independent read-only code/results audit and full offline tests/lint:186passed,2integrationdeselected; raw-output provenance hashes preserved.
+
+Release verification follows the final commit's clean-clone check and GitHub Actions record; publish to the existing private repository after those checks. The delivery message links the completed result.
