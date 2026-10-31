@@ -33,9 +33,9 @@
 
 **Interfaces:** `load_rgb(path) -> PIL.Image.Image`; `scan_images(root) -> list[ImageRecord]`, where each record contains relative path, file hash, pixel hash, and aliases.
 
-- [ ] Write tests for RGB/EXIF/alpha behavior, exact-pixel deduplication, empty input and bad image errors; run RED.
-- [ ] Implement the preprocessing and deterministic scan; run GREEN.
-- [ ] Install the package into a local environment and retain a reproducible dependency lock.
+- [x] Write tests for RGB/EXIF/alpha behavior, exact-pixel deduplication, empty input and bad image errors; run RED.
+- [x] Implement the preprocessing and deterministic scan; run GREEN.
+- [x] Install the package into a local environment and retain a reproducible dependency lock.
 
 ## Task 2 Encoder and index
 
@@ -43,9 +43,9 @@
 
 **Interfaces:** `SigLIPEmbedder(model_id=DEFAULT_MODEL, revision=None, device='auto', local_files_only=False)`; `encode_images`, `encode_texts`, `identity`. `ImageIndex(vectors, records, model_identity, image_root)`; `save`, `load`, `assert_compatible`, `search`.
 
-- [ ] Write failing tests for normalized matrix outputs, pooled-output adaptation, identity mismatch, ranking, exclusions and persistence errors.
-- [ ] Implement pretrained loading with pinned revision, robust feature extraction and finite/shape checks.
-- [ ] Implement exact search and safe single-file persistence; run all relevant tests.
+- [x] Write failing tests for normalized matrix outputs, pooled-output adaptation, identity mismatch, ranking, exclusions and persistence errors.
+- [x] Implement pretrained loading with pinned revision, robust feature extraction and finite/shape checks.
+- [x] Implement exact search and safe single-file persistence; run all relevant tests.
 
 ## Task 3 CLI and training backup
 
@@ -53,15 +53,15 @@
 
 **Interfaces:** `siglip-tools index/embed-images`, `search-text`, `search-image`, `inspect`; optional training JSONL `{image, text}`.
 
-- [ ] Write failing tests for argument errors and training manifest/loss behavior; implement and run GREEN.
-- [ ] Preserve existing root loss demo and tests; no training is executed.
-- [ ] Run the real model against the user's two original images, save local-only outputs and capture latency/rankings.
+- [x] Write failing tests for argument errors and training manifest/loss behavior; implement and run GREEN.
+- [x] Preserve existing root loss demo and tests; no training is executed.
+- [x] Run the real model against the user's two original images and added runtime image, save local-only outputs and capture latency/rankings.
 
 ## Task 4 Documentation and GitHub delivery
 
 **Files:** `README.md`, `docs/models.md`, `docs/improvements.md`, `docs/data-assessment.md`, CI workflow, `.gitignore`.
 
-- [ ] Document API/CLI commands, cache/device behavior, model identity guarantees, dataset limitations and acceptance criteria for improvements.
+- [x] Document API/CLI commands, cache/device behavior, model identity guarantees, dataset limitations and acceptance criteria for improvements.
 - [ ] Run full pytest, existing unittest demo, lint, packaging and clean-clone checks.
 - [ ] Dispatch a fresh read-only whole-repository reviewer; address correctness findings with regression tests.
 - [ ] Commit and push a private repository using the authenticated GitHub account; verify its default branch and privacy.

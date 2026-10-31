@@ -21,9 +21,9 @@
 
 ## 数据与验证
 
-用户指定 `/Users/caochao/Documents/2Dto3D/data/`。其 runtime 中 10 张 JPG 仅有 2 种文件内容和 RGB 像素内容，分别重复 8 次、2 次。原图位于同项目 `photos/string_inverters/`，共两张，来源许可与实物关系未确认，不能从文件名推断型号。
+用户指定 `/Users/caochao/Documents/2Dto3D/data/`。首次 runtime 中 10 张 JPG 仅有 2 种文件内容和 RGB 像素内容，分别重复 8 次、2 次；实现期间新增一张室内设备图，复核为 11 张 JPG、3 种内容。原图位于同项目 `photos/string_inverters/`，共两张，来源许可与实物关系未确认，不能从文件名推断型号。
 
-仅用两张原图检查真实模型能否编码、建库、文字查询和图片查询；记录原始排名与耗时，不据此宣称检索准确率。数据、权重、向量、训练输出和本机报告保存在 Git 忽略目录，不上传原图。补充数据和标注需求写入 `docs/data-assessment.md` 与 `docs/improvements.md`。
+用两张原图检查真实模型能否编码、建库、文字查询和图片查询，并在 runtime 三种内容上补充去重和场景查询；记录原始排名与耗时，不据此宣称检索准确率。数据、权重、向量、训练输出和本机报告保存在 Git 忽略目录，不上传原图。补充数据和标注需求写入 `docs/data-assessment.md` 与 `docs/improvements.md`。
 
 ## 验收
 
