@@ -1,0 +1,62 @@
+{
+  "experiment_id": "equipment-bilingual-fusion-v1",
+  "frozen_at_utc": "2026-10-31T20:08:42.515207+00:00",
+  "dataset_id": "commons-equipment-pilot-v1",
+  "dataset_hashes": {
+    "manifest": "3487fdf62b90971619ec098b2ec5bbad00e5af2d22ec9183d258bc1a24916975",
+    "queries": "b29fe8b26c8618c38b0154871b1a288179e0e2be2e7686e07a2d958ebe15556f",
+    "qrels": "119bc4cbc7aecf9c57c3170a694c41132cf41daca091c325fb667af9b994ef52"
+  },
+  "strategies": {
+    "zh": {
+      "languages": [
+        "zh"
+      ],
+      "weights": [
+        1.0
+      ]
+    },
+    "en": {
+      "languages": [
+        "en"
+      ],
+      "weights": [
+        1.0
+      ]
+    },
+    "fusion": {
+      "languages": [
+        "zh",
+        "en"
+      ],
+      "weights": [
+        0.5,
+        0.5
+      ]
+    }
+  },
+  "device": "mps",
+  "dtype": "float32",
+  "query_warmup": 3,
+  "query_repeats": 10,
+  "query_batch_sizes": {
+    "zh": 1,
+    "en": 1,
+    "fusion": 2
+  },
+  "timing_schedule": "Rotate strategy order for each intent and round, synchronized accelerator; 80 warm samples per strategy",
+  "gallery": "Reuse each model own matched frozen image index; validate all records and image hashes",
+  "english_source": "Existing frozen manually authored English pair; no online translator; English preparation/translation excluded from latency",
+  "metric_unit": "8 intents, one ranking per strategy per intent; do not treat16bilingualstrings as16independenttasks",
+  "method": "Average cosine scores with equal language weights, without renormalizing the weighted query vector",
+  "exploratory": true,
+  "weight_tuning": false,
+  "training": false,
+  "limitations": [
+    "Same pilot already used for diagnosis; not independent validation",
+    "AI-assisted labels and English pairs, not independent human ground truth",
+    "Capacity and native image resolution both differ"
+  ],
+  "score_atol": 1e-05,
+  "score_stability": "Reject any repeated/historical rank drift or max absolute cosine-score drift above1e-5 before publishing results."
+}

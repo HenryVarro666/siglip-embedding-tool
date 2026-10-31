@@ -7,6 +7,7 @@ from pathlib import Path
 from time import perf_counter
 
 from .encoder import DEFAULT_MODEL, QUALITY_MODEL, SigLIPEmbedder
+from .fusion import search_texts
 from .images import load_rgb, pixel_sha256, scan_images
 from .index import ImageIndex
 
@@ -53,6 +54,10 @@ def _parser() -> argparse.ArgumentParser:
         query.add_argument("--local-files-only", action="store_true")
         if command == "search-image":
             query.add_argument("--include-self", action="store_true")
+        else:
+            query.add_argument(
+                "--english-query", help="Supplied English query; average its cosine with --query"
+            )
         query.set_defaults(handler=_search)
 
     inspect = sub.add_parser("inspect", help="Inspect index metadata without downloading a model")
@@ -110,14 +115,23 @@ def _search(args) -> None:
     index.assert_compatible(encoder.identity)
     loaded = perf_counter()
     exclusion = None
-    if args.command == "search-text":
+    fusion = None
+    if args.command == "search-text" and args.english_query is not None:
+        matches = search_texts(index, encoder, [args.query, args.english_query], top_k=args.top_k)
+        fusion = {
+            "method": "mean_cosine",
+            "weights": [0.5, 0.5],
+            "queries": [args.query, args.english_query],
+        }
+    elif args.command == "search-text":
         vector = encoder.encode_texts([args.query])[0]
     else:
         image = load_rgb(args.image)
         vector = encoder.encode_images([image])[0]
         if not args.include_self:
             exclusion = pixel_sha256(image)
-    matches = index.search(vector, args.top_k, exclude_pixel_sha256=exclusion)
+    if fusion is None:
+        matches = index.search(vector, args.top_k, exclude_pixel_sha256=exclusion)
     image_root = args.image_root.resolve() if args.image_root else index.image_root
     _print(
         {
@@ -125,6 +139,7 @@ def _search(args) -> None:
             "index": str(args.index.resolve()),
             "fingerprint": index.fingerprint,
             "device": str(encoder.device),
+            **({"query_fusion": fusion} if fusion else {}),
             "results": [
                 {**asdict(match), "full_path": str(image_root / match.path)} for match in matches
             ],

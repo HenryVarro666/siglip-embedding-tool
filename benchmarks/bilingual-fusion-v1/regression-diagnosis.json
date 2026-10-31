@@ -1,0 +1,1163 @@
+{
+  "created_at": "2026-10-31T20:04:17.374548+00:00",
+  "method": "Pre-fusion diagnosis of frozen v1 outputs; assistant image/source inspection and independent AP recomputation, not causal ablation",
+  "source_input_hashes": [
+    {
+      "path": "benchmarks/equipment-v1/manifest.json",
+      "sha256": "3487fdf62b90971619ec098b2ec5bbad00e5af2d22ec9183d258bc1a24916975"
+    },
+    {
+      "path": "benchmarks/equipment-v1/queries.json",
+      "sha256": "b29fe8b26c8618c38b0154871b1a288179e0e2be2e7686e07a2d958ebe15556f"
+    },
+    {
+      "path": "benchmarks/equipment-v1/qrels.json",
+      "sha256": "119bc4cbc7aecf9c57c3170a694c41132cf41daca091c325fb667af9b994ef52"
+    },
+    {
+      "path": "benchmarks/equipment-v1/annotation-notes.json",
+      "sha256": "848d90801f392aa0153f42e5536939fcca36ed78a3ac0a89cde39c544611ccab"
+    },
+    {
+      "path": "benchmarks/equipment-v1/label-review.json",
+      "sha256": "0521c504ae982c5a39eeeb07caafb8bae8413ff7a54e0959a53ad4f0e57645f5"
+    },
+    {
+      "path": "artifacts/equipment-benchmark/base-v1/result.json",
+      "sha256": "e6783f486f8d099e397c03fe05a68de4bd4d14d4fc7d0d7648045225f0439c83"
+    },
+    {
+      "path": "artifacts/equipment-benchmark/quality-v1/result.json",
+      "sha256": "f23db91b37349904877b932c7060c29c10677fbf3de3838feb2cf5e183d496c1"
+    }
+  ],
+  "cases": [
+    {
+      "intent_id": "i04",
+      "query_id": "i04_zh",
+      "chinese_text": "安装在光伏板下方或背面的太阳能逆变器。",
+      "english_query_id": "i04_en",
+      "english_text": "Solar inverters installed below or behind photovoltaic panels.",
+      "summary_zh": "AP 小幅回退主要是首位被不满足空间关系的 e014 占据；大模型同时把中央逆变器 e002 从第 11 提到第 7，并压低纯光伏板背景，召回并未全面变差。",
+      "bilingual_semantics_zh": "英文 below or behind 与中文 下方或背面 对当前冻结二元规则可接受地等义。中文 背面 也可能让模型偏向设备背面/贴板安装这一词义，英文 behind 更像相对空间位置；这是可检查的语言假设，不是翻译错误的证据。",
+      "observations_zh": [
+        "正例 e006 1→2、e010 5→4、e002 11→7；R@5 保持 2/3，R@10 由 2/3 升到 3/3。AP 0.557576→0.476190，Hit@1 1→0，MRR 1→0.5。",
+        "e014 8→1、e003 10→3、e008 9→5；三者有逆变器外观，却缺少当前图片中完整的板下/板后安装证据。e006 对 e014 的余弦分数差由 +0.018069 变为 -0.001167。",
+        "纯板背景 e036 3→13、e040 4→21，说明大模型在这些干扰上反而改进；新错误更集中于正确设备类别但空间关系不足的近邻。",
+        "英文 AP 0.373016→0.809524，质量模型将 e010 排第 1、e006 第 2；e014 英文只排第 5。相同图片在英语下可被较好地区分。",
+        "AP 分解中 e006 的贡献减少 0.166667，e010 与 e002 合计补回 0.085281，净降 0.081385。"
+      ],
+      "hypotheses_zh": [
+        {
+          "hypothesis": "中文长组合查询中，模型对逆变器类别/太阳能语义的匹配强于对板下或板后空间关系的约束。",
+          "support": "正例与错误近邻同属逆变器，纯面板图被压低；英文关系查询在同一质量模型上更好。",
+          "limits": "未逐词消融，也未测注意力或独立图像/文本编码器影响，不能证明模型忽略了哪一个词。"
+        },
+        {
+          "hypothesis": "e014 的醒目黄色机壳及可见 Solar Array/PHOTOVOLTAIC 文本，可能形成比安装关系更强的匹配线索。",
+          "support": "原图可见这些外观和标签，且 e014 与正确 e006 黄色机壳相似。",
+          "limits": "没有遮字、裁图、同分辨率实验；不能断言 OCR 或 384 分辨率造成回退。"
+        }
+      ],
+      "annotation_boundary_zh": "e003 的来源明确是面板放上去之前，e014 的来源标题并不证明画面中面板空间关系。e002 在评分前已由盲审加入正例，当前诊断不改标签。",
+      "chinese_metrics": {
+        "base": {
+          "hit_at_1": 1.0,
+          "recall_at_1": 0.3333333333333333,
+          "hit_at_5": 1.0,
+          "recall_at_5": 0.6666666666666666,
+          "hit_at_10": 1.0,
+          "recall_at_10": 0.6666666666666666,
+          "mrr": 1.0,
+          "average_precision": 0.5575757575757576
+        },
+        "quality": {
+          "hit_at_1": 0.0,
+          "recall_at_1": 0.0,
+          "hit_at_5": 1.0,
+          "recall_at_5": 0.6666666666666666,
+          "hit_at_10": 1.0,
+          "recall_at_10": 1.0,
+          "mrr": 0.5,
+          "average_precision": 0.4761904761904762
+        },
+        "change_quality_minus_base": {
+          "hit_at_1": -1.0,
+          "recall_at_1": -0.3333333333333333,
+          "hit_at_5": 0.0,
+          "recall_at_5": 0.0,
+          "hit_at_10": 0.0,
+          "recall_at_10": 0.33333333333333337,
+          "mrr": -0.5,
+          "average_precision": -0.0813852813852814
+        }
+      },
+      "english_metrics": {
+        "base": {
+          "hit_at_1": 0.0,
+          "recall_at_1": 0.0,
+          "hit_at_5": 1.0,
+          "recall_at_5": 0.3333333333333333,
+          "hit_at_10": 1.0,
+          "recall_at_10": 1.0,
+          "mrr": 0.5,
+          "average_precision": 0.373015873015873
+        },
+        "quality": {
+          "hit_at_1": 1.0,
+          "recall_at_1": 0.3333333333333333,
+          "hit_at_5": 1.0,
+          "recall_at_5": 0.6666666666666666,
+          "hit_at_10": 1.0,
+          "recall_at_10": 1.0,
+          "mrr": 1.0,
+          "average_precision": 0.8095238095238094
+        },
+        "change_quality_minus_base": {
+          "hit_at_1": 1.0,
+          "recall_at_1": 0.3333333333333333,
+          "hit_at_5": 0.0,
+          "recall_at_5": 0.3333333333333333,
+          "hit_at_10": 0.0,
+          "recall_at_10": 0.0,
+          "mrr": 0.5,
+          "average_precision": 0.4365079365079364
+        }
+      },
+      "positive_deltas": {
+        "zh": [
+          {
+            "image_id": "e002",
+            "relevant": true,
+            "base_rank": 11,
+            "quality_rank": 7,
+            "rank_change_quality_minus_base": -4,
+            "base_cosine": 0.11349020898342133,
+            "quality_cosine": 0.14656877517700195,
+            "cosine_change_quality_minus_base": 0.03307856619358063,
+            "base_ap_contribution": 0.0909090909090909,
+            "quality_ap_contribution": 0.14285714285714285,
+            "ap_contribution_change": 0.05194805194805195
+          },
+          {
+            "image_id": "e006",
+            "relevant": true,
+            "base_rank": 1,
+            "quality_rank": 2,
+            "rank_change_quality_minus_base": 1,
+            "base_cosine": 0.13888917863368988,
+            "quality_cosine": 0.1648704707622528,
+            "cosine_change_quality_minus_base": 0.025981292128562927,
+            "base_ap_contribution": 0.3333333333333333,
+            "quality_ap_contribution": 0.16666666666666666,
+            "ap_contribution_change": -0.16666666666666666
+          },
+          {
+            "image_id": "e010",
+            "relevant": true,
+            "base_rank": 5,
+            "quality_rank": 4,
+            "rank_change_quality_minus_base": -1,
+            "base_cosine": 0.13193964958190918,
+            "quality_cosine": 0.15339395403862,
+            "cosine_change_quality_minus_base": 0.021454304456710815,
+            "base_ap_contribution": 0.13333333333333333,
+            "quality_ap_contribution": 0.16666666666666666,
+            "ap_contribution_change": 0.033333333333333326
+          }
+        ],
+        "en": [
+          {
+            "image_id": "e002",
+            "relevant": true,
+            "base_rank": 7,
+            "quality_rank": 7,
+            "rank_change_quality_minus_base": 0,
+            "base_cosine": 0.1497521698474884,
+            "quality_cosine": 0.15013791620731354,
+            "cosine_change_quality_minus_base": 0.0003857463598251343,
+            "base_ap_contribution": 0.09523809523809523,
+            "quality_ap_contribution": 0.14285714285714285,
+            "ap_contribution_change": 0.047619047619047616
+          },
+          {
+            "image_id": "e006",
+            "relevant": true,
+            "base_rank": 2,
+            "quality_rank": 2,
+            "rank_change_quality_minus_base": 0,
+            "base_cosine": 0.1662459820508957,
+            "quality_cosine": 0.1753925085067749,
+            "cosine_change_quality_minus_base": 0.009146526455879211,
+            "base_ap_contribution": 0.16666666666666666,
+            "quality_ap_contribution": 0.3333333333333333,
+            "ap_contribution_change": 0.16666666666666666
+          },
+          {
+            "image_id": "e010",
+            "relevant": true,
+            "base_rank": 9,
+            "quality_rank": 1,
+            "rank_change_quality_minus_base": -8,
+            "base_cosine": 0.1455681324005127,
+            "quality_cosine": 0.18089470267295837,
+            "cosine_change_quality_minus_base": 0.03532657027244568,
+            "base_ap_contribution": 0.1111111111111111,
+            "quality_ap_contribution": 0.3333333333333333,
+            "ap_contribution_change": 0.2222222222222222
+          }
+        ]
+      },
+      "critical_negative_deltas": {
+        "zh": [
+          {
+            "image_id": "e014",
+            "relevant": false,
+            "base_rank": 8,
+            "quality_rank": 1,
+            "rank_change_quality_minus_base": -7,
+            "base_cosine": 0.12082035094499588,
+            "quality_cosine": 0.1660374402999878,
+            "cosine_change_quality_minus_base": 0.04521708935499191
+          },
+          {
+            "image_id": "e003",
+            "relevant": false,
+            "base_rank": 10,
+            "quality_rank": 3,
+            "rank_change_quality_minus_base": -7,
+            "base_cosine": 0.1153310015797615,
+            "quality_cosine": 0.15550480782985687,
+            "cosine_change_quality_minus_base": 0.04017380625009537
+          },
+          {
+            "image_id": "e008",
+            "relevant": false,
+            "base_rank": 9,
+            "quality_rank": 5,
+            "rank_change_quality_minus_base": -4,
+            "base_cosine": 0.11651842296123505,
+            "quality_cosine": 0.15067839622497559,
+            "cosine_change_quality_minus_base": 0.03415997326374054
+          },
+          {
+            "image_id": "e007",
+            "relevant": false,
+            "base_rank": 2,
+            "quality_rank": 6,
+            "rank_change_quality_minus_base": 4,
+            "base_cosine": 0.1385049968957901,
+            "quality_cosine": 0.14881771802902222,
+            "cosine_change_quality_minus_base": 0.010312721133232117
+          },
+          {
+            "image_id": "e036",
+            "relevant": false,
+            "base_rank": 3,
+            "quality_rank": 13,
+            "rank_change_quality_minus_base": 10,
+            "base_cosine": 0.13422298431396484,
+            "quality_cosine": 0.13349083065986633,
+            "cosine_change_quality_minus_base": -0.0007321536540985107
+          },
+          {
+            "image_id": "e040",
+            "relevant": false,
+            "base_rank": 4,
+            "quality_rank": 21,
+            "rank_change_quality_minus_base": 17,
+            "base_cosine": 0.1324750781059265,
+            "quality_cosine": 0.1026844009757042,
+            "cosine_change_quality_minus_base": -0.02979067713022232
+          }
+        ],
+        "en": [
+          {
+            "image_id": "e014",
+            "relevant": false,
+            "base_rank": 4,
+            "quality_rank": 5,
+            "rank_change_quality_minus_base": 1,
+            "base_cosine": 0.16054309904575348,
+            "quality_cosine": 0.15284353494644165,
+            "cosine_change_quality_minus_base": -0.007699564099311829
+          },
+          {
+            "image_id": "e003",
+            "relevant": false,
+            "base_rank": 18,
+            "quality_rank": 9,
+            "rank_change_quality_minus_base": -9,
+            "base_cosine": 0.120016910135746,
+            "quality_cosine": 0.1473044753074646,
+            "cosine_change_quality_minus_base": 0.027287565171718597
+          },
+          {
+            "image_id": "e008",
+            "relevant": false,
+            "base_rank": 1,
+            "quality_rank": 4,
+            "rank_change_quality_minus_base": 3,
+            "base_cosine": 0.17035868763923645,
+            "quality_cosine": 0.15416042506694794,
+            "cosine_change_quality_minus_base": -0.016198262572288513
+          },
+          {
+            "image_id": "e007",
+            "relevant": false,
+            "base_rank": 5,
+            "quality_rank": 15,
+            "rank_change_quality_minus_base": 10,
+            "base_cosine": 0.15809474885463715,
+            "quality_cosine": 0.13073420524597168,
+            "cosine_change_quality_minus_base": -0.027360543608665466
+          },
+          {
+            "image_id": "e036",
+            "relevant": false,
+            "base_rank": 10,
+            "quality_rank": 10,
+            "rank_change_quality_minus_base": 0,
+            "base_cosine": 0.14331591129302979,
+            "quality_cosine": 0.14134427905082703,
+            "cosine_change_quality_minus_base": -0.001971632242202759
+          },
+          {
+            "image_id": "e040",
+            "relevant": false,
+            "base_rank": 13,
+            "quality_rank": 34,
+            "rank_change_quality_minus_base": 21,
+            "base_cosine": 0.13360370695590973,
+            "quality_cosine": 0.07978647947311401,
+            "cosine_change_quality_minus_base": -0.053817227482795715
+          }
+        ]
+      },
+      "within_query_margins": [
+        {
+          "positive_image_id": "e006",
+          "negative_image_id": "e014",
+          "definition": "cosine(positive) - cosine(negative); 正数表示该模型/查询将正例排在此负例之前",
+          "zh": {
+            "base": 0.018068827688694,
+            "quality": -0.0011669695377349854
+          },
+          "en": {
+            "base": 0.005702883005142212,
+            "quality": 0.022548973560333252
+          }
+        },
+        {
+          "positive_image_id": "e010",
+          "negative_image_id": "e003",
+          "definition": "cosine(positive) - cosine(negative); 正数表示该模型/查询将正例排在此负例之前",
+          "zh": {
+            "base": 0.016608648002147675,
+            "quality": -0.0021108537912368774
+          },
+          "en": {
+            "base": 0.025551222264766693,
+            "quality": 0.033590227365493774
+          }
+        }
+      ]
+    },
+    {
+      "intent_id": "i05",
+      "query_id": "i05_zh",
+      "chinese_text": "打开柜门后能看到接线的电气配电柜或控制柜。",
+      "english_query_id": "i05_en",
+      "english_text": "An open electrical distribution or control cabinet with visible wiring.",
+      "summary_zh": "首位仍是正确控制柜，主要损失是一个明确开门配电柜 e018 从第 4 跌到第 11，以及闭合 UPS 柜 e031 提到第 2；错误发生在设备类别和开门配线属性的联合区分。",
+      "bilingual_semantics_zh": "英文 open cabinet with visible wiring 与中文 打开柜门后能看到接线 整体等义。中文更突出开门动作，冻结标注实际接受已裸露内部、门扇不入镜的裁图。e018 明明有门且配线可见却仍降级，故不能把全部回退归因于这处措辞边界。",
+      "observations_zh": [
+        "AP 0.683333→0.610909；Hit@1=1、MRR=1、R@5=0.6 均不变，R@10 1→0.8。",
+        "正例 e015 1→1、e019 3→4、e018 4→11、e022 8→5、e017 10→8；并非所有正例下降。",
+        "负例 e031 6→2、e002 9→6、e012 11→9、e023 12→10；e031 是闭合 UPS 柜，e002 是闭合中央逆变器，e012 是打开的逆变器，e023 是户外变压器外罩。开柜与控制/配电类别中的任一项接近都可能形成干扰。",
+        "e018 相对 e031 的余弦差由 +0.004072 变为 -0.034779；英文质量模型为 +0.057838。",
+        "英文两模型 AP 都为 1，质量模型 5 张正例恰占前 5：e017/e015/e022/e018/e019；同一个 e018 英文第 4、中文第 11，同一个 e031 英文第 10、中文第 2。",
+        "AP 贡献下降来自 e018 -0.059091 和 e019 -0.033333，e022 补回 +0.020000，净降 0.072424。e017 排名改善但其 AP 贡献不变。"
+      ],
+      "hypotheses_zh": [
+        {
+          "hypothesis": "中文表示电气配电柜/控制柜的组合语义，对大柜形态或机房场景的吸引强于内部配线和设备用途的联合条件。",
+          "support": "闭合 UPS 柜 e031 高排，而英语仍将所有开配电/控制内部排在前五；e015 的完整开门工业控制柜保住第 1。",
+          "limits": "不能从整句排序推断具体哪个中文词的向量失效；e031 的分数绝对值其实下降，只是相对正例跌幅更小。"
+        },
+        {
+          "hypothesis": "电气内部照片的构图差异可能与中文表达产生交互：e018 有墙体、门扇和较多空白背景，e017/e022 是内部近裁。",
+          "support": "e018 是主要受损正例，e017/e022 排名改善。",
+          "limits": "e015 同样是长柜和明显门扇而表现稳定，且英文仍正确；构图不能单独解释回退，未做裁图对照。"
+        }
+      ],
+      "annotation_boundary_zh": "e017/e019/e022 没有完整柜门入镜仍按裸露内部规则为正例；e018 无此边界争议。e031 顶部外部管线不等于开柜后的内部接线。",
+      "chinese_metrics": {
+        "base": {
+          "hit_at_1": 1.0,
+          "recall_at_1": 0.2,
+          "hit_at_5": 1.0,
+          "recall_at_5": 0.6,
+          "hit_at_10": 1.0,
+          "recall_at_10": 1.0,
+          "mrr": 1.0,
+          "average_precision": 0.6833333333333333
+        },
+        "quality": {
+          "hit_at_1": 1.0,
+          "recall_at_1": 0.2,
+          "hit_at_5": 1.0,
+          "recall_at_5": 0.6,
+          "hit_at_10": 1.0,
+          "recall_at_10": 0.8,
+          "mrr": 1.0,
+          "average_precision": 0.610909090909091
+        },
+        "change_quality_minus_base": {
+          "hit_at_1": 0.0,
+          "recall_at_1": 0.0,
+          "hit_at_5": 0.0,
+          "recall_at_5": 0.0,
+          "hit_at_10": 0.0,
+          "recall_at_10": -0.19999999999999996,
+          "mrr": 0.0,
+          "average_precision": -0.07242424242424239
+        }
+      },
+      "english_metrics": {
+        "base": {
+          "hit_at_1": 1.0,
+          "recall_at_1": 0.2,
+          "hit_at_5": 1.0,
+          "recall_at_5": 1.0,
+          "hit_at_10": 1.0,
+          "recall_at_10": 1.0,
+          "mrr": 1.0,
+          "average_precision": 1.0
+        },
+        "quality": {
+          "hit_at_1": 1.0,
+          "recall_at_1": 0.2,
+          "hit_at_5": 1.0,
+          "recall_at_5": 1.0,
+          "hit_at_10": 1.0,
+          "recall_at_10": 1.0,
+          "mrr": 1.0,
+          "average_precision": 1.0
+        },
+        "change_quality_minus_base": {
+          "hit_at_1": 0.0,
+          "recall_at_1": 0.0,
+          "hit_at_5": 0.0,
+          "recall_at_5": 0.0,
+          "hit_at_10": 0.0,
+          "recall_at_10": 0.0,
+          "mrr": 0.0,
+          "average_precision": 0.0
+        }
+      },
+      "positive_deltas": {
+        "zh": [
+          {
+            "image_id": "e015",
+            "relevant": true,
+            "base_rank": 1,
+            "quality_rank": 1,
+            "rank_change_quality_minus_base": 0,
+            "base_cosine": 0.15638530254364014,
+            "quality_cosine": 0.14842554926872253,
+            "cosine_change_quality_minus_base": -0.007959753274917603,
+            "base_ap_contribution": 0.2,
+            "quality_ap_contribution": 0.2,
+            "ap_contribution_change": 0.0
+          },
+          {
+            "image_id": "e017",
+            "relevant": true,
+            "base_rank": 10,
+            "quality_rank": 8,
+            "rank_change_quality_minus_base": -2,
+            "base_cosine": 0.11697709560394287,
+            "quality_cosine": 0.09708765894174576,
+            "cosine_change_quality_minus_base": -0.019889436662197113,
+            "base_ap_contribution": 0.1,
+            "quality_ap_contribution": 0.1,
+            "ap_contribution_change": 0.0
+          },
+          {
+            "image_id": "e018",
+            "relevant": true,
+            "base_rank": 4,
+            "quality_rank": 11,
+            "rank_change_quality_minus_base": 7,
+            "base_cosine": 0.13698363304138184,
+            "quality_cosine": 0.0923590287566185,
+            "cosine_change_quality_minus_base": -0.044624604284763336,
+            "base_ap_contribution": 0.15,
+            "quality_ap_contribution": 0.09090909090909091,
+            "ap_contribution_change": -0.05909090909090908
+          },
+          {
+            "image_id": "e019",
+            "relevant": true,
+            "base_rank": 3,
+            "quality_rank": 4,
+            "rank_change_quality_minus_base": 1,
+            "base_cosine": 0.14036588370800018,
+            "quality_cosine": 0.12208744138479233,
+            "cosine_change_quality_minus_base": -0.018278442323207855,
+            "base_ap_contribution": 0.13333333333333333,
+            "quality_ap_contribution": 0.1,
+            "ap_contribution_change": -0.033333333333333326
+          },
+          {
+            "image_id": "e022",
+            "relevant": true,
+            "base_rank": 8,
+            "quality_rank": 5,
+            "rank_change_quality_minus_base": -3,
+            "base_cosine": 0.13080726563930511,
+            "quality_cosine": 0.11388380080461502,
+            "cosine_change_quality_minus_base": -0.016923464834690094,
+            "base_ap_contribution": 0.1,
+            "quality_ap_contribution": 0.12,
+            "ap_contribution_change": 0.01999999999999999
+          }
+        ],
+        "en": [
+          {
+            "image_id": "e015",
+            "relevant": true,
+            "base_rank": 1,
+            "quality_rank": 2,
+            "rank_change_quality_minus_base": 1,
+            "base_cosine": 0.1604601889848709,
+            "quality_cosine": 0.13893257081508636,
+            "cosine_change_quality_minus_base": -0.021527618169784546,
+            "base_ap_contribution": 0.2,
+            "quality_ap_contribution": 0.2,
+            "ap_contribution_change": 0.0
+          },
+          {
+            "image_id": "e017",
+            "relevant": true,
+            "base_rank": 5,
+            "quality_rank": 1,
+            "rank_change_quality_minus_base": -4,
+            "base_cosine": 0.13187332451343536,
+            "quality_cosine": 0.14394348859786987,
+            "cosine_change_quality_minus_base": 0.01207016408443451,
+            "base_ap_contribution": 0.2,
+            "quality_ap_contribution": 0.2,
+            "ap_contribution_change": 0.0
+          },
+          {
+            "image_id": "e018",
+            "relevant": true,
+            "base_rank": 3,
+            "quality_rank": 4,
+            "rank_change_quality_minus_base": 1,
+            "base_cosine": 0.14816725254058838,
+            "quality_cosine": 0.12134796380996704,
+            "cosine_change_quality_minus_base": -0.026819288730621338,
+            "base_ap_contribution": 0.2,
+            "quality_ap_contribution": 0.2,
+            "ap_contribution_change": 0.0
+          },
+          {
+            "image_id": "e019",
+            "relevant": true,
+            "base_rank": 2,
+            "quality_rank": 5,
+            "rank_change_quality_minus_base": 3,
+            "base_cosine": 0.15694580972194672,
+            "quality_cosine": 0.11529214680194855,
+            "cosine_change_quality_minus_base": -0.04165366291999817,
+            "base_ap_contribution": 0.2,
+            "quality_ap_contribution": 0.2,
+            "ap_contribution_change": 0.0
+          },
+          {
+            "image_id": "e022",
+            "relevant": true,
+            "base_rank": 4,
+            "quality_rank": 3,
+            "rank_change_quality_minus_base": -1,
+            "base_cosine": 0.1429082602262497,
+            "quality_cosine": 0.1263847053050995,
+            "cosine_change_quality_minus_base": -0.016523554921150208,
+            "base_ap_contribution": 0.2,
+            "quality_ap_contribution": 0.2,
+            "ap_contribution_change": 0.0
+          }
+        ]
+      },
+      "critical_negative_deltas": {
+        "zh": [
+          {
+            "image_id": "e031",
+            "relevant": false,
+            "base_rank": 6,
+            "quality_rank": 2,
+            "rank_change_quality_minus_base": -4,
+            "base_cosine": 0.13291119039058685,
+            "quality_cosine": 0.12713807821273804,
+            "cosine_change_quality_minus_base": -0.005773112177848816
+          },
+          {
+            "image_id": "e021",
+            "relevant": false,
+            "base_rank": 2,
+            "quality_rank": 3,
+            "rank_change_quality_minus_base": 1,
+            "base_cosine": 0.14443352818489075,
+            "quality_cosine": 0.12682324647903442,
+            "cosine_change_quality_minus_base": -0.017610281705856323
+          },
+          {
+            "image_id": "e002",
+            "relevant": false,
+            "base_rank": 9,
+            "quality_rank": 6,
+            "rank_change_quality_minus_base": -3,
+            "base_cosine": 0.11821189522743225,
+            "quality_cosine": 0.09898831695318222,
+            "cosine_change_quality_minus_base": -0.01922357827425003
+          },
+          {
+            "image_id": "e024",
+            "relevant": false,
+            "base_rank": 5,
+            "quality_rank": 7,
+            "rank_change_quality_minus_base": 2,
+            "base_cosine": 0.13576440513134003,
+            "quality_cosine": 0.09752444922924042,
+            "cosine_change_quality_minus_base": -0.03823995590209961
+          },
+          {
+            "image_id": "e012",
+            "relevant": false,
+            "base_rank": 11,
+            "quality_rank": 9,
+            "rank_change_quality_minus_base": -2,
+            "base_cosine": 0.11399495601654053,
+            "quality_cosine": 0.09296523034572601,
+            "cosine_change_quality_minus_base": -0.021029725670814514
+          },
+          {
+            "image_id": "e023",
+            "relevant": false,
+            "base_rank": 12,
+            "quality_rank": 10,
+            "rank_change_quality_minus_base": -2,
+            "base_cosine": 0.10914468765258789,
+            "quality_cosine": 0.09292374551296234,
+            "cosine_change_quality_minus_base": -0.01622094213962555
+          }
+        ],
+        "en": [
+          {
+            "image_id": "e031",
+            "relevant": false,
+            "base_rank": 13,
+            "quality_rank": 10,
+            "rank_change_quality_minus_base": -3,
+            "base_cosine": 0.10219849646091461,
+            "quality_cosine": 0.06351003795862198,
+            "cosine_change_quality_minus_base": -0.03868845850229263
+          },
+          {
+            "image_id": "e021",
+            "relevant": false,
+            "base_rank": 6,
+            "quality_rank": 6,
+            "rank_change_quality_minus_base": 0,
+            "base_cosine": 0.13005852699279785,
+            "quality_cosine": 0.10570555925369263,
+            "cosine_change_quality_minus_base": -0.024352967739105225
+          },
+          {
+            "image_id": "e002",
+            "relevant": false,
+            "base_rank": 11,
+            "quality_rank": 13,
+            "rank_change_quality_minus_base": 2,
+            "base_cosine": 0.11018320918083191,
+            "quality_cosine": 0.05452142283320427,
+            "cosine_change_quality_minus_base": -0.05566178634762764
+          },
+          {
+            "image_id": "e024",
+            "relevant": false,
+            "base_rank": 9,
+            "quality_rank": 11,
+            "rank_change_quality_minus_base": 2,
+            "base_cosine": 0.11427218466997147,
+            "quality_cosine": 0.060079216957092285,
+            "cosine_change_quality_minus_base": -0.05419296771287918
+          },
+          {
+            "image_id": "e012",
+            "relevant": false,
+            "base_rank": 8,
+            "quality_rank": 8,
+            "rank_change_quality_minus_base": 0,
+            "base_cosine": 0.11732135713100433,
+            "quality_cosine": 0.08670492470264435,
+            "cosine_change_quality_minus_base": -0.030616432428359985
+          },
+          {
+            "image_id": "e023",
+            "relevant": false,
+            "base_rank": 27,
+            "quality_rank": 32,
+            "rank_change_quality_minus_base": 5,
+            "base_cosine": 0.07568640261888504,
+            "quality_cosine": -0.0027997661381959915,
+            "cosine_change_quality_minus_base": -0.07848616875708103
+          }
+        ]
+      },
+      "within_query_margins": [
+        {
+          "positive_image_id": "e018",
+          "negative_image_id": "e031",
+          "definition": "cosine(positive) - cosine(negative); 正数表示该模型/查询将正例排在此负例之前",
+          "zh": {
+            "base": 0.004072442650794983,
+            "quality": -0.03477904945611954
+          },
+          "en": {
+            "base": 0.04596875607967377,
+            "quality": 0.05783792585134506
+          }
+        },
+        {
+          "positive_image_id": "e017",
+          "negative_image_id": "e021",
+          "definition": "cosine(positive) - cosine(negative); 正数表示该模型/查询将正例排在此负例之前",
+          "zh": {
+            "base": -0.027456432580947876,
+            "quality": -0.029735587537288666
+          },
+          "en": {
+            "base": 0.0018147975206375122,
+            "quality": 0.038237929344177246
+          }
+        }
+      ]
+    },
+    {
+      "intent_id": "i07",
+      "query_id": "i07_zh",
+      "chinese_text": "能看到套管或散热片的室外电力变压器。",
+      "english_query_id": "i07_en",
+      "english_text": "An outdoor power transformer with visible bushings or cooling fins.",
+      "summary_zh": "这是三者中最大的 AP 回退。大模型找到了圆筒近景 e028，但将其余多张有套管/散热片的变压器排在逆变站、配电内景和封闭变压器外罩之后，中文排序的设备/属性混淆明显扩大。",
+      "bilingual_semantics_zh": "英文 bushings or cooling fins 与中文 套管或散热片 在电力变压器语境下可接受地等义。套管 有普通管件义，散热片 也广见于其他电气设备，可能给通用电气部件带来语义竞争；尚无查询改写或词级验证，不能把这种多义性当成已证实原因。",
+      "observations_zh": [
+        "AP 0.778333→0.523290；Hit@1 与 MRR 仍为 1，R@5 0.6→0.2，R@10 1→0.8。仅看首位命中会掩盖退步。",
+        "正例 e028 6→1，但 e027 1→6、e026 2→10、e029 5→7、e025 8→11。",
+        "错误近邻 e013 29→3（0.079316→0.118595）和 e019 11→4（0.100705→0.114980）尤其突出。前者来源是光伏逆变站，后者是开配电盘，不是满足此查询的室外变压器。",
+        "来源确认为变压器的 e023 3→2、e024 4→5 仍处高位，但原图只见通风外罩，没有裸露套管或变压器散热器片。其余负例 e021 9→8、e031 12→9 也越过部分正例。",
+        "e026 对 e013 的余弦差由 +0.064119 反转到 -0.024409；e027 对 e023 由 +0.006786 反转到 -0.016709。",
+        "英文 AP 0.686190→0.876667，质量模型中正例在 1/2/4/5/6，e013 第 10、e019 第 9、e023 第 7；说明并非这些图片的可见属性在大模型中一概无法识别。英文仍把 e024 排第 3，严格属性混淆并不只存在中文。",
+        "AP 分解中 e027 -0.133333、e026 -0.120000 是主要损失，e029 -0.034286、e025 -0.034091，e028 +0.066667 只补回一部分，净降 0.255043。"
+      ],
+      "hypotheses_zh": [
+        {
+          "hypothesis": "中文电力变压器 + 套管/散热片 的组合表示，对通用电气柜/站房的区分弱于对应英文。",
+          "support": "英文在相同图库和质量图像编码下将 5 个正例放在前六，中文却把非变压器的 e013/e019 大幅前移。",
+          "limits": "没有隔离文本编码器、tokenization 或预训练来源；不能断言是中文训练数据不足。"
+        },
+        {
+          "hypothesis": "大模型在中文下更偏好近景典型圆筒变压器 e028，宽景/复杂背景目标 e025/e026 以及带围栏 e027 的匹配受损。",
+          "support": "e028 从 6→1，e025/e026/e027 均下降；原图构图确有差异。",
+          "limits": "e027 目标及属性实际很大且清楚，e029 散热片同样明显仍下降；复杂背景或分辨率不是充分解释。"
+        },
+        {
+          "hypothesis": "通风百叶与散热片的外观相似，以及“变压器”设备大类正确但可见属性不足，形成严格标注的难负例。",
+          "support": "e023/e024 来源为变压器、表面均有重复条状结构；它们在两种语言/模型中都曾处高位。",
+          "limits": "e013/e019 的新错误说明回退不只是百叶/散热片混淆；未做区域遮挡或属性删词实验。"
+        }
+      ],
+      "annotation_boundary_zh": "保留评分前冻结的严格可见属性规则。e023/e024 是变压器类的真实来源，但查询还要求可见套管或散热片；e013 的设备功能仅从来源确认，不能因白色外罩/栏杆相似就认作变压器。",
+      "chinese_metrics": {
+        "base": {
+          "hit_at_1": 1.0,
+          "recall_at_1": 0.2,
+          "hit_at_5": 1.0,
+          "recall_at_5": 0.6,
+          "hit_at_10": 1.0,
+          "recall_at_10": 1.0,
+          "mrr": 1.0,
+          "average_precision": 0.7783333333333333
+        },
+        "quality": {
+          "hit_at_1": 1.0,
+          "recall_at_1": 0.2,
+          "hit_at_5": 1.0,
+          "recall_at_5": 0.2,
+          "hit_at_10": 1.0,
+          "recall_at_10": 0.8,
+          "mrr": 1.0,
+          "average_precision": 0.5232900432900432
+        },
+        "change_quality_minus_base": {
+          "hit_at_1": 0.0,
+          "recall_at_1": 0.0,
+          "hit_at_5": 0.0,
+          "recall_at_5": -0.39999999999999997,
+          "hit_at_10": 0.0,
+          "recall_at_10": -0.19999999999999996,
+          "mrr": 0.0,
+          "average_precision": -0.25504329004329007
+        }
+      },
+      "english_metrics": {
+        "base": {
+          "hit_at_1": 0.0,
+          "recall_at_1": 0.0,
+          "hit_at_5": 1.0,
+          "recall_at_5": 0.8,
+          "hit_at_10": 1.0,
+          "recall_at_10": 1.0,
+          "mrr": 0.5,
+          "average_precision": 0.6861904761904762
+        },
+        "quality": {
+          "hit_at_1": 1.0,
+          "recall_at_1": 0.2,
+          "hit_at_5": 1.0,
+          "recall_at_5": 0.8,
+          "hit_at_10": 1.0,
+          "recall_at_10": 1.0,
+          "mrr": 1.0,
+          "average_precision": 0.8766666666666667
+        },
+        "change_quality_minus_base": {
+          "hit_at_1": 1.0,
+          "recall_at_1": 0.2,
+          "hit_at_5": 0.0,
+          "recall_at_5": 0.0,
+          "hit_at_10": 0.0,
+          "recall_at_10": 0.0,
+          "mrr": 0.5,
+          "average_precision": 0.19047619047619047
+        }
+      },
+      "positive_deltas": {
+        "zh": [
+          {
+            "image_id": "e025",
+            "relevant": true,
+            "base_rank": 8,
+            "quality_rank": 11,
+            "rank_change_quality_minus_base": 3,
+            "base_cosine": 0.12313669919967651,
+            "quality_cosine": 0.0937289446592331,
+            "cosine_change_quality_minus_base": -0.02940775454044342,
+            "base_ap_contribution": 0.125,
+            "quality_ap_contribution": 0.09090909090909091,
+            "ap_contribution_change": -0.03409090909090909
+          },
+          {
+            "image_id": "e026",
+            "relevant": true,
+            "base_rank": 2,
+            "quality_rank": 10,
+            "rank_change_quality_minus_base": 8,
+            "base_cosine": 0.14343523979187012,
+            "quality_cosine": 0.09418625384569168,
+            "cosine_change_quality_minus_base": -0.049248985946178436,
+            "base_ap_contribution": 0.2,
+            "quality_ap_contribution": 0.08,
+            "ap_contribution_change": -0.12000000000000001
+          },
+          {
+            "image_id": "e027",
+            "relevant": true,
+            "base_rank": 1,
+            "quality_rank": 6,
+            "rank_change_quality_minus_base": 5,
+            "base_cosine": 0.14694808423519135,
+            "quality_cosine": 0.1094248816370964,
+            "cosine_change_quality_minus_base": -0.03752320259809494,
+            "base_ap_contribution": 0.2,
+            "quality_ap_contribution": 0.06666666666666667,
+            "ap_contribution_change": -0.13333333333333336
+          },
+          {
+            "image_id": "e028",
+            "relevant": true,
+            "base_rank": 6,
+            "quality_rank": 1,
+            "rank_change_quality_minus_base": -5,
+            "base_cosine": 0.13091330230236053,
+            "quality_cosine": 0.13930851221084595,
+            "cosine_change_quality_minus_base": 0.008395209908485413,
+            "base_ap_contribution": 0.13333333333333333,
+            "quality_ap_contribution": 0.2,
+            "ap_contribution_change": 0.06666666666666668
+          },
+          {
+            "image_id": "e029",
+            "relevant": true,
+            "base_rank": 5,
+            "quality_rank": 7,
+            "rank_change_quality_minus_base": 2,
+            "base_cosine": 0.1334213763475418,
+            "quality_cosine": 0.10590557008981705,
+            "cosine_change_quality_minus_base": -0.027515806257724762,
+            "base_ap_contribution": 0.12,
+            "quality_ap_contribution": 0.08571428571428572,
+            "ap_contribution_change": -0.03428571428571428
+          }
+        ],
+        "en": [
+          {
+            "image_id": "e025",
+            "relevant": true,
+            "base_rank": 7,
+            "quality_rank": 5,
+            "rank_change_quality_minus_base": -2,
+            "base_cosine": 0.15022054314613342,
+            "quality_cosine": 0.13976076245307922,
+            "cosine_change_quality_minus_base": -0.0104597806930542,
+            "base_ap_contribution": 0.14285714285714285,
+            "quality_ap_contribution": 0.16,
+            "ap_contribution_change": 0.017142857142857154
+          },
+          {
+            "image_id": "e026",
+            "relevant": true,
+            "base_rank": 4,
+            "quality_rank": 6,
+            "rank_change_quality_minus_base": 2,
+            "base_cosine": 0.16501957178115845,
+            "quality_cosine": 0.13735558092594147,
+            "cosine_change_quality_minus_base": -0.02766399085521698,
+            "base_ap_contribution": 0.15,
+            "quality_ap_contribution": 0.16666666666666669,
+            "ap_contribution_change": 0.01666666666666669
+          },
+          {
+            "image_id": "e027",
+            "relevant": true,
+            "base_rank": 3,
+            "quality_rank": 4,
+            "rank_change_quality_minus_base": 1,
+            "base_cosine": 0.1734626293182373,
+            "quality_cosine": 0.1663781851530075,
+            "cosine_change_quality_minus_base": -0.007084444165229797,
+            "base_ap_contribution": 0.13333333333333333,
+            "quality_ap_contribution": 0.15,
+            "ap_contribution_change": 0.016666666666666663
+          },
+          {
+            "image_id": "e028",
+            "relevant": true,
+            "base_rank": 5,
+            "quality_rank": 1,
+            "rank_change_quality_minus_base": -4,
+            "base_cosine": 0.16252633929252625,
+            "quality_cosine": 0.18134430050849915,
+            "cosine_change_quality_minus_base": 0.0188179612159729,
+            "base_ap_contribution": 0.16,
+            "quality_ap_contribution": 0.2,
+            "ap_contribution_change": 0.04000000000000001
+          },
+          {
+            "image_id": "e029",
+            "relevant": true,
+            "base_rank": 2,
+            "quality_rank": 2,
+            "rank_change_quality_minus_base": 0,
+            "base_cosine": 0.1746179759502411,
+            "quality_cosine": 0.1748015284538269,
+            "cosine_change_quality_minus_base": 0.00018355250358581543,
+            "base_ap_contribution": 0.1,
+            "quality_ap_contribution": 0.2,
+            "ap_contribution_change": 0.1
+          }
+        ]
+      },
+      "critical_negative_deltas": {
+        "zh": [
+          {
+            "image_id": "e013",
+            "relevant": false,
+            "base_rank": 29,
+            "quality_rank": 3,
+            "rank_change_quality_minus_base": -26,
+            "base_cosine": 0.0793159231543541,
+            "quality_cosine": 0.11859548091888428,
+            "cosine_change_quality_minus_base": 0.03927955776453018
+          },
+          {
+            "image_id": "e019",
+            "relevant": false,
+            "base_rank": 11,
+            "quality_rank": 4,
+            "rank_change_quality_minus_base": -7,
+            "base_cosine": 0.10070474445819855,
+            "quality_cosine": 0.11497955024242401,
+            "cosine_change_quality_minus_base": 0.014274805784225464
+          },
+          {
+            "image_id": "e023",
+            "relevant": false,
+            "base_rank": 3,
+            "quality_rank": 2,
+            "rank_change_quality_minus_base": -1,
+            "base_cosine": 0.14016197621822357,
+            "quality_cosine": 0.12613359093666077,
+            "cosine_change_quality_minus_base": -0.014028385281562805
+          },
+          {
+            "image_id": "e024",
+            "relevant": false,
+            "base_rank": 4,
+            "quality_rank": 5,
+            "rank_change_quality_minus_base": 1,
+            "base_cosine": 0.1396550089120865,
+            "quality_cosine": 0.11346316337585449,
+            "cosine_change_quality_minus_base": -0.026191845536231995
+          },
+          {
+            "image_id": "e021",
+            "relevant": false,
+            "base_rank": 9,
+            "quality_rank": 8,
+            "rank_change_quality_minus_base": -1,
+            "base_cosine": 0.11297109723091125,
+            "quality_cosine": 0.09775374084711075,
+            "cosine_change_quality_minus_base": -0.015217356383800507
+          },
+          {
+            "image_id": "e031",
+            "relevant": false,
+            "base_rank": 12,
+            "quality_rank": 9,
+            "rank_change_quality_minus_base": -3,
+            "base_cosine": 0.100018210709095,
+            "quality_cosine": 0.095469631254673,
+            "cosine_change_quality_minus_base": -0.004548579454421997
+          }
+        ],
+        "en": [
+          {
+            "image_id": "e013",
+            "relevant": false,
+            "base_rank": 26,
+            "quality_rank": 10,
+            "rank_change_quality_minus_base": -16,
+            "base_cosine": 0.08359583467245102,
+            "quality_cosine": 0.09195047616958618,
+            "cosine_change_quality_minus_base": 0.008354641497135162
+          },
+          {
+            "image_id": "e019",
+            "relevant": false,
+            "base_rank": 15,
+            "quality_rank": 9,
+            "rank_change_quality_minus_base": -6,
+            "base_cosine": 0.10415545850992203,
+            "quality_cosine": 0.10776281356811523,
+            "cosine_change_quality_minus_base": 0.003607355058193207
+          },
+          {
+            "image_id": "e023",
+            "relevant": false,
+            "base_rank": 6,
+            "quality_rank": 7,
+            "rank_change_quality_minus_base": 1,
+            "base_cosine": 0.15186302363872528,
+            "quality_cosine": 0.11722437292337418,
+            "cosine_change_quality_minus_base": -0.034638650715351105
+          },
+          {
+            "image_id": "e024",
+            "relevant": false,
+            "base_rank": 1,
+            "quality_rank": 3,
+            "rank_change_quality_minus_base": 2,
+            "base_cosine": 0.18342028558254242,
+            "quality_cosine": 0.17409846186637878,
+            "cosine_change_quality_minus_base": -0.009321823716163635
+          },
+          {
+            "image_id": "e021",
+            "relevant": false,
+            "base_rank": 16,
+            "quality_rank": 17,
+            "rank_change_quality_minus_base": 1,
+            "base_cosine": 0.10189274698495865,
+            "quality_cosine": 0.06439654529094696,
+            "cosine_change_quality_minus_base": -0.03749620169401169
+          },
+          {
+            "image_id": "e031",
+            "relevant": false,
+            "base_rank": 22,
+            "quality_rank": 25,
+            "rank_change_quality_minus_base": 3,
+            "base_cosine": 0.0881989598274231,
+            "quality_cosine": 0.049521081149578094,
+            "cosine_change_quality_minus_base": -0.038677878677845
+          }
+        ]
+      },
+      "within_query_margins": [
+        {
+          "positive_image_id": "e026",
+          "negative_image_id": "e013",
+          "definition": "cosine(positive) - cosine(negative); 正数表示该模型/查询将正例排在此负例之前",
+          "zh": {
+            "base": 0.06411931663751602,
+            "quality": -0.024409227073192596
+          },
+          "en": {
+            "base": 0.08142373710870743,
+            "quality": 0.045405104756355286
+          }
+        },
+        {
+          "positive_image_id": "e027",
+          "negative_image_id": "e023",
+          "definition": "cosine(positive) - cosine(negative); 正数表示该模型/查询将正例排在此负例之前",
+          "zh": {
+            "base": 0.0067861080169677734,
+            "quality": -0.01670870929956436
+          },
+          "en": {
+            "base": 0.021599605679512024,
+            "quality": 0.04915381222963333
+          }
+        },
+        {
+          "positive_image_id": "e025",
+          "negative_image_id": "e031",
+          "definition": "cosine(positive) - cosine(negative); 正数表示该模型/查询将正例排在此负例之前",
+          "zh": {
+            "base": 0.023118488490581512,
+            "quality": -0.0017406865954399109
+          },
+          "en": {
+            "base": 0.06202158331871033,
+            "quality": 0.09023968130350113
+          }
+        }
+      ]
+    }
+  ],
+  "limitations_zh": [
+    "容量、checkpoint、patch 大小及原生预处理分辨率同时变化：Base patch16/224 对 So400m patch14/384；没有同容量同分辨率控制实验，不能把差异归因于容量或分辨率。",
+    "本诊断只重算冻结排名并看本地原图；没有新推理、改写查询、删词、遮字、裁图、视觉区域或编码器消融。所有机制解释均是假设。",
+    "图库仅 40 张、8 个独立意图，中英使用同一组二元正例。它们不是 16 个独立测试任务，无法据这 3 个回退估计普遍中文表现或显著性。",
+    "查询和标签由助手依图像及来源编写，评分前已冻结并有第二助手盲审，但没有独立人类/电气工程专家审核。边界规则影响得分，诊断期间不据排序改标签。",
+    "来源说明有助于核对设备类别，但并非图中所有属性均能仅凭来源成立；尤其安装状态、外罩是否遮挡、配电内部与闭柜外部必须按可见属性判断。",
+    "未重新联网验证来源/许可，也未确认预训练来源重叠；不能从这些结果声称中文训练不足、数据污染、OCR、token 截断或单个训练机制已被证明。",
+    "该文件独立于后续固定双语融合结果生成，没有读取或用融合结果反向挑选上述解释。"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "experiment_id": "equipment-bilingual-fusion-v1",
+  "frozen_at_utc": "2026-10-31T20:08:42.515207+00:00",
+  "starting_git_commit": "2c5f644a7f0b4588dd1042b72bb710ba914fb0d3",
+  "dataset_hashes": {
+    "manifest": "3487fdf62b90971619ec098b2ec5bbad00e5af2d22ec9183d258bc1a24916975",
+    "queries": "b29fe8b26c8618c38b0154871b1a288179e0e2be2e7686e07a2d958ebe15556f",
+    "qrels": "119bc4cbc7aecf9c57c3170a694c41132cf41daca091c325fb667af9b994ef52"
+  },
+  "protocol_sha256": "2759a76057bdfa0d0f223a9bf8562b5af3b01be2ca31157e2c8275c0b2a5b425",
+  "implementation_sha256": "f029247d1f2b0d7ad0bd2885de2d23afc609fc512be31f5b18afd5f251d33e0b",
+  "baseline_implementation_sha256": "268d2128aa4e470e990c5b5985c34354c91fc70b4165f3449d4625890ed69532",
+  "source_indexes": {
+    "base": {
+      "path": "artifacts/equipment-benchmark/base-v1/index.npz",
+      "sha256": "05ce68f3d5128012636b22fbf05120f3bc45e1f03aa7fd4abc9b1f76fdcd92e2"
+    },
+    "quality": {
+      "path": "artifacts/equipment-benchmark/quality-v1/index.npz",
+      "sha256": "9ebe8155fbe313989d19af093029379c39f9329a5df6036cde6aee9490e8f193"
+    }
+  },
+  "historical_results": {
+    "base": {
+      "path": "artifacts/equipment-benchmark/base-v1/result.json",
+      "sha256": "e6783f486f8d099e397c03fe05a68de4bd4d14d4fc7d0d7648045225f0439c83"
+    },
+    "quality": {
+      "path": "artifacts/equipment-benchmark/quality-v1/result.json",
+      "sha256": "f23db91b37349904877b932c7060c29c10677fbf3de3838feb2cf5e183d496c1"
+    }
+  },
+  "fusion_results_existed": false,
+  "training_executed": false
+}
