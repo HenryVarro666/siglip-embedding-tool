@@ -4,8 +4,8 @@ import pytest
 import torch
 from PIL import Image
 
+from siglip_tools.finetune import read_pairs
 from siglip_tools.losses import clip_loss, siglip_loss
-from training.finetune import read_pairs
 
 
 @pytest.mark.parametrize(

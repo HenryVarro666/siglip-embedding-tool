@@ -2,7 +2,7 @@
 
 默认工具使用冻结的预训练模型。本目录只是备用入口，不由索引或检索命令自动执行；本次实现与验证没有进行训练。
 
-保留的内容包括根目录 `clip_siglip_demo.py` 的教学示例、`siglip_tools.losses` 中的两个损失函数，以及 `finetune.py` 中从预训练模型开始的最小微调流程。这里没有实现从零预训练 SigLIP，也没有实现 SigLIP 2 的完整多目标训练配方。
+保留的内容包括根目录 `clip_siglip_demo.py` 的教学示例、`siglip_tools.losses` 中的两个损失函数，以及 [包内实现](../src/siglip_tools/finetune.py) 中从预训练模型开始的最小微调流程。`training/finetune.py` 保留为兼容脚本入口。这里没有实现从零预训练 SigLIP，也没有实现 SigLIP 2 的完整多目标训练配方。
 
 ## 数据格式
 
@@ -20,6 +20,8 @@
 ```bash
 uv run python training/finetune.py --help
 ```
+
+安装后，也可以从任意工作目录调用 `python -m siglip_tools.finetune --help`，不依赖仓库根目录进入 Python 导入路径。
 
 ## 将来明确决定训练后运行
 
