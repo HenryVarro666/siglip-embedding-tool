@@ -23,6 +23,19 @@ from .index import ImageIndex
 from .translation import MAX_INPUT_TOKENS, MODEL_ID, REVISION, LocalTranslator
 
 
+def translator_spec(alias):
+    """Return the fixed loader, source, revision and default local directory."""
+    if alias == "opus":
+        return LocalTranslator, MODEL_ID, REVISION, Path("models/opus-mt-zh-en")
+    if alias == "nllb":
+        from .nllb_translation import MODEL_ID as nllb_id
+        from .nllb_translation import REVISION as nllb_revision
+        from .nllb_translation import NLLBTranslator
+
+        return NLLBTranslator, nllb_id, nllb_revision, Path("models/nllb-200-1.3B")
+    raise ValueError("Expected opus or nllb translator")
+
+
 def translator_snapshot(directory):
     files = sorted(Path(directory).rglob("*"))
     if any(p.is_symlink() for p in files):
@@ -42,7 +55,12 @@ def implementation_hash():
             "fusion": fusion_hash(),
             **{
                 name: file_sha256(root / name)
-                for name in ["translation.py", "auto_retrieval.py", "auto_benchmark.py"]
+                for name in [
+                    "translation.py",
+                    "nllb_translation.py",
+                    "auto_retrieval.py",
+                    "auto_benchmark.py",
+                ]
             },
         }
     )
@@ -54,11 +72,13 @@ def load_inputs(args):
         meta / "manifest.json", meta / "queries.json", meta / "qrels.json", args.data_root
     )
     protocol, digest = _json_snapshot(args.protocol)
+    _, translator_id, translator_revision, _ = translator_spec(getattr(args, "translator", "opus"))
     if (
         protocol["dataset_hashes"] != data["hashes"]
         or protocol["strategies"] != list(MODES)
-        or protocol["translation_model"] != MODEL_ID
-        or protocol["translation_revision"] != REVISION
+        or protocol["translation_model"] != translator_id
+        or protocol["translation_revision"] != translator_revision
+        or protocol.get("translation_backend", "opus") != getattr(args, "translator", "opus")
         or protocol["fusion_weights"] != [0.5, 0.5]
         or protocol["translation_text_cache"] is not False
         or protocol["training"] is not False
@@ -110,14 +130,16 @@ def run_benchmark(args):
     encoder_seconds = perf_counter() - started
     index.assert_compatible(encoder.identity)
     started = perf_counter()
-    translator = LocalTranslator(args.translation_dir, device=protocol["translator_device"])
+    alias = getattr(args, "translator", "opus")
+    loader, translator_id, translator_revision, default_dir = translator_spec(alias)
+    translator = loader(args.translation_dir or default_dir, device=protocol["translator_device"])
     _sync(translator.device)
     translator_seconds = perf_counter() - started
     identity = translator.identity
     translator_files = translator_snapshot(translator.model_dir)
     if (
-        identity["source_model"] != MODEL_ID
-        or identity["source_revision"] != REVISION
+        identity["source_model"] != translator_id
+        or identity["source_revision"] != translator_revision
         or identity["dtype"] != "float32"
     ):
         raise ValueError("Translator must match fixed checkpoint and dtype")
@@ -213,6 +235,7 @@ def run_benchmark(args):
         "schema_version": 1,
         "experiment_id": protocol["experiment_id"],
         "model_alias": args.model,
+        "translator_alias": alias,
         "model_identity": encoder.identity,
         "translator_identity": identity,
         "environment": _environment(encoder.device),
@@ -281,29 +304,102 @@ def compare_results(base, quality):
     }
 
 
+def compare_translators(opus, nllb):
+    """Compare translator choices while keeping the retrieval configuration fixed."""
+    for alias, result in (("opus", opus), ("nllb", nllb)):
+        _, source, revision, _ = translator_spec(alias)
+        if (
+            result["translator_alias"] != alias
+            or result["translator_identity"]["source_model"] != source
+            or result["translator_identity"]["source_revision"] != revision
+        ):
+            raise ValueError("Expected pinned OPUS and NLLB in the named slots")
+    if (
+        opus["translator_identity"]["runtime_versions"]
+        != nllb["translator_identity"]["runtime_versions"]
+    ):
+        raise ValueError("Cross-translator comparison requires the same translation runtime")
+    for key in (
+        "model_alias",
+        "model_identity",
+        "dataset_hashes",
+        "source_index_sha256",
+        "implementation_sha256",
+        "environment",
+    ):
+        if opus[key] != nllb[key]:
+            raise ValueError(f"Cross-translator comparison requires same {key}")
+    for key in (
+        "dataset_hashes",
+        "strategies",
+        "device",
+        "translator_device",
+        "dtype",
+        "query_warmup",
+        "query_repeats",
+        "source_token_limit",
+        "fusion_weights",
+        "score_atol",
+        "translation_text_cache",
+        "training",
+        "translation_generation",
+    ):
+        if opus["protocol"][key] != nllb["protocol"][key]:
+            raise ValueError(f"Cross-translator comparison requires same protocol {key}")
+    old_zh, new_zh = opus["strategies"]["zh"], nllb["strategies"]["zh"]
+    if old_zh["rankings"].keys() != new_zh["rankings"].keys():
+        raise ValueError("Chinese baseline intent sets differ")
+    for intent in old_zh["rankings"]:
+        check_ranking_and_scores(new_zh["rankings"][intent], old_zh["rankings"][intent])
+    if old_zh["metrics"] != new_zh["metrics"]:
+        raise ValueError("Chinese baseline metrics differ")
+    return {
+        "nllb_minus_opus": {
+            mode: {
+                key: nllb["strategies"][mode]["metrics"]["aggregate"][key] - value
+                for key, value in opus["strategies"][mode]["metrics"]["aggregate"].items()
+            }
+            for mode in MODES
+        },
+        "nllb_to_opus_total_p50_ratio": {
+            mode: nllb["strategies"][mode]["timing"]["total_ms"]["p50"]
+            / opus["strategies"][mode]["timing"]["total_ms"]["p50"]
+            for mode in MODES
+        },
+    }
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__)
     sub = p.add_subparsers(dest="command", required=True)
     r = sub.add_parser("run")
     r.add_argument("--model", choices=list(MODEL_REVISIONS), required=True)
+    r.add_argument("--translator", choices=("opus", "nllb"), default="opus")
+    r.add_argument("--translation-dir", type=Path)
     for name in ["index", "output"]:
         r.add_argument(f"--{name}", type=Path, required=True)
     for name, default in [
         ("metadata", "benchmarks/equipment-v1"),
         ("data-root", "data/equipment-v1"),
         ("protocol", "benchmarks/auto-translation-v1/protocol.json"),
-        ("translation-dir", "models/opus-mt-zh-en"),
     ]:
         r.add_argument(f"--{name}", type=Path, default=Path(default))
     c = sub.add_parser("compare")
     for name in ["base", "quality", "output"]:
         c.add_argument(f"--{name}", type=Path, required=True)
+    cross = sub.add_parser("compare-translators")
+    for name in ("opus", "nllb", "output"):
+        cross.add_argument(f"--{name}", type=Path, required=True)
     a = p.parse_args(argv)
     if a.command == "run":
         run_benchmark(a)
-    else:
+    elif a.command == "compare":
         _save_new(
             a.output, compare_results(_json_snapshot(a.base)[0], _json_snapshot(a.quality)[0])
+        )
+    else:
+        _save_new(
+            a.output, compare_translators(_json_snapshot(a.opus)[0], _json_snapshot(a.nllb)[0])
         )
     return 0
 

@@ -66,7 +66,8 @@ def _parser() -> argparse.ArgumentParser:
                 choices=("english", "fusion"),
                 help="Translate Chinese locally on every request, then search English or fuse",
             )
-            query.add_argument("--translation-dir", type=Path, default=Path("models/opus-mt-zh-en"))
+            query.add_argument("--translator", choices=("opus", "nllb"), default="opus")
+            query.add_argument("--translation-dir", type=Path)
         query.set_defaults(handler=_search)
 
     inspect = sub.add_parser("inspect", help="Inspect index metadata without downloading a model")
@@ -124,7 +125,16 @@ def _search(args) -> None:
     index.assert_compatible(encoder.identity)
     translator = None
     if args.command == "search-text" and args.auto_translate:
-        translator = LocalTranslator(args.translation_dir, device=str(encoder.device))
+        if args.translator == "opus":
+            translator = LocalTranslator(
+                args.translation_dir or Path("models/opus-mt-zh-en"), device=str(encoder.device)
+            )
+        else:
+            from .nllb_translation import NLLBTranslator
+
+            translator = NLLBTranslator(
+                args.translation_dir or Path("models/nllb-200-1.3B"), device=str(encoder.device)
+            )
     loaded = perf_counter()
     exclusion = None
     fusion = None
@@ -137,6 +147,7 @@ def _search(args) -> None:
         automatic = {
             "english": measured["translation"],
             "mode": mode,
+            "translator": args.translator,
             "translator_fingerprint": identity_fingerprint(translator.identity),
         }
     elif args.command == "search-text" and args.english_query is not None:

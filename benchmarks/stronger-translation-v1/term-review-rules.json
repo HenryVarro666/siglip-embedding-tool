@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "benchmark": "stronger-translation-v1",
+  "prepared_at_utc": "2026-10-31T20:46:25.929660+00:00",
+  "purpose": "Pre-output qualitative review of six terminology opportunities in unchanged Chinese equipment queries for the OPUS-MT versus NLLB-200 1.3B retrieval comparison.",
+  "reviewer_kind": "assistant_qualitative_review",
+  "authority_limit": "Vocabulary review only; not human engineering certification or electrical installation guidance.",
+  "preparation_boundary": {
+    "stronger_model_outputs_inspected": false,
+    "retrieval_results_used_to_set_rules": false,
+    "rules_or_sources_provided_to_translation_generation": false,
+    "translation_post_editing_allowed": false,
+    "query_gallery_or_qrel_changes_allowed": false
+  },
+  "frozen_query_input": {
+    "path": "benchmarks/equipment-v1/queries.json",
+    "sha256": "b29fe8b26c8618c38b0154871b1a288179e0e2be2e7686e07a2d958ebe15556f",
+    "chinese_query_count": 8,
+    "term_opportunity_count": 6,
+    "other_queries": "i05, i06 and i08 remain in retrieval evaluation but have no target-term opportunity in this rubric."
+  },
+  "label_definitions": {
+    "clear": "Explicit, unambiguous rendering of the target component in the intended equipment sense, including the micro qualifier where required.",
+    "partial": "A recognizable related or broader rendering that loses required terminology specificity; not full term credit.",
+    "incorrect": "An expressed counterpart has the wrong meaning, component, or equipment sense.",
+    "omitted": "The target concept has no expressed counterpart. Do not infer it from another component or from retrieval success."
+  },
+  "term_rubrics": {
+    "solar_inverter": {
+      "clear": "Inverter/inverters in the solar or photovoltaic context. For i01, require microinverter, micro-inverter, or an equally explicit micro inverter subtype.",
+      "partial": "A broader power/energy converter with the intended solar conversion sense. For i01, generic inverter, small inverter or compact inverter without the microinverter subtype is partial.",
+      "incorrect": "Inverse/reverse device, inverter used in an unrelated linguistic sense, or a different component such as a transformer or rectifier.",
+      "omitted": "No inverter or recognizable corresponding power-conversion concept is expressed."
+    },
+    "transformer_bushing": {
+      "clear": "Bushing/bushings or transformer bushing/bushings, with the power transformer remaining the referent.",
+      "partial": "A broader related insulating component such as transformer insulator or transformer insulating sleeve, without unambiguously retaining bushing.",
+      "incorrect": "Casing, case, enclosure, holster, or an unqualified sleeve/tube without the transformer insulating-component sense.",
+      "omitted": "No counterpart for the bushing is expressed, even if the alternative cooling-fin branch remains."
+    },
+    "transformer_cooling_fins": {
+      "clear": "Cooling fins, heat-dissipating fins, radiator fins, or equally explicit fins used for transformer cooling.",
+      "partial": "Radiator, heat sink/heatsink, cooling component, cooling plates or similar broader cooling wording without explicit fins. These are never automatically clear credit for fins.",
+      "incorrect": "An unrelated component or physical phenomenon, such as a fan or radiation alone, substituted for the fins.",
+      "omitted": "No counterpart for the cooling-fin concept is expressed, even if the alternative bushing branch remains."
+    }
+  },
+  "review_protocol": [
+    "Apply this same frozen rubric to each model output verbatim. Do not edit translations, add hints, tune wording, or inspect rankings to select a terminology label.",
+    "For each of the six opportunities, record the model, verbatim English evidence span (empty when omitted), one label, and a short rationale. Assess the intended meaning, not substring matching alone.",
+    "Record context separately as preserved, partially_preserved, contradicted, or not_assessed, with a short note using context_to_check. A clear term label alone does not establish whole-query fidelity.",
+    "In i07, judge both source concepts independently while retaining the original visible-bushings-OR-cooling-fins construction. One surviving alternative does not earn credit for the omitted alternative.",
+    "For i01, the micro qualifier belongs to the term opportunity; compact/small physical size alone does not preserve the microinverter subtype.",
+    "Summarize counts of clear, partial, incorrect and omitted out of six. Do not silently combine partial with clear or invent a numeric quality score.",
+    "When wording is ambiguous, state the ambiguity and use partial if the intended concept remains recognizable; use incorrect for the wrong expressed sense and omitted for an absent concept.",
+    "Manufacturer sources justify the vocabulary choices only. They do not certify gallery object identity, relevance labels, translation quality overall, or model superiority."
+  ],
+  "opportunities": [
+    {
+      "opportunity_id": "i01_inverter",
+      "query_id": "i01_zh",
+      "intent_id": "i01",
+      "source_text_zh": "带电气连接接口的小型太阳能微型逆变器。",
+      "source_span": "微型逆变器",
+      "rubric_id": "solar_inverter",
+      "micro_qualifier_required": true,
+      "context_to_check": [
+        "Compact/small size.",
+        "Solar context.",
+        "Electrical connection interfaces/connectors.",
+        "The microinverter subtype is explicit, not merely small physical size."
+      ],
+      "source_ids": [
+        "enphase_microinverter"
+      ]
+    },
+    {
+      "opportunity_id": "i02_inverter",
+      "query_id": "i02_zh",
+      "intent_id": "i02",
+      "source_text_zh": "安装在墙上、外壳闭合的太阳能逆变器。",
+      "source_span": "逆变器",
+      "rubric_id": "solar_inverter",
+      "micro_qualifier_required": false,
+      "context_to_check": [
+        "Solar context.",
+        "Mounted on a wall.",
+        "Casing/enclosure closed."
+      ],
+      "source_ids": [
+        "enphase_microinverter"
+      ]
+    },
+    {
+      "opportunity_id": "i03_inverter",
+      "query_id": "i03_zh",
+      "intent_id": "i03",
+      "source_text_zh": "打开外壳后露出电路板和蓝色电容的太阳能逆变器。",
+      "source_span": "逆变器",
+      "rubric_id": "solar_inverter",
+      "micro_qualifier_required": false,
+      "context_to_check": [
+        "Solar context.",
+        "Casing/enclosure open.",
+        "Circuit boards and blue capacitors exposed/visible."
+      ],
+      "source_ids": [
+        "enphase_microinverter"
+      ]
+    },
+    {
+      "opportunity_id": "i04_inverter",
+      "query_id": "i04_zh",
+      "intent_id": "i04",
+      "source_text_zh": "安装在光伏板下方或背面的太阳能逆变器。",
+      "source_span": "逆变器",
+      "rubric_id": "solar_inverter",
+      "micro_qualifier_required": false,
+      "context_to_check": [
+        "Solar/photovoltaic panel context.",
+        "Inverters located below or behind the panels; preserve the alternative relation."
+      ],
+      "source_ids": [
+        "enphase_microinverter"
+      ]
+    },
+    {
+      "opportunity_id": "i07_bushing",
+      "query_id": "i07_zh",
+      "intent_id": "i07",
+      "source_text_zh": "能看到套管或散热片的室外电力变压器。",
+      "source_span": "套管",
+      "rubric_id": "transformer_bushing",
+      "context_to_check": [
+        "Outdoor power transformer.",
+        "Bushings or cooling fins are visible; preserve visibility and the original OR rather than requiring both."
+      ],
+      "source_ids": [
+        "hitachi_bushings_zh",
+        "hitachi_bushings_en"
+      ]
+    },
+    {
+      "opportunity_id": "i07_cooling_fins",
+      "query_id": "i07_zh",
+      "intent_id": "i07",
+      "source_text_zh": "能看到套管或散热片的室外电力变压器。",
+      "source_span": "散热片",
+      "rubric_id": "transformer_cooling_fins",
+      "context_to_check": [
+        "Outdoor power transformer.",
+        "Bushings or cooling fins are visible; preserve visibility and the original OR rather than requiring both."
+      ],
+      "source_ids": [
+        "hitachi_cooling_fins"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "enphase_microinverter",
+      "manufacturer": "Enphase Energy",
+      "title": "IQ8AC Microinverter",
+      "url": "https://enphase.com/store/microinverters/iq8-series/iq8ac-microinverter",
+      "accessed_on": "2026-10-31",
+      "short_paraphrase": "Enphase names this photovoltaic conversion product a microinverter and describes PV-module connectors, supporting explicit retention of the micro qualifier."
+    },
+    {
+      "source_id": "hitachi_bushings_zh",
+      "manufacturer": "Hitachi Energy",
+      "title": "变压器套管",
+      "url": "https://www.hitachienergy.cn/cn/zh/products-and-solutions/insulation-and-components/transformer-insulation-components/transformer-bushings",
+      "accessed_on": "2026-10-31",
+      "short_paraphrase": "The Chinese manufacturer category uses 变压器套管 for an insulating transformer component, establishing the intended equipment sense of 套管."
+    },
+    {
+      "source_id": "hitachi_bushings_en",
+      "manufacturer": "Hitachi Energy",
+      "title": "GOE OIP Transformer Bushings",
+      "url": "https://www.hitachienergy.com/us/en/products-and-solutions/insulation-and-components/transformer-insulation-components/transformer-bushings/bushings-product-selection/ac-bushing-type-goe",
+      "accessed_on": "2026-10-31",
+      "short_paraphrase": "The English product page calls the component a transformer bushing and identifies its transformer application, supporting bushing rather than casing or holster."
+    },
+    {
+      "source_id": "hitachi_cooling_fins",
+      "manufacturer": "Hitachi / Hitachi Soe Electric & Machinery",
+      "title": "Transformer Related Accessories brochure, Tank Fabrication",
+      "url": "https://hitachi.asia/ice/brochures/pdf/transformer_accessories.pdf",
+      "accessed_on": "2026-10-31",
+      "locator": "Printed page 12; PDF page 14 (1-based).",
+      "short_paraphrase": "The manufacturer describes corrugated cooling fins in transformer tank fabrication alongside radiator manufacturing. The rubric conservatively distinguishes explicit fins from a broader radiator reference."
+    }
+  ]
+}
