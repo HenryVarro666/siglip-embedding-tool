@@ -64,4 +64,4 @@
 - [x] Document API/CLI commands, cache/device behavior, model identity guarantees, dataset limitations and acceptance criteria for improvements.
 - [x] Run full pytest, existing unittest demo, lint, packaging and clean-clone checks.
 - [x] Dispatch a fresh read-only whole-repository reviewer; address correctness findings with regression tests.
-- [ ] Commit and push a private repository using the authenticated GitHub account; verify its default branch and privacy.
+- [x] Commit and push a private repository using the authenticated GitHub account; verify its default branch and privacy.

@@ -27,3 +27,5 @@ Plan: `docs/implementation-plan.md`
 - No deferred review findings remain. High-level Python API now uses `ImageIndex.from_directory` for the same snapshot consistency guarantees as the CLI.
 - Clean clone from committed implementation: `uv sync --frozen --extra dev` succeeded, 67 offline tests passed with 2 integration cases deselected; lint, CLI help, original loss demo and training --help passed. Wheel rebuilt after fixes. Lockfile uses public pypi.org sources and contains no credentials.
 - Post-fix real MPS CLI rebuild: 3 images / 8 aliases, 768 dimensions; indoor text still ranks the indoor scene first. Raw local JSON saved under artifacts/runtime-final-*. No training or data publication occurred.
+- Integrated by fast-forward into the new repository's main branch. Main full suite: 69 passed in 5.92 seconds.
+- Created and pushed https://github.com/HenryVarro666/siglip-embedding-tool . GitHub connector confirmed private visibility, main default branch and authenticated owner. Audited 37 tracked files before delivery: no raw images, vectors, model weights or local artifacts included.

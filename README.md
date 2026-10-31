@@ -8,6 +8,13 @@
 
 推荐 Python 3.12 和 uv，使用仓库中的依赖锁文件：
 
+从 GitHub 开始时，先克隆私有仓库并进入目录；已经在本地项目中的用户可直接执行安装命令。
+
+```bash
+git clone https://github.com/HenryVarro666/siglip-embedding-tool.git
+cd siglip-embedding-tool
+```
+
 ```bash
 uv sync --frozen --extra dev
 uv run siglip-tools --help
