@@ -224,3 +224,50 @@ def test_changed_scan_baseline_is_rejected_before_model_load(tmp_path, monkeypat
     )
     with pytest.raises(ValueError, match="hash"):
         benchmark.run_benchmark(args)
+
+
+def test_complete_run_saves_transformers_size_object_as_json(tmp_path, monkeypatch):
+    import numpy as np
+    import torch
+    from transformers.image_utils import SizeDict
+
+    root, _, paths = fixture_files(tmp_path)
+    model_id, revision = benchmark.MODEL_REVISIONS["base"]
+
+    class FakeEncoder:
+        device = torch.device("cpu")
+        identity = {"model_id": model_id, "revision": revision}
+        processor = SimpleNamespace(
+            image_processor=SimpleNamespace(size=SizeDict(height=224, width=224))
+        )
+
+        def __init__(self, *args, **kwargs):
+            assert kwargs["local_files_only"] is True
+
+        def encode_images(self, images, batch_size):
+            return np.tile(np.array([[1, 0]], dtype=np.float32), (len(images), 1))
+
+        def encode_texts(self, text):
+            return np.array([[1, 0]], dtype=np.float32)
+
+    monkeypatch.setattr(benchmark, "SigLIPEmbedder", FakeEncoder)
+    args = SimpleNamespace(
+        manifest=paths["manifest"],
+        queries=paths["queries"],
+        qrels=paths["qrels"],
+        data_root=root,
+        output=tmp_path / "output",
+        batch_size=2,
+        query_repeats=1,
+        query_warmup=1,
+        overwrite=False,
+        model="base",
+        device="cpu",
+    )
+    benchmark.run_benchmark(args)
+    result = json.loads((args.output / "result.json").read_text())
+    assert result["processor_image_size"] == {"height": 224, "width": 224}
+    assert result["gallery_images"] == 2
+    assert result["metrics"]["aggregate"]["hit_at_1"] == 1.0
+    assert result["training_executed"] is False
+    assert (args.output / "index.npz").is_file()

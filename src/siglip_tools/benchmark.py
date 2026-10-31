@@ -298,7 +298,7 @@ def run_benchmark(args):
         "queries": len(data["queries"]),
         "independent_intents": len({q["intent_id"] for q in data["queries"]}),
         "embedding_dimension": index.vectors.shape[1],
-        "processor_image_size": encoder.processor.image_processor.size,
+        "processor_image_size": dict(encoder.processor.image_processor.size),
         "protocol": {
             "device": str(encoder.device),
             "dtype": "float32",

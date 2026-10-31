@@ -6,7 +6,7 @@
     "queries": "b29fe8b26c8618c38b0154871b1a288179e0e2be2e7686e07a2d958ebe15556f",
     "qrels": "119bc4cbc7aecf9c57c3170a694c41132cf41daca091c325fb667af9b994ef52"
   },
-  "implementation_sha256": "747c9b999b3bee4854809f660382e38d597b36a9a05be1af57175cd3a704f944",
+  "implementation_sha256": "268d2128aa4e470e990c5b5985c34354c91fc70b4165f3449d4625890ed69532",
   "starting_git_commit": "94f1d8e40003edc255a5b75670069097c73f00bc",
   "model_revisions": {
     "base": {
@@ -30,5 +30,16 @@
     "training": false
   },
   "label_review": "Root visual/source review plus blind second-assistant review; e002 added to i04 and e024 removed from i07 before any target-model scoring. No independent human audit.",
-  "results_existed_at_freeze": false
+  "results_existed_at_freeze": false,
+  "initial_implementation_sha256": "747c9b999b3bee4854809f660382e38d597b36a9a05be1af57175cd3a704f944",
+  "implementation_updated_at_utc": "2026-10-31T07:19:36.958468+00:00",
+  "implementation_correction": {
+    "reason": "First Base attempt completed inference but failed JSON serialization of Transformers SizeDict; no result.json was saved or viewed. Convert image size to plain dict, regression reproduced then fixed. Both models will be rerun with this same corrected implementation.",
+    "data_query_qrels_changed": false,
+    "discarded_output": "artifacts/equipment-benchmark/base",
+    "comparison_outputs": [
+      "artifacts/equipment-benchmark/base-v1",
+      "artifacts/equipment-benchmark/quality-v1"
+    ]
+  }
 }
