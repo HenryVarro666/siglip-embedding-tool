@@ -27,6 +27,7 @@ So400m 384 没有进行本机推理。没有在 RTX 5080 上测量性能，也�
 - Ruff 对 `src`、`tests` 和 `training` 的检查通过。
 - 原始 `clip_siglip_demo.py` 保留解析梯度与有限差分检查。
 - 独立审查后新增 7 项回归检查：输入在读取或编码时变化会阻止发布并保留旧索引，Windows 盘符路径和 NUL 路径在构造、加载时均被拒绝。
+- 全新本地克隆使用 `uv sync --frozen --extra dev` 安装成功，67 项离线测试通过、2 项真实模型测试按条件排除；lint、CLI 帮助、原始损失演示与备用训练的 `--help` 均通过。Wheel 构建成功。
 
 常规离线测试不下载模型；两项真实模型测试需要显式设置 `SIGLIP_RUN_MODEL_TESTS=1` 并提前缓存指定 checkpoint。
 
@@ -53,12 +54,15 @@ So400m 384 没有进行本机推理。没有在 RTX 5080 上测量性能，也�
 
 本机原始输出：`artifacts/runtime-index.json`、`artifacts/runtime-indoor.json`、`artifacts/runtime-outdoor.json`。
 
+审查修复后再次建库生成 `artifacts/runtime-final.npz`，仍为 3 条记录与 8 个重复别名。“室内墙壁上的白色电气设备”查询仍将室内图排第一，分数为 0.131586，随后两张户外图为 0.086914、0.083126。输出保存在 `artifacts/runtime-final-index.json` 与 `artifacts/runtime-final-query.json`。
+
 ## 耗时的范围
 
 | 操作 | 本次测量 | 包含的范围 |
 |---|---:|---|
 | 第一条两图建库 CLI | 10.266 秒 | 扫描、缓存权重的模型加载、首次图片编码和索引保存；不含此前下载权重 |
 | runtime 三图建库 CLI | 4.183 秒 | 扫描 11 张图并去重、加载、编码 3 条内容、保存 |
+| 审查修复后的 runtime 三图建库 CLI | 5.611 秒 | 同上，含一致性快照与全部别名的发布前复核 |
 | runtime 室内文字查询 CLI | 2.473 秒 | 索引读取、模型加载、一次查询和排序 |
 | runtime 户外文字查询 CLI | 2.435 秒 | 同上 |
 | 进程内复用 encoder 的文本编码和两图排序 | 5 次中位数 7.36 毫秒 | 模型和执行路径已预热；不含加载、磁盘读图、网络、UI 或服务请求 |
