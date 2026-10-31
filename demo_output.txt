@@ -1,0 +1,32 @@
+PyTorch 2.15.0; CPU; float64
+Rows: [cat image, dog image]; columns: [cat text, dog text]
+
+Shared logit bias = 0.0
+CLIP: loss = 0.313261688
+dL/dscores =
+tensor([[-0.134471,  0.134471],
+        [ 0.134471, -0.134471]], dtype=torch.float64)
+dL/dbias = 0.000000000
+Autograd matches analytic gradients.
+SigLIP: loss = 1.440189699
+dL/dscores =
+tensor([[-0.059601,  0.365529],
+        [ 0.365529, -0.059601]], dtype=torch.float64)
+dL/dbias = 0.611855657
+Autograd matches analytic gradients.
+
+Shared logit bias = -1.5
+CLIP: loss = 0.313261688
+dL/dscores =
+tensor([[-0.134471,  0.134471],
+        [ 0.134471, -0.134471]], dtype=torch.float64)
+dL/dbias = 0.000000000
+Autograd matches analytic gradients.
+SigLIP: loss = 0.948153968
+dL/dscores =
+tensor([[-0.188770,  0.188770],
+        [ 0.188770, -0.188770]], dtype=torch.float64)
+dL/dbias = 0.000000000
+Autograd matches analytic gradients.
+
+Finite-difference gradcheck passed for both losses (asymmetric N=3).

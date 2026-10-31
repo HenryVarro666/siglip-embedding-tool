@@ -1,0 +1,10 @@
+test_clip_averages_both_directions (test_clip_siglip_demo.LossTests.test_clip_averages_both_directions) ... ok
+test_clip_cat_dog_loss_and_score_gradient (test_clip_siglip_demo.LossTests.test_clip_cat_dog_loss_and_score_gradient) ... ok
+test_shared_shift_leaves_clip_loss_and_score_gradient_unchanged (test_clip_siglip_demo.LossTests.test_shared_shift_leaves_clip_loss_and_score_gradient_unchanged) ... ok
+test_siglip_bias_changes_loss_and_score_gradient (test_clip_siglip_demo.LossTests.test_siglip_bias_changes_loss_and_score_gradient) ... ok
+test_siglip_cat_dog_loss_score_and_bias_gradients (test_clip_siglip_demo.LossTests.test_siglip_cat_dog_loss_score_and_bias_gradients) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.187s
+
+OK
