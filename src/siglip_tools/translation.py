@@ -181,6 +181,9 @@ class LocalTranslator:
         settings.return_dict_in_generate = False
         settings.output_scores = False
         settings.output_logits = False
+        # Transformers fills None fields from model.generation_config before
+        # global defaults. Sanitize that fallback too, including forced EOS.
+        self.model.generation_config = deepcopy(settings)
         self._generation_config = settings
         eos = settings.eos_token_id
         if eos is None:

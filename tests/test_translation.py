@@ -199,6 +199,19 @@ def test_local_inference_identity_and_no_query_memoization(tmp_path, boundaries)
     assert translator.identity["generation_config"]["max_new_tokens"] == 64
 
 
+def test_upstream_generation_fallback_cannot_restore_forced_eos(tmp_path, boundaries):
+    from transformers.generation.utils import GenerationMixin
+
+    from siglip_tools.translation import LocalTranslator
+
+    translator = LocalTranslator(prepare(tmp_path, boundaries), device="cpu")
+    effective, _ = GenerationMixin._prepare_generation_config(
+        translator.model, translator._generation_config
+    )
+    assert effective.forced_eos_token_id is None
+    assert translator.model.generation_config.max_length is None
+
+
 @pytest.mark.parametrize("text", ["", "  ", "an English car", None, 4])
 def test_invalid_source_is_rejected_without_generation(tmp_path, boundaries, text):
     from siglip_tools.translation import LocalTranslator
