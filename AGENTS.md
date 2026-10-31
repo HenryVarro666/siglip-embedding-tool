@@ -1,7 +1,7 @@
 # Project guidance
 
 - The default workflow is pretrained inference. Never start training just because backup training code exists.
-- Read README.md for install and commands. Use `uv sync --frozen --extra dev` and Python 3.12.
+- Read README.md for install and commands. Use `uv sync --frozen --extra dev --extra translation` for the full suite and Python 3.12. Base retrieval alone does not require the translation extra.
 - Run the full offline suite with `uv run pytest -m 'not integration'`; lint with `uv run ruff check src tests training examples`.
 - Real-model tests are opt-in with `SIGLIP_RUN_MODEL_TESTS=1`, require the pinned default model cached locally, and do inference only.
 - Preserve the original learning notes, conversation archive, loss demo and original tests.

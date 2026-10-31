@@ -1,0 +1,29 @@
+{
+  "experiment_id": "equipment-auto-translation-v1",
+  "starting_git_commit": "d7aac561e3a805db110033b1238d19c5f5153a81",
+  "frozen_at_utc": "2026-10-31T20:25:55.967786+00:00",
+  "dataset_hashes": {
+    "manifest": "3487fdf62b90971619ec098b2ec5bbad00e5af2d22ec9183d258bc1a24916975",
+    "queries": "b29fe8b26c8618c38b0154871b1a288179e0e2be2e7686e07a2d958ebe15556f",
+    "qrels": "119bc4cbc7aecf9c57c3170a694c41132cf41daca091c325fb667af9b994ef52"
+  },
+  "protocol_sha256": "99ca11299a2167d0965c2781fb435e180afc95feac12f70fafdb9804babe0952",
+  "implementation_sha256": "7be0d1da234bc571def3ec786ad7d5edc02f31268017b70d1094e3e4bafd0598",
+  "translator_files": {
+    "README.md": "7f4b7f90672cd55b85b213bbe21f4b2d0c92327e885734b7e86b019feb145a6b",
+    "config.json": "cee48d4f205210cec6a7cfedf609acd605949ac5392a7e6e9c8c4c0b6670c27c",
+    "generation_config.json": "4f64a04e3bcf3f2f97ea552f83fe1f08a04a52402d29af3008d1644d9f29178c",
+    "model.safetensors": "9866cb7fcb30bca4c91f0ad2bde4183722bf015461aab8a7a6bea0c2cd030250",
+    "source.spm": "e27a3a1b539f4959ec72ea60e453f49156289f95d4e6000b29332efc45616203",
+    "target.spm": "6a881f4717cd7265f53fea54fd3dc689c767c05338fac7a4590f3088cb2d7855",
+    "tokenizer_config.json": "28e575e0beba8b2d4b6f789e91a219cff031e94a9254f027ce7170a48163c01d",
+    "translation_provenance.json": "39f8c8bd807176f60cfaa87af7ff196bc1dd82d6dde9be5c5500547ab4dcda38",
+    "vocab.json": "08a119a1defd522fa047cb5e3bfe3e89633e96caa38ced0dc9cee7ef1021a011"
+  },
+  "source_indexes": {
+    "base": "05ce68f3d5128012636b22fbf05120f3bc45e1f03aa7fd4abc9b1f76fdcd92e2",
+    "quality": "9ebe8155fbe313989d19af093029379c39f9329a5df6036cde6aee9490e8f193"
+  },
+  "automatic_translations_or_results_existed": false,
+  "training_executed": false
+}

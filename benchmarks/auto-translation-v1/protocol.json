@@ -1,0 +1,40 @@
+{
+  "experiment_id": "equipment-auto-translation-v1",
+  "created_at_utc": "2026-10-31T20:21:34.750818+00:00",
+  "dataset_hashes": {
+    "manifest": "3487fdf62b90971619ec098b2ec5bbad00e5af2d22ec9183d258bc1a24916975",
+    "queries": "b29fe8b26c8618c38b0154871b1a288179e0e2be2e7686e07a2d958ebe15556f",
+    "qrels": "119bc4cbc7aecf9c57c3170a694c41132cf41daca091c325fb667af9b994ef52"
+  },
+  "strategies": [
+    "zh",
+    "auto_en",
+    "auto_fusion"
+  ],
+  "translation_model": "Helsinki-NLP/opus-mt-zh-en",
+  "translation_revision": "cf109095479db38d6df799875e34039d4938aaa6",
+  "translation_license": "CC-BY-4.0",
+  "device": "mps",
+  "translator_device": "mps",
+  "dtype": "float32",
+  "translation_generation": {
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 64,
+    "use_cache": true
+  },
+  "source_token_limit": 256,
+  "fusion_weights": [
+    0.5,
+    0.5
+  ],
+  "query_warmup": 3,
+  "query_repeats": 10,
+  "score_atol": 1e-05,
+  "translation_text_cache": false,
+  "training": false,
+  "metric_unit": "8 intents / policy, original fixed Chinese text and qrels",
+  "timing": "Every auto request retranslates Chinese, then retrieves; record translation/retrieval/actual total with GPU sync. Models/index loading excluded from warm request, separately measured. Rotate policy order for each intent/round.",
+  "english_reference_usage": "Existing hand-authored English is never fed to translator or used to edit output. Prior provided-English results are descriptive controls only.",
+  "frozen_at_utc": "2026-10-31T20:25:55.967786+00:00"
+}

@@ -6,10 +6,12 @@ from dataclasses import asdict
 from pathlib import Path
 from time import perf_counter
 
-from .encoder import DEFAULT_MODEL, QUALITY_MODEL, SigLIPEmbedder
+from .auto_retrieval import timed_search
+from .encoder import DEFAULT_MODEL, QUALITY_MODEL, SigLIPEmbedder, identity_fingerprint
 from .fusion import search_texts
 from .images import load_rgb, pixel_sha256, scan_images
 from .index import ImageIndex
+from .translation import LocalTranslator
 
 
 def _positive(value: str) -> int:
@@ -55,9 +57,16 @@ def _parser() -> argparse.ArgumentParser:
         if command == "search-image":
             query.add_argument("--include-self", action="store_true")
         else:
-            query.add_argument(
+            language = query.add_mutually_exclusive_group()
+            language.add_argument(
                 "--english-query", help="Supplied English query; average its cosine with --query"
             )
+            language.add_argument(
+                "--auto-translate",
+                choices=("english", "fusion"),
+                help="Translate Chinese locally on every request, then search English or fuse",
+            )
+            query.add_argument("--translation-dir", type=Path, default=Path("models/opus-mt-zh-en"))
         query.set_defaults(handler=_search)
 
     inspect = sub.add_parser("inspect", help="Inspect index metadata without downloading a model")
@@ -113,10 +122,24 @@ def _search(args) -> None:
         identity["model_id"], identity["revision"], args.device, args.local_files_only
     )
     index.assert_compatible(encoder.identity)
+    translator = None
+    if args.command == "search-text" and args.auto_translate:
+        translator = LocalTranslator(args.translation_dir, device=str(encoder.device))
     loaded = perf_counter()
     exclusion = None
     fusion = None
-    if args.command == "search-text" and args.english_query is not None:
+    automatic = None
+    query_timing = None
+    if translator is not None:
+        mode = "auto_en" if args.auto_translate == "english" else "auto_fusion"
+        measured = timed_search(index, encoder, translator, args.query, mode, args.top_k)
+        matches, query_timing = measured["matches"], measured["timing"]
+        automatic = {
+            "english": measured["translation"],
+            "mode": mode,
+            "translator_fingerprint": identity_fingerprint(translator.identity),
+        }
+    elif args.command == "search-text" and args.english_query is not None:
         matches = search_texts(index, encoder, [args.query, args.english_query], top_k=args.top_k)
         fusion = {
             "method": "mean_cosine",
@@ -130,7 +153,7 @@ def _search(args) -> None:
         vector = encoder.encode_images([image])[0]
         if not args.include_self:
             exclusion = pixel_sha256(image)
-    if fusion is None:
+    if fusion is None and automatic is None:
         matches = index.search(vector, args.top_k, exclude_pixel_sha256=exclusion)
     image_root = args.image_root.resolve() if args.image_root else index.image_root
     _print(
@@ -140,12 +163,23 @@ def _search(args) -> None:
             "fingerprint": index.fingerprint,
             "device": str(encoder.device),
             **({"query_fusion": fusion} if fusion else {}),
+            **({"automatic_translation": automatic} if automatic else {}),
             "results": [
                 {**asdict(match), "full_path": str(image_root / match.path)} for match in matches
             ],
             "seconds": {
                 "load": loaded - started,
-                "query": perf_counter() - loaded,
+                "query": query_timing["total_ms"] / 1000
+                if query_timing
+                else perf_counter() - loaded,
+                **(
+                    {
+                        "translation": query_timing["translation_ms"] / 1000,
+                        "retrieval": query_timing["retrieval_ms"] / 1000,
+                    }
+                    if query_timing
+                    else {}
+                ),
                 "total": perf_counter() - started,
             },
         }
