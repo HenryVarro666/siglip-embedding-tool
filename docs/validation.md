@@ -28,7 +28,8 @@ So400m 384 没有进行本机推理。没有在 RTX 5080 上测量性能，也�
 - 原始 `clip_siglip_demo.py` 保留解析梯度与有限差分检查。
 - 独立审查后新增 7 项回归检查：输入在读取或编码时变化会阻止发布并保留旧索引，Windows 盘符路径和 NUL 路径在构造、加载时均被拒绝。
 - 全新本地克隆使用 `uv sync --frozen --extra dev` 安装成功，67 项离线测试通过、2 项真实模型测试按条件排除；lint、CLI 帮助、原始损失演示与备用训练的 `--help` 均通过。Wheel 构建成功。
-- 首轮远端 Linux CI 暴露了 `pytest` 控制台入口与 `python -m pytest` 的导入路径差异：备用训练实现原先放在仓库根目录外层的 `training/` 命名空间。实现现已移入可安装的 `siglip_tools.finetune`，原脚本作为兼容入口保留；新增从仓库外运行训练模块 `--help` 的回归检查。直接调用 `pytest` 的完整 70 项测试已通过。
+- 首轮远端 Linux CI 暴露了 `pytest` 控制台入口与 `python -m pytest` 的导入路径差异：备用训练实现原先放在包目录 `src/` 之外的 `training/` 命名空间。实现现已移入可安装的 `siglip_tools.finetune`，原脚本作为兼容入口保留；新增从仓库外运行训练模块 `--help` 的回归检查。直接调用 `pytest` 的完整 70 项测试已通过。
+- 隔离克隆更新到修复提交后，再用与 CI 相同的 `pytest` 控制台入口验证：68 项离线测试通过、2 项模型检查排除，lint 与原脚本 `--help` 通过。远端执行记录见 [GitHub Actions](https://github.com/HenryVarro666/siglip-embedding-tool/actions)，以 main 最新提交为准。
 
 常规离线测试不下载模型；两项真实模型测试需要显式设置 `SIGLIP_RUN_MODEL_TESTS=1` 并提前缓存指定 checkpoint。
 
