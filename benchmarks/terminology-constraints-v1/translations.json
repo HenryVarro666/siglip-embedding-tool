@@ -1,0 +1,3969 @@
+{
+  "experiment_id": "equipment-terminology-constraints-v1",
+  "exported_at_utc": "2026-10-31T22:09:16.336316+00:00",
+  "generated_english_edited": false,
+  "reference_english_used": false,
+  "translation_text_cache": false,
+  "training_executed": false,
+  "source_result_sha256": {
+    "base": "702a5eda5d61e8723b8a536495a3745cccfd66e0eb5ad2cf5c48277ce9e9a25e",
+    "quality": "e3998c3cdb4a704008289e09f8faad3800ef7587d195fde8c4519e6a09dcc9c5"
+  },
+  "cross_model_translations_and_traces_identical": true,
+  "by_decoder": {
+    "original": {
+      "queries": [
+        {
+          "intent_id": "t01",
+          "source_chinese": "微型逆变器固定在横向金属导轨上，机身上方有一根裸露铜线，右侧连着黑色电缆。",
+          "generated_english": "The microreverser is fixed on a horizontal metal track, with a naked copper line on its body and a black cable on its right.",
+          "failure": null,
+          "trace": {
+            "source_text": "微型逆变器固定在横向金属导轨上，机身上方有一根裸露铜线，右侧连着黑色电缆。",
+            "sequence": [
+              65000,
+              24,
+              9956,
+              129,
+              30582,
+              1232,
+              30,
+              7336,
+              18,
+              12,
+              26404,
+              21202,
+              7934,
+              2,
+              27,
+              12,
+              30230,
+              43211,
+              1583,
+              18,
+              43,
+              1665,
+              6,
+              12,
+              8261,
+              40026,
+              18,
+              43,
+              151,
+              5,
+              0
+            ],
+            "raw_decoded_output": "The microreverser is fixed on a horizontal metal track, with a naked copper line on its body and a black cable on its right.",
+            "output": "The microreverser is fixed on a horizontal metal track, with a naked copper line on its body and a black cable on its right.",
+            "eos_terminated": true,
+            "status": "success"
+          }
+        },
+        {
+          "intent_id": "t02",
+          "source_chinese": "手掌托着一台微逆，白色电缆从机身引出，背后能看见太阳能电池片。",
+          "generated_english": "The palm was held in a small contrast, and the white cable drew from the body of the aircraft, with solar cell fragments visible behind it.",
+          "failure": null,
+          "trace": {
+            "source_text": "手掌托着一台微逆，白色电缆从机身引出，背后能看见太阳能电池片。",
+            "sequence": [
+              65000,
+              24,
+              42313,
+              42,
+              358,
+              10,
+              12,
+              1032,
+              14061,
+              2,
+              6,
+              3,
+              10098,
+              40026,
+              7878,
+              49,
+              3,
+              1665,
+              4,
+              3,
+              3734,
+              2,
+              27,
+              20845,
+              10128,
+              46930,
+              22,
+              16659,
+              4621,
+              39,
+              5,
+              0
+            ],
+            "raw_decoded_output": "The palm was held in a small contrast, and the white cable drew from the body of the aircraft, with solar cell fragments visible behind it.",
+            "output": "The palm was held in a small contrast, and the white cable drew from the body of the aircraft, with solar cell fragments visible behind it.",
+            "eos_terminated": true,
+            "status": "success"
+          }
+        },
+        {
+          "intent_id": "t03",
+          "source_chinese": "白色背景中的微型太阳能逆变器外壳闭合，一侧有三个电缆接头，但没有接出的电线。",
+          "generated_english": "The micro-solar reversor shell in the white background closed with three cable connections on one side but no wires were removed.",
+          "failure": null,
+          "trace": {
+            "source_text": "白色背景中的微型太阳能逆变器外壳闭合，一侧有三个电缆接头，但没有接出的电线。",
+            "sequence": [
+              65000,
+              24,
+              9956,
+              15,
+              22237,
+              2925,
+              1296,
+              23726,
+              672,
+              32666,
+              10,
+              3,
+              10098,
+              5974,
+              5829,
+              27,
+              513,
+              40026,
+              25944,
+              18,
+              139,
+              2890,
+              183,
+              179,
+              23326,
+              22,
+              84,
+              10483,
+              5,
+              0
+            ],
+            "raw_decoded_output": "The micro-solar reversor shell in the white background closed with three cable connections on one side but no wires were removed.",
+            "output": "The micro-solar reversor shell in the white background closed with three cable connections on one side but no wires were removed.",
+            "eos_terminated": true,
+            "status": "success"
+          }
+        },
+        {
+          "intent_id": "t04",
+          "source_chinese": "壁挂逆变器的外壳闭合，底部伸出多根能看清的独立导线或电缆。",
+          "generated_english": "The surface of the wall-reverse transformer is closed and multiple separate guides or cables are extended to the bottom.",
+          "failure": null,
+          "trace": {
+            "source_text": "壁挂逆变器的外壳闭合，底部伸出多根能看清的独立导线或电缆。",
+            "sequence": [
+              65000,
+              24,
+              12325,
+              4,
+              3,
+              8058,
+              15,
+              129,
+              30582,
+              22558,
+              501,
+              30,
+              5829,
+              6,
+              6860,
+              3917,
+              27355,
+              50,
+              49322,
+              44,
+              3553,
+              8,
+              3,
+              13881,
+              5,
+              0
+            ],
+            "raw_decoded_output": "The surface of the wall-reverse transformer is closed and multiple separate guides or cables are extended to the bottom.",
+            "output": "The surface of the wall-reverse transformer is closed and multiple separate guides or cables are extended to the bottom.",
+            "eos_terminated": true,
+            "status": "success"
+          }
+        },
+        {
+          "intent_id": "t05",
+          "source_chinese": "逆变器前盖已拆下，绿色电路板上排列着许多蓝色圆柱电容，底部还能看见接线。",
+          "generated_english": "The inverter front caps have been removed and many blue cylinder caps are placed on the green circuit board, with connections visible at the bottom.",
+          "failure": null,
+          "trace": {
+            "source_text": "逆变器前盖已拆下，绿色电路板上排列着许多蓝色圆柱电容，底部还能看见接线。",
+            "sequence": [
+              65000,
+              24,
+              10,
+              33708,
+              501,
+              6156,
+              19552,
+              22,
+              53,
+              72,
+              10483,
+              6,
+              469,
+              16431,
+              55219,
+              19552,
+              22,
+              44,
+              3786,
+              18,
+              3,
+              9511,
+              40077,
+              6898,
+              2,
+              27,
+              25944,
+              16659,
+              46,
+              3,
+              13881,
+              5,
+              0
+            ],
+            "raw_decoded_output": "The inverter front caps have been removed and many blue cylinder caps are placed on the green circuit board, with connections visible at the bottom.",
+            "output": "The inverter front caps have been removed and many blue cylinder caps are placed on the green circuit board, with connections visible at the bottom.",
+            "eos_terminated": true,
+            "status": "success"
+          }
+        },
+        {
+          "intent_id": "t06",
+          "source_chinese": "单台黄色逆变器安装在光伏板背面下方的金属支架上，机壳闭合，旁边能看见竖直立柱。",
+          "generated_english": "A single yellow inverter is installed on a metal staircase below the back of the PV board, the shell is closed and a vertical pillar is visible next to it.",
+          "failure": null,
+          "trace": {
+            "source_text": "单台黄色逆变器安装在光伏板背面下方的金属支架上，机壳闭合，旁边能看见竖直立柱。",
+            "sequence": [
+              65000,
+              78,
+              2983,
+              34578,
+              10,
+              33708,
+              501,
+              30,
+              19952,
+              18,
+              12,
+              21202,
+              95,
+              59,
+              16969,
+              15778,
+              1815,
+              3,
+              612,
+              4,
+              3,
+              7,
+              9633,
+              6898,
+              2,
+              3,
+              32666,
+              30,
+              5829,
+              6,
+              12,
+              26003,
+              18883,
+              30,
+              16659,
+              1219,
+              8,
+              39,
+              5,
+              0
+            ],
+            "raw_decoded_output": "A single yellow inverter is installed on a metal staircase below the back of the PV board, the shell is closed and a vertical pillar is visible next to it.",
+            "output": "A single yellow inverter is installed on a metal staircase below the back of the PV board, the shell is closed and a vertical pillar is visible next to it.",
+            "eos_terminated": true,
+            "status": "success"
+          }
+        },
+        {
+          "intent_id": "t07",
+          "source_chinese": "一排黄色逆变器沿横向支架安装在光伏板背面，各台之间留有间隔。",
+          "generated_english": "A yellow inverter is installed on the back of the photovoltile board along the horizontal staircase, with a gap between the tables.",
+          "failure": null,
+          "trace": {
+            "source_text": "一排黄色逆变器沿横向支架安装在光伏板背面，各台之间留有间隔。",
+            "sequence": [
+              65000,
+              78,
+              34578,
+              10,
+              33708,
+              501,
+              30,
+              19952,
+              18,
+              3,
+              612,
+              4,
+              3,
+              17943,
+              24814,
+              59,
+              11241,
+              6898,
+              2846,
+              3,
+              26404,
+              95,
+              59,
+              16969,
+              15778,
+              2,
+              27,
+              12,
+              5761,
+              191,
+              3,
+              9083,
+              5,
+              0
+            ],
+            "raw_decoded_output": "A yellow inverter is installed on the back of the photovoltile board along the horizontal staircase, with a gap between the tables.",
+            "output": "A yellow inverter is installed on the back of the photovoltile board along the horizontal staircase, with a gap between the tables.",
+            "eos_terminated": true,
+            "status": "success"
+          }
+        },
+        {
+          "intent_id": "t08",
+          "source_chinese": "黄色逆变器固定在木板墙上，圆形电表在它右侧，两者下方都有灰色保护管。",
+          "generated_english": "Yellow inverters are fixed on the board wall, rounded up on the right side of the wall, and both have grey protection tubes.",
+          "failure": null,
+          "trace": {
+            "source_text": "黄色逆变器固定在木板墙上，圆形电表在它右侧，两者下方都有灰色保护管。",
+            "sequence": [
+              65000,
+              51244,
+              10,
+              33708,
+              2133,
+              44,
+              7336,
+              18,
+              3,
+              6898,
+              8058,
+              2,
+              4184,
+              250,
+              187,
+              18,
+              3,
+              151,
+              2890,
+              4,
+              3,
+              8058,
+              2,
+              6,
+              443,
+              53,
+              51581,
+              382,
+              40698,
+              22,
+              5,
+              0
+            ],
+            "raw_decoded_output": "Yellow inverters are fixed on the board wall, rounded up on the right side of the wall, and both have grey protection tubes.",
+            "output": "Yellow inverters are fixed on the board wall, rounded up on the right side of the wall, and both have grey protection tubes.",
+            "eos_terminated": true,
+            "status": "success"
+          }
+        },
+        {
+          "intent_id": "t09",
+          "source_chinese": "银灰色逆变器的机壳表面有竖向筋条，蓝色指示面板在右侧，并有导线从底部引出。",
+          "generated_english": "The surface of the silver gray inverter has a vertical cord, the blue indication panel is on the right and the guide is drawn from the bottom.",
+          "failure": null,
+          "trace": {
+            "source_text": "银灰色逆变器的机壳表面有竖向筋条，蓝色指示面板在右侧，并有导线从底部引出。",
+            "sequence": [
+              65000,
+              24,
+              12325,
+              4,
+              3,
+              35942,
+              52194,
+              10,
+              33708,
+              501,
+              64,
+              12,
+              26003,
+              49007,
+              2,
+              3,
+              16431,
+              12426,
+              5735,
+              30,
+              18,
+              3,
+              151,
+              6,
+              3,
+              5492,
+              30,
+              5642,
+              49,
+              3,
+              13881,
+              5,
+              0
+            ],
+            "raw_decoded_output": "The surface of the silver gray inverter has a vertical cord, the blue indication panel is on the right and the guide is drawn from the bottom.",
+            "output": "The surface of the silver gray inverter has a vertical cord, the blue indication panel is on the right and the guide is drawn from the bottom.",
+            "eos_terminated": true,
+            "status": "success"
+          }
+        },
+        {
+          "intent_id": "t10",
+          "source_chinese": "同一台变压器上，顶部套管连接着导线，侧面还能看到散热鳍片。",
+          "generated_english": "The same transformer, the top tube, connects the fuse and the side can see the radiant fin.",
+          "failure": null,
+          "trace": {
+            "source_text": "同一台变压器上，顶部套管连接着导线，侧面还能看到散热鳍片。",
+            "sequence": [
+              65000,
+              24,
+              468,
+              22558,
+              501,
+              2,
+              3,
+              5651,
+              40698,
+              2,
+              26701,
+              22,
+              3,
+              46986,
+              6,
+              3,
+              2890,
+              122,
+              488,
+              3,
+              7,
+              32328,
+              6231,
+              51192,
+              5,
+              0
+            ],
+            "raw_decoded_output": "The same transformer, the top tube, connects the fuse and the side can see the radiant fin.",
+            "output": "The same transformer, the top tube, connects the fuse and the side can see the radiant fin.",
+            "eos_terminated": true,
+            "status": "success"
+          }
+        },
+        {
+          "intent_id": "t11",
+          "source_chinese": "找一台筒身光滑、看不到散热片的圆筒形变压器，套管和接线位于它的上部。",
+          "generated_english": "Find a cylinder transformer that is smooth and does not see a radiator, with a tube and a connection located on the top of it.",
+          "failure": null,
+          "trace": {
+            "source_text": "找一台筒身光滑、看不到散热片的圆筒形变压器，套管和接线位于它的上部。",
+            "sequence": [
+              65000,
+              22174,
+              12,
+              55219,
+              22558,
+              501,
+              19,
+              30,
+              14846,
+              6,
+              843,
+              54,
+              488,
+              12,
+              7,
+              32328,
+              10164,
+              2,
+              27,
+              12,
+              40698,
+              6,
+              12,
+              1835,
+              5778,
+              18,
+              3,
+              5651,
+              4,
+              39,
+              5,
+              0
+            ],
+            "raw_decoded_output": "Find a cylinder transformer that is smooth and does not see a radiator, with a tube and a connection located on the top of it.",
+            "output": "Find a cylinder transformer that is smooth and does not see a radiator, with a tube and a connection located on the top of it.",
+            "eos_terminated": true,
+            "status": "success"
+          }
+        },
+        {
+          "intent_id": "t12",
+          "source_chinese": "变压器的冷却鳍片前垂着几根粗黑电缆，电缆上端接在顶部套管上。",
+          "generated_english": "The cooling fins of the transformer were plunging in front of several rough cables, which were attached to the top tube.",
+          "failure": null,
+          "trace": {
+            "source_text": "变压器的冷却鳍片前垂着几根粗黑电缆，电缆上端接在顶部套管上。",
+            "sequence": [
+              65000,
+              24,
+              9178,
+              102,
+              51192,
+              22,
+              4,
+              3,
+              22558,
+              501,
+              84,
+              804,
+              54907,
+              102,
+              10,
+              6156,
+              4,
+              1167,
+              19235,
+              49322,
+              2,
+              60,
+              84,
+              6096,
+              8,
+              3,
+              5651,
+              40698,
+              5,
+              0
+            ],
+            "raw_decoded_output": "The cooling fins of the transformer were plunging in front of several rough cables, which were attached to the top tube.",
+            "output": "The cooling fins of the transformer were plunging in front of several rough cables, which were attached to the top tube.",
+            "eos_terminated": true,
+            "status": "success"
+          }
+        },
+        {
+          "intent_id": "t13",
+          "source_chinese": "灰色变压器箱体的两扇百叶门上着锁，顶部没有可见的套管。",
+          "generated_english": "Two of the grey transformer boxes were locked on the shutters, with no visible caps on the top.",
+          "failure": null,
+          "trace": {
+            "source_text": "灰色变压器箱体的两扇百叶门上着锁，顶部没有可见的套管。",
+            "sequence": [
+              65000,
+              3919,
+              4,
+              3,
+              51581,
+              22558,
+              501,
+              33811,
+              84,
+              22734,
+              18,
+              3,
+              11233,
+              27015,
+              2,
+              27,
+              179,
+              16659,
+              19552,
+              22,
+              18,
+              3,
+              5651,
+              5,
+              0
+            ],
+            "raw_decoded_output": "Two of the grey transformer boxes were locked on the shutters, with no visible caps on the top.",
+            "output": "Two of the grey transformer boxes were locked on the shutters, with no visible caps on the top.",
+            "eos_terminated": true,
+            "status": "success"
+          }
+        },
+        {
+          "intent_id": "t14",
+          "source_chinese": "室内通道夹在左右两排灰白色开关柜之间，柜门上有许多红色操作手柄。",
+          "generated_english": "The interior passage is between the two grey and white switchboards, which are covered with red handles.",
+          "failure": null,
+          "trace": {
+            "source_text": "室内通道夹在左右两排灰白色开关柜之间，柜门上有许多红色操作手柄。",
+            "sequence": [
+              65000,
+              24,
+              36172,
+              17374,
+              30,
+              191,
+              3,
+              262,
+              51581,
+              6,
+              10098,
+              30139,
+              18832,
+              22,
+              2,
+              60,
+              44,
+              2855,
+              27,
+              11386,
+              9883,
+              22,
+              5,
+              0
+            ],
+            "raw_decoded_output": "The interior passage is between the two grey and white switchboards, which are covered with red handles.",
+            "output": "The interior passage is between the two grey and white switchboards, which are covered with red handles.",
+            "eos_terminated": true,
+            "status": "success"
+          }
+        },
+        {
+          "intent_id": "t15",
+          "source_chinese": "放在室外地面上的便携配电箱，蓝色面板装在金属提架里，前方接着两根粗黑电缆。",
+          "generated_english": "Portable distribution boxes are placed on the outside of the room, with blue panels in metal lifts, followed by two rough cables.",
+          "failure": null,
+          "trace": {
+            "source_text": "放在室外地面上的便携配电箱，蓝色面板装在金属提架里，前方接着两根粗黑电缆。",
+            "sequence": [
+              65000,
+              11139,
+              2269,
+              2649,
+              33811,
+              44,
+              3786,
+              18,
+              3,
+              2231,
+              4,
+              3,
+              2838,
+              2,
+              27,
+              16431,
+              17486,
+              10,
+              21202,
+              18022,
+              22,
+              2,
+              3539,
+              29,
+              262,
+              19235,
+              49322,
+              5,
+              0
+            ],
+            "raw_decoded_output": "Portable distribution boxes are placed on the outside of the room, with blue panels in metal lifts, followed by two rough cables.",
+            "output": "Portable distribution boxes are placed on the outside of the room, with blue panels in metal lifts, followed by two rough cables.",
+            "eos_terminated": true,
+            "status": "success"
+          }
+        },
+        {
+          "intent_id": "t16",
+          "source_chinese": "透过玻璃柜门能看到机柜下方的不间断电源，上方装着横放的服务器。",
+          "generated_english": "The uninterruptible power supply under the cabinet was visible through the glass door, with a horizontal server above it.",
+          "failure": null,
+          "trace": {
+            "source_text": "透过玻璃柜门能看到机柜下方的不间断电源，上方装着横放的服务器。",
+            "sequence": [
+              65000,
+              24,
+              2145,
+              20212,
+              35709,
+              59,
+              13179,
+              1952,
+              2907,
+              111,
+              3,
+              34100,
+              42,
+              16659,
+              180,
+              3,
+              20832,
+              5906,
+              2,
+              27,
+              12,
+              26404,
+              27382,
+              817,
+              39,
+              5,
+              0
+            ],
+            "raw_decoded_output": "The uninterruptible power supply under the cabinet was visible through the glass door, with a horizontal server above it.",
+            "output": "The uninterruptible power supply under the cabinet was visible through the glass door, with a horizontal server above it.",
+            "eos_terminated": true,
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "beam": {
+      "queries": [
+        {
+          "intent_id": "t01",
+          "source_chinese": "微型逆变器固定在横向金属导轨上，机身上方有一根裸露铜线，右侧连着黑色电缆。",
+          "generated_english": "The mini-reverser is fixed on a horizontal metal track, with a naked copper line on its body and a black cable on its right.",
+          "failure": null,
+          "trace": {
+            "source_text": "微型逆变器固定在横向金属导轨上，机身上方有一根裸露铜线，右侧连着黑色电缆。",
+            "constrained": false,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "The mini-reverser is fixed on a horizontal metal track, with a naked copper line on its body and a black cable on its right.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              24,
+              31030,
+              15,
+              129,
+              30582,
+              1232,
+              30,
+              7336,
+              18,
+              12,
+              26404,
+              21202,
+              7934,
+              2,
+              27,
+              12,
+              30230,
+              43211,
+              1583,
+              18,
+              43,
+              1665,
+              6,
+              12,
+              8261,
+              40026,
+              18,
+              43,
+              151,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t02",
+          "source_chinese": "手掌托着一台微逆，白色电缆从机身引出，背后能看见太阳能电池片。",
+          "generated_english": "With a small counterweight in the palm of the hand, a white cable is drawn from the body of the aircraft, and a solar battery can be seen behind it.",
+          "failure": null,
+          "trace": {
+            "source_text": "手掌托着一台微逆，白色电缆从机身引出，背后能看见太阳能电池片。",
+            "constrained": false,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "With a small counterweight in the palm of the hand, a white cable is drawn from the body of the aircraft, and a solar battery can be seen behind it.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              1063,
+              12,
+              1032,
+              2937,
+              42623,
+              10,
+              3,
+              42313,
+              4,
+              3,
+              2239,
+              2,
+              12,
+              10098,
+              40026,
+              30,
+              5642,
+              49,
+              3,
+              1665,
+              4,
+              3,
+              3734,
+              2,
+              6,
+              12,
+              20845,
+              40671,
+              122,
+              32,
+              2335,
+              4621,
+              39,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t03",
+          "source_chinese": "白色背景中的微型太阳能逆变器外壳闭合，一侧有三个电缆接头，但没有接出的电线。",
+          "generated_english": "In the white background, the micro-solar inverter shell closed, with three cable connections on one side, but no wires were removed.",
+          "failure": null,
+          "trace": {
+            "source_text": "白色背景中的微型太阳能逆变器外壳闭合，一侧有三个电缆接头，但没有接出的电线。",
+            "constrained": false,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "In the white background, the micro-solar inverter shell closed, with three cable connections on one side, but no wires were removed.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              66,
+              3,
+              10098,
+              5974,
+              2,
+              3,
+              9956,
+              15,
+              22237,
+              2925,
+              10,
+              33708,
+              501,
+              32666,
+              5829,
+              2,
+              27,
+              513,
+              40026,
+              25944,
+              18,
+              139,
+              2890,
+              2,
+              183,
+              179,
+              23326,
+              22,
+              84,
+              10483,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t04",
+          "source_chinese": "壁挂逆变器的外壳闭合，底部伸出多根能看清的独立导线或电缆。",
+          "generated_english": "The outer shell of the wall-reverse transformer is closed, with multiple distinct guides or cables that can be seen at the bottom.",
+          "failure": null,
+          "trace": {
+            "source_text": "壁挂逆变器的外壳闭合，底部伸出多根能看清的独立导线或电缆。",
+            "constrained": false,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "The outer shell of the wall-reverse transformer is closed, with multiple distinct guides or cables that can be seen at the bottom.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              24,
+              4917,
+              32666,
+              4,
+              3,
+              8058,
+              15,
+              129,
+              30582,
+              22558,
+              501,
+              30,
+              5829,
+              2,
+              27,
+              6860,
+              12883,
+              27355,
+              50,
+              49322,
+              19,
+              122,
+              32,
+              2335,
+              46,
+              3,
+              13881,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t05",
+          "source_chinese": "逆变器前盖已拆下，绿色电路板上排列着许多蓝色圆柱电容，底部还能看见接线。",
+          "generated_english": "The front cap of the inverter has been removed and many blue cylinder caps have been placed on the green circuit board, with wires visible at the bottom.",
+          "failure": null,
+          "trace": {
+            "source_text": "逆变器前盖已拆下，绿色电路板上排列着许多蓝色圆柱电容，底部还能看见接线。",
+            "constrained": false,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "The front cap of the inverter has been removed and many blue cylinder caps have been placed on the green circuit board, with wires visible at the bottom.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              24,
+              6156,
+              19552,
+              4,
+              3,
+              10,
+              33708,
+              501,
+              64,
+              72,
+              10483,
+              6,
+              469,
+              16431,
+              55219,
+              19552,
+              22,
+              53,
+              72,
+              3786,
+              18,
+              3,
+              9511,
+              40077,
+              6898,
+              2,
+              27,
+              23326,
+              22,
+              16659,
+              46,
+              3,
+              13881,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t06",
+          "source_chinese": "单台黄色逆变器安装在光伏板背面下方的金属支架上，机壳闭合，旁边能看见竖直立柱。",
+          "generated_english": "A single yellow inverter is installed on the metal staircase below the back of the PV board, the shell is closed and a vertical pillar can be seen next to it.",
+          "failure": null,
+          "trace": {
+            "source_text": "单台黄色逆变器安装在光伏板背面下方的金属支架上，机壳闭合，旁边能看见竖直立柱。",
+            "constrained": false,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "A single yellow inverter is installed on the metal staircase below the back of the PV board, the shell is closed and a vertical pillar can be seen next to it.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              78,
+              2983,
+              34578,
+              10,
+              33708,
+              501,
+              30,
+              19952,
+              18,
+              3,
+              21202,
+              95,
+              59,
+              16969,
+              15778,
+              1815,
+              3,
+              612,
+              4,
+              3,
+              7,
+              9633,
+              6898,
+              2,
+              3,
+              32666,
+              30,
+              5829,
+              6,
+              12,
+              26003,
+              18883,
+              122,
+              32,
+              2335,
+              1219,
+              8,
+              39,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t07",
+          "source_chinese": "一排黄色逆变器沿横向支架安装在光伏板背面，各台之间留有间隔。",
+          "generated_english": "A row of yellow inverters is installed on the back of the photovoltaic plate along the horizontal staircase, with a gap between the tables.",
+          "failure": null,
+          "trace": {
+            "source_text": "一排黄色逆变器沿横向支架安装在光伏板背面，各台之间留有间隔。",
+            "constrained": false,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "A row of yellow inverters is installed on the back of the photovoltaic plate along the horizontal staircase, with a gap between the tables.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              78,
+              20865,
+              4,
+              34578,
+              10,
+              33708,
+              2133,
+              30,
+              19952,
+              18,
+              3,
+              612,
+              4,
+              3,
+              17943,
+              24814,
+              4561,
+              2971,
+              33407,
+              2846,
+              3,
+              26404,
+              95,
+              59,
+              16969,
+              15778,
+              2,
+              27,
+              12,
+              5761,
+              191,
+              3,
+              9083,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t08",
+          "source_chinese": "黄色逆变器固定在木板墙上，圆形电表在它右侧，两者下方都有灰色保护管。",
+          "generated_english": "The yellow inverter is fixed on the board wall, the round table is on its right side, and both have grey protection tubes.",
+          "failure": null,
+          "trace": {
+            "source_text": "黄色逆变器固定在木板墙上，圆形电表在它右侧，两者下方都有灰色保护管。",
+            "constrained": false,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "The yellow inverter is fixed on the board wall, the round table is on its right side, and both have grey protection tubes.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              24,
+              34578,
+              10,
+              33708,
+              501,
+              30,
+              7336,
+              18,
+              3,
+              6898,
+              8058,
+              2,
+              3,
+              4184,
+              2300,
+              30,
+              18,
+              43,
+              151,
+              2890,
+              2,
+              6,
+              443,
+              53,
+              51581,
+              382,
+              40698,
+              22,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t09",
+          "source_chinese": "银灰色逆变器的机壳表面有竖向筋条，蓝色指示面板在右侧，并有导线从底部引出。",
+          "generated_english": "The surface of the silver-grey inverter has a vertical cord, the blue indication panel is to the right and the guide is drawn from the bottom.",
+          "failure": null,
+          "trace": {
+            "source_text": "银灰色逆变器的机壳表面有竖向筋条，蓝色指示面板在右侧，并有导线从底部引出。",
+            "constrained": false,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "The surface of the silver-grey inverter has a vertical cord, the blue indication panel is to the right and the guide is drawn from the bottom.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              24,
+              12325,
+              4,
+              3,
+              35942,
+              15,
+              31568,
+              9421,
+              10,
+              33708,
+              501,
+              64,
+              12,
+              26003,
+              49007,
+              2,
+              3,
+              16431,
+              12426,
+              5735,
+              30,
+              8,
+              3,
+              151,
+              6,
+              3,
+              5492,
+              30,
+              5642,
+              49,
+              3,
+              13881,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t10",
+          "source_chinese": "同一台变压器上，顶部套管连接着导线，侧面还能看到散热鳍片。",
+          "generated_english": "On the same transformer, the top tube is connected to the fuse and the side can see the radiant fin.",
+          "failure": null,
+          "trace": {
+            "source_text": "同一台变压器上，顶部套管连接着导线，侧面还能看到散热鳍片。",
+            "constrained": false,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "On the same transformer, the top tube is connected to the fuse and the side can see the radiant fin.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              583,
+              3,
+              468,
+              22558,
+              501,
+              2,
+              3,
+              5651,
+              40698,
+              30,
+              10872,
+              8,
+              3,
+              46986,
+              6,
+              3,
+              2890,
+              122,
+              488,
+              3,
+              7,
+              32328,
+              6231,
+              51192,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t11",
+          "source_chinese": "找一台筒身光滑、看不到散热片的圆筒形变压器，套管和接线位于它的上部。",
+          "generated_english": "Find a cylindrical transformer that is smooth and can't see the radiator, and the tubes and connections are located on the top of it.",
+          "failure": null,
+          "trace": {
+            "source_text": "找一台筒身光滑、看不到散热片的圆筒形变压器，套管和接线位于它的上部。",
+            "constrained": false,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "Find a cylindrical transformer that is smooth and can't see the radiator, and the tubes and connections are located on the top of it.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              22174,
+              12,
+              7,
+              10882,
+              9250,
+              37777,
+              17024,
+              22558,
+              501,
+              19,
+              30,
+              14846,
+              6,
+              122,
+              21,
+              59,
+              488,
+              3,
+              7,
+              32328,
+              10164,
+              2,
+              6,
+              3,
+              40698,
+              22,
+              6,
+              25944,
+              44,
+              5778,
+              18,
+              3,
+              5651,
+              4,
+              39,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t12",
+          "source_chinese": "变压器的冷却鳍片前垂着几根粗黑电缆，电缆上端接在顶部套管上。",
+          "generated_english": "The cooling fin blades of the transformer had several thick black cables in front of them and the top end of the cable was attached to the top tube.",
+          "failure": null,
+          "trace": {
+            "source_text": "变压器的冷却鳍片前垂着几根粗黑电缆，电缆上端接在顶部套管上。",
+            "constrained": false,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "The cooling fin blades of the transformer had several thick black cables in front of them and the top end of the cable was attached to the top tube.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              24,
+              9178,
+              102,
+              51192,
+              48560,
+              22,
+              4,
+              3,
+              22558,
+              501,
+              77,
+              1167,
+              41418,
+              8261,
+              49322,
+              10,
+              6156,
+              4,
+              199,
+              6,
+              3,
+              5651,
+              587,
+              4,
+              3,
+              40026,
+              42,
+              6096,
+              8,
+              3,
+              5651,
+              40698,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t13",
+          "source_chinese": "灰色变压器箱体的两扇百叶门上着锁，顶部没有可见的套管。",
+          "generated_english": "Two of the grey transformer boxes were locked on the shutters, with no visible holsters at the top.",
+          "failure": null,
+          "trace": {
+            "source_text": "灰色变压器箱体的两扇百叶门上着锁，顶部没有可见的套管。",
+            "constrained": false,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "Two of the grey transformer boxes were locked on the shutters, with no visible holsters at the top.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              3919,
+              4,
+              3,
+              51581,
+              22558,
+              501,
+              33811,
+              84,
+              22734,
+              18,
+              3,
+              11233,
+              27015,
+              2,
+              27,
+              179,
+              16659,
+              7,
+              33739,
+              9045,
+              22,
+              46,
+              3,
+              5651,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t14",
+          "source_chinese": "室内通道夹在左右两排灰白色开关柜之间，柜门上有许多红色操作手柄。",
+          "generated_english": "The interior passages are caught between the left and left of the two grey and white switches, with many red handles on the doors.",
+          "failure": null,
+          "trace": {
+            "source_text": "室内通道夹在左右两排灰白色开关柜之间，柜门上有许多红色操作手柄。",
+            "constrained": false,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "The interior passages are caught between the left and left of the two grey and white switches, with many red handles on the doors.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              24,
+              36172,
+              17374,
+              22,
+              44,
+              12657,
+              191,
+              3,
+              2128,
+              6,
+              2128,
+              4,
+              3,
+              262,
+              51581,
+              6,
+              10098,
+              55989,
+              2,
+              27,
+              469,
+              11386,
+              9883,
+              22,
+              18,
+              3,
+              26975,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t15",
+          "source_chinese": "放在室外地面上的便携配电箱，蓝色面板装在金属提架里，前方接着两根粗黑电缆。",
+          "generated_english": "Portable distribution boxes on the outside of the room, with blue panels in metal lifts, followed by two heavy black cables.",
+          "failure": null,
+          "trace": {
+            "source_text": "放在室外地面上的便携配电箱，蓝色面板装在金属提架里，前方接着两根粗黑电缆。",
+            "constrained": false,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "Portable distribution boxes on the outside of the room, with blue panels in metal lifts, followed by two heavy black cables.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              11139,
+              2269,
+              2649,
+              33811,
+              18,
+              3,
+              2231,
+              4,
+              3,
+              2838,
+              2,
+              27,
+              16431,
+              17486,
+              10,
+              21202,
+              18022,
+              22,
+              2,
+              3539,
+              29,
+              262,
+              7598,
+              8261,
+              49322,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t16",
+          "source_chinese": "透过玻璃柜门能看到机柜下方的不间断电源，上方装着横放的服务器。",
+          "generated_english": "The uninterruptible power supply under the cabinet was visible through the glass door, with a horizontal server above it.",
+          "failure": null,
+          "trace": {
+            "source_text": "透过玻璃柜门能看到机柜下方的不间断电源，上方装着横放的服务器。",
+            "constrained": false,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "The uninterruptible power supply under the cabinet was visible through the glass door, with a horizontal server above it.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              24,
+              2145,
+              20212,
+              35709,
+              59,
+              13179,
+              1952,
+              2907,
+              111,
+              3,
+              34100,
+              42,
+              16659,
+              180,
+              3,
+              20832,
+              5906,
+              2,
+              27,
+              12,
+              26404,
+              27382,
+              817,
+              39,
+              5,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    "constrained": {
+      "queries": [
+        {
+          "intent_id": "t01",
+          "source_chinese": "微型逆变器固定在横向金属导轨上，机身上方有一根裸露铜线，右侧连着黑色电缆。",
+          "generated_english": "The microinverter is fixed on a horizontal metal track, with a naked copper line on its body and a black cable attached to its right side.",
+          "failure": null,
+          "trace": {
+            "source_text": "微型逆变器固定在横向金属导轨上，机身上方有一根裸露铜线，右侧连着黑色电缆。",
+            "constrained": true,
+            "constraints_applied": true,
+            "requirements": [
+              {
+                "id": "microinverter",
+                "source_terms": [
+                  "微型逆变器"
+                ],
+                "target_forms": [
+                  "microinverter",
+                  "microinverters",
+                  "Microinverter",
+                  "Microinverters"
+                ],
+                "token_alternatives": [
+                  [
+                    9956,
+                    748,
+                    33708,
+                    501
+                  ],
+                  [
+                    9956,
+                    748,
+                    33708,
+                    2133
+                  ],
+                  [
+                    36139,
+                    748,
+                    33708,
+                    501
+                  ],
+                  [
+                    36139,
+                    748,
+                    33708,
+                    2133
+                  ]
+                ],
+                "decoder_token_alternatives": [
+                  [
+                    9956,
+                    748,
+                    33708,
+                    501
+                  ],
+                  [
+                    9956,
+                    748,
+                    33708,
+                    2133
+                  ],
+                  [
+                    36139,
+                    748,
+                    33708,
+                    501
+                  ],
+                  [
+                    36139,
+                    748,
+                    33708,
+                    2133
+                  ]
+                ],
+                "tokens_satisfied": true,
+                "phrase_satisfied": true,
+                "satisfied": true
+              }
+            ],
+            "required_token_alternatives": [
+              [
+                [
+                  9956,
+                  748,
+                  33708,
+                  501
+                ],
+                [
+                  9956,
+                  748,
+                  33708,
+                  2133
+                ],
+                [
+                  36139,
+                  748,
+                  33708,
+                  501
+                ],
+                [
+                  36139,
+                  748,
+                  33708,
+                  2133
+                ]
+              ]
+            ],
+            "output": "The microinverter is fixed on a horizontal metal track, with a naked copper line on its body and a black cable attached to its right side.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              24,
+              9956,
+              748,
+              33708,
+              501,
+              30,
+              7336,
+              18,
+              12,
+              26404,
+              21202,
+              7934,
+              2,
+              27,
+              12,
+              30230,
+              43211,
+              1583,
+              18,
+              43,
+              1665,
+              6,
+              12,
+              8261,
+              40026,
+              6096,
+              8,
+              43,
+              151,
+              2890,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t02",
+          "source_chinese": "手掌托着一台微逆，白色电缆从机身引出，背后能看见太阳能电池片。",
+          "generated_english": "The palm was micro-reverse, micro-optical, micro-cable from micro-black, micro-cells behind micro-cells. micro-cables micro-black cables micro-blacked micro-crys micro-blacks micro- microinverter",
+          "failure": {
+            "stage": "translation",
+            "type": "ValueError",
+            "message": "Translation did not terminate with EOS within 64 tokens"
+          },
+          "trace": {
+            "source_text": "手掌托着一台微逆，白色电缆从机身引出，背后能看见太阳能电池片。",
+            "constrained": true,
+            "constraints_applied": true,
+            "requirements": [
+              {
+                "id": "microinverter",
+                "source_terms": [
+                  "微逆"
+                ],
+                "target_forms": [
+                  "microinverter",
+                  "microinverters",
+                  "Microinverter",
+                  "Microinverters"
+                ],
+                "token_alternatives": [
+                  [
+                    9956,
+                    748,
+                    33708,
+                    501
+                  ],
+                  [
+                    9956,
+                    748,
+                    33708,
+                    2133
+                  ],
+                  [
+                    36139,
+                    748,
+                    33708,
+                    501
+                  ],
+                  [
+                    36139,
+                    748,
+                    33708,
+                    2133
+                  ]
+                ],
+                "decoder_token_alternatives": [
+                  [
+                    9956,
+                    748,
+                    33708,
+                    501
+                  ],
+                  [
+                    9956,
+                    748,
+                    33708,
+                    2133
+                  ],
+                  [
+                    36139,
+                    748,
+                    33708,
+                    501
+                  ],
+                  [
+                    36139,
+                    748,
+                    33708,
+                    2133
+                  ]
+                ],
+                "tokens_satisfied": true,
+                "phrase_satisfied": true,
+                "satisfied": true
+              }
+            ],
+            "required_token_alternatives": [
+              [
+                [
+                  9956,
+                  748,
+                  33708,
+                  501
+                ],
+                [
+                  9956,
+                  748,
+                  33708,
+                  2133
+                ],
+                [
+                  36139,
+                  748,
+                  33708,
+                  501
+                ],
+                [
+                  36139,
+                  748,
+                  33708,
+                  2133
+                ]
+              ]
+            ],
+            "output": "The palm was micro-reverse, micro-optical, micro-cable from micro-black, micro-cells behind micro-cells. micro-cables micro-black cables micro-blacked micro-crys micro-blacks micro- microinverter",
+            "eos_terminated": false,
+            "satisfied": true,
+            "status": "failed",
+            "sequence": [
+              65000,
+              24,
+              42313,
+              42,
+              9956,
+              15,
+              129,
+              30582,
+              2,
+              9956,
+              15,
+              50826,
+              618,
+              2,
+              9956,
+              15,
+              148,
+              2269,
+              49,
+              9956,
+              15,
+              109,
+              46007,
+              2,
+              9956,
+              15,
+              46403,
+              22,
+              4621,
+              9956,
+              15,
+              46403,
+              22,
+              5,
+              9956,
+              15,
+              148,
+              2269,
+              22,
+              9956,
+              15,
+              109,
+              46007,
+              49322,
+              9956,
+              15,
+              109,
+              46007,
+              250,
+              9956,
+              15,
+              148,
+              4129,
+              22,
+              9956,
+              15,
+              109,
+              46007,
+              22,
+              9956,
+              15,
+              9956,
+              748,
+              33708,
+              501
+            ],
+            "error": "Translation did not terminate with EOS within 64 tokens"
+          }
+        },
+        {
+          "intent_id": "t03",
+          "source_chinese": "白色背景中的微型太阳能逆变器外壳闭合，一侧有三个电缆接头，但没有接出的电线。",
+          "generated_english": "The microinverter shell in the white background closed with three cable connections on one side, but no wires were removed.",
+          "failure": null,
+          "trace": {
+            "source_text": "白色背景中的微型太阳能逆变器外壳闭合，一侧有三个电缆接头，但没有接出的电线。",
+            "constrained": true,
+            "constraints_applied": true,
+            "requirements": [
+              {
+                "id": "microinverter",
+                "source_terms": [
+                  "微型太阳能逆变器"
+                ],
+                "target_forms": [
+                  "microinverter",
+                  "microinverters",
+                  "Microinverter",
+                  "Microinverters"
+                ],
+                "token_alternatives": [
+                  [
+                    9956,
+                    748,
+                    33708,
+                    501
+                  ],
+                  [
+                    9956,
+                    748,
+                    33708,
+                    2133
+                  ],
+                  [
+                    36139,
+                    748,
+                    33708,
+                    501
+                  ],
+                  [
+                    36139,
+                    748,
+                    33708,
+                    2133
+                  ]
+                ],
+                "decoder_token_alternatives": [
+                  [
+                    9956,
+                    748,
+                    33708,
+                    501
+                  ],
+                  [
+                    9956,
+                    748,
+                    33708,
+                    2133
+                  ],
+                  [
+                    36139,
+                    748,
+                    33708,
+                    501
+                  ],
+                  [
+                    36139,
+                    748,
+                    33708,
+                    2133
+                  ]
+                ],
+                "tokens_satisfied": true,
+                "phrase_satisfied": true,
+                "satisfied": true
+              }
+            ],
+            "required_token_alternatives": [
+              [
+                [
+                  9956,
+                  748,
+                  33708,
+                  501
+                ],
+                [
+                  9956,
+                  748,
+                  33708,
+                  2133
+                ],
+                [
+                  36139,
+                  748,
+                  33708,
+                  501
+                ],
+                [
+                  36139,
+                  748,
+                  33708,
+                  2133
+                ]
+              ]
+            ],
+            "output": "The microinverter shell in the white background closed with three cable connections on one side, but no wires were removed.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              24,
+              9956,
+              748,
+              33708,
+              501,
+              32666,
+              10,
+              3,
+              10098,
+              5974,
+              5829,
+              27,
+              513,
+              40026,
+              25944,
+              18,
+              139,
+              2890,
+              2,
+              183,
+              179,
+              23326,
+              22,
+              84,
+              10483,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t04",
+          "source_chinese": "壁挂逆变器的外壳闭合，底部伸出多根能看清的独立导线或电缆。",
+          "generated_english": "The surface of the wall-reverse transformer is closed and multiple separate guides or cables are extended to the bottom in order to be visible in the light. The surface of the wall-reverse transformer is closed in the form of a single line or cable in the form of a single line. Inverter",
+          "failure": {
+            "stage": "translation",
+            "type": "ValueError",
+            "message": "Translation did not terminate with EOS within 64 tokens"
+          },
+          "trace": {
+            "source_text": "壁挂逆变器的外壳闭合，底部伸出多根能看清的独立导线或电缆。",
+            "constrained": true,
+            "constraints_applied": true,
+            "requirements": [
+              {
+                "id": "inverter",
+                "source_terms": [
+                  "逆变器"
+                ],
+                "target_forms": [
+                  "inverter",
+                  "inverters",
+                  "Inverter",
+                  "Inverters"
+                ],
+                "token_alternatives": [
+                  [
+                    10,
+                    33708,
+                    501
+                  ],
+                  [
+                    10,
+                    33708,
+                    2133
+                  ],
+                  [
+                    66,
+                    33708,
+                    501
+                  ],
+                  [
+                    66,
+                    33708,
+                    2133
+                  ]
+                ],
+                "decoder_token_alternatives": [
+                  [
+                    10,
+                    33708,
+                    501
+                  ],
+                  [
+                    10,
+                    33708,
+                    2133
+                  ],
+                  [
+                    66,
+                    33708,
+                    501
+                  ],
+                  [
+                    66,
+                    33708,
+                    2133
+                  ]
+                ],
+                "tokens_satisfied": true,
+                "phrase_satisfied": true,
+                "satisfied": true
+              }
+            ],
+            "required_token_alternatives": [
+              [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ]
+            ],
+            "output": "The surface of the wall-reverse transformer is closed and multiple separate guides or cables are extended to the bottom in order to be visible in the light. The surface of the wall-reverse transformer is closed in the form of a single line or cable in the form of a single line. Inverter",
+            "eos_terminated": false,
+            "satisfied": true,
+            "status": "failed",
+            "sequence": [
+              65000,
+              24,
+              12325,
+              4,
+              3,
+              8058,
+              15,
+              129,
+              30582,
+              22558,
+              501,
+              30,
+              5829,
+              6,
+              6860,
+              3917,
+              27355,
+              50,
+              49322,
+              44,
+              3553,
+              8,
+              3,
+              13881,
+              10,
+              278,
+              8,
+              32,
+              16659,
+              10,
+              3,
+              1407,
+              5,
+              24,
+              12325,
+              4,
+              3,
+              8058,
+              15,
+              129,
+              30582,
+              22558,
+              501,
+              30,
+              5829,
+              10,
+              3,
+              1502,
+              4,
+              12,
+              2983,
+              1583,
+              50,
+              40026,
+              10,
+              3,
+              1502,
+              4,
+              12,
+              2983,
+              1583,
+              5,
+              66,
+              33708,
+              501
+            ],
+            "error": "Translation did not terminate with EOS within 64 tokens"
+          }
+        },
+        {
+          "intent_id": "t05",
+          "source_chinese": "逆变器前盖已拆下，绿色电路板上排列着许多蓝色圆柱电容，底部还能看见接线。",
+          "generated_english": "The front cap of the inverter has been removed and many blue cylinder caps have been placed on the green circuit board, with wires visible at the bottom.",
+          "failure": null,
+          "trace": {
+            "source_text": "逆变器前盖已拆下，绿色电路板上排列着许多蓝色圆柱电容，底部还能看见接线。",
+            "constrained": true,
+            "constraints_applied": true,
+            "requirements": [
+              {
+                "id": "inverter",
+                "source_terms": [
+                  "逆变器"
+                ],
+                "target_forms": [
+                  "inverter",
+                  "inverters",
+                  "Inverter",
+                  "Inverters"
+                ],
+                "token_alternatives": [
+                  [
+                    10,
+                    33708,
+                    501
+                  ],
+                  [
+                    10,
+                    33708,
+                    2133
+                  ],
+                  [
+                    66,
+                    33708,
+                    501
+                  ],
+                  [
+                    66,
+                    33708,
+                    2133
+                  ]
+                ],
+                "decoder_token_alternatives": [
+                  [
+                    10,
+                    33708,
+                    501
+                  ],
+                  [
+                    10,
+                    33708,
+                    2133
+                  ],
+                  [
+                    66,
+                    33708,
+                    501
+                  ],
+                  [
+                    66,
+                    33708,
+                    2133
+                  ]
+                ],
+                "tokens_satisfied": true,
+                "phrase_satisfied": true,
+                "satisfied": true
+              }
+            ],
+            "required_token_alternatives": [
+              [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ]
+            ],
+            "output": "The front cap of the inverter has been removed and many blue cylinder caps have been placed on the green circuit board, with wires visible at the bottom.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              24,
+              6156,
+              19552,
+              4,
+              3,
+              10,
+              33708,
+              501,
+              64,
+              72,
+              10483,
+              6,
+              469,
+              16431,
+              55219,
+              19552,
+              22,
+              53,
+              72,
+              3786,
+              18,
+              3,
+              9511,
+              40077,
+              6898,
+              2,
+              27,
+              23326,
+              22,
+              16659,
+              46,
+              3,
+              13881,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t06",
+          "source_chinese": "单台黄色逆变器安装在光伏板背面下方的金属支架上，机壳闭合，旁边能看见竖直立柱。",
+          "generated_english": "A single yellow inverter is installed on a metal staircase below the back of the PV board, the shell is closed and a vertical pillar can be seen next to it.",
+          "failure": null,
+          "trace": {
+            "source_text": "单台黄色逆变器安装在光伏板背面下方的金属支架上，机壳闭合，旁边能看见竖直立柱。",
+            "constrained": true,
+            "constraints_applied": true,
+            "requirements": [
+              {
+                "id": "inverter",
+                "source_terms": [
+                  "逆变器"
+                ],
+                "target_forms": [
+                  "inverter",
+                  "inverters",
+                  "Inverter",
+                  "Inverters"
+                ],
+                "token_alternatives": [
+                  [
+                    10,
+                    33708,
+                    501
+                  ],
+                  [
+                    10,
+                    33708,
+                    2133
+                  ],
+                  [
+                    66,
+                    33708,
+                    501
+                  ],
+                  [
+                    66,
+                    33708,
+                    2133
+                  ]
+                ],
+                "decoder_token_alternatives": [
+                  [
+                    10,
+                    33708,
+                    501
+                  ],
+                  [
+                    10,
+                    33708,
+                    2133
+                  ],
+                  [
+                    66,
+                    33708,
+                    501
+                  ],
+                  [
+                    66,
+                    33708,
+                    2133
+                  ]
+                ],
+                "tokens_satisfied": true,
+                "phrase_satisfied": true,
+                "satisfied": true
+              }
+            ],
+            "required_token_alternatives": [
+              [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ]
+            ],
+            "output": "A single yellow inverter is installed on a metal staircase below the back of the PV board, the shell is closed and a vertical pillar can be seen next to it.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              78,
+              2983,
+              34578,
+              10,
+              33708,
+              501,
+              30,
+              19952,
+              18,
+              12,
+              21202,
+              95,
+              59,
+              16969,
+              15778,
+              1815,
+              3,
+              612,
+              4,
+              3,
+              7,
+              9633,
+              6898,
+              2,
+              3,
+              32666,
+              30,
+              5829,
+              6,
+              12,
+              26003,
+              18883,
+              122,
+              32,
+              2335,
+              1219,
+              8,
+              39,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t07",
+          "source_chinese": "一排黄色逆变器沿横向支架安装在光伏板背面，各台之间留有间隔。",
+          "generated_english": "A yellow row of inverters is installed on the back of the PV panel along the horizontal supports, with a gap between the tables.",
+          "failure": null,
+          "trace": {
+            "source_text": "一排黄色逆变器沿横向支架安装在光伏板背面，各台之间留有间隔。",
+            "constrained": true,
+            "constraints_applied": true,
+            "requirements": [
+              {
+                "id": "inverter",
+                "source_terms": [
+                  "逆变器"
+                ],
+                "target_forms": [
+                  "inverter",
+                  "inverters",
+                  "Inverter",
+                  "Inverters"
+                ],
+                "token_alternatives": [
+                  [
+                    10,
+                    33708,
+                    501
+                  ],
+                  [
+                    10,
+                    33708,
+                    2133
+                  ],
+                  [
+                    66,
+                    33708,
+                    501
+                  ],
+                  [
+                    66,
+                    33708,
+                    2133
+                  ]
+                ],
+                "decoder_token_alternatives": [
+                  [
+                    10,
+                    33708,
+                    501
+                  ],
+                  [
+                    10,
+                    33708,
+                    2133
+                  ],
+                  [
+                    66,
+                    33708,
+                    501
+                  ],
+                  [
+                    66,
+                    33708,
+                    2133
+                  ]
+                ],
+                "tokens_satisfied": true,
+                "phrase_satisfied": true,
+                "satisfied": true
+              }
+            ],
+            "required_token_alternatives": [
+              [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ]
+            ],
+            "output": "A yellow row of inverters is installed on the back of the PV panel along the horizontal supports, with a gap between the tables.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              78,
+              34578,
+              20865,
+              4,
+              10,
+              33708,
+              2133,
+              30,
+              19952,
+              18,
+              3,
+              612,
+              4,
+              3,
+              7,
+              9633,
+              5735,
+              2846,
+              3,
+              26404,
+              4563,
+              2,
+              27,
+              12,
+              5761,
+              191,
+              3,
+              9083,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t08",
+          "source_chinese": "黄色逆变器固定在木板墙上，圆形电表在它右侧，两者下方都有灰色保护管。",
+          "generated_english": "The yellow inverter is fixed on the board wall, the rounded electricity table is on its right side, and both have grey protection tubes.",
+          "failure": null,
+          "trace": {
+            "source_text": "黄色逆变器固定在木板墙上，圆形电表在它右侧，两者下方都有灰色保护管。",
+            "constrained": true,
+            "constraints_applied": true,
+            "requirements": [
+              {
+                "id": "inverter",
+                "source_terms": [
+                  "逆变器"
+                ],
+                "target_forms": [
+                  "inverter",
+                  "inverters",
+                  "Inverter",
+                  "Inverters"
+                ],
+                "token_alternatives": [
+                  [
+                    10,
+                    33708,
+                    501
+                  ],
+                  [
+                    10,
+                    33708,
+                    2133
+                  ],
+                  [
+                    66,
+                    33708,
+                    501
+                  ],
+                  [
+                    66,
+                    33708,
+                    2133
+                  ]
+                ],
+                "decoder_token_alternatives": [
+                  [
+                    10,
+                    33708,
+                    501
+                  ],
+                  [
+                    10,
+                    33708,
+                    2133
+                  ],
+                  [
+                    66,
+                    33708,
+                    501
+                  ],
+                  [
+                    66,
+                    33708,
+                    2133
+                  ]
+                ],
+                "tokens_satisfied": true,
+                "phrase_satisfied": true,
+                "satisfied": true
+              }
+            ],
+            "required_token_alternatives": [
+              [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ]
+            ],
+            "output": "The yellow inverter is fixed on the board wall, the rounded electricity table is on its right side, and both have grey protection tubes.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              24,
+              34578,
+              10,
+              33708,
+              501,
+              30,
+              7336,
+              18,
+              3,
+              6898,
+              8058,
+              2,
+              3,
+              4184,
+              250,
+              11309,
+              2300,
+              30,
+              18,
+              43,
+              151,
+              2890,
+              2,
+              6,
+              443,
+              53,
+              51581,
+              382,
+              40698,
+              22,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t09",
+          "source_chinese": "银灰色逆变器的机壳表面有竖向筋条，蓝色指示面板在右侧，并有导线从底部引出。",
+          "generated_english": "The surface of the silver gray inverter has a vertical cord, the blue indication panel is on the right and the guide is drawn from the bottom.",
+          "failure": null,
+          "trace": {
+            "source_text": "银灰色逆变器的机壳表面有竖向筋条，蓝色指示面板在右侧，并有导线从底部引出。",
+            "constrained": true,
+            "constraints_applied": true,
+            "requirements": [
+              {
+                "id": "inverter",
+                "source_terms": [
+                  "逆变器"
+                ],
+                "target_forms": [
+                  "inverter",
+                  "inverters",
+                  "Inverter",
+                  "Inverters"
+                ],
+                "token_alternatives": [
+                  [
+                    10,
+                    33708,
+                    501
+                  ],
+                  [
+                    10,
+                    33708,
+                    2133
+                  ],
+                  [
+                    66,
+                    33708,
+                    501
+                  ],
+                  [
+                    66,
+                    33708,
+                    2133
+                  ]
+                ],
+                "decoder_token_alternatives": [
+                  [
+                    10,
+                    33708,
+                    501
+                  ],
+                  [
+                    10,
+                    33708,
+                    2133
+                  ],
+                  [
+                    66,
+                    33708,
+                    501
+                  ],
+                  [
+                    66,
+                    33708,
+                    2133
+                  ]
+                ],
+                "tokens_satisfied": true,
+                "phrase_satisfied": true,
+                "satisfied": true
+              }
+            ],
+            "required_token_alternatives": [
+              [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ]
+            ],
+            "output": "The surface of the silver gray inverter has a vertical cord, the blue indication panel is on the right and the guide is drawn from the bottom.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              24,
+              12325,
+              4,
+              3,
+              35942,
+              52194,
+              10,
+              33708,
+              501,
+              64,
+              12,
+              26003,
+              49007,
+              2,
+              3,
+              16431,
+              12426,
+              5735,
+              30,
+              18,
+              3,
+              151,
+              6,
+              3,
+              5492,
+              30,
+              5642,
+              49,
+              3,
+              13881,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t10",
+          "source_chinese": "同一台变压器上，顶部套管连接着导线，侧面还能看到散热鳍片。",
+          "generated_english": "The radiator fins are visible on the side of the same transformer, with a fuse attached to the top tube. The radiator is also available. The radiator is a very large part of the tube. The radiator is a very large part of the tube. The  Bushing",
+          "failure": {
+            "stage": "translation",
+            "type": "ValueError",
+            "message": "Translation did not terminate with EOS within 64 tokens"
+          },
+          "trace": {
+            "source_text": "同一台变压器上，顶部套管连接着导线，侧面还能看到散热鳍片。",
+            "constrained": true,
+            "constraints_applied": true,
+            "requirements": [
+              {
+                "id": "transformer_bushing",
+                "source_terms": [
+                  "套管"
+                ],
+                "target_forms": [
+                  "bushing",
+                  "bushings",
+                  "Bushing",
+                  "Bushings"
+                ],
+                "token_alternatives": [
+                  [
+                    38680,
+                    102
+                  ],
+                  [
+                    38680,
+                    102,
+                    22
+                  ],
+                  [
+                    24766,
+                    102
+                  ],
+                  [
+                    24766,
+                    102,
+                    22
+                  ]
+                ],
+                "decoder_token_alternatives": [
+                  [
+                    38680,
+                    102
+                  ],
+                  [
+                    24766,
+                    102
+                  ]
+                ],
+                "tokens_satisfied": true,
+                "phrase_satisfied": true,
+                "satisfied": true
+              },
+              {
+                "id": "cooling_fins",
+                "source_terms": [
+                  "散热鳍片"
+                ],
+                "target_forms": [
+                  "cooling fins",
+                  "radiator fins",
+                  "Cooling fins",
+                  "Radiator fins"
+                ],
+                "token_alternatives": [
+                  [
+                    9178,
+                    102,
+                    51192,
+                    22
+                  ],
+                  [
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22
+                  ],
+                  [
+                    29560,
+                    102,
+                    51192,
+                    22
+                  ],
+                  [
+                    39864,
+                    373,
+                    10164,
+                    51192,
+                    22
+                  ]
+                ],
+                "decoder_token_alternatives": [
+                  [
+                    9178,
+                    102,
+                    51192,
+                    22
+                  ],
+                  [
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22
+                  ],
+                  [
+                    29560,
+                    102,
+                    51192,
+                    22
+                  ],
+                  [
+                    39864,
+                    373,
+                    10164,
+                    51192,
+                    22
+                  ]
+                ],
+                "tokens_satisfied": true,
+                "phrase_satisfied": true,
+                "satisfied": true
+              }
+            ],
+            "required_token_alternatives": [
+              [
+                [
+                  38680,
+                  102
+                ],
+                [
+                  38680,
+                  102,
+                  22
+                ],
+                [
+                  24766,
+                  102
+                ],
+                [
+                  24766,
+                  102,
+                  22
+                ]
+              ],
+              [
+                [
+                  9178,
+                  102,
+                  51192,
+                  22
+                ],
+                [
+                  7,
+                  32328,
+                  10164,
+                  51192,
+                  22
+                ],
+                [
+                  29560,
+                  102,
+                  51192,
+                  22
+                ],
+                [
+                  39864,
+                  373,
+                  10164,
+                  51192,
+                  22
+                ]
+              ]
+            ],
+            "output": "The radiator fins are visible on the side of the same transformer, with a fuse attached to the top tube. The radiator is also available. The radiator is a very large part of the tube. The radiator is a very large part of the tube. The  Bushing",
+            "eos_terminated": false,
+            "satisfied": true,
+            "status": "failed",
+            "sequence": [
+              65000,
+              24,
+              7,
+              32328,
+              10164,
+              51192,
+              22,
+              44,
+              16659,
+              18,
+              3,
+              2890,
+              4,
+              3,
+              468,
+              22558,
+              501,
+              2,
+              27,
+              12,
+              46986,
+              6096,
+              8,
+              3,
+              5651,
+              40698,
+              5,
+              24,
+              7,
+              32328,
+              10164,
+              30,
+              79,
+              608,
+              5,
+              24,
+              7,
+              32328,
+              10164,
+              30,
+              12,
+              584,
+              1586,
+              423,
+              4,
+              3,
+              40698,
+              5,
+              24,
+              7,
+              32328,
+              10164,
+              30,
+              12,
+              584,
+              1586,
+              423,
+              4,
+              3,
+              40698,
+              5,
+              24,
+              7,
+              24766,
+              102
+            ],
+            "error": "Translation did not terminate with EOS within 64 tokens"
+          }
+        },
+        {
+          "intent_id": "t11",
+          "source_chinese": "找一台筒身光滑、看不到散热片的圆筒形变压器，套管和接线位于它的上部。",
+          "generated_english": "Find bushing radial transformers with radiators that are smooth radiant and undetect radiated, with the radiator and the radiator located at the top radiant ducts radiator. . radiator. . radiator. .",
+          "failure": {
+            "stage": "translation",
+            "type": "ValueError",
+            "message": "Translation did not terminate with EOS within 64 tokens"
+          },
+          "trace": {
+            "source_text": "找一台筒身光滑、看不到散热片的圆筒形变压器，套管和接线位于它的上部。",
+            "constrained": true,
+            "constraints_applied": true,
+            "requirements": [
+              {
+                "id": "transformer_bushing",
+                "source_terms": [
+                  "套管"
+                ],
+                "target_forms": [
+                  "bushing",
+                  "bushings",
+                  "Bushing",
+                  "Bushings"
+                ],
+                "token_alternatives": [
+                  [
+                    38680,
+                    102
+                  ],
+                  [
+                    38680,
+                    102,
+                    22
+                  ],
+                  [
+                    24766,
+                    102
+                  ],
+                  [
+                    24766,
+                    102,
+                    22
+                  ]
+                ],
+                "decoder_token_alternatives": [
+                  [
+                    38680,
+                    102
+                  ],
+                  [
+                    24766,
+                    102
+                  ]
+                ],
+                "tokens_satisfied": true,
+                "phrase_satisfied": true,
+                "satisfied": true
+              },
+              {
+                "id": "cooling_fins",
+                "source_terms": [
+                  "散热片"
+                ],
+                "target_forms": [
+                  "cooling fins",
+                  "radiator fins",
+                  "Cooling fins",
+                  "Radiator fins"
+                ],
+                "token_alternatives": [
+                  [
+                    9178,
+                    102,
+                    51192,
+                    22
+                  ],
+                  [
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22
+                  ],
+                  [
+                    29560,
+                    102,
+                    51192,
+                    22
+                  ],
+                  [
+                    39864,
+                    373,
+                    10164,
+                    51192,
+                    22
+                  ]
+                ],
+                "decoder_token_alternatives": [
+                  [
+                    9178,
+                    102,
+                    51192,
+                    22
+                  ],
+                  [
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22
+                  ],
+                  [
+                    29560,
+                    102,
+                    51192,
+                    22
+                  ],
+                  [
+                    39864,
+                    373,
+                    10164,
+                    51192,
+                    22
+                  ]
+                ],
+                "tokens_satisfied": false,
+                "phrase_satisfied": false,
+                "satisfied": false
+              }
+            ],
+            "required_token_alternatives": [
+              [
+                [
+                  38680,
+                  102
+                ],
+                [
+                  38680,
+                  102,
+                  22
+                ],
+                [
+                  24766,
+                  102
+                ],
+                [
+                  24766,
+                  102,
+                  22
+                ]
+              ],
+              [
+                [
+                  9178,
+                  102,
+                  51192,
+                  22
+                ],
+                [
+                  7,
+                  32328,
+                  10164,
+                  51192,
+                  22
+                ],
+                [
+                  29560,
+                  102,
+                  51192,
+                  22
+                ],
+                [
+                  39864,
+                  373,
+                  10164,
+                  51192,
+                  22
+                ]
+              ]
+            ],
+            "output": "Find bushing radial transformers with radiators that are smooth radiant and undetect radiated, with the radiator and the radiator located at the top radiant ducts radiator. . radiator. . radiator. .",
+            "eos_terminated": false,
+            "satisfied": false,
+            "status": "failed",
+            "sequence": [
+              65000,
+              22174,
+              38680,
+              102,
+              7,
+              32328,
+              618,
+              22558,
+              2133,
+              27,
+              7,
+              32328,
+              20789,
+              19,
+              44,
+              14846,
+              7,
+              32328,
+              6231,
+              6,
+              2145,
+              50685,
+              7,
+              32328,
+              7295,
+              2,
+              27,
+              3,
+              7,
+              32328,
+              10164,
+              6,
+              3,
+              7,
+              32328,
+              10164,
+              5778,
+              46,
+              3,
+              5651,
+              7,
+              32328,
+              6231,
+              7,
+              48350,
+              22,
+              7,
+              32328,
+              10164,
+              5,
+              7,
+              5,
+              7,
+              32328,
+              10164,
+              5,
+              7,
+              5,
+              7,
+              32328,
+              10164,
+              5,
+              7,
+              5,
+              7
+            ],
+            "error": "Translation did not terminate with EOS within 64 tokens"
+          }
+        },
+        {
+          "intent_id": "t12",
+          "source_chinese": "变压器的冷却鳍片前垂着几根粗黑电缆，电缆上端接在顶部套管上。",
+          "generated_english": "The cooling fins of the transformer were plunging in front of several rough cables, which were attached to the top tube. The cable was also attached to the top tube. The cable was placed in the top of the tube. The cable was placed in the top of the tube. The cable bushing",
+          "failure": {
+            "stage": "translation",
+            "type": "ValueError",
+            "message": "Translation did not terminate with EOS within 64 tokens"
+          },
+          "trace": {
+            "source_text": "变压器的冷却鳍片前垂着几根粗黑电缆，电缆上端接在顶部套管上。",
+            "constrained": true,
+            "constraints_applied": true,
+            "requirements": [
+              {
+                "id": "transformer_bushing",
+                "source_terms": [
+                  "套管"
+                ],
+                "target_forms": [
+                  "bushing",
+                  "bushings",
+                  "Bushing",
+                  "Bushings"
+                ],
+                "token_alternatives": [
+                  [
+                    38680,
+                    102
+                  ],
+                  [
+                    38680,
+                    102,
+                    22
+                  ],
+                  [
+                    24766,
+                    102
+                  ],
+                  [
+                    24766,
+                    102,
+                    22
+                  ]
+                ],
+                "decoder_token_alternatives": [
+                  [
+                    38680,
+                    102
+                  ],
+                  [
+                    24766,
+                    102
+                  ]
+                ],
+                "tokens_satisfied": true,
+                "phrase_satisfied": true,
+                "satisfied": true
+              },
+              {
+                "id": "cooling_fins",
+                "source_terms": [
+                  "冷却鳍片"
+                ],
+                "target_forms": [
+                  "cooling fins",
+                  "radiator fins",
+                  "Cooling fins",
+                  "Radiator fins"
+                ],
+                "token_alternatives": [
+                  [
+                    9178,
+                    102,
+                    51192,
+                    22
+                  ],
+                  [
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22
+                  ],
+                  [
+                    29560,
+                    102,
+                    51192,
+                    22
+                  ],
+                  [
+                    39864,
+                    373,
+                    10164,
+                    51192,
+                    22
+                  ]
+                ],
+                "decoder_token_alternatives": [
+                  [
+                    9178,
+                    102,
+                    51192,
+                    22
+                  ],
+                  [
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22
+                  ],
+                  [
+                    29560,
+                    102,
+                    51192,
+                    22
+                  ],
+                  [
+                    39864,
+                    373,
+                    10164,
+                    51192,
+                    22
+                  ]
+                ],
+                "tokens_satisfied": true,
+                "phrase_satisfied": true,
+                "satisfied": true
+              }
+            ],
+            "required_token_alternatives": [
+              [
+                [
+                  38680,
+                  102
+                ],
+                [
+                  38680,
+                  102,
+                  22
+                ],
+                [
+                  24766,
+                  102
+                ],
+                [
+                  24766,
+                  102,
+                  22
+                ]
+              ],
+              [
+                [
+                  9178,
+                  102,
+                  51192,
+                  22
+                ],
+                [
+                  7,
+                  32328,
+                  10164,
+                  51192,
+                  22
+                ],
+                [
+                  29560,
+                  102,
+                  51192,
+                  22
+                ],
+                [
+                  39864,
+                  373,
+                  10164,
+                  51192,
+                  22
+                ]
+              ]
+            ],
+            "output": "The cooling fins of the transformer were plunging in front of several rough cables, which were attached to the top tube. The cable was also attached to the top tube. The cable was placed in the top of the tube. The cable was placed in the top of the tube. The cable bushing",
+            "eos_terminated": false,
+            "satisfied": true,
+            "status": "failed",
+            "sequence": [
+              65000,
+              24,
+              9178,
+              102,
+              51192,
+              22,
+              4,
+              3,
+              22558,
+              501,
+              84,
+              804,
+              54907,
+              102,
+              10,
+              6156,
+              4,
+              1167,
+              19235,
+              49322,
+              2,
+              60,
+              84,
+              6096,
+              8,
+              3,
+              5651,
+              40698,
+              5,
+              24,
+              40026,
+              42,
+              79,
+              6096,
+              8,
+              3,
+              5651,
+              40698,
+              5,
+              24,
+              40026,
+              42,
+              3786,
+              10,
+              3,
+              5651,
+              4,
+              3,
+              40698,
+              5,
+              24,
+              40026,
+              42,
+              3786,
+              10,
+              3,
+              5651,
+              4,
+              3,
+              40698,
+              5,
+              24,
+              40026,
+              38680,
+              102
+            ],
+            "error": "Translation did not terminate with EOS within 64 tokens"
+          }
+        },
+        {
+          "intent_id": "t13",
+          "source_chinese": "灰色变压器箱体的两扇百叶门上着锁，顶部没有可见的套管。",
+          "generated_english": "The two shutters in the grey transformer box were locked and there were no visible caps on the top. The door was closed. The door was closed. The door was closed. The door was closed. The door was closed. The door was closed. The door was closed. The door was locked bushing",
+          "failure": {
+            "stage": "translation",
+            "type": "ValueError",
+            "message": "Translation did not terminate with EOS within 64 tokens"
+          },
+          "trace": {
+            "source_text": "灰色变压器箱体的两扇百叶门上着锁，顶部没有可见的套管。",
+            "constrained": true,
+            "constraints_applied": true,
+            "requirements": [
+              {
+                "id": "transformer_bushing",
+                "source_terms": [
+                  "套管"
+                ],
+                "target_forms": [
+                  "bushing",
+                  "bushings",
+                  "Bushing",
+                  "Bushings"
+                ],
+                "token_alternatives": [
+                  [
+                    38680,
+                    102
+                  ],
+                  [
+                    38680,
+                    102,
+                    22
+                  ],
+                  [
+                    24766,
+                    102
+                  ],
+                  [
+                    24766,
+                    102,
+                    22
+                  ]
+                ],
+                "decoder_token_alternatives": [
+                  [
+                    38680,
+                    102
+                  ],
+                  [
+                    24766,
+                    102
+                  ]
+                ],
+                "tokens_satisfied": true,
+                "phrase_satisfied": true,
+                "satisfied": true
+              }
+            ],
+            "required_token_alternatives": [
+              [
+                [
+                  38680,
+                  102
+                ],
+                [
+                  38680,
+                  102,
+                  22
+                ],
+                [
+                  24766,
+                  102
+                ],
+                [
+                  24766,
+                  102,
+                  22
+                ]
+              ]
+            ],
+            "output": "The two shutters in the grey transformer box were locked and there were no visible caps on the top. The door was closed. The door was closed. The door was closed. The door was closed. The door was closed. The door was closed. The door was closed. The door was locked bushing",
+            "eos_terminated": false,
+            "satisfied": true,
+            "status": "failed",
+            "sequence": [
+              65000,
+              24,
+              262,
+              11233,
+              27015,
+              10,
+              3,
+              51581,
+              22558,
+              501,
+              9849,
+              84,
+              22734,
+              6,
+              161,
+              84,
+              179,
+              16659,
+              19552,
+              22,
+              18,
+              3,
+              5651,
+              5,
+              24,
+              5906,
+              42,
+              5829,
+              5,
+              24,
+              5906,
+              42,
+              5829,
+              5,
+              24,
+              5906,
+              42,
+              5829,
+              5,
+              24,
+              5906,
+              42,
+              5829,
+              5,
+              24,
+              5906,
+              42,
+              5829,
+              5,
+              24,
+              5906,
+              42,
+              5829,
+              5,
+              24,
+              5906,
+              42,
+              5829,
+              5,
+              24,
+              5906,
+              42,
+              22734,
+              38680,
+              102
+            ],
+            "error": "Translation did not terminate with EOS within 64 tokens"
+          }
+        },
+        {
+          "intent_id": "t14",
+          "source_chinese": "室内通道夹在左右两排灰白色开关柜之间，柜门上有许多红色操作手柄。",
+          "generated_english": "The interior passages are caught between the left and left of the two grey and white switches, with many red handles on the doors.",
+          "failure": null,
+          "trace": {
+            "source_text": "室内通道夹在左右两排灰白色开关柜之间，柜门上有许多红色操作手柄。",
+            "constrained": true,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "The interior passages are caught between the left and left of the two grey and white switches, with many red handles on the doors.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              24,
+              36172,
+              17374,
+              22,
+              44,
+              12657,
+              191,
+              3,
+              2128,
+              6,
+              2128,
+              4,
+              3,
+              262,
+              51581,
+              6,
+              10098,
+              55989,
+              2,
+              27,
+              469,
+              11386,
+              9883,
+              22,
+              18,
+              3,
+              26975,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t15",
+          "source_chinese": "放在室外地面上的便携配电箱，蓝色面板装在金属提架里，前方接着两根粗黑电缆。",
+          "generated_english": "Portable distribution boxes on the outside of the room, with blue panels in metal lifts, followed by two heavy black cables.",
+          "failure": null,
+          "trace": {
+            "source_text": "放在室外地面上的便携配电箱，蓝色面板装在金属提架里，前方接着两根粗黑电缆。",
+            "constrained": true,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "Portable distribution boxes on the outside of the room, with blue panels in metal lifts, followed by two heavy black cables.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              11139,
+              2269,
+              2649,
+              33811,
+              18,
+              3,
+              2231,
+              4,
+              3,
+              2838,
+              2,
+              27,
+              16431,
+              17486,
+              10,
+              21202,
+              18022,
+              22,
+              2,
+              3539,
+              29,
+              262,
+              7598,
+              8261,
+              49322,
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "intent_id": "t16",
+          "source_chinese": "透过玻璃柜门能看到机柜下方的不间断电源，上方装着横放的服务器。",
+          "generated_english": "The uninterruptible power supply under the cabinet was visible through the glass door, with a horizontal server above it.",
+          "failure": null,
+          "trace": {
+            "source_text": "透过玻璃柜门能看到机柜下方的不间断电源，上方装着横放的服务器。",
+            "constrained": true,
+            "constraints_applied": false,
+            "requirements": [],
+            "required_token_alternatives": [],
+            "output": "The uninterruptible power supply under the cabinet was visible through the glass door, with a horizontal server above it.",
+            "eos_terminated": true,
+            "satisfied": true,
+            "status": "success",
+            "sequence": [
+              65000,
+              24,
+              2145,
+              20212,
+              35709,
+              59,
+              13179,
+              1952,
+              2907,
+              111,
+              3,
+              34100,
+              42,
+              16659,
+              180,
+              3,
+              20832,
+              5906,
+              2,
+              27,
+              12,
+              26404,
+              27382,
+              817,
+              39,
+              5,
+              0
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

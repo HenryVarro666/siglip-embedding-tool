@@ -1,0 +1,10 @@
+{
+  "experiment_id": "equipment-terminology-constraints-v1",
+  "labels": {
+    "A": "constrained",
+    "B": "original",
+    "C": "beam"
+  },
+  "mapping_created_with_seed": 20261031,
+  "do_not_show_to_reviewer_before_grading": true
+}

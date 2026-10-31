@@ -1,0 +1,643 @@
+{
+  "experiment_id": "equipment-terminology-constraints-v1",
+  "review_scope": "Source Chinese and all verbatim outputs only; no rankings/scores/latencies/reference English. Labels A/B/C anonymize decoder names, but surface terms and failure patterns may suggest a decoder.",
+  "model_names_blinded": true,
+  "retrieval_results_included": false,
+  "source_hashes": {
+    "manifest": "3487fdf62b90971619ec098b2ec5bbad00e5af2d22ec9183d258bc1a24916975",
+    "queries": "19a1da3d4fa9d961f379af0d56dad9274e698895af0d2800d35ad44dfad445db",
+    "qrels": "0a6c9486084c5108439f642f4440d8ec4191ff8221a2ee0c553f8589f12daf95"
+  },
+  "review_rules_sha256": "1feccdda7885c3d6f830c63b5613fbf23dbae8b22e9b09a5da839eb3e859829a",
+  "queries": [
+    {
+      "intent_id": "t01",
+      "source_chinese": "微型逆变器固定在横向金属导轨上，机身上方有一根裸露铜线，右侧连着黑色电缆。",
+      "term_opportunities": [
+        {
+          "id": "microinverter",
+          "source_terms": [
+            "微型逆变器"
+          ],
+          "target_forms": [
+            "microinverter",
+            "microinverters",
+            "Microinverter",
+            "Microinverters"
+          ]
+        }
+      ],
+      "outputs": {
+        "A": {
+          "generated_english": "The microinverter is fixed on a horizontal metal track, with a naked copper line on its body and a black cable attached to its right side.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "B": {
+          "generated_english": "The microreverser is fixed on a horizontal metal track, with a naked copper line on its body and a black cable on its right.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "C": {
+          "generated_english": "The mini-reverser is fixed on a horizontal metal track, with a naked copper line on its body and a black cable on its right.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        }
+      }
+    },
+    {
+      "intent_id": "t02",
+      "source_chinese": "手掌托着一台微逆，白色电缆从机身引出，背后能看见太阳能电池片。",
+      "term_opportunities": [
+        {
+          "id": "microinverter",
+          "source_terms": [
+            "微逆"
+          ],
+          "target_forms": [
+            "microinverter",
+            "microinverters",
+            "Microinverter",
+            "Microinverters"
+          ]
+        }
+      ],
+      "outputs": {
+        "A": {
+          "generated_english": "The palm was micro-reverse, micro-optical, micro-cable from micro-black, micro-cells behind micro-cells. micro-cables micro-black cables micro-blacked micro-crys micro-blacks micro- microinverter",
+          "request_accepted": false,
+          "failure": {
+            "stage": "translation",
+            "type": "ValueError",
+            "message": "Translation did not terminate with EOS within 64 tokens"
+          },
+          "eos_terminated": false
+        },
+        "B": {
+          "generated_english": "The palm was held in a small contrast, and the white cable drew from the body of the aircraft, with solar cell fragments visible behind it.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "C": {
+          "generated_english": "With a small counterweight in the palm of the hand, a white cable is drawn from the body of the aircraft, and a solar battery can be seen behind it.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        }
+      }
+    },
+    {
+      "intent_id": "t03",
+      "source_chinese": "白色背景中的微型太阳能逆变器外壳闭合，一侧有三个电缆接头，但没有接出的电线。",
+      "term_opportunities": [
+        {
+          "id": "microinverter",
+          "source_terms": [
+            "微型太阳能逆变器"
+          ],
+          "target_forms": [
+            "microinverter",
+            "microinverters",
+            "Microinverter",
+            "Microinverters"
+          ]
+        }
+      ],
+      "outputs": {
+        "A": {
+          "generated_english": "The microinverter shell in the white background closed with three cable connections on one side, but no wires were removed.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "B": {
+          "generated_english": "The micro-solar reversor shell in the white background closed with three cable connections on one side but no wires were removed.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "C": {
+          "generated_english": "In the white background, the micro-solar inverter shell closed, with three cable connections on one side, but no wires were removed.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        }
+      }
+    },
+    {
+      "intent_id": "t04",
+      "source_chinese": "壁挂逆变器的外壳闭合，底部伸出多根能看清的独立导线或电缆。",
+      "term_opportunities": [
+        {
+          "id": "inverter",
+          "source_terms": [
+            "逆变器"
+          ],
+          "target_forms": [
+            "inverter",
+            "inverters",
+            "Inverter",
+            "Inverters"
+          ]
+        }
+      ],
+      "outputs": {
+        "A": {
+          "generated_english": "The surface of the wall-reverse transformer is closed and multiple separate guides or cables are extended to the bottom in order to be visible in the light. The surface of the wall-reverse transformer is closed in the form of a single line or cable in the form of a single line. Inverter",
+          "request_accepted": false,
+          "failure": {
+            "stage": "translation",
+            "type": "ValueError",
+            "message": "Translation did not terminate with EOS within 64 tokens"
+          },
+          "eos_terminated": false
+        },
+        "B": {
+          "generated_english": "The surface of the wall-reverse transformer is closed and multiple separate guides or cables are extended to the bottom.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "C": {
+          "generated_english": "The outer shell of the wall-reverse transformer is closed, with multiple distinct guides or cables that can be seen at the bottom.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        }
+      }
+    },
+    {
+      "intent_id": "t05",
+      "source_chinese": "逆变器前盖已拆下，绿色电路板上排列着许多蓝色圆柱电容，底部还能看见接线。",
+      "term_opportunities": [
+        {
+          "id": "inverter",
+          "source_terms": [
+            "逆变器"
+          ],
+          "target_forms": [
+            "inverter",
+            "inverters",
+            "Inverter",
+            "Inverters"
+          ]
+        }
+      ],
+      "outputs": {
+        "A": {
+          "generated_english": "The front cap of the inverter has been removed and many blue cylinder caps have been placed on the green circuit board, with wires visible at the bottom.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "B": {
+          "generated_english": "The inverter front caps have been removed and many blue cylinder caps are placed on the green circuit board, with connections visible at the bottom.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "C": {
+          "generated_english": "The front cap of the inverter has been removed and many blue cylinder caps have been placed on the green circuit board, with wires visible at the bottom.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        }
+      }
+    },
+    {
+      "intent_id": "t06",
+      "source_chinese": "单台黄色逆变器安装在光伏板背面下方的金属支架上，机壳闭合，旁边能看见竖直立柱。",
+      "term_opportunities": [
+        {
+          "id": "inverter",
+          "source_terms": [
+            "逆变器"
+          ],
+          "target_forms": [
+            "inverter",
+            "inverters",
+            "Inverter",
+            "Inverters"
+          ]
+        }
+      ],
+      "outputs": {
+        "A": {
+          "generated_english": "A single yellow inverter is installed on a metal staircase below the back of the PV board, the shell is closed and a vertical pillar can be seen next to it.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "B": {
+          "generated_english": "A single yellow inverter is installed on a metal staircase below the back of the PV board, the shell is closed and a vertical pillar is visible next to it.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "C": {
+          "generated_english": "A single yellow inverter is installed on the metal staircase below the back of the PV board, the shell is closed and a vertical pillar can be seen next to it.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        }
+      }
+    },
+    {
+      "intent_id": "t07",
+      "source_chinese": "一排黄色逆变器沿横向支架安装在光伏板背面，各台之间留有间隔。",
+      "term_opportunities": [
+        {
+          "id": "inverter",
+          "source_terms": [
+            "逆变器"
+          ],
+          "target_forms": [
+            "inverter",
+            "inverters",
+            "Inverter",
+            "Inverters"
+          ]
+        }
+      ],
+      "outputs": {
+        "A": {
+          "generated_english": "A yellow row of inverters is installed on the back of the PV panel along the horizontal supports, with a gap between the tables.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "B": {
+          "generated_english": "A yellow inverter is installed on the back of the photovoltile board along the horizontal staircase, with a gap between the tables.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "C": {
+          "generated_english": "A row of yellow inverters is installed on the back of the photovoltaic plate along the horizontal staircase, with a gap between the tables.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        }
+      }
+    },
+    {
+      "intent_id": "t08",
+      "source_chinese": "黄色逆变器固定在木板墙上，圆形电表在它右侧，两者下方都有灰色保护管。",
+      "term_opportunities": [
+        {
+          "id": "inverter",
+          "source_terms": [
+            "逆变器"
+          ],
+          "target_forms": [
+            "inverter",
+            "inverters",
+            "Inverter",
+            "Inverters"
+          ]
+        }
+      ],
+      "outputs": {
+        "A": {
+          "generated_english": "The yellow inverter is fixed on the board wall, the rounded electricity table is on its right side, and both have grey protection tubes.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "B": {
+          "generated_english": "Yellow inverters are fixed on the board wall, rounded up on the right side of the wall, and both have grey protection tubes.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "C": {
+          "generated_english": "The yellow inverter is fixed on the board wall, the round table is on its right side, and both have grey protection tubes.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        }
+      }
+    },
+    {
+      "intent_id": "t09",
+      "source_chinese": "银灰色逆变器的机壳表面有竖向筋条，蓝色指示面板在右侧，并有导线从底部引出。",
+      "term_opportunities": [
+        {
+          "id": "inverter",
+          "source_terms": [
+            "逆变器"
+          ],
+          "target_forms": [
+            "inverter",
+            "inverters",
+            "Inverter",
+            "Inverters"
+          ]
+        }
+      ],
+      "outputs": {
+        "A": {
+          "generated_english": "The surface of the silver gray inverter has a vertical cord, the blue indication panel is on the right and the guide is drawn from the bottom.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "B": {
+          "generated_english": "The surface of the silver gray inverter has a vertical cord, the blue indication panel is on the right and the guide is drawn from the bottom.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "C": {
+          "generated_english": "The surface of the silver-grey inverter has a vertical cord, the blue indication panel is to the right and the guide is drawn from the bottom.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        }
+      }
+    },
+    {
+      "intent_id": "t10",
+      "source_chinese": "同一台变压器上，顶部套管连接着导线，侧面还能看到散热鳍片。",
+      "term_opportunities": [
+        {
+          "id": "transformer_bushing",
+          "source_terms": [
+            "套管"
+          ],
+          "target_forms": [
+            "bushing",
+            "bushings",
+            "Bushing",
+            "Bushings"
+          ]
+        },
+        {
+          "id": "cooling_fins",
+          "source_terms": [
+            "散热鳍片"
+          ],
+          "target_forms": [
+            "cooling fins",
+            "radiator fins",
+            "Cooling fins",
+            "Radiator fins"
+          ]
+        }
+      ],
+      "outputs": {
+        "A": {
+          "generated_english": "The radiator fins are visible on the side of the same transformer, with a fuse attached to the top tube. The radiator is also available. The radiator is a very large part of the tube. The radiator is a very large part of the tube. The  Bushing",
+          "request_accepted": false,
+          "failure": {
+            "stage": "translation",
+            "type": "ValueError",
+            "message": "Translation did not terminate with EOS within 64 tokens"
+          },
+          "eos_terminated": false
+        },
+        "B": {
+          "generated_english": "The same transformer, the top tube, connects the fuse and the side can see the radiant fin.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "C": {
+          "generated_english": "On the same transformer, the top tube is connected to the fuse and the side can see the radiant fin.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        }
+      }
+    },
+    {
+      "intent_id": "t11",
+      "source_chinese": "找一台筒身光滑、看不到散热片的圆筒形变压器，套管和接线位于它的上部。",
+      "term_opportunities": [
+        {
+          "id": "transformer_bushing",
+          "source_terms": [
+            "套管"
+          ],
+          "target_forms": [
+            "bushing",
+            "bushings",
+            "Bushing",
+            "Bushings"
+          ]
+        },
+        {
+          "id": "cooling_fins",
+          "source_terms": [
+            "散热片"
+          ],
+          "target_forms": [
+            "cooling fins",
+            "radiator fins",
+            "Cooling fins",
+            "Radiator fins"
+          ]
+        }
+      ],
+      "outputs": {
+        "A": {
+          "generated_english": "Find bushing radial transformers with radiators that are smooth radiant and undetect radiated, with the radiator and the radiator located at the top radiant ducts radiator. . radiator. . radiator. .",
+          "request_accepted": false,
+          "failure": {
+            "stage": "translation",
+            "type": "ValueError",
+            "message": "Translation did not terminate with EOS within 64 tokens"
+          },
+          "eos_terminated": false
+        },
+        "B": {
+          "generated_english": "Find a cylinder transformer that is smooth and does not see a radiator, with a tube and a connection located on the top of it.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "C": {
+          "generated_english": "Find a cylindrical transformer that is smooth and can't see the radiator, and the tubes and connections are located on the top of it.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        }
+      }
+    },
+    {
+      "intent_id": "t12",
+      "source_chinese": "变压器的冷却鳍片前垂着几根粗黑电缆，电缆上端接在顶部套管上。",
+      "term_opportunities": [
+        {
+          "id": "transformer_bushing",
+          "source_terms": [
+            "套管"
+          ],
+          "target_forms": [
+            "bushing",
+            "bushings",
+            "Bushing",
+            "Bushings"
+          ]
+        },
+        {
+          "id": "cooling_fins",
+          "source_terms": [
+            "冷却鳍片"
+          ],
+          "target_forms": [
+            "cooling fins",
+            "radiator fins",
+            "Cooling fins",
+            "Radiator fins"
+          ]
+        }
+      ],
+      "outputs": {
+        "A": {
+          "generated_english": "The cooling fins of the transformer were plunging in front of several rough cables, which were attached to the top tube. The cable was also attached to the top tube. The cable was placed in the top of the tube. The cable was placed in the top of the tube. The cable bushing",
+          "request_accepted": false,
+          "failure": {
+            "stage": "translation",
+            "type": "ValueError",
+            "message": "Translation did not terminate with EOS within 64 tokens"
+          },
+          "eos_terminated": false
+        },
+        "B": {
+          "generated_english": "The cooling fins of the transformer were plunging in front of several rough cables, which were attached to the top tube.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "C": {
+          "generated_english": "The cooling fin blades of the transformer had several thick black cables in front of them and the top end of the cable was attached to the top tube.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        }
+      }
+    },
+    {
+      "intent_id": "t13",
+      "source_chinese": "灰色变压器箱体的两扇百叶门上着锁，顶部没有可见的套管。",
+      "term_opportunities": [
+        {
+          "id": "transformer_bushing",
+          "source_terms": [
+            "套管"
+          ],
+          "target_forms": [
+            "bushing",
+            "bushings",
+            "Bushing",
+            "Bushings"
+          ]
+        }
+      ],
+      "outputs": {
+        "A": {
+          "generated_english": "The two shutters in the grey transformer box were locked and there were no visible caps on the top. The door was closed. The door was closed. The door was closed. The door was closed. The door was closed. The door was closed. The door was closed. The door was locked bushing",
+          "request_accepted": false,
+          "failure": {
+            "stage": "translation",
+            "type": "ValueError",
+            "message": "Translation did not terminate with EOS within 64 tokens"
+          },
+          "eos_terminated": false
+        },
+        "B": {
+          "generated_english": "Two of the grey transformer boxes were locked on the shutters, with no visible caps on the top.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "C": {
+          "generated_english": "Two of the grey transformer boxes were locked on the shutters, with no visible holsters at the top.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        }
+      }
+    },
+    {
+      "intent_id": "t14",
+      "source_chinese": "室内通道夹在左右两排灰白色开关柜之间，柜门上有许多红色操作手柄。",
+      "term_opportunities": [],
+      "outputs": {
+        "A": {
+          "generated_english": "The interior passages are caught between the left and left of the two grey and white switches, with many red handles on the doors.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "B": {
+          "generated_english": "The interior passage is between the two grey and white switchboards, which are covered with red handles.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "C": {
+          "generated_english": "The interior passages are caught between the left and left of the two grey and white switches, with many red handles on the doors.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        }
+      }
+    },
+    {
+      "intent_id": "t15",
+      "source_chinese": "放在室外地面上的便携配电箱，蓝色面板装在金属提架里，前方接着两根粗黑电缆。",
+      "term_opportunities": [],
+      "outputs": {
+        "A": {
+          "generated_english": "Portable distribution boxes on the outside of the room, with blue panels in metal lifts, followed by two heavy black cables.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "B": {
+          "generated_english": "Portable distribution boxes are placed on the outside of the room, with blue panels in metal lifts, followed by two rough cables.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "C": {
+          "generated_english": "Portable distribution boxes on the outside of the room, with blue panels in metal lifts, followed by two heavy black cables.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        }
+      }
+    },
+    {
+      "intent_id": "t16",
+      "source_chinese": "透过玻璃柜门能看到机柜下方的不间断电源，上方装着横放的服务器。",
+      "term_opportunities": [],
+      "outputs": {
+        "A": {
+          "generated_english": "The uninterruptible power supply under the cabinet was visible through the glass door, with a horizontal server above it.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "B": {
+          "generated_english": "The uninterruptible power supply under the cabinet was visible through the glass door, with a horizontal server above it.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        },
+        "C": {
+          "generated_english": "The uninterruptible power supply under the cabinet was visible through the glass door, with a horizontal server above it.",
+          "request_accepted": true,
+          "failure": null,
+          "eos_terminated": true
+        }
+      }
+    }
+  ]
+}

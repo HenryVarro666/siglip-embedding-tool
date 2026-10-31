@@ -99,6 +99,20 @@ uv run siglip-tools search-text --index artifacts/gallery.npz \
 
 NLLB 使用 CC-BY-NC-4.0 研究模型，权重仅保存在本机；模型来源、固定 revision、语言控制和适用范围记录在上述复现说明。两种自动策略都包含实际翻译时间，未提供英文字符串缓存。
 
+已追加 OPUS 领域术语约束实验：16个新中文意图、同一40图，比较原始beam1、普通beam4与约束beam4。按包含失败片段的文本审阅，约束明确术语由6/16增至9/16，但两检索模型均有6/16生成失败；So400m原始/约束融合mAP为0.853/0.547，含实际翻译的端到端p50为119.52/535.95ms。接线、安装和否定关系仍有丢失，当前保留原始默认。[结果与逐项改进](docs/terminology-constraints-v1.md) · [固定输入和复现](benchmarks/terminology-constraints-v1/README.md)
+
+可显式试验已固定的词汇约束，先准备四个解码代码/README文件：
+
+```bash
+uv run python -m siglip_tools.opus_constraints prepare --output models/opus-constrained-decoder
+uv run siglip-tools search-text --index artifacts/gallery.npz \
+  --query "微型逆变器固定在横向金属导轨上，机身上方有一根裸露铜线，右侧连着黑色电缆。" \
+  --auto-translate english --translator opus --opus-decoding constrained \
+  --device mps --local-files-only
+```
+
+`--opus-decoding beam`为相同beam4无约束对照，`original`为现有默认；非默认选项仅用于OPUS自动翻译。输出保留英文和核验轨迹，约束/EOS失败时明确报错。没有目标术语时约束路径执行普通beam4。词汇出现不能证明完整关系正确；新查询共享旧图库、标签来自助手，尚需现场人工复核。
+
 文本上限来自 checkpoint，已验证的默认模型为 64 tokens。过长查询会报错，避免静默截断。长文档的纯文本检索应使用单独的文本 embedding 模型。
 
 ## 以图搜图

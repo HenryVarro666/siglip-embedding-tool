@@ -1,34 +1,34 @@
 # 工作接续状态
 
-更新：2026-10-31；当前任务进行中，完成时将更新下文。目录：`/Users/caochao/Documents/SigLIP`，私有远端 `HenryVarro666/siglip-embedding-tool`，开发分支 `feat/opus-terminology-constraints`。
+更新：2026-10-31。本轮测量、分析和本地核验完成，正在做独立检出与私有发布核验。目录：`/Users/caochao/Documents/SigLIP`，私有远端`HenryVarro666/siglip-embedding-tool`，开发分支`feat/opus-terminology-constraints`。
 
-## 当前授权与固定边界
+## 先读什么
 
-给现有 OPUS-MT 增加逆变器、变压器套管、可见散热鳍片约束；用16个新增中文意图检查接线、安装和否定关系，对比原始beam1、无约束beam4、约束beam4在Base/So400m的效果及端到端时间。继续不训练，不手改英文，不用新查询调词表/参数。新增查询共享原40图库，助手标注，不能称为现场独立人类真值。
+[文档总索引](README.md) → [本轮完整报告](terminology-constraints-v1.md) → [问题台账SIG-020–037](issue-log.md) / [历史SIG-001–019](historical-issues.md)。用户要求之前、现在和未来每次问题/改进都保存并衔接；发现即登记，修复补实际验证，结束更新此接续文件和索引。要求已写入AGENTS.md，不能只留聊天。
 
-用户额外要求：历史、当前、未来每次问题/改进均保存到文档并衔接。先登记[问题台账](issue-log.md)，修复补验证，结束更新此文件与[总索引](README.md)。历史19组问题已回填，不覆盖旧报告。
+## 本轮固定内容与结果
 
-## 已完成
+- 继续不训练。OPUS原始beam1、普通beam4、领域约束beam4，与Base224/So400m384对照；每次自动请求真实翻译，英文不手改，融合各0.5余弦。原始默认保留，约束显式可选。
+- 词表/上下文规则先冻结提交`3e0da59`；16个新中文意图、32配对字符串在无新输出时编写/复核，仍共享旧40图库，助手标签而非人类/现场真值。源英文字段不用于翻译。
+- 测量代码提交`b68cb99`；核心SHA`44b19b06d0ffd628ea48ef0bb7ec69c64025637e0e664e43001efdc393ded9df`，协议SHA`807dddddef6282aa57e93afc7754a40e67bb54f919c8b33296cd63f3e9c806b2`。完整输入/来源/索引/代码绑定见`benchmarks/terminology-constraints-v1/freeze.json`，旧报告不覆盖。
+- 两模型7策略均完成：2240热请求含240失败；224评分尝试为200完整40图排名和24失败。两模型约束均失败t02/t04/t10/t11/t12/t13，共6/16，全部缺EOS；不从分母删除。
+- 原始/约束融合mAP：Base0.7978/0.4292、So400m0.8534/0.5469；实际端到端p50为100.79/582.64ms和119.52/535.95ms。词义和局部成功查询有改善，未抵消失败/关系损失，不支持设为默认。
+- 匿名文本审阅后解盲：约束术语明确9/16（含失败片段），原始6/16；套管4处均没有完整可用译文。接线/安装等关系仍有错误。t16源文歧义仅作事后敏感性，原查询/标签不改。
+- 独立复算通过；完整证据、原样输出/失败序列、匿名与解盲文件、结果摘要、审计/复算程序均已保存。SIG-037修复事后导出器绑定，真实重导出除时间戳外完全一致，未改测量核心或重跑模型。
 
-- 历史主分支 `15c9822`：NLLB对照完成，无训练，259项离线测试/构建/CI通过；[报告](stronger-translation-v1.md)保留。
-- 新设计与初始台账提交 `38bf2fd`；词表与上下文规则在新查询编写前冻结提交 `3e0da59`，glossary SHA256 `20fef944133fe8453e9b60d5d7a6ccabb93ce3a4ffe0565038caaf8f51e3c42e`。
-- 新查询由未看历史查询/输出的助手检查40原图后编写，queries SHA `19a1da3d4fa9d961f379af0d56dad9274e698895af0d2800d35ad44dfad445db`，qrels SHA `0a6c9486084c5108439f642f4440d8ec4191ff8221a2ee0c553f8589f12daf95`。根执行器确认与旧文本无完全相同项；第二助手正在复核标签。
-- OPUS适配器37项测试通过，含固定上游生成实现+随机微型Marian的真实接口；无外部源缓存时22项明确跳过、15项仍离线通过。CI增加显式准备四个代码/README文件，不下载预训练权重。旧代码默认保留。
-- 新七策略runner与CLI的14项测试通过，含失败仍计入分母、完整阶段/真实总时间、比较入口子进程和约束轨迹。尚待真实旧查询预检、协议/代码冻结、两检索模型运行、独立复算及最终全套/CI。
+## 验证与证据位置
 
-## 固定来源与本机路径
+- 冻结前315离线测试/Ruff通过；最终本地319通过、2真实模型测试默认排除，Ruff、原始CLIP/SigLIP损失/有限差分演示、wheel/sdist/包资源检查通过。日志`artifacts/terminology-constraints/final-verification-v2.log`。
+- 真实MPS CLI约束t01成功，英文/轨迹/Top5在`artifacts/terminology-constraints/cli-smoke.json`。源参数、规则、权重没有训练或手改。
+- 原始结果：`artifacts/terminology-constraints/{base-v1,quality-v1}/result.json`；对照`comparison.json`。审查页`artifacts/terminology-constraints/review.html`：1360卡片、24失败区，中文控制重复仅为展示。
+- Git内输入、摘要、译文与审阅：`benchmarks/terminology-constraints-v1/`；外部解码来源四文件在`models/opus-constrained-decoder`，OPUS在`models/opus-mt-zh-en`；Base/So索引仍在`artifacts/equipment-benchmark/{base-v1,quality-v1}/index.npz`。
+- 独立检出与远端状态尚待收尾，不能据本地绿测试假定已推送。完成后本文件会删除此待办；当前真实远端提交/CI以[提交记录](https://github.com/HenryVarro666/siglip-embedding-tool/commits/main/)和[GitHub Actions](https://github.com/HenryVarro666/siglip-embedding-tool/actions)为准。
 
-- OPUS `Helsinki-NLP/opus-mt-zh-en` rev `cf109095479db38d6df799875e34039d4938aaa6`；模型 `models/opus-mt-zh-en`。
-- Base索引 `artifacts/equipment-benchmark/base-v1/index.npz`；So400m索引 `artifacts/equipment-benchmark/quality-v1/index.npz`。索引记录各自完整模型/processor身份，禁止混用。
-- 外部解码源 `transformers-community/constrained-beam-search` rev `07b2f120b7db38f1d7bac617ad65ea130508f297`；准备命令 `uv run python -m siglip_tools.opus_constraints prepare --output models/opus-constrained-decoder`。其代码不入Git，完整固定SHA和本地来源清单由适配器验证；准备阶段只取四文件。
-- 新评估输入 `benchmarks/terminology-constraints-v1/`，图库仍为 `data/equipment-v1/`；新原始结果/日志放 `artifacts/terminology-constraints/`。旧实验目录不可当作新结果输出。
+## 后续建议（未执行，不训练）
 
-## 下一步
+1. 人工审核t16柜外/柜内位置、e026同图两设备归属、接线/连接/鳍片的领域含义；纠正另建数据版本并重评，不覆盖v1。
+2. 在其他开发查询预定重复抑制、预算/beam、源槽位/短语或软约束，再用新留出集测。显式失败回退要记录触发率、先失败再回退总耗时；本轮未实现回退/缓存/新生成策略。
+3. 现场查询/实物分组与模型顺序交错、并发/峰值资源/profiling待补；词出现、句意忠实、请求可返回和检索命中分开评价。
+4. 如需要，预声明检索权重字节SHA，存逐重复输出/排名或摘要；本轮审计边界见SIG-035。上游processor提示保留，不以身份一致冒充已定位影响。
 
-1. 第二助手完成标签复核，补标签审阅SHA；准备固定解码器；只用旧8条开发查询做真实接口预检，所有问题/修复入台账。
-2. 固定完整协议（7策略、16意图、每策略预热3次/每意图10次、float32/MPS），冻结代码/索引/词表/来源/查询/标签哈希并提交。
-3. 顺序运行 Base / So400m；保存未修改英文、约束轨迹、完整排序、全部热计时与失败，不从指标分母删失败。
-4. 文本/上下文审阅独立于检索分数；复算结果，保存报告、可复现摘要、Top5页和改进点。仅8条旧开发查询上的调试不算新集效果证据。
-5. 全套离线测试/lint/原始损失演示/构建（含词表资源）/独立检出，代码及结果审阅后提交、私有推送、验证该head的CI；最后更新此接续文件。
-
-如果会话中断，先核实 `git status`、本文件和计划进度，不重复已完成的模型运行或覆盖既有结果。未完成的真实运行不能写成完成，静态词覆盖不能代替关系保真结论。
+任何后续修改先记录问题编号、证据与作用范围，再改代码/数据；全套测试和真实测量各有自己的口径，未执行的工作不能写作完成。不要重复已存在的模型运行或覆盖结果。

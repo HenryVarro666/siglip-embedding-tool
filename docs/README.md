@@ -12,7 +12,7 @@
 | 三条中文退步与提供英文的融合 | [双语分析](bilingual-fusion-v1.md)、[固定输入](../benchmarks/bilingual-fusion-v1/README.md) |
 | OPUS每请求真翻译及完整耗时 | [自动翻译](auto-translation-v1.md)、[复现](../benchmarks/auto-translation-v1/README.md) |
 | NLLB1.3B / OPUS术语、效果与耗时 | [更大译者比较](stronger-translation-v1.md)、[冻结与审计](../benchmarks/stronger-translation-v1/README.md) |
-| OPUS领域术语约束与16条新查询 | [本轮设计](superpowers/specs/2026-10-31-opus-term-constraints-design.md)、[实现计划](superpowers/plans/2026-10-31-opus-term-constraints.md)；结果完成后在此追加报告 |
+| OPUS领域术语约束与16条新查询 | [本轮报告](terminology-constraints-v1.md)、[复现输入](../benchmarks/terminology-constraints-v1/README.md)、[实现计划](superpowers/plans/2026-10-31-opus-term-constraints.md) |
 | 所有问题、修复与后续动作 | [当前台账](issue-log.md)、[历史台账](historical-issues.md)、[改进路线](improvements.md) |
 | 后续执行入口与未完成事项 | [接续状态](continuation.md)、[项目工作约束](../AGENTS.md) |
 | 备用训练代码 | [训练说明](../training/README.md)，检索命令不会自动训练 |

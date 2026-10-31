@@ -1,0 +1,50 @@
+{
+  "experiment_id": "equipment-terminology-constraints-v1",
+  "created_at_utc": "2026-10-31T22:23:53.626674+00:00",
+  "measurement_implementation_sha256": "44b19b06d0ffd628ea48ef0bb7ec69c64025637e0e664e43001efdc393ded9df",
+  "local_checks": {
+    "offline_tests": {
+      "passed": 319,
+      "integration_deselected": 2
+    },
+    "ruff": "passed",
+    "original_loss_demo_and_finite_difference_gradcheck": "passed",
+    "wheel_and_sdist": "passed",
+    "packaged_glossary_and_core_sources_match": "passed",
+    "no_weights_images_or_indexes_in_wheel": true,
+    "real_mps_cli": {
+      "status": "passed",
+      "query_id": "t01_zh",
+      "artifacts": {
+        "cli-smoke.json": "7c720744f637e1af86776cd16cec5523b9006b008819415cc1c33f6c62e3859d",
+        "cli-smoke.log": "088c6b42413c3b26eafeea73c0c01d1a74574e9c767998be051dad700e77281d"
+      }
+    },
+    "html_review": {
+      "path": "artifacts/terminology-constraints/review.html",
+      "sha256": "6077591ebb3b2ef4a1dc226d6d3bd6d2dbb1193ee91f330d0b185e0ec525ca1a",
+      "policy_displays": 288,
+      "failed_displays_without_cards": 24,
+      "ranking_cards": 1320,
+      "gallery_cards": 40
+    },
+    "guarded_real_reexport": "identical except exported_at_utc; six view files byte-identical",
+    "export_guard_tests": 4
+  },
+  "local_log": {
+    "path": "artifacts/terminology-constraints/final-verification-v2.log",
+    "sha256": "1f9e07a8efb107a4173cc6d407af617feb6ad1068e9c5e4a2365da3f15d94761"
+  },
+  "build_artifacts": {
+    "artifacts/terminology-constraints/dist-final/siglip_embedding_tool-0.1.0.tar.gz": "1fcada8df2a393af7f6c365d175e75801bd7e2f7e7ac39d8e542a2c139d125f0",
+    "artifacts/terminology-constraints/dist-final/siglip_embedding_tool-0.1.0-py3-none-any.whl": "f3d2effb47fa60b5c33ffcf9dea1e22ade973c4df734399179c5a10d88b62c6c",
+    "artifacts/terminology-constraints/dist-final/.gitignore": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1"
+  },
+  "independent_checkout": {
+    "status": "pending before publication"
+  },
+  "remote_ci": {
+    "per_commit_record": "https://github.com/HenryVarro666/siglip-embedding-tool/actions",
+    "note": "CI status is recorded by GitHub per commit; this local evidence file does not preclaim a future remote result."
+  }
+}

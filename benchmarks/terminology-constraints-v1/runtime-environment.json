@@ -1,0 +1,18 @@
+{
+  "captured_at_utc": "2026-10-31T21:54:11.310981+00:00",
+  "capture_stage": "supplementary environment record during frozen Base run; not a new protocol or pre-run input",
+  "python": "3.12.16 (main, Oct 25 2026, 18:24:37) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "packages": {
+    "torch": "2.15.0",
+    "transformers": "5.22.1",
+    "numpy": "2.5.4",
+    "Pillow": "13.0.0",
+    "tokenizers": "0.23.3",
+    "sentencepiece": "0.2.2",
+    "sacremoses": "0.1.1",
+    "huggingface-hub": "2.4.0",
+    "safetensors": "0.8.0"
+  },
+  "note": "Same existing venv used by both planned sequential runs. No dependency install/update during measurements; model/translator runtime identities additionally reside in raw results."
+}

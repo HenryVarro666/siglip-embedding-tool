@@ -1,0 +1,1199 @@
+{
+  "experiment_id": "equipment-terminology-constraints-v1",
+  "unblinded_at_utc": "2026-10-31T22:04:33.080848+00:00",
+  "review_completed_before_mapping_access": true,
+  "blind_review": {
+    "path": "benchmarks/terminology-constraints-v1/text-review-blind.json",
+    "sha256": "a48d58e8a4a5af8b97d5aea1a230012396b18833a9bf54a1bf4b567b0da092a7"
+  },
+  "mapping": {
+    "A": "constrained",
+    "B": "original",
+    "C": "beam"
+  },
+  "by_decoder": {
+    "constrained": {
+      "blind_label": "A",
+      "operational_status": {
+        "output_denominator": 16,
+        "accepted_eos_no_error_count": 10,
+        "failed_or_incomplete_count": 6,
+        "failed_or_incomplete_query_ids": [
+          "t02",
+          "t04",
+          "t10",
+          "t11",
+          "t12",
+          "t13"
+        ],
+        "meaning": "Decoder/request completion only; this is not a count of source-faithful translations."
+      },
+      "all_outputs": {
+        "subset_definition": "all supplied outputs, including failed/capped outputs",
+        "query_denominator": 16,
+        "term_opportunity_denominator": 16,
+        "term_grade_counts": {
+          "clear": 9,
+          "partial": 7,
+          "incorrect": 0,
+          "omitted": 0
+        },
+        "term_by_opportunity": {
+          "microinverter": {
+            "opportunity_denominator": 3,
+            "grade_counts": {
+              "clear": 2,
+              "partial": 1,
+              "incorrect": 0,
+              "omitted": 0
+            }
+          },
+          "inverter": {
+            "opportunity_denominator": 6,
+            "grade_counts": {
+              "clear": 5,
+              "partial": 1,
+              "incorrect": 0,
+              "omitted": 0
+            }
+          },
+          "transformer_bushing": {
+            "opportunity_denominator": 4,
+            "grade_counts": {
+              "clear": 0,
+              "partial": 4,
+              "incorrect": 0,
+              "omitted": 0
+            }
+          },
+          "cooling_fins": {
+            "opportunity_denominator": 3,
+            "grade_counts": {
+              "clear": 2,
+              "partial": 1,
+              "incorrect": 0,
+              "omitted": 0
+            }
+          }
+        },
+        "applicable_context_check_denominator": 56,
+        "applicable_context_grade_counts": {
+          "preserved": 22,
+          "partially_preserved": 20,
+          "contradicted": 7,
+          "omitted": 7
+        },
+        "not_applicable_query_category_denominator": 38,
+        "context_by_category": {
+          "wiring": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 11,
+            "applicable_check_denominator": 13,
+            "applicable_check_grade_counts": {
+              "preserved": 5,
+              "partially_preserved": 5,
+              "contradicted": 1,
+              "omitted": 2
+            },
+            "not_applicable_query_category_count": 5,
+            "all_assessment_denominator": 18,
+            "all_assessment_grade_counts": {
+              "preserved": 5,
+              "partially_preserved": 5,
+              "contradicted": 1,
+              "omitted": 2,
+              "not_applicable": 5
+            }
+          },
+          "mounting_support": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 7,
+            "applicable_check_denominator": 8,
+            "applicable_check_grade_counts": {
+              "preserved": 2,
+              "partially_preserved": 5,
+              "contradicted": 0,
+              "omitted": 1
+            },
+            "not_applicable_query_category_count": 9,
+            "all_assessment_denominator": 17,
+            "all_assessment_grade_counts": {
+              "preserved": 2,
+              "partially_preserved": 5,
+              "contradicted": 0,
+              "omitted": 1,
+              "not_applicable": 9
+            }
+          },
+          "spatial_device_ownership": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 16,
+            "applicable_check_denominator": 27,
+            "applicable_check_grade_counts": {
+              "preserved": 11,
+              "partially_preserved": 8,
+              "contradicted": 5,
+              "omitted": 3
+            },
+            "not_applicable_query_category_count": 0,
+            "all_assessment_denominator": 27,
+            "all_assessment_grade_counts": {
+              "preserved": 11,
+              "partially_preserved": 8,
+              "contradicted": 5,
+              "omitted": 3,
+              "not_applicable": 0
+            }
+          },
+          "negation_absence": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 3,
+            "applicable_check_denominator": 3,
+            "applicable_check_grade_counts": {
+              "preserved": 0,
+              "partially_preserved": 1,
+              "contradicted": 1,
+              "omitted": 1
+            },
+            "not_applicable_query_category_count": 13,
+            "all_assessment_denominator": 16,
+            "all_assessment_grade_counts": {
+              "preserved": 0,
+              "partially_preserved": 1,
+              "contradicted": 1,
+              "omitted": 1,
+              "not_applicable": 13
+            }
+          },
+          "open_closed_casing": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 5,
+            "applicable_check_denominator": 5,
+            "applicable_check_grade_counts": {
+              "preserved": 4,
+              "partially_preserved": 1,
+              "contradicted": 0,
+              "omitted": 0
+            },
+            "not_applicable_query_category_count": 11,
+            "all_assessment_denominator": 16,
+            "all_assessment_grade_counts": {
+              "preserved": 4,
+              "partially_preserved": 1,
+              "contradicted": 0,
+              "omitted": 0,
+              "not_applicable": 11
+            }
+          }
+        }
+      },
+      "accepted_only": {
+        "subset_definition": "request_accepted=true AND eos_terminated=true AND failure=null",
+        "query_denominator": 10,
+        "term_opportunity_denominator": 7,
+        "term_grade_counts": {
+          "clear": 7,
+          "partial": 0,
+          "incorrect": 0,
+          "omitted": 0
+        },
+        "term_by_opportunity": {
+          "microinverter": {
+            "opportunity_denominator": 2,
+            "grade_counts": {
+              "clear": 2,
+              "partial": 0,
+              "incorrect": 0,
+              "omitted": 0
+            }
+          },
+          "inverter": {
+            "opportunity_denominator": 5,
+            "grade_counts": {
+              "clear": 5,
+              "partial": 0,
+              "incorrect": 0,
+              "omitted": 0
+            }
+          },
+          "transformer_bushing": {
+            "opportunity_denominator": 0,
+            "grade_counts": {
+              "clear": 0,
+              "partial": 0,
+              "incorrect": 0,
+              "omitted": 0
+            }
+          },
+          "cooling_fins": {
+            "opportunity_denominator": 0,
+            "grade_counts": {
+              "clear": 0,
+              "partial": 0,
+              "incorrect": 0,
+              "omitted": 0
+            }
+          }
+        },
+        "applicable_context_check_denominator": 35,
+        "applicable_context_grade_counts": {
+          "preserved": 19,
+          "partially_preserved": 11,
+          "contradicted": 2,
+          "omitted": 3
+        },
+        "not_applicable_query_category_denominator": 25,
+        "context_by_category": {
+          "wiring": {
+            "query_count_in_subset": 10,
+            "applicable_query_category_count": 6,
+            "applicable_check_denominator": 7,
+            "applicable_check_grade_counts": {
+              "preserved": 5,
+              "partially_preserved": 2,
+              "contradicted": 0,
+              "omitted": 0
+            },
+            "not_applicable_query_category_count": 4,
+            "all_assessment_denominator": 11,
+            "all_assessment_grade_counts": {
+              "preserved": 5,
+              "partially_preserved": 2,
+              "contradicted": 0,
+              "omitted": 0,
+              "not_applicable": 4
+            }
+          },
+          "mounting_support": {
+            "query_count_in_subset": 10,
+            "applicable_query_category_count": 5,
+            "applicable_check_denominator": 6,
+            "applicable_check_grade_counts": {
+              "preserved": 2,
+              "partially_preserved": 4,
+              "contradicted": 0,
+              "omitted": 0
+            },
+            "not_applicable_query_category_count": 5,
+            "all_assessment_denominator": 11,
+            "all_assessment_grade_counts": {
+              "preserved": 2,
+              "partially_preserved": 4,
+              "contradicted": 0,
+              "omitted": 0,
+              "not_applicable": 5
+            }
+          },
+          "spatial_device_ownership": {
+            "query_count_in_subset": 10,
+            "applicable_query_category_count": 10,
+            "applicable_check_denominator": 18,
+            "applicable_check_grade_counts": {
+              "preserved": 9,
+              "partially_preserved": 5,
+              "contradicted": 2,
+              "omitted": 2
+            },
+            "not_applicable_query_category_count": 0,
+            "all_assessment_denominator": 18,
+            "all_assessment_grade_counts": {
+              "preserved": 9,
+              "partially_preserved": 5,
+              "contradicted": 2,
+              "omitted": 2,
+              "not_applicable": 0
+            }
+          },
+          "negation_absence": {
+            "query_count_in_subset": 10,
+            "applicable_query_category_count": 1,
+            "applicable_check_denominator": 1,
+            "applicable_check_grade_counts": {
+              "preserved": 0,
+              "partially_preserved": 0,
+              "contradicted": 0,
+              "omitted": 1
+            },
+            "not_applicable_query_category_count": 9,
+            "all_assessment_denominator": 10,
+            "all_assessment_grade_counts": {
+              "preserved": 0,
+              "partially_preserved": 0,
+              "contradicted": 0,
+              "omitted": 1,
+              "not_applicable": 9
+            }
+          },
+          "open_closed_casing": {
+            "query_count_in_subset": 10,
+            "applicable_query_category_count": 3,
+            "applicable_check_denominator": 3,
+            "applicable_check_grade_counts": {
+              "preserved": 3,
+              "partially_preserved": 0,
+              "contradicted": 0,
+              "omitted": 0
+            },
+            "not_applicable_query_category_count": 7,
+            "all_assessment_denominator": 10,
+            "all_assessment_grade_counts": {
+              "preserved": 3,
+              "partially_preserved": 0,
+              "contradicted": 0,
+              "omitted": 0,
+              "not_applicable": 7
+            }
+          }
+        }
+      }
+    },
+    "original": {
+      "blind_label": "B",
+      "operational_status": {
+        "output_denominator": 16,
+        "accepted_eos_no_error_count": 16,
+        "failed_or_incomplete_count": 0,
+        "failed_or_incomplete_query_ids": [],
+        "meaning": "Decoder/request completion only; this is not a count of source-faithful translations."
+      },
+      "all_outputs": {
+        "subset_definition": "all supplied outputs, including failed/capped outputs",
+        "query_denominator": 16,
+        "term_opportunity_denominator": 16,
+        "term_grade_counts": {
+          "clear": 6,
+          "partial": 2,
+          "incorrect": 8,
+          "omitted": 0
+        },
+        "term_by_opportunity": {
+          "microinverter": {
+            "opportunity_denominator": 3,
+            "grade_counts": {
+              "clear": 0,
+              "partial": 0,
+              "incorrect": 3,
+              "omitted": 0
+            }
+          },
+          "inverter": {
+            "opportunity_denominator": 6,
+            "grade_counts": {
+              "clear": 5,
+              "partial": 0,
+              "incorrect": 1,
+              "omitted": 0
+            }
+          },
+          "transformer_bushing": {
+            "opportunity_denominator": 4,
+            "grade_counts": {
+              "clear": 0,
+              "partial": 0,
+              "incorrect": 4,
+              "omitted": 0
+            }
+          },
+          "cooling_fins": {
+            "opportunity_denominator": 3,
+            "grade_counts": {
+              "clear": 1,
+              "partial": 2,
+              "incorrect": 0,
+              "omitted": 0
+            }
+          }
+        },
+        "applicable_context_check_denominator": 56,
+        "applicable_context_grade_counts": {
+          "preserved": 15,
+          "partially_preserved": 31,
+          "contradicted": 7,
+          "omitted": 3
+        },
+        "not_applicable_query_category_denominator": 38,
+        "context_by_category": {
+          "wiring": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 11,
+            "applicable_check_denominator": 13,
+            "applicable_check_grade_counts": {
+              "preserved": 2,
+              "partially_preserved": 10,
+              "contradicted": 1,
+              "omitted": 0
+            },
+            "not_applicable_query_category_count": 5,
+            "all_assessment_denominator": 18,
+            "all_assessment_grade_counts": {
+              "preserved": 2,
+              "partially_preserved": 10,
+              "contradicted": 1,
+              "omitted": 0,
+              "not_applicable": 5
+            }
+          },
+          "mounting_support": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 7,
+            "applicable_check_denominator": 8,
+            "applicable_check_grade_counts": {
+              "preserved": 1,
+              "partially_preserved": 6,
+              "contradicted": 1,
+              "omitted": 0
+            },
+            "not_applicable_query_category_count": 9,
+            "all_assessment_denominator": 17,
+            "all_assessment_grade_counts": {
+              "preserved": 1,
+              "partially_preserved": 6,
+              "contradicted": 1,
+              "omitted": 0,
+              "not_applicable": 9
+            }
+          },
+          "spatial_device_ownership": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 16,
+            "applicable_check_denominator": 27,
+            "applicable_check_grade_counts": {
+              "preserved": 9,
+              "partially_preserved": 11,
+              "contradicted": 5,
+              "omitted": 2
+            },
+            "not_applicable_query_category_count": 0,
+            "all_assessment_denominator": 27,
+            "all_assessment_grade_counts": {
+              "preserved": 9,
+              "partially_preserved": 11,
+              "contradicted": 5,
+              "omitted": 2,
+              "not_applicable": 0
+            }
+          },
+          "negation_absence": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 3,
+            "applicable_check_denominator": 3,
+            "applicable_check_grade_counts": {
+              "preserved": 0,
+              "partially_preserved": 2,
+              "contradicted": 0,
+              "omitted": 1
+            },
+            "not_applicable_query_category_count": 13,
+            "all_assessment_denominator": 16,
+            "all_assessment_grade_counts": {
+              "preserved": 0,
+              "partially_preserved": 2,
+              "contradicted": 0,
+              "omitted": 1,
+              "not_applicable": 13
+            }
+          },
+          "open_closed_casing": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 5,
+            "applicable_check_denominator": 5,
+            "applicable_check_grade_counts": {
+              "preserved": 3,
+              "partially_preserved": 2,
+              "contradicted": 0,
+              "omitted": 0
+            },
+            "not_applicable_query_category_count": 11,
+            "all_assessment_denominator": 16,
+            "all_assessment_grade_counts": {
+              "preserved": 3,
+              "partially_preserved": 2,
+              "contradicted": 0,
+              "omitted": 0,
+              "not_applicable": 11
+            }
+          }
+        }
+      },
+      "accepted_only": {
+        "subset_definition": "request_accepted=true AND eos_terminated=true AND failure=null",
+        "query_denominator": 16,
+        "term_opportunity_denominator": 16,
+        "term_grade_counts": {
+          "clear": 6,
+          "partial": 2,
+          "incorrect": 8,
+          "omitted": 0
+        },
+        "term_by_opportunity": {
+          "microinverter": {
+            "opportunity_denominator": 3,
+            "grade_counts": {
+              "clear": 0,
+              "partial": 0,
+              "incorrect": 3,
+              "omitted": 0
+            }
+          },
+          "inverter": {
+            "opportunity_denominator": 6,
+            "grade_counts": {
+              "clear": 5,
+              "partial": 0,
+              "incorrect": 1,
+              "omitted": 0
+            }
+          },
+          "transformer_bushing": {
+            "opportunity_denominator": 4,
+            "grade_counts": {
+              "clear": 0,
+              "partial": 0,
+              "incorrect": 4,
+              "omitted": 0
+            }
+          },
+          "cooling_fins": {
+            "opportunity_denominator": 3,
+            "grade_counts": {
+              "clear": 1,
+              "partial": 2,
+              "incorrect": 0,
+              "omitted": 0
+            }
+          }
+        },
+        "applicable_context_check_denominator": 56,
+        "applicable_context_grade_counts": {
+          "preserved": 15,
+          "partially_preserved": 31,
+          "contradicted": 7,
+          "omitted": 3
+        },
+        "not_applicable_query_category_denominator": 38,
+        "context_by_category": {
+          "wiring": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 11,
+            "applicable_check_denominator": 13,
+            "applicable_check_grade_counts": {
+              "preserved": 2,
+              "partially_preserved": 10,
+              "contradicted": 1,
+              "omitted": 0
+            },
+            "not_applicable_query_category_count": 5,
+            "all_assessment_denominator": 18,
+            "all_assessment_grade_counts": {
+              "preserved": 2,
+              "partially_preserved": 10,
+              "contradicted": 1,
+              "omitted": 0,
+              "not_applicable": 5
+            }
+          },
+          "mounting_support": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 7,
+            "applicable_check_denominator": 8,
+            "applicable_check_grade_counts": {
+              "preserved": 1,
+              "partially_preserved": 6,
+              "contradicted": 1,
+              "omitted": 0
+            },
+            "not_applicable_query_category_count": 9,
+            "all_assessment_denominator": 17,
+            "all_assessment_grade_counts": {
+              "preserved": 1,
+              "partially_preserved": 6,
+              "contradicted": 1,
+              "omitted": 0,
+              "not_applicable": 9
+            }
+          },
+          "spatial_device_ownership": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 16,
+            "applicable_check_denominator": 27,
+            "applicable_check_grade_counts": {
+              "preserved": 9,
+              "partially_preserved": 11,
+              "contradicted": 5,
+              "omitted": 2
+            },
+            "not_applicable_query_category_count": 0,
+            "all_assessment_denominator": 27,
+            "all_assessment_grade_counts": {
+              "preserved": 9,
+              "partially_preserved": 11,
+              "contradicted": 5,
+              "omitted": 2,
+              "not_applicable": 0
+            }
+          },
+          "negation_absence": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 3,
+            "applicable_check_denominator": 3,
+            "applicable_check_grade_counts": {
+              "preserved": 0,
+              "partially_preserved": 2,
+              "contradicted": 0,
+              "omitted": 1
+            },
+            "not_applicable_query_category_count": 13,
+            "all_assessment_denominator": 16,
+            "all_assessment_grade_counts": {
+              "preserved": 0,
+              "partially_preserved": 2,
+              "contradicted": 0,
+              "omitted": 1,
+              "not_applicable": 13
+            }
+          },
+          "open_closed_casing": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 5,
+            "applicable_check_denominator": 5,
+            "applicable_check_grade_counts": {
+              "preserved": 3,
+              "partially_preserved": 2,
+              "contradicted": 0,
+              "omitted": 0
+            },
+            "not_applicable_query_category_count": 11,
+            "all_assessment_denominator": 16,
+            "all_assessment_grade_counts": {
+              "preserved": 3,
+              "partially_preserved": 2,
+              "contradicted": 0,
+              "omitted": 0,
+              "not_applicable": 11
+            }
+          }
+        }
+      }
+    },
+    "beam": {
+      "blind_label": "C",
+      "operational_status": {
+        "output_denominator": 16,
+        "accepted_eos_no_error_count": 16,
+        "failed_or_incomplete_count": 0,
+        "failed_or_incomplete_query_ids": [],
+        "meaning": "Decoder/request completion only; this is not a count of source-faithful translations."
+      },
+      "all_outputs": {
+        "subset_definition": "all supplied outputs, including failed/capped outputs",
+        "query_denominator": 16,
+        "term_opportunity_denominator": 16,
+        "term_grade_counts": {
+          "clear": 6,
+          "partial": 3,
+          "incorrect": 7,
+          "omitted": 0
+        },
+        "term_by_opportunity": {
+          "microinverter": {
+            "opportunity_denominator": 3,
+            "grade_counts": {
+              "clear": 0,
+              "partial": 1,
+              "incorrect": 2,
+              "omitted": 0
+            }
+          },
+          "inverter": {
+            "opportunity_denominator": 6,
+            "grade_counts": {
+              "clear": 5,
+              "partial": 0,
+              "incorrect": 1,
+              "omitted": 0
+            }
+          },
+          "transformer_bushing": {
+            "opportunity_denominator": 4,
+            "grade_counts": {
+              "clear": 0,
+              "partial": 0,
+              "incorrect": 4,
+              "omitted": 0
+            }
+          },
+          "cooling_fins": {
+            "opportunity_denominator": 3,
+            "grade_counts": {
+              "clear": 1,
+              "partial": 2,
+              "incorrect": 0,
+              "omitted": 0
+            }
+          }
+        },
+        "applicable_context_check_denominator": 56,
+        "applicable_context_grade_counts": {
+          "preserved": 20,
+          "partially_preserved": 29,
+          "contradicted": 4,
+          "omitted": 3
+        },
+        "not_applicable_query_category_denominator": 38,
+        "context_by_category": {
+          "wiring": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 11,
+            "applicable_check_denominator": 13,
+            "applicable_check_grade_counts": {
+              "preserved": 5,
+              "partially_preserved": 7,
+              "contradicted": 1,
+              "omitted": 0
+            },
+            "not_applicable_query_category_count": 5,
+            "all_assessment_denominator": 18,
+            "all_assessment_grade_counts": {
+              "preserved": 5,
+              "partially_preserved": 7,
+              "contradicted": 1,
+              "omitted": 0,
+              "not_applicable": 5
+            }
+          },
+          "mounting_support": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 7,
+            "applicable_check_denominator": 8,
+            "applicable_check_grade_counts": {
+              "preserved": 2,
+              "partially_preserved": 6,
+              "contradicted": 0,
+              "omitted": 0
+            },
+            "not_applicable_query_category_count": 9,
+            "all_assessment_denominator": 17,
+            "all_assessment_grade_counts": {
+              "preserved": 2,
+              "partially_preserved": 6,
+              "contradicted": 0,
+              "omitted": 0,
+              "not_applicable": 9
+            }
+          },
+          "spatial_device_ownership": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 16,
+            "applicable_check_denominator": 27,
+            "applicable_check_grade_counts": {
+              "preserved": 9,
+              "partially_preserved": 13,
+              "contradicted": 3,
+              "omitted": 2
+            },
+            "not_applicable_query_category_count": 0,
+            "all_assessment_denominator": 27,
+            "all_assessment_grade_counts": {
+              "preserved": 9,
+              "partially_preserved": 13,
+              "contradicted": 3,
+              "omitted": 2,
+              "not_applicable": 0
+            }
+          },
+          "negation_absence": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 3,
+            "applicable_check_denominator": 3,
+            "applicable_check_grade_counts": {
+              "preserved": 0,
+              "partially_preserved": 2,
+              "contradicted": 0,
+              "omitted": 1
+            },
+            "not_applicable_query_category_count": 13,
+            "all_assessment_denominator": 16,
+            "all_assessment_grade_counts": {
+              "preserved": 0,
+              "partially_preserved": 2,
+              "contradicted": 0,
+              "omitted": 1,
+              "not_applicable": 13
+            }
+          },
+          "open_closed_casing": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 5,
+            "applicable_check_denominator": 5,
+            "applicable_check_grade_counts": {
+              "preserved": 4,
+              "partially_preserved": 1,
+              "contradicted": 0,
+              "omitted": 0
+            },
+            "not_applicable_query_category_count": 11,
+            "all_assessment_denominator": 16,
+            "all_assessment_grade_counts": {
+              "preserved": 4,
+              "partially_preserved": 1,
+              "contradicted": 0,
+              "omitted": 0,
+              "not_applicable": 11
+            }
+          }
+        }
+      },
+      "accepted_only": {
+        "subset_definition": "request_accepted=true AND eos_terminated=true AND failure=null",
+        "query_denominator": 16,
+        "term_opportunity_denominator": 16,
+        "term_grade_counts": {
+          "clear": 6,
+          "partial": 3,
+          "incorrect": 7,
+          "omitted": 0
+        },
+        "term_by_opportunity": {
+          "microinverter": {
+            "opportunity_denominator": 3,
+            "grade_counts": {
+              "clear": 0,
+              "partial": 1,
+              "incorrect": 2,
+              "omitted": 0
+            }
+          },
+          "inverter": {
+            "opportunity_denominator": 6,
+            "grade_counts": {
+              "clear": 5,
+              "partial": 0,
+              "incorrect": 1,
+              "omitted": 0
+            }
+          },
+          "transformer_bushing": {
+            "opportunity_denominator": 4,
+            "grade_counts": {
+              "clear": 0,
+              "partial": 0,
+              "incorrect": 4,
+              "omitted": 0
+            }
+          },
+          "cooling_fins": {
+            "opportunity_denominator": 3,
+            "grade_counts": {
+              "clear": 1,
+              "partial": 2,
+              "incorrect": 0,
+              "omitted": 0
+            }
+          }
+        },
+        "applicable_context_check_denominator": 56,
+        "applicable_context_grade_counts": {
+          "preserved": 20,
+          "partially_preserved": 29,
+          "contradicted": 4,
+          "omitted": 3
+        },
+        "not_applicable_query_category_denominator": 38,
+        "context_by_category": {
+          "wiring": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 11,
+            "applicable_check_denominator": 13,
+            "applicable_check_grade_counts": {
+              "preserved": 5,
+              "partially_preserved": 7,
+              "contradicted": 1,
+              "omitted": 0
+            },
+            "not_applicable_query_category_count": 5,
+            "all_assessment_denominator": 18,
+            "all_assessment_grade_counts": {
+              "preserved": 5,
+              "partially_preserved": 7,
+              "contradicted": 1,
+              "omitted": 0,
+              "not_applicable": 5
+            }
+          },
+          "mounting_support": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 7,
+            "applicable_check_denominator": 8,
+            "applicable_check_grade_counts": {
+              "preserved": 2,
+              "partially_preserved": 6,
+              "contradicted": 0,
+              "omitted": 0
+            },
+            "not_applicable_query_category_count": 9,
+            "all_assessment_denominator": 17,
+            "all_assessment_grade_counts": {
+              "preserved": 2,
+              "partially_preserved": 6,
+              "contradicted": 0,
+              "omitted": 0,
+              "not_applicable": 9
+            }
+          },
+          "spatial_device_ownership": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 16,
+            "applicable_check_denominator": 27,
+            "applicable_check_grade_counts": {
+              "preserved": 9,
+              "partially_preserved": 13,
+              "contradicted": 3,
+              "omitted": 2
+            },
+            "not_applicable_query_category_count": 0,
+            "all_assessment_denominator": 27,
+            "all_assessment_grade_counts": {
+              "preserved": 9,
+              "partially_preserved": 13,
+              "contradicted": 3,
+              "omitted": 2,
+              "not_applicable": 0
+            }
+          },
+          "negation_absence": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 3,
+            "applicable_check_denominator": 3,
+            "applicable_check_grade_counts": {
+              "preserved": 0,
+              "partially_preserved": 2,
+              "contradicted": 0,
+              "omitted": 1
+            },
+            "not_applicable_query_category_count": 13,
+            "all_assessment_denominator": 16,
+            "all_assessment_grade_counts": {
+              "preserved": 0,
+              "partially_preserved": 2,
+              "contradicted": 0,
+              "omitted": 1,
+              "not_applicable": 13
+            }
+          },
+          "open_closed_casing": {
+            "query_count_in_subset": 16,
+            "applicable_query_category_count": 5,
+            "applicable_check_denominator": 5,
+            "applicable_check_grade_counts": {
+              "preserved": 4,
+              "partially_preserved": 1,
+              "contradicted": 0,
+              "omitted": 0
+            },
+            "not_applicable_query_category_count": 11,
+            "all_assessment_denominator": 16,
+            "all_assessment_grade_counts": {
+              "preserved": 4,
+              "partially_preserved": 1,
+              "contradicted": 0,
+              "omitted": 0,
+              "not_applicable": 11
+            }
+          }
+        }
+      }
+    }
+  },
+  "denominator_notes": [
+    "One term opportunity is one frozen source term at one query; the same 16 opportunities are judged for each label.",
+    "One applicable context check is one source-derived predicate; 56 checks per label include several checks within one query/category.",
+    "not_applicable is counted once per unasked query/category, not once per imaginary omitted predicate. It is separate from the 56 applicable checks.",
+    "A category can have more than one check per query; per-category applicable query counts and check counts therefore have different denominators.",
+    "Accepted-only excludes every failed/capped output. It is a selected subset, not an unconditional success rate or faithful-translation count.",
+    "Overlapping related checks and shared queries are not statistically independent. No counts are combined into a scalar score."
+  ],
+  "problems_and_ambiguities": [
+    {
+      "id": "blindness-limit",
+      "type": "limitation",
+      "intents": "all",
+      "observation": "A/B/C conceal model names, but word choices and six capped repetitive A outputs can suggest decoder identity. No identity guess, key or retrieval evidence was used.",
+      "next_action": "Retain the blinding limitation when reporting this review; do not present it as an independent human double-blind study."
+    },
+    {
+      "id": "assistant-truth-limit",
+      "type": "limitation",
+      "intents": "all",
+      "observation": "One assistant supplied both applicability and judgments; this is not independent human electrical-domain truth.",
+      "next_action": "If authoritative quality claims are needed, obtain independent bilingual/domain annotation on the frozen sources and outputs."
+    },
+    {
+      "id": "term-context-fragments",
+      "type": "observed_output_problem",
+      "intents": [
+        "t02",
+        "t04",
+        "t10",
+        "t11",
+        "t12",
+        "t13"
+      ],
+      "labels": [
+        "A"
+      ],
+      "observation": "Required terms are detached or malformed in capped text; a recognizable word does not restore source attachment, whole-sentence fidelity or operational success.",
+      "next_action": "Keep partial term-token credit separate from failure/EOS status and relation judgments; never count these outputs as completed translations."
+    },
+    {
+      "id": "operational-failures",
+      "type": "observed_output_problem",
+      "intents": [
+        "t02",
+        "t04",
+        "t10",
+        "t11",
+        "t12",
+        "t13"
+      ],
+      "labels": [
+        "A"
+      ],
+      "observation": "Each of these supplied statuses is request_accepted=false with EOS termination false and the provided 64-token translation ValueError. No root cause beyond the supplied statuses is established.",
+      "next_action": "Parent should record each observed failure and its raw output in the authoritative issue ledger; any later cause investigation requires separately authorized evidence."
+    },
+    {
+      "id": "missing-outgoing-wire-negation",
+      "type": "observed_output_problem",
+      "intents": [
+        "t03"
+      ],
+      "labels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "observation": "No wires were removed expresses non-removal, not no outgoing connected wires. Both propositions can coexist, so the asked absence is graded omitted rather than logically contradicted.",
+      "next_action": "Preserve this exact predicate distinction in later comparison; do not give absence credit from a no-wires substring."
+    },
+    {
+      "id": "wrong-wire-and-relation",
+      "type": "observed_output_problem",
+      "intents": [
+        "t10",
+        "t12"
+      ],
+      "labels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "observation": "All t10 outputs replace wire with fuse. t12 A/B place fins in front of cables, whereas C retains cables in front but omits hanging. Bushing is a generic tube except detached A fragments.",
+      "next_action": "Track wire-object errors, front-order reversal and bushing identity separately; clear fin terminology does not imply relational correctness."
+    },
+    {
+      "id": "visibility-and-owner",
+      "type": "observed_output_problem",
+      "intents": [
+        "t11",
+        "t13"
+      ],
+      "labels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "observation": "t11 no-visible-fins is weakened to broader radiator nonvisibility in B/C and is incoherent/positively with-radiators in A. t13 no-visible-top-bushing becomes caps/holsters; B/C move the count two from doors to boxes.",
+      "next_action": "Retain asked component, nonvisibility, polarity and owning device in separate evidence-backed notes."
+    },
+    {
+      "id": "mounting-and-spatial-failures",
+      "type": "observed_output_problem",
+      "intents": [
+        "t01",
+        "t02",
+        "t04",
+        "t06",
+        "t07",
+        "t08",
+        "t14",
+        "t15"
+      ],
+      "observation": "Observed losses include above versus on, missing cable attachment, palm support reversal, to/from-bottom changes, bracket-to-staircase/lift substitutions, gaps owned by tables, meter-to-table substitutions, below-conduit omission and left/right-to-left/left.",
+      "next_action": "Use the per-check judgments for exact label differences; these failures are not reducible to technical word occurrence."
+    },
+    {
+      "id": "no-extra-casing-condition",
+      "type": "source_scope_guard",
+      "intents": [
+        "t01",
+        "t09"
+      ],
+      "observation": "Neither Chinese source asks for closed casing. t09 mentions a casing surface only. t13 asks locked doors, without an extra independently scored sealed-whole-box condition.",
+      "next_action": "Keep casing closure not_applicable for t01/t09 and evaluate only the explicit lock condition for t13."
+    },
+    {
+      "id": "radiant-fin-interpretation",
+      "type": "rubric_ambiguity",
+      "intents": [
+        "t10"
+      ],
+      "labels": [
+        "B",
+        "C"
+      ],
+      "observation": "The frozen rules do not enumerate radiant fin. It receives partial credit for recognizable fin anatomy with unclear thermal function, never clear cooling/radiator-fin credit.",
+      "next_action": "Report this adjudication transparently; a domain annotator may resolve it without consulting retrieval results. Do not retroactively optimize its grade for performance."
+    },
+    {
+      "id": "micro-solar-inverter-interpretation",
+      "type": "rubric_ambiguity",
+      "intents": [
+        "t03"
+      ],
+      "labels": [
+        "C"
+      ],
+      "observation": "Micro-solar inverter conveys micro/solar plus generic inverter but lacks the frozen explicit microinverter term. It is graded partial, following the small-generic-inverter rule.",
+      "next_action": "Retain the specificity decision visibly; any independent adjudication should remain blind to retrieval outcomes."
+    },
+    {
+      "id": "connection-versus-wire",
+      "type": "source_or_lexical_ambiguity",
+      "intents": [
+        "t05",
+        "t11"
+      ],
+      "observation": "Chinese 接线 can denote wiring/connections; English connections alone is broader. It receives partial wiring specificity while a clearly stated bottom/top location may still be preserved.",
+      "next_action": "Do not equate generic connections with visible distinct wires; preserve the distinct check/rationale."
+    },
+    {
+      "id": "locked-shutters",
+      "type": "source_or_lexical_ambiguity",
+      "intents": [
+        "t13"
+      ],
+      "labels": [
+        "A"
+      ],
+      "observation": "Shutters can plausibly identify the louvered door structures here. A retains two and the single-box owner, so its lock-state and owner checks are preserved despite less precise door vocabulary. B/C have a separate count/owner error.",
+      "next_action": "Keep this lexical interpretation explicit; it does not make the capped A sentence successful."
+    },
+    {
+      "id": "source-ups-location",
+      "type": "source_ambiguity",
+      "intents": [
+        "t16"
+      ],
+      "observation": "机柜下方 literally says below the cabinet, although the through-glass scene could suggest a lower cabinet area. The source does not explicitly say inside the lower bay. All labels retain under the cabinet, so they are graded against the literal wording without adding an inside-cabinet condition.",
+      "next_action": "Ask a human source annotator to clarify only if later work needs a narrower physical location; preserve current source text and this uncertainty."
+    },
+    {
+      "id": "scope-and-overlap",
+      "type": "aggregation_limit",
+      "intents": "all",
+      "observation": "Checks isolate requested context predicates and sometimes overlap across wiring and spatial ownership. Sixteen sources and sixteen term opportunities are a small fixed text set. Accepted-only subsets exclude failed outputs and change denominators. No image correctness, model quality, causal model attribution or retrieval-performance claim follows from these categorical counts.",
+      "next_action": "Publish explicit check/term denominators and failure counts; do not combine them into a subjective scalar score."
+    }
+  ],
+  "limitations": "Surface wording and repeated/capped output patterns can suggest a decoder despite anonymized labels; identities were neither inferred for grading nor checked."
+}

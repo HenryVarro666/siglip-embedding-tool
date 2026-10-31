@@ -89,7 +89,8 @@ def main():
                 parts.append(f"<div><h2>{escape(result['model_alias'])}{suffix}</h2>")
                 if automatic:
                     parts.append(
-                        f"<p>Automatic English: {escape(result['translations'][intent])}</p>"
+                        "<p>Automatic English: "
+                        f"{escape(result['translations'][intent] or '(no decoded English)')}</p>"
                     )
                 for strategy in (
                     ("zh", "auto_en", "auto_fusion") if automatic else ("zh", "en", "fusion")
@@ -101,7 +102,13 @@ def main():
                         f"<h3>{strategy} · AP {ap:.3f} · policy p50 {timing['p50']:.1f}ms</h3>"
                         '<div class="grid">'
                     )
-                    for row in policy["rankings"][intent][:5]:
+                    failure = policy.get("failures", {}).get(intent)
+                    if failure:
+                        parts.append(
+                            f"<p>Request failed in {escape(failure['stage'])}: "
+                            f"{escape(failure['message'])}. AP is zero; no retrieval result.</p>"
+                        )
+                    for row in (policy["rankings"][intent] or [])[:5]:
                         parts.append(
                             card(row["image_id"], row["relevant"], row["rank"], row["score"])
                         )

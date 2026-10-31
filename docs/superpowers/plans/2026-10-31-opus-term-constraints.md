@@ -32,33 +32,37 @@
 **Files:** Create src/siglip_tools/opus_constraints.py, tests/test_opus_constraints.py; consume frozen src/siglip_tools/power_glossary_v1.json.
 **Interfaces:** OPUSConstraintTranslator(base, constrained=True, decoder_dir=...); identity/model_dir/device/translate/last_trace; glossary_requirements(text), prepare_decoder(output).
 
-- [ ] Write and observe failing tests for matching, target tokenization, no-term path, configuration immutability, missing terms/EOS, inventory drift and real tiny Marian callable flow.
-- [ ] Implement the wrapper/verified local loader; only decoder source allowlist, never attached Qwen weights.
-- [ ] Run focused and full offline tests; save discovered problems and fixes in ledger.
+- [x] Write and observe failing tests for matching, target tokenization, no-term path, configuration immutability, missing terms/EOS, inventory drift and real tiny Marian callable flow.
+- [x] Implement the wrapper/verified local loader; only decoder source allowlist, never attached Qwen weights.
+- [x] Run focused and full offline tests; save discovered problems and fixes in ledger.
 
 ### Task2: New query/label metadata and text-review rules
 
 **Files:** New benchmark queries.json/qrels.json/annotation-notes.json, byte-identical existing manifest copy; frozen glossary/review-rules already committed.
 **Interfaces:**16 intent IDs t01..t16, zh/en paired labels; expected term/context slots for independent review; never feed reference EN to translation.
 
-- [ ] Fresh curator checks source photos, all positives and close negatives without historical queries or model results.
-- [ ] Confirm label completeness/visible evidence; validate dataset loader, freeze hashes and annotate shared-gallery limits.
+- [x] Fresh curator checks source photos, all positives and close negatives without historical queries or model results.
+- [x] Confirm label completeness/visible evidence; validate dataset loader, freeze hashes and annotate shared-gallery limits.
 
 ### Task3: Benchmark, CLI and evidence capture
 
 **Files:** Create src/siglip_tools/term_benchmark.py, tests/test_term_benchmark.py; modify cli.py/test_cli.py for explicit --opus-decoding, decoder directory.
 **Interfaces:** timed_attempt(index, encoder, translator, chinese, mode, top_k), evaluate_attempts(rankings,qrels,gallery_ids), run, compare and exports for existing HTML renderer. Record zero-score failed attempts and raw per-request status/timing.
 
-- [ ] Write failing tests for real total/stages, failure accounting, incompatible comparisons, frozen source checks and CLI exclusivity/default preservation.
-- [ ] Implement7-policy interleaved runner with shared OPUS, immutable wrappers, startup/first request separate, full ranking and raw warm samples, identities and drift checks.
-- [ ] Test wrappers on OLD development queries only; log any engineering fixes, then freeze code/artifacts/protocol and commit.
-- [ ] Run Base then So400m in separate processes; no simultaneous model jobs. Never change rules to improve new test scores.
+- [x] Write failing tests for real total/stages, failure accounting, incompatible comparisons, frozen source checks and CLI exclusivity/default preservation.
+- [x] Implement7-policy interleaved runner with shared OPUS, immutable wrappers, startup/first request separate, full ranking and raw warm samples, identities and drift checks.
+- [x] Test wrappers on OLD development queries only; log any engineering fixes, then freeze code/artifacts/protocol and commit.
+- [x] Run Base then So400m in separate processes; no simultaneous model jobs. Never change rules to improve new test scores.
 
 ### Task4: Results, persistent documentation and delivery
 
 **Files:** docs/terminology-constraints-v1.md, docs/{README,issue-log,historical-issues,continuation,improvements,models}.md, README/AGENTS, benchmark summaries/translation/review/audit/provenance/freeze.
 
-- [ ] Review original/beam/constrained English terms and context without retrieval scores; independent relevance audit; preserve uncertain cases.
-- [ ] Recompute all policy rankings/metrics and timing percentiles, report per-intent tradeoffs/failure rates and use matched beam comparison.
-- [ ] Link every old/current issue and future recording rule; save reproduction commands and Top5 page.
+- [x] Review original/beam/constrained English terms and context without retrieval scores; independent relevance audit; preserve uncertain cases.
+- [x] Recompute all policy rankings/metrics and timing percentiles, report per-intent tradeoffs/failure rates and use matched beam comparison.
+- [x] Link every old/current issue and future recording rule; save reproduction commands and Top5 page.
 - [ ] Full offline tests, Ruff, original loss demo, wheel/sdist/package resources, independent checkout; independent review, commit, private push and GitHub CI.
+
+## Execution checkpoint
+
+Measurement implementation `b68cb99` and frozen core44b19b06 are unchanged. Both runs, blind text review, independent raw/curated audit and319 local tests/lint/demo/build/real CLI are complete. SIG-037 exporter binding was fixed after measurement without changing results. Independent checkout and private publication/remoteCI are the remaining delivery checks; receipts live in benchmark verification.json and docs/continuation.md.
