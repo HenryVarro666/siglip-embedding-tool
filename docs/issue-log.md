@@ -14,6 +14,8 @@
 - 风险与待验：少数beam重复不等于全部无效；可能存在已完成可用候选。保存共识/步数/原样部分序列，并报告旧接受→早拒绝、漏捕旧失败及检测自身开销。不能用正式IDs调阈值或把回退可返回当语义修复。
 - 流程附记：读取旧开发smoke时失败对象没有顶层english，首次只读打印遇KeyError；按trace.output读取即可，不涉及模型运行/评分或输出修改。图数据库仍为空，已先查询再按文件阅读；沿用SIG-021边界。
 
+- 收尾脚本附记：验收凭证首次把实际 CLI 字段 effective_route 误读为 route，写入前因 KeyError 中止。核对已保存 payload 后更正，未修改 CLI、模型结果或耗时；记录 artifacts/repetition-early-stop/verification-schema-attempt.txt。
+
 ### SIG-045：活动beam回调和finalized序列长度不是通用的精确decoder步数
 
 - 状态：已解决计数语义/证据校验；在评分前修复，真实开发/正式中止点已验证。
@@ -62,6 +64,8 @@
 - 处理：先等所有测试/CLI/打包日志闭合，再以新路径重出审计，核对原数值/源结果完全相同并保存首版快照。共享日志目录这种隐式读取依赖不能当作独立任务并行；沿用SIG-043排除自身活动stdout/stderr，调用方还须保证其他日志不再写入。
 - 验证待补：重新审计/全部日志SHA一致检查、旧版保留与接续。无需修改冻结代码/规则或重跑模型；代码测试仍515项。
 - 验证完成：待测试、真实模块CLI和打包日志全部闭合后顺序重出audit-final；全部404,544检查/106,488数值比较仍通过，数值、译文、排名、时间、开发选择和源结果完全不变，所有闭合日志摘要一致。首版并行快照另存artifacts/repetition-early-stop/audit-concurrent-log-snapshot.json，当前canonical audit.json为完成后的有效版本。未重测模型或改变已冻结规则。
+
+早停轮最终验收（2026-11-01）：本地/独立克隆/已上传代码检查点 053caa8 的 CI41281069556 均 515 通过、2 排除、无 skip，71 个代码/测试/构建/CI 文件摘要一致。四个真实 MPS 模块 CLI、打包与仓库外导入通过。完整凭证见 benchmarks/repetition-early-stop-v1/verification.json；最新 main 文档提交另有逐提交 CI，不以旧回执替代。
 
 回退轮最终验收（2026-11-01）：两模型288评分/1440热请求、完整独立算法复算、3次真实MPS CLI和wheel/仓库外导入通过。SIG-043修复后本地/独立检出均401通过、2集成测试默认排除、无skip；代码提交c33476d的CI41276088083成功401项，56个源/测试/示例/训练/CI文件哈希一致。旧400项与旧审计保留为历史。最新文档/凭证提交与main的per-commitCI以Git记录为准，完整范围在benchmarks/constraint-fallback-v1/verification.json；不以旧CI冒充未来HEAD结果。
 
