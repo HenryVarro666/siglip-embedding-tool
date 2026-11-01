@@ -1,0 +1,70 @@
+{
+  "experiment_id": "equipment-completed-protection-v1",
+  "frozen_at_utc": "2026-11-01T07:06:53.716031+00:00",
+  "implementation_git_commit": "768ea626c555d6214ceca04fab24b8ee992b02b2",
+  "validated_development_git_commit": "150558cdfc12bd52be694fadbf45e01e5198a340",
+  "implementation_sha256": "b120dd7193236fdbb3f965274b45436d2d2c3008f9d3b1bf3fbcbd55b61ee2ad",
+  "previous_core_sha256": "5508fc7372887770f584065949d19debe77b81fd6d09cf022a432de164d7bc12",
+  "protocol_sha256": "b60158caa27b6855ed995cdc956cb5b6f89bf59f369ed560ccf883c9e43324fc",
+  "dataset_hashes": {
+    "manifest": "3487fdf62b90971619ec098b2ec5bbad00e5af2d22ec9183d258bc1a24916975",
+    "queries": "19a1da3d4fa9d961f379af0d56dad9274e698895af0d2800d35ad44dfad445db",
+    "qrels": "0a6c9486084c5108439f642f4440d8ec4191ff8221a2ee0c553f8589f12daf95"
+  },
+  "supporting_hashes": {
+    "annotation-notes.json": "717d4ff5bcaeeadb395f14109fb1e6438db2eb5497cb740b5e68d188ed170c6d",
+    "review-rules.json": "1feccdda7885c3d6f830c63b5613fbf23dbae8b22e9b09a5da839eb3e859829a",
+    "glossary.json": "20fef944133fe8453e9b60d5d7a6ccabb93ce3a4ffe0565038caaf8f51e3c42e",
+    "label-review.json": "f721ca9cc296ccf2fec0c2aa10be121982f85736c69e1242e83229c1803460e7"
+  },
+  "development_hashes": {
+    "dev-queries.json": "bd92d1a84ae20cf1e3b4ea6a1cb9778adee2b704740465729e8f524bf7670425",
+    "dev-protocol.json": "e618c56b6baed9663bb7384df2dacb75f4524e6d454170aa35023dcd305a4474",
+    "dev-observations.json": "cfbb1eb614c53206a5c39e2395670bf15dae23616db5d3a97bb5c8d016138eaf",
+    "dev-validation.json": "9eaf67b683882b34baa3bc29e42a3f7b484174aa8ce5b40255e28885f41c3f3a"
+  },
+  "repetition_profile_sha256": "e93ee35b4b81fe94a7b2d97c25fa3317bce599e6976d1a54a6a2d90d764b5777",
+  "protection_rule_sha256": "a8fb1d276fc53ace8c59b76dabd13a24035c323aa637f184c768b20db2464cdc",
+  "source_indexes": {
+    "base": "05ce68f3d5128012636b22fbf05120f3bc45e1f03aa7fd4abc9b1f76fdcd92e2",
+    "quality": "9ebe8155fbe313989d19af093029379c39f9329a5df6036cde6aee9490e8f193"
+  },
+  "retrieval_weights": {
+    "base": {
+      "model_id": "google/siglip2-base-patch16-224",
+      "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2",
+      "filename": "model.safetensors",
+      "sha256": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+      "size_bytes": 1500800904
+    },
+    "quality": {
+      "model_id": "google/siglip2-so400m-patch14-384",
+      "revision": "e8e487298228002f3d8a82e0cd5c8ea9c567f57f",
+      "filename": "model.safetensors",
+      "sha256": "9f4f4a49f908ef0c979bce8ff5a5c0e88882dc6c5dc4304387cbbd152558e2c2",
+      "size_bytes": 4544143072
+    }
+  },
+  "new_formal_runs_existed": false,
+  "prior16results_known": true,
+  "training_executed": false,
+  "pre_run_tests": {
+    "passed": 683,
+    "integration_deselected": 2,
+    "skipped": 0,
+    "ruff": "passed",
+    "log_sha256": "7e63c3aa49b2e09a7f443abd0e30b0b58986fb369775c0283a5729b9285fa5a4"
+  },
+  "development_acceptance": {
+    "sources": 24,
+    "legacy_accepted": 17,
+    "accepted_entering_selected_check_window": 10,
+    "old_accepted_new_early_rejected": 0,
+    "r02_actual_eos_step": 34,
+    "r02_protected_steps": [
+      56,
+      60
+    ]
+  },
+  "development_audit_sha256": "4a1f0a0671c3a91188bd2609c43fec45dd8700ff3b9d1c641a37feb5d8ef8cde"
+}
