@@ -1,0 +1,328 @@
+{
+  "viable": false,
+  "selection_rule": "Exclude candidates rejecting any baseline-accepted dev output; maximize caught baseline failures, then higher beam quorum, lower mean trigger tokens, more copies, smaller maximum ngram, larger minimum tokens, lexical profile ID. If no viable candidate, freeze n8/r4/min32/q4 and mark nonviable.",
+  "selected_profile": {
+    "schema_version": 1,
+    "profile_id": "suffix-n8-r4-min32-q4",
+    "algorithm": "suffix_consecutive_token_cycles",
+    "max_new_tokens": 64,
+    "num_beams": 4,
+    "check_every": 4,
+    "max_ngram_size": 8,
+    "repeat_count": 4,
+    "min_new_tokens": 32,
+    "min_repeating_beams": 4
+  },
+  "selected_row": {
+    "profile": {
+      "schema_version": 1,
+      "profile_id": "suffix-n8-r4-min32-q4",
+      "algorithm": "suffix_consecutive_token_cycles",
+      "max_new_tokens": 64,
+      "num_beams": 4,
+      "check_every": 4,
+      "max_ngram_size": 8,
+      "repeat_count": 4,
+      "min_new_tokens": 32,
+      "min_repeating_beams": 4
+    },
+    "trigger_new_tokens": {},
+    "early_rejected_baseline_accepted_ids": [],
+    "caught_baseline_failure_ids": [],
+    "mean_failure_trigger_tokens": null
+  },
+  "candidates": [
+    {
+      "profile": {
+        "schema_version": 1,
+        "profile_id": "suffix-n12-r3-min24-q3",
+        "algorithm": "suffix_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 12,
+        "repeat_count": 3,
+        "min_new_tokens": 24,
+        "min_repeating_beams": 3
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 1,
+        "profile_id": "suffix-n12-r3-min24-q4",
+        "algorithm": "suffix_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 12,
+        "repeat_count": 3,
+        "min_new_tokens": 24,
+        "min_repeating_beams": 4
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 1,
+        "profile_id": "suffix-n12-r3-min32-q3",
+        "algorithm": "suffix_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 12,
+        "repeat_count": 3,
+        "min_new_tokens": 32,
+        "min_repeating_beams": 3
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 1,
+        "profile_id": "suffix-n12-r3-min32-q4",
+        "algorithm": "suffix_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 12,
+        "repeat_count": 3,
+        "min_new_tokens": 32,
+        "min_repeating_beams": 4
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 1,
+        "profile_id": "suffix-n12-r4-min24-q3",
+        "algorithm": "suffix_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 12,
+        "repeat_count": 4,
+        "min_new_tokens": 24,
+        "min_repeating_beams": 3
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 1,
+        "profile_id": "suffix-n12-r4-min24-q4",
+        "algorithm": "suffix_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 12,
+        "repeat_count": 4,
+        "min_new_tokens": 24,
+        "min_repeating_beams": 4
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 1,
+        "profile_id": "suffix-n12-r4-min32-q3",
+        "algorithm": "suffix_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 12,
+        "repeat_count": 4,
+        "min_new_tokens": 32,
+        "min_repeating_beams": 3
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 1,
+        "profile_id": "suffix-n12-r4-min32-q4",
+        "algorithm": "suffix_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 12,
+        "repeat_count": 4,
+        "min_new_tokens": 32,
+        "min_repeating_beams": 4
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 1,
+        "profile_id": "suffix-n8-r3-min24-q3",
+        "algorithm": "suffix_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 8,
+        "repeat_count": 3,
+        "min_new_tokens": 24,
+        "min_repeating_beams": 3
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 1,
+        "profile_id": "suffix-n8-r3-min24-q4",
+        "algorithm": "suffix_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 8,
+        "repeat_count": 3,
+        "min_new_tokens": 24,
+        "min_repeating_beams": 4
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 1,
+        "profile_id": "suffix-n8-r3-min32-q3",
+        "algorithm": "suffix_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 8,
+        "repeat_count": 3,
+        "min_new_tokens": 32,
+        "min_repeating_beams": 3
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 1,
+        "profile_id": "suffix-n8-r3-min32-q4",
+        "algorithm": "suffix_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 8,
+        "repeat_count": 3,
+        "min_new_tokens": 32,
+        "min_repeating_beams": 4
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 1,
+        "profile_id": "suffix-n8-r4-min24-q3",
+        "algorithm": "suffix_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 8,
+        "repeat_count": 4,
+        "min_new_tokens": 24,
+        "min_repeating_beams": 3
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 1,
+        "profile_id": "suffix-n8-r4-min24-q4",
+        "algorithm": "suffix_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 8,
+        "repeat_count": 4,
+        "min_new_tokens": 24,
+        "min_repeating_beams": 4
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 1,
+        "profile_id": "suffix-n8-r4-min32-q3",
+        "algorithm": "suffix_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 8,
+        "repeat_count": 4,
+        "min_new_tokens": 32,
+        "min_repeating_beams": 3
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 1,
+        "profile_id": "suffix-n8-r4-min32-q4",
+        "algorithm": "suffix_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 8,
+        "repeat_count": 4,
+        "min_new_tokens": 32,
+        "min_repeating_beams": 4
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    }
+  ],
+  "training_executed": false,
+  "formal_queries_or_retrieval_used": false,
+  "protocol_sha256": "7a225b54287b8a6e6d341d62f208ad754906a98e6bf4f30b8b5dea0c2ab64527",
+  "observations_sha256": "b97cc2c6502dd07a0e21d44a230a595533d4a7dc508d0240cd7b06a343f757b7"
+}

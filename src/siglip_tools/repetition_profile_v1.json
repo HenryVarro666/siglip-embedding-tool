@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "profile_id": "suffix-n8-r4-min32-q4",
+  "algorithm": "suffix_consecutive_token_cycles",
+  "max_new_tokens": 64,
+  "num_beams": 4,
+  "check_every": 4,
+  "max_ngram_size": 8,
+  "repeat_count": 4,
+  "min_new_tokens": 32,
+  "min_repeating_beams": 4
+}

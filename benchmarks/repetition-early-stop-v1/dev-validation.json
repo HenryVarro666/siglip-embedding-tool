@@ -1,0 +1,4784 @@
+{
+  "protocol_sha256": "7a225b54287b8a6e6d341d62f208ad754906a98e6bf4f30b8b5dea0c2ab64527",
+  "selection_sha256": "71061e286eabad44b9f06adeb6cf714114f55f7e6df84acb74b78c45a08e15a0",
+  "profile_byte_sha256": "e63fec277e92dc7a2df0db08c6476afdca0f1b7b6c30b125b96649a5001b0873",
+  "profile": {
+    "schema_version": 1,
+    "profile_id": "suffix-n8-r4-min32-q4",
+    "algorithm": "suffix_consecutive_token_cycles",
+    "max_new_tokens": 64,
+    "num_beams": 4,
+    "check_every": 4,
+    "max_ngram_size": 8,
+    "repeat_count": 4,
+    "min_new_tokens": 32,
+    "min_repeating_beams": 4
+  },
+  "rows": [
+    {
+      "query_id": "i01_zh",
+      "text": "带电气连接接口的小型太阳能微型逆变器。",
+      "baseline": {
+        "ok": true,
+        "english": "Small solar microinverters with electrical interfaces.",
+        "failure": null,
+        "translation_ms": 228.78154201316647,
+        "trace": {
+          "source_text": "带电气连接接口的小型太阳能微型逆变器。",
+          "constrained": true,
+          "constraints_applied": true,
+          "requirements": [
+            {
+              "id": "microinverter",
+              "source_terms": [
+                "微型逆变器"
+              ],
+              "target_forms": [
+                "microinverter",
+                "microinverters",
+                "Microinverter",
+                "Microinverters"
+              ],
+              "token_alternatives": [
+                [
+                  9956,
+                  748,
+                  33708,
+                  501
+                ],
+                [
+                  9956,
+                  748,
+                  33708,
+                  2133
+                ],
+                [
+                  36139,
+                  748,
+                  33708,
+                  501
+                ],
+                [
+                  36139,
+                  748,
+                  33708,
+                  2133
+                ]
+              ],
+              "decoder_token_alternatives": [
+                [
+                  9956,
+                  748,
+                  33708,
+                  501
+                ],
+                [
+                  9956,
+                  748,
+                  33708,
+                  2133
+                ],
+                [
+                  36139,
+                  748,
+                  33708,
+                  501
+                ],
+                [
+                  36139,
+                  748,
+                  33708,
+                  2133
+                ]
+              ],
+              "tokens_satisfied": true,
+              "phrase_satisfied": true,
+              "satisfied": true
+            }
+          ],
+          "required_token_alternatives": [
+            [
+              [
+                9956,
+                748,
+                33708,
+                501
+              ],
+              [
+                9956,
+                748,
+                33708,
+                2133
+              ],
+              [
+                36139,
+                748,
+                33708,
+                501
+              ],
+              [
+                36139,
+                748,
+                33708,
+                2133
+              ]
+            ]
+          ],
+          "output": "Small solar microinverters with electrical interfaces.",
+          "eos_terminated": true,
+          "satisfied": true,
+          "status": "success",
+          "sequence": [
+            65000,
+            5078,
+            20845,
+            9956,
+            748,
+            33708,
+            2133,
+            27,
+            23950,
+            18138,
+            22,
+            5,
+            0
+          ]
+        }
+      },
+      "guarded": {
+        "ok": true,
+        "english": "Small solar microinverters with electrical interfaces.",
+        "failure": null,
+        "translation_ms": 131.94320800539572,
+        "trace": {
+          "source_text": "带电气连接接口的小型太阳能微型逆变器。",
+          "constrained": true,
+          "constraints_applied": true,
+          "requirements": [
+            {
+              "id": "microinverter",
+              "source_terms": [
+                "微型逆变器"
+              ],
+              "target_forms": [
+                "microinverter",
+                "microinverters",
+                "Microinverter",
+                "Microinverters"
+              ],
+              "token_alternatives": [
+                [
+                  9956,
+                  748,
+                  33708,
+                  501
+                ],
+                [
+                  9956,
+                  748,
+                  33708,
+                  2133
+                ],
+                [
+                  36139,
+                  748,
+                  33708,
+                  501
+                ],
+                [
+                  36139,
+                  748,
+                  33708,
+                  2133
+                ]
+              ],
+              "decoder_token_alternatives": [
+                [
+                  9956,
+                  748,
+                  33708,
+                  501
+                ],
+                [
+                  9956,
+                  748,
+                  33708,
+                  2133
+                ],
+                [
+                  36139,
+                  748,
+                  33708,
+                  501
+                ],
+                [
+                  36139,
+                  748,
+                  33708,
+                  2133
+                ]
+              ],
+              "tokens_satisfied": true,
+              "phrase_satisfied": true,
+              "satisfied": true
+            }
+          ],
+          "required_token_alternatives": [
+            [
+              [
+                9956,
+                748,
+                33708,
+                501
+              ],
+              [
+                9956,
+                748,
+                33708,
+                2133
+              ],
+              [
+                36139,
+                748,
+                33708,
+                501
+              ],
+              [
+                36139,
+                748,
+                33708,
+                2133
+              ]
+            ]
+          ],
+          "output": "Small solar microinverters with electrical interfaces.",
+          "eos_terminated": true,
+          "satisfied": true,
+          "status": "success",
+          "sequence": [
+            65000,
+            5078,
+            20845,
+            9956,
+            748,
+            33708,
+            2133,
+            27,
+            23950,
+            18138,
+            22,
+            5,
+            0
+          ],
+          "repetition_stop": {
+            "profile": {
+              "schema_version": 1,
+              "profile_id": "suffix-n8-r4-min32-q4",
+              "algorithm": "suffix_consecutive_token_cycles",
+              "max_new_tokens": 64,
+              "num_beams": 4,
+              "check_every": 4,
+              "max_ngram_size": 8,
+              "repeat_count": 4,
+              "min_new_tokens": 32,
+              "min_repeating_beams": 4
+            },
+            "profile_sha256": "71227b4c000fc261742d3023ee181c4e7db34fe76e2f4257a57cf87cffa98843",
+            "special_ids": [
+              0,
+              1,
+              65000
+            ],
+            "observe_only": false,
+            "enabled": true,
+            "triggered": false,
+            "trigger_new_tokens": null,
+            "snapshots": [],
+            "generated_new_tokens": 12,
+            "observed_generation_steps": 12,
+            "observed_steps_complete": false,
+            "length_scope": "finalized_sequence"
+          }
+        }
+      },
+      "fallback": null
+    },
+    {
+      "query_id": "i02_zh",
+      "text": "安装在墙上、外壳闭合的太阳能逆变器。",
+      "baseline": {
+        "ok": true,
+        "english": "Solar inverters installed on walls and closed outer casings.",
+        "failure": null,
+        "translation_ms": 140.9072090027621,
+        "trace": {
+          "source_text": "安装在墙上、外壳闭合的太阳能逆变器。",
+          "constrained": true,
+          "constraints_applied": true,
+          "requirements": [
+            {
+              "id": "inverter",
+              "source_terms": [
+                "逆变器"
+              ],
+              "target_forms": [
+                "inverter",
+                "inverters",
+                "Inverter",
+                "Inverters"
+              ],
+              "token_alternatives": [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ],
+              "decoder_token_alternatives": [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ],
+              "tokens_satisfied": true,
+              "phrase_satisfied": true,
+              "satisfied": true
+            }
+          ],
+          "required_token_alternatives": [
+            [
+              [
+                10,
+                33708,
+                501
+              ],
+              [
+                10,
+                33708,
+                2133
+              ],
+              [
+                66,
+                33708,
+                501
+              ],
+              [
+                66,
+                33708,
+                2133
+              ]
+            ]
+          ],
+          "output": "Solar inverters installed on walls and closed outer casings.",
+          "eos_terminated": true,
+          "satisfied": true,
+          "status": "success",
+          "sequence": [
+            65000,
+            37814,
+            10,
+            33708,
+            2133,
+            19952,
+            18,
+            26688,
+            6,
+            5829,
+            4917,
+            59188,
+            22,
+            5,
+            0
+          ]
+        }
+      },
+      "guarded": {
+        "ok": true,
+        "english": "Solar inverters installed on walls and closed outer casings.",
+        "failure": null,
+        "translation_ms": 138.18437499867287,
+        "trace": {
+          "source_text": "安装在墙上、外壳闭合的太阳能逆变器。",
+          "constrained": true,
+          "constraints_applied": true,
+          "requirements": [
+            {
+              "id": "inverter",
+              "source_terms": [
+                "逆变器"
+              ],
+              "target_forms": [
+                "inverter",
+                "inverters",
+                "Inverter",
+                "Inverters"
+              ],
+              "token_alternatives": [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ],
+              "decoder_token_alternatives": [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ],
+              "tokens_satisfied": true,
+              "phrase_satisfied": true,
+              "satisfied": true
+            }
+          ],
+          "required_token_alternatives": [
+            [
+              [
+                10,
+                33708,
+                501
+              ],
+              [
+                10,
+                33708,
+                2133
+              ],
+              [
+                66,
+                33708,
+                501
+              ],
+              [
+                66,
+                33708,
+                2133
+              ]
+            ]
+          ],
+          "output": "Solar inverters installed on walls and closed outer casings.",
+          "eos_terminated": true,
+          "satisfied": true,
+          "status": "success",
+          "sequence": [
+            65000,
+            37814,
+            10,
+            33708,
+            2133,
+            19952,
+            18,
+            26688,
+            6,
+            5829,
+            4917,
+            59188,
+            22,
+            5,
+            0
+          ],
+          "repetition_stop": {
+            "profile": {
+              "schema_version": 1,
+              "profile_id": "suffix-n8-r4-min32-q4",
+              "algorithm": "suffix_consecutive_token_cycles",
+              "max_new_tokens": 64,
+              "num_beams": 4,
+              "check_every": 4,
+              "max_ngram_size": 8,
+              "repeat_count": 4,
+              "min_new_tokens": 32,
+              "min_repeating_beams": 4
+            },
+            "profile_sha256": "71227b4c000fc261742d3023ee181c4e7db34fe76e2f4257a57cf87cffa98843",
+            "special_ids": [
+              0,
+              1,
+              65000
+            ],
+            "observe_only": false,
+            "enabled": true,
+            "triggered": false,
+            "trigger_new_tokens": null,
+            "snapshots": [],
+            "generated_new_tokens": 14,
+            "observed_generation_steps": 15,
+            "observed_steps_complete": false,
+            "length_scope": "finalized_sequence"
+          }
+        }
+      },
+      "fallback": null
+    },
+    {
+      "query_id": "i03_zh",
+      "text": "打开外壳后露出电路板和蓝色电容的太阳能逆变器。",
+      "baseline": {
+        "ok": true,
+        "english": "Open the shell and display solar inverters with circuit boards and blue capacitors.",
+        "failure": null,
+        "translation_ms": 286.704500002088,
+        "trace": {
+          "source_text": "打开外壳后露出电路板和蓝色电容的太阳能逆变器。",
+          "constrained": true,
+          "constraints_applied": true,
+          "requirements": [
+            {
+              "id": "inverter",
+              "source_terms": [
+                "逆变器"
+              ],
+              "target_forms": [
+                "inverter",
+                "inverters",
+                "Inverter",
+                "Inverters"
+              ],
+              "token_alternatives": [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ],
+              "decoder_token_alternatives": [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ],
+              "tokens_satisfied": true,
+              "phrase_satisfied": true,
+              "satisfied": true
+            }
+          ],
+          "required_token_alternatives": [
+            [
+              [
+                10,
+                33708,
+                501
+              ],
+              [
+                10,
+                33708,
+                2133
+              ],
+              [
+                66,
+                33708,
+                501
+              ],
+              [
+                66,
+                33708,
+                2133
+              ]
+            ]
+          ],
+          "output": "Open the shell and display solar inverters with circuit boards and blue capacitors.",
+          "eos_terminated": true,
+          "satisfied": true,
+          "status": "success",
+          "sequence": [
+            65000,
+            4594,
+            3,
+            32666,
+            6,
+            17181,
+            20845,
+            10,
+            33708,
+            2133,
+            27,
+            40077,
+            19312,
+            6,
+            16431,
+            19552,
+            18935,
+            38334,
+            5,
+            0
+          ]
+        }
+      },
+      "guarded": {
+        "ok": true,
+        "english": "Open the shell and display solar inverters with circuit boards and blue capacitors.",
+        "failure": null,
+        "translation_ms": 281.33466599683743,
+        "trace": {
+          "source_text": "打开外壳后露出电路板和蓝色电容的太阳能逆变器。",
+          "constrained": true,
+          "constraints_applied": true,
+          "requirements": [
+            {
+              "id": "inverter",
+              "source_terms": [
+                "逆变器"
+              ],
+              "target_forms": [
+                "inverter",
+                "inverters",
+                "Inverter",
+                "Inverters"
+              ],
+              "token_alternatives": [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ],
+              "decoder_token_alternatives": [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ],
+              "tokens_satisfied": true,
+              "phrase_satisfied": true,
+              "satisfied": true
+            }
+          ],
+          "required_token_alternatives": [
+            [
+              [
+                10,
+                33708,
+                501
+              ],
+              [
+                10,
+                33708,
+                2133
+              ],
+              [
+                66,
+                33708,
+                501
+              ],
+              [
+                66,
+                33708,
+                2133
+              ]
+            ]
+          ],
+          "output": "Open the shell and display solar inverters with circuit boards and blue capacitors.",
+          "eos_terminated": true,
+          "satisfied": true,
+          "status": "success",
+          "sequence": [
+            65000,
+            4594,
+            3,
+            32666,
+            6,
+            17181,
+            20845,
+            10,
+            33708,
+            2133,
+            27,
+            40077,
+            19312,
+            6,
+            16431,
+            19552,
+            18935,
+            38334,
+            5,
+            0
+          ],
+          "repetition_stop": {
+            "profile": {
+              "schema_version": 1,
+              "profile_id": "suffix-n8-r4-min32-q4",
+              "algorithm": "suffix_consecutive_token_cycles",
+              "max_new_tokens": 64,
+              "num_beams": 4,
+              "check_every": 4,
+              "max_ngram_size": 8,
+              "repeat_count": 4,
+              "min_new_tokens": 32,
+              "min_repeating_beams": 4
+            },
+            "profile_sha256": "71227b4c000fc261742d3023ee181c4e7db34fe76e2f4257a57cf87cffa98843",
+            "special_ids": [
+              0,
+              1,
+              65000
+            ],
+            "observe_only": false,
+            "enabled": true,
+            "triggered": false,
+            "trigger_new_tokens": null,
+            "snapshots": [],
+            "generated_new_tokens": 19,
+            "observed_generation_steps": 30,
+            "observed_steps_complete": false,
+            "length_scope": "finalized_sequence"
+          }
+        }
+      },
+      "fallback": null
+    },
+    {
+      "query_id": "i04_zh",
+      "text": "安装在光伏板下方或背面的太阳能逆变器。",
+      "baseline": {
+        "ok": true,
+        "english": "Solar inverters installed below or on the back of the photovoltaic panels.",
+        "failure": null,
+        "translation_ms": 177.96658299630508,
+        "trace": {
+          "source_text": "安装在光伏板下方或背面的太阳能逆变器。",
+          "constrained": true,
+          "constraints_applied": true,
+          "requirements": [
+            {
+              "id": "inverter",
+              "source_terms": [
+                "逆变器"
+              ],
+              "target_forms": [
+                "inverter",
+                "inverters",
+                "Inverter",
+                "Inverters"
+              ],
+              "token_alternatives": [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ],
+              "decoder_token_alternatives": [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ],
+              "tokens_satisfied": true,
+              "phrase_satisfied": true,
+              "satisfied": true
+            }
+          ],
+          "required_token_alternatives": [
+            [
+              [
+                10,
+                33708,
+                501
+              ],
+              [
+                10,
+                33708,
+                2133
+              ],
+              [
+                66,
+                33708,
+                501
+              ],
+              [
+                66,
+                33708,
+                2133
+              ]
+            ]
+          ],
+          "output": "Solar inverters installed below or on the back of the photovoltaic panels.",
+          "eos_terminated": true,
+          "satisfied": true,
+          "status": "success",
+          "sequence": [
+            65000,
+            37814,
+            10,
+            33708,
+            2133,
+            19952,
+            1815,
+            50,
+            18,
+            3,
+            612,
+            4,
+            3,
+            61511,
+            17486,
+            5,
+            0
+          ]
+        }
+      },
+      "guarded": {
+        "ok": true,
+        "english": "Solar inverters installed below or on the back of the photovoltaic panels.",
+        "failure": null,
+        "translation_ms": 176.44033300166484,
+        "trace": {
+          "source_text": "安装在光伏板下方或背面的太阳能逆变器。",
+          "constrained": true,
+          "constraints_applied": true,
+          "requirements": [
+            {
+              "id": "inverter",
+              "source_terms": [
+                "逆变器"
+              ],
+              "target_forms": [
+                "inverter",
+                "inverters",
+                "Inverter",
+                "Inverters"
+              ],
+              "token_alternatives": [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ],
+              "decoder_token_alternatives": [
+                [
+                  10,
+                  33708,
+                  501
+                ],
+                [
+                  10,
+                  33708,
+                  2133
+                ],
+                [
+                  66,
+                  33708,
+                  501
+                ],
+                [
+                  66,
+                  33708,
+                  2133
+                ]
+              ],
+              "tokens_satisfied": true,
+              "phrase_satisfied": true,
+              "satisfied": true
+            }
+          ],
+          "required_token_alternatives": [
+            [
+              [
+                10,
+                33708,
+                501
+              ],
+              [
+                10,
+                33708,
+                2133
+              ],
+              [
+                66,
+                33708,
+                501
+              ],
+              [
+                66,
+                33708,
+                2133
+              ]
+            ]
+          ],
+          "output": "Solar inverters installed below or on the back of the photovoltaic panels.",
+          "eos_terminated": true,
+          "satisfied": true,
+          "status": "success",
+          "sequence": [
+            65000,
+            37814,
+            10,
+            33708,
+            2133,
+            19952,
+            1815,
+            50,
+            18,
+            3,
+            612,
+            4,
+            3,
+            61511,
+            17486,
+            5,
+            0
+          ],
+          "repetition_stop": {
+            "profile": {
+              "schema_version": 1,
+              "profile_id": "suffix-n8-r4-min32-q4",
+              "algorithm": "suffix_consecutive_token_cycles",
+              "max_new_tokens": 64,
+              "num_beams": 4,
+              "check_every": 4,
+              "max_ngram_size": 8,
+              "repeat_count": 4,
+              "min_new_tokens": 32,
+              "min_repeating_beams": 4
+            },
+            "profile_sha256": "71227b4c000fc261742d3023ee181c4e7db34fe76e2f4257a57cf87cffa98843",
+            "special_ids": [
+              0,
+              1,
+              65000
+            ],
+            "observe_only": false,
+            "enabled": true,
+            "triggered": false,
+            "trigger_new_tokens": null,
+            "snapshots": [],
+            "generated_new_tokens": 16,
+            "observed_generation_steps": 17,
+            "observed_steps_complete": false,
+            "length_scope": "finalized_sequence"
+          }
+        }
+      },
+      "fallback": null
+    },
+    {
+      "query_id": "i05_zh",
+      "text": "打开柜门后能看到接线的电气配电柜或控制柜。",
+      "baseline": {
+        "ok": true,
+        "english": "The electrical distribution or control cabinets that are connected can be seen when the door is opened.",
+        "failure": null,
+        "translation_ms": 104.83362500963267,
+        "trace": {
+          "source_text": "打开柜门后能看到接线的电气配电柜或控制柜。",
+          "constrained": true,
+          "constraints_applied": false,
+          "requirements": [],
+          "required_token_alternatives": [],
+          "output": "The electrical distribution or control cabinets that are connected can be seen when the door is opened.",
+          "eos_terminated": true,
+          "satisfied": true,
+          "status": "success",
+          "sequence": [
+            65000,
+            24,
+            23950,
+            2649,
+            50,
+            786,
+            34100,
+            22,
+            19,
+            44,
+            10872,
+            122,
+            32,
+            2335,
+            346,
+            3,
+            5906,
+            30,
+            6355,
+            5,
+            0
+          ]
+        }
+      },
+      "guarded": {
+        "ok": true,
+        "english": "The electrical distribution or control cabinets that are connected can be seen when the door is opened.",
+        "failure": null,
+        "translation_ms": 100.04650001064874,
+        "trace": {
+          "source_text": "打开柜门后能看到接线的电气配电柜或控制柜。",
+          "constrained": true,
+          "constraints_applied": false,
+          "requirements": [],
+          "required_token_alternatives": [],
+          "output": "The electrical distribution or control cabinets that are connected can be seen when the door is opened.",
+          "eos_terminated": true,
+          "satisfied": true,
+          "status": "success",
+          "sequence": [
+            65000,
+            24,
+            23950,
+            2649,
+            50,
+            786,
+            34100,
+            22,
+            19,
+            44,
+            10872,
+            122,
+            32,
+            2335,
+            346,
+            3,
+            5906,
+            30,
+            6355,
+            5,
+            0
+          ],
+          "repetition_stop": {
+            "profile": {
+              "schema_version": 1,
+              "profile_id": "suffix-n8-r4-min32-q4",
+              "algorithm": "suffix_consecutive_token_cycles",
+              "max_new_tokens": 64,
+              "num_beams": 4,
+              "check_every": 4,
+              "max_ngram_size": 8,
+              "repeat_count": 4,
+              "min_new_tokens": 32,
+              "min_repeating_beams": 4
+            },
+            "profile_sha256": "71227b4c000fc261742d3023ee181c4e7db34fe76e2f4257a57cf87cffa98843",
+            "special_ids": [
+              0,
+              1,
+              65000
+            ],
+            "observe_only": false,
+            "enabled": false,
+            "triggered": false,
+            "trigger_new_tokens": null,
+            "snapshots": [],
+            "generated_new_tokens": 20,
+            "observed_generation_steps": 0,
+            "observed_steps_complete": false,
+            "length_scope": "finalized_sequence"
+          }
+        }
+      },
+      "fallback": null
+    },
+    {
+      "query_id": "i06_zh",
+      "text": "成排工业电气开关柜之间的通道。",
+      "baseline": {
+        "ok": true,
+        "english": "The passage between the electrical switchboards of the platoon industry.",
+        "failure": null,
+        "translation_ms": 75.78695801203139,
+        "trace": {
+          "source_text": "成排工业电气开关柜之间的通道。",
+          "constrained": true,
+          "constraints_applied": false,
+          "requirements": [],
+          "required_token_alternatives": [],
+          "output": "The passage between the electrical switchboards of the platoon industry.",
+          "eos_terminated": true,
+          "satisfied": true,
+          "status": "success",
+          "sequence": [
+            65000,
+            24,
+            17374,
+            191,
+            3,
+            23950,
+            30139,
+            18832,
+            22,
+            4,
+            3,
+            52794,
+            3773,
+            5,
+            0
+          ]
+        }
+      },
+      "guarded": {
+        "ok": true,
+        "english": "The passage between the electrical switchboards of the platoon industry.",
+        "failure": null,
+        "translation_ms": 74.0330830012681,
+        "trace": {
+          "source_text": "成排工业电气开关柜之间的通道。",
+          "constrained": true,
+          "constraints_applied": false,
+          "requirements": [],
+          "required_token_alternatives": [],
+          "output": "The passage between the electrical switchboards of the platoon industry.",
+          "eos_terminated": true,
+          "satisfied": true,
+          "status": "success",
+          "sequence": [
+            65000,
+            24,
+            17374,
+            191,
+            3,
+            23950,
+            30139,
+            18832,
+            22,
+            4,
+            3,
+            52794,
+            3773,
+            5,
+            0
+          ],
+          "repetition_stop": {
+            "profile": {
+              "schema_version": 1,
+              "profile_id": "suffix-n8-r4-min32-q4",
+              "algorithm": "suffix_consecutive_token_cycles",
+              "max_new_tokens": 64,
+              "num_beams": 4,
+              "check_every": 4,
+              "max_ngram_size": 8,
+              "repeat_count": 4,
+              "min_new_tokens": 32,
+              "min_repeating_beams": 4
+            },
+            "profile_sha256": "71227b4c000fc261742d3023ee181c4e7db34fe76e2f4257a57cf87cffa98843",
+            "special_ids": [
+              0,
+              1,
+              65000
+            ],
+            "observe_only": false,
+            "enabled": false,
+            "triggered": false,
+            "trigger_new_tokens": null,
+            "snapshots": [],
+            "generated_new_tokens": 14,
+            "observed_generation_steps": 0,
+            "observed_steps_complete": false,
+            "length_scope": "finalized_sequence"
+          }
+        }
+      },
+      "fallback": null
+    },
+    {
+      "query_id": "i07_zh",
+      "text": "能看到套管或散热片的室外电力变压器。",
+      "baseline": {
+        "ok": false,
+        "english": null,
+        "failure": {
+          "type": "ValueError",
+          "message": "Translation did not terminate with EOS within 64 tokens"
+        },
+        "translation_ms": 717.1635000122478,
+        "trace": {
+          "source_text": "能看到套管或散热片的室外电力变压器。",
+          "constrained": true,
+          "constraints_applied": true,
+          "requirements": [
+            {
+              "id": "transformer_bushing",
+              "source_terms": [
+                "套管"
+              ],
+              "target_forms": [
+                "bushing",
+                "bushings",
+                "Bushing",
+                "Bushings"
+              ],
+              "token_alternatives": [
+                [
+                  38680,
+                  102
+                ],
+                [
+                  38680,
+                  102,
+                  22
+                ],
+                [
+                  24766,
+                  102
+                ],
+                [
+                  24766,
+                  102,
+                  22
+                ]
+              ],
+              "decoder_token_alternatives": [
+                [
+                  38680,
+                  102
+                ],
+                [
+                  24766,
+                  102
+                ]
+              ],
+              "tokens_satisfied": true,
+              "phrase_satisfied": true,
+              "satisfied": true
+            },
+            {
+              "id": "cooling_fins",
+              "source_terms": [
+                "散热片"
+              ],
+              "target_forms": [
+                "cooling fins",
+                "radiator fins",
+                "Cooling fins",
+                "Radiator fins"
+              ],
+              "token_alternatives": [
+                [
+                  9178,
+                  102,
+                  51192,
+                  22
+                ],
+                [
+                  7,
+                  32328,
+                  10164,
+                  51192,
+                  22
+                ],
+                [
+                  29560,
+                  102,
+                  51192,
+                  22
+                ],
+                [
+                  39864,
+                  373,
+                  10164,
+                  51192,
+                  22
+                ]
+              ],
+              "decoder_token_alternatives": [
+                [
+                  9178,
+                  102,
+                  51192,
+                  22
+                ],
+                [
+                  7,
+                  32328,
+                  10164,
+                  51192,
+                  22
+                ],
+                [
+                  29560,
+                  102,
+                  51192,
+                  22
+                ],
+                [
+                  39864,
+                  373,
+                  10164,
+                  51192,
+                  22
+                ]
+              ],
+              "tokens_satisfied": true,
+              "phrase_satisfied": true,
+              "satisfied": true
+            }
+          ],
+          "required_token_alternatives": [
+            [
+              [
+                38680,
+                102
+              ],
+              [
+                38680,
+                102,
+                22
+              ],
+              [
+                24766,
+                102
+              ],
+              [
+                24766,
+                102,
+                22
+              ]
+            ],
+            [
+              [
+                9178,
+                102,
+                51192,
+                22
+              ],
+              [
+                7,
+                32328,
+                10164,
+                51192,
+                22
+              ],
+              [
+                29560,
+                102,
+                51192,
+                22
+              ],
+              [
+                39864,
+                373,
+                10164,
+                51192,
+                22
+              ]
+            ]
+          ],
+          "output": "radiator fins or radiators can be seen for outdoor electrical transformers. / Seen the radiator for the radiator. / Seen the radiator for the radiator. / See the /n. /n. /n. Bushing",
+          "eos_terminated": false,
+          "satisfied": true,
+          "status": "failed",
+          "sequence": [
+            65000,
+            7,
+            32328,
+            10164,
+            51192,
+            22,
+            50,
+            7,
+            32328,
+            20789,
+            122,
+            32,
+            2335,
+            14,
+            52810,
+            23950,
+            22558,
+            2133,
+            5,
+            7,
+            40,
+            2017,
+            746,
+            3,
+            7,
+            32328,
+            10164,
+            14,
+            3,
+            7,
+            32328,
+            10164,
+            5,
+            7,
+            40,
+            2017,
+            746,
+            3,
+            7,
+            32328,
+            10164,
+            14,
+            3,
+            7,
+            32328,
+            10164,
+            5,
+            7,
+            40,
+            2017,
+            3,
+            7,
+            40,
+            746,
+            5,
+            7,
+            40,
+            746,
+            5,
+            7,
+            40,
+            746,
+            5,
+            24766,
+            102
+          ],
+          "error": "Translation did not terminate with EOS within 64 tokens"
+        }
+      },
+      "guarded": {
+        "ok": false,
+        "english": null,
+        "failure": {
+          "type": "ValueError",
+          "message": "Translation did not terminate with EOS within 64 tokens"
+        },
+        "translation_ms": 702.3629589966731,
+        "trace": {
+          "source_text": "能看到套管或散热片的室外电力变压器。",
+          "constrained": true,
+          "constraints_applied": true,
+          "requirements": [
+            {
+              "id": "transformer_bushing",
+              "source_terms": [
+                "套管"
+              ],
+              "target_forms": [
+                "bushing",
+                "bushings",
+                "Bushing",
+                "Bushings"
+              ],
+              "token_alternatives": [
+                [
+                  38680,
+                  102
+                ],
+                [
+                  38680,
+                  102,
+                  22
+                ],
+                [
+                  24766,
+                  102
+                ],
+                [
+                  24766,
+                  102,
+                  22
+                ]
+              ],
+              "decoder_token_alternatives": [
+                [
+                  38680,
+                  102
+                ],
+                [
+                  24766,
+                  102
+                ]
+              ],
+              "tokens_satisfied": true,
+              "phrase_satisfied": true,
+              "satisfied": true
+            },
+            {
+              "id": "cooling_fins",
+              "source_terms": [
+                "散热片"
+              ],
+              "target_forms": [
+                "cooling fins",
+                "radiator fins",
+                "Cooling fins",
+                "Radiator fins"
+              ],
+              "token_alternatives": [
+                [
+                  9178,
+                  102,
+                  51192,
+                  22
+                ],
+                [
+                  7,
+                  32328,
+                  10164,
+                  51192,
+                  22
+                ],
+                [
+                  29560,
+                  102,
+                  51192,
+                  22
+                ],
+                [
+                  39864,
+                  373,
+                  10164,
+                  51192,
+                  22
+                ]
+              ],
+              "decoder_token_alternatives": [
+                [
+                  9178,
+                  102,
+                  51192,
+                  22
+                ],
+                [
+                  7,
+                  32328,
+                  10164,
+                  51192,
+                  22
+                ],
+                [
+                  29560,
+                  102,
+                  51192,
+                  22
+                ],
+                [
+                  39864,
+                  373,
+                  10164,
+                  51192,
+                  22
+                ]
+              ],
+              "tokens_satisfied": true,
+              "phrase_satisfied": true,
+              "satisfied": true
+            }
+          ],
+          "required_token_alternatives": [
+            [
+              [
+                38680,
+                102
+              ],
+              [
+                38680,
+                102,
+                22
+              ],
+              [
+                24766,
+                102
+              ],
+              [
+                24766,
+                102,
+                22
+              ]
+            ],
+            [
+              [
+                9178,
+                102,
+                51192,
+                22
+              ],
+              [
+                7,
+                32328,
+                10164,
+                51192,
+                22
+              ],
+              [
+                29560,
+                102,
+                51192,
+                22
+              ],
+              [
+                39864,
+                373,
+                10164,
+                51192,
+                22
+              ]
+            ]
+          ],
+          "output": "radiator fins or radiators can be seen for outdoor electrical transformers. / Seen the radiator for the radiator. / Seen the radiator for the radiator. / See the /n. /n. /n. Bushing",
+          "eos_terminated": false,
+          "satisfied": true,
+          "status": "failed",
+          "sequence": [
+            65000,
+            7,
+            32328,
+            10164,
+            51192,
+            22,
+            50,
+            7,
+            32328,
+            20789,
+            122,
+            32,
+            2335,
+            14,
+            52810,
+            23950,
+            22558,
+            2133,
+            5,
+            7,
+            40,
+            2017,
+            746,
+            3,
+            7,
+            32328,
+            10164,
+            14,
+            3,
+            7,
+            32328,
+            10164,
+            5,
+            7,
+            40,
+            2017,
+            746,
+            3,
+            7,
+            32328,
+            10164,
+            14,
+            3,
+            7,
+            32328,
+            10164,
+            5,
+            7,
+            40,
+            2017,
+            3,
+            7,
+            40,
+            746,
+            5,
+            7,
+            40,
+            746,
+            5,
+            7,
+            40,
+            746,
+            5,
+            24766,
+            102
+          ],
+          "error": "Translation did not terminate with EOS within 64 tokens",
+          "repetition_stop": {
+            "profile": {
+              "schema_version": 1,
+              "profile_id": "suffix-n8-r4-min32-q4",
+              "algorithm": "suffix_consecutive_token_cycles",
+              "max_new_tokens": 64,
+              "num_beams": 4,
+              "check_every": 4,
+              "max_ngram_size": 8,
+              "repeat_count": 4,
+              "min_new_tokens": 32,
+              "min_repeating_beams": 4
+            },
+            "profile_sha256": "71227b4c000fc261742d3023ee181c4e7db34fe76e2f4257a57cf87cffa98843",
+            "special_ids": [
+              0,
+              1,
+              65000
+            ],
+            "observe_only": false,
+            "enabled": true,
+            "triggered": false,
+            "trigger_new_tokens": null,
+            "snapshots": [
+              {
+                "beams": [
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    38680,
+                    102
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    38680
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    24766
+                  ]
+                ],
+                "new_tokens": 32,
+                "eligible": true,
+                "repeating_beams": 0,
+                "triggered": false,
+                "beam_evidence": [
+                  {
+                    "beam_index": 0,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 1,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 2,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 3,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  }
+                ]
+              },
+              {
+                "beams": [
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    24766,
+                    102
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    24766
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    38680
+                  ]
+                ],
+                "new_tokens": 36,
+                "eligible": true,
+                "repeating_beams": 0,
+                "triggered": false,
+                "beam_evidence": [
+                  {
+                    "beam_index": 0,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 1,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 2,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 3,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  }
+                ]
+              },
+              {
+                "beams": [
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    38680,
+                    102
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    38680
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    24766
+                  ]
+                ],
+                "new_tokens": 40,
+                "eligible": true,
+                "repeating_beams": 0,
+                "triggered": false,
+                "beam_evidence": [
+                  {
+                    "beam_index": 0,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 1,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 2,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 3,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  }
+                ]
+              },
+              {
+                "beams": [
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    38680,
+                    102
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    24766
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    38680
+                  ]
+                ],
+                "new_tokens": 44,
+                "eligible": true,
+                "repeating_beams": 0,
+                "triggered": false,
+                "beam_evidence": [
+                  {
+                    "beam_index": 0,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 1,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 2,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 3,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  }
+                ]
+              },
+              {
+                "beams": [
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    24766,
+                    102
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    38680
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    24766
+                  ]
+                ],
+                "new_tokens": 48,
+                "eligible": true,
+                "repeating_beams": 0,
+                "triggered": false,
+                "beam_evidence": [
+                  {
+                    "beam_index": 0,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 1,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 2,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 3,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  }
+                ]
+              },
+              {
+                "beams": [
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    3,
+                    38680,
+                    102
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    3,
+                    7,
+                    38680
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    3,
+                    7,
+                    40
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    3,
+                    7,
+                    24766
+                  ]
+                ],
+                "new_tokens": 52,
+                "eligible": true,
+                "repeating_beams": 0,
+                "triggered": false,
+                "beam_evidence": [
+                  {
+                    "beam_index": 0,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 1,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 2,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 3,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  }
+                ]
+              },
+              {
+                "beams": [
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    3,
+                    7,
+                    40,
+                    746,
+                    5,
+                    24766,
+                    102
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    3,
+                    7,
+                    40,
+                    746,
+                    5,
+                    7,
+                    38680
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    3,
+                    7,
+                    40,
+                    746,
+                    5,
+                    7,
+                    40
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    3,
+                    7,
+                    40,
+                    746,
+                    5,
+                    7,
+                    24766
+                  ]
+                ],
+                "new_tokens": 56,
+                "eligible": true,
+                "repeating_beams": 0,
+                "triggered": false,
+                "beam_evidence": [
+                  {
+                    "beam_index": 0,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 1,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 2,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 3,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  }
+                ]
+              },
+              {
+                "beams": [
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    3,
+                    7,
+                    40,
+                    746,
+                    5,
+                    7,
+                    40,
+                    746,
+                    5,
+                    24766,
+                    102
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    3,
+                    7,
+                    40,
+                    746,
+                    5,
+                    7,
+                    40,
+                    746,
+                    5,
+                    7,
+                    38680
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    3,
+                    7,
+                    40,
+                    746,
+                    5,
+                    7,
+                    40,
+                    746,
+                    5,
+                    7,
+                    40
+                  ],
+                  [
+                    65000,
+                    7,
+                    32328,
+                    10164,
+                    51192,
+                    22,
+                    50,
+                    7,
+                    32328,
+                    20789,
+                    122,
+                    32,
+                    2335,
+                    14,
+                    52810,
+                    23950,
+                    22558,
+                    2133,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    746,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    14,
+                    3,
+                    7,
+                    32328,
+                    10164,
+                    5,
+                    7,
+                    40,
+                    2017,
+                    3,
+                    7,
+                    40,
+                    746,
+                    5,
+                    7,
+                    40,
+                    746,
+                    5,
+                    7,
+                    24766
+                  ]
+                ],
+                "new_tokens": 60,
+                "eligible": true,
+                "repeating_beams": 0,
+                "triggered": false,
+                "beam_evidence": [
+                  {
+                    "beam_index": 0,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 1,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 2,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  },
+                  {
+                    "beam_index": 3,
+                    "period": null,
+                    "cycle": [],
+                    "repeat_count": 0,
+                    "suffix_start": null
+                  }
+                ]
+              }
+            ],
+            "generated_new_tokens": 64,
+            "observed_generation_steps": 64,
+            "observed_steps_complete": false,
+            "length_scope": "finalized_sequence"
+          }
+        }
+      },
+      "fallback": {
+        "ok": true,
+        "english": "Outdoor electrical transformers can be seen in a holster or radiator.",
+        "failure": null,
+        "translation_ms": 54.64645900065079,
+        "trace": {
+          "source_text": "能看到套管或散热片的室外电力变压器。",
+          "sequence": [
+            65000,
+            4814,
+            40641,
+            23950,
+            22558,
+            2133,
+            122,
+            32,
+            2335,
+            10,
+            12,
+            7,
+            33739,
+            9045,
+            50,
+            7,
+            32328,
+            10164,
+            5,
+            0
+          ],
+          "raw_decoded_output": "Outdoor electrical transformers can be seen in a holster or radiator.",
+          "output": "Outdoor electrical transformers can be seen in a holster or radiator.",
+          "eos_terminated": true,
+          "status": "success"
+        }
+      }
+    },
+    {
+      "query_id": "i08_zh",
+      "text": "给电脑或服务器提供断电备用电源的 UPS 不间断电源。",
+      "baseline": {
+        "ok": true,
+        "english": "UPS uninterruptible power supply to computers or servers for power outages.",
+        "failure": null,
+        "translation_ms": 113.61324999597855,
+        "trace": {
+          "source_text": "给电脑或服务器提供断电备用电源的 UPS 不间断电源。",
+          "constrained": true,
+          "constraints_applied": false,
+          "requirements": [],
+          "required_token_alternatives": [],
+          "output": "UPS uninterruptible power supply to computers or servers for power outages.",
+          "eos_terminated": true,
+          "satisfied": true,
+          "status": "success",
+          "sequence": [
+            65000,
+            29982,
+            229,
+            2145,
+            20212,
+            35709,
+            59,
+            13179,
+            1952,
+            2907,
+            8,
+            18190,
+            50,
+            38351,
+            14,
+            1952,
+            130,
+            31793,
+            5,
+            0
+          ]
+        }
+      },
+      "guarded": {
+        "ok": true,
+        "english": "UPS uninterruptible power supply to computers or servers for power outages.",
+        "failure": null,
+        "translation_ms": 109.09933299990371,
+        "trace": {
+          "source_text": "给电脑或服务器提供断电备用电源的 UPS 不间断电源。",
+          "constrained": true,
+          "constraints_applied": false,
+          "requirements": [],
+          "required_token_alternatives": [],
+          "output": "UPS uninterruptible power supply to computers or servers for power outages.",
+          "eos_terminated": true,
+          "satisfied": true,
+          "status": "success",
+          "sequence": [
+            65000,
+            29982,
+            229,
+            2145,
+            20212,
+            35709,
+            59,
+            13179,
+            1952,
+            2907,
+            8,
+            18190,
+            50,
+            38351,
+            14,
+            1952,
+            130,
+            31793,
+            5,
+            0
+          ],
+          "repetition_stop": {
+            "profile": {
+              "schema_version": 1,
+              "profile_id": "suffix-n8-r4-min32-q4",
+              "algorithm": "suffix_consecutive_token_cycles",
+              "max_new_tokens": 64,
+              "num_beams": 4,
+              "check_every": 4,
+              "max_ngram_size": 8,
+              "repeat_count": 4,
+              "min_new_tokens": 32,
+              "min_repeating_beams": 4
+            },
+            "profile_sha256": "71227b4c000fc261742d3023ee181c4e7db34fe76e2f4257a57cf87cffa98843",
+            "special_ids": [
+              0,
+              1,
+              65000
+            ],
+            "observe_only": false,
+            "enabled": false,
+            "triggered": false,
+            "trigger_new_tokens": null,
+            "snapshots": [],
+            "generated_new_tokens": 19,
+            "observed_generation_steps": 0,
+            "observed_steps_complete": false,
+            "length_scope": "finalized_sequence"
+          }
+        }
+      },
+      "fallback": null
+    }
+  ],
+  "translator_identities": {
+    "original": {
+      "model_id": "Helsinki-NLP/opus-mt-zh-en",
+      "revision": "cf109095479db38d6df799875e34039d4938aaa6",
+      "source_model": "Helsinki-NLP/opus-mt-zh-en",
+      "source_revision": "cf109095479db38d6df799875e34039d4938aaa6",
+      "source": {
+        "model_id": "Helsinki-NLP/opus-mt-zh-en",
+        "revision": "cf109095479db38d6df799875e34039d4938aaa6",
+        "license": "cc-by-4.0",
+        "weight_filename": "pytorch_model.bin",
+        "weight_sha256": "9d8ceb91d103ef89400c9d9d62328b4858743cf8924878aee3b8afc594242ce0"
+      },
+      "artifact_fingerprint": "e8d26ec8e92227e9ca5128200ba6ad26892d74f75d770a7e1c4560266a9fa5ee",
+      "artifacts": {
+        "README.md": "7f4b7f90672cd55b85b213bbe21f4b2d0c92327e885734b7e86b019feb145a6b",
+        "config.json": "cee48d4f205210cec6a7cfedf609acd605949ac5392a7e6e9c8c4c0b6670c27c",
+        "generation_config.json": "4f64a04e3bcf3f2f97ea552f83fe1f08a04a52402d29af3008d1644d9f29178c",
+        "model.safetensors": "9866cb7fcb30bca4c91f0ad2bde4183722bf015461aab8a7a6bea0c2cd030250",
+        "source.spm": "e27a3a1b539f4959ec72ea60e453f49156289f95d4e6000b29332efc45616203",
+        "target.spm": "6a881f4717cd7265f53fea54fd3dc689c767c05338fac7a4590f3088cb2d7855",
+        "tokenizer_config.json": "28e575e0beba8b2d4b6f789e91a219cff031e94a9254f027ce7170a48163c01d",
+        "vocab.json": "08a119a1defd522fa047cb5e3bfe3e89633e96caa38ced0dc9cee7ef1021a011"
+      },
+      "artifact_hashes": {
+        "README.md": "7f4b7f90672cd55b85b213bbe21f4b2d0c92327e885734b7e86b019feb145a6b",
+        "config.json": "cee48d4f205210cec6a7cfedf609acd605949ac5392a7e6e9c8c4c0b6670c27c",
+        "generation_config.json": "4f64a04e3bcf3f2f97ea552f83fe1f08a04a52402d29af3008d1644d9f29178c",
+        "model.safetensors": "9866cb7fcb30bca4c91f0ad2bde4183722bf015461aab8a7a6bea0c2cd030250",
+        "source.spm": "e27a3a1b539f4959ec72ea60e453f49156289f95d4e6000b29332efc45616203",
+        "target.spm": "6a881f4717cd7265f53fea54fd3dc689c767c05338fac7a4590f3088cb2d7855",
+        "tokenizer_config.json": "28e575e0beba8b2d4b6f789e91a219cff031e94a9254f027ce7170a48163c01d",
+        "vocab.json": "08a119a1defd522fa047cb5e3bfe3e89633e96caa38ced0dc9cee7ef1021a011"
+      },
+      "tokenizer": "MarianTokenizer",
+      "tokenizer_sha256": "2e8a76d9cb9e1b343fde85441f2fcd1110495fa369edcc8f561aba0020e34e79",
+      "runtime_versions": {
+        "torch": "2.15.0",
+        "transformers": "5.22.1",
+        "tokenizers": "0.23.3",
+        "sentencepiece": "0.2.2",
+        "sacremoses": "0.1.1"
+      },
+      "device": "mps",
+      "dtype": "float32",
+      "source_language": "zh",
+      "target_language": "en",
+      "max_input_tokens": 256,
+      "generation_config": {
+        "max_length": null,
+        "max_new_tokens": 64,
+        "min_length": null,
+        "min_new_tokens": null,
+        "early_stopping": null,
+        "max_time": null,
+        "stop_strings": null,
+        "do_sample": false,
+        "num_beams": 1,
+        "use_mtp": null,
+        "use_cache": true,
+        "cache_implementation": null,
+        "cache_config": null,
+        "max_cache_len": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null,
+        "min_p": null,
+        "top_h": null,
+        "typical_p": null,
+        "epsilon_cutoff": null,
+        "eta_cutoff": null,
+        "repetition_penalty": null,
+        "encoder_repetition_penalty": null,
+        "length_penalty": null,
+        "no_repeat_ngram_size": null,
+        "bad_words_ids": [
+          [
+            65000
+          ]
+        ],
+        "renormalize_logits": true,
+        "forced_bos_token_id": null,
+        "forced_eos_token_id": null,
+        "remove_invalid_values": null,
+        "exponential_decay_length_penalty": null,
+        "suppress_tokens": null,
+        "begin_suppress_tokens": null,
+        "sequence_bias": null,
+        "token_healing": null,
+        "guidance_scale": null,
+        "watermarking_config": null,
+        "num_return_sequences": 1,
+        "output_attentions": null,
+        "output_hidden_states": null,
+        "output_scores": false,
+        "output_logits": false,
+        "return_dict_in_generate": false,
+        "pad_token_id": 65000,
+        "bos_token_id": 0,
+        "eos_token_id": 0,
+        "encoder_no_repeat_ngram_size": null,
+        "decoder_start_token_id": 65000,
+        "is_assistant": null,
+        "num_assistant_tokens": null,
+        "num_assistant_tokens_schedule": null,
+        "assistant_confidence_threshold": null,
+        "prompt_lookup_num_tokens": null,
+        "max_matching_ngram_size": null,
+        "assistant_early_exit": null,
+        "assistant_lookbehind": null,
+        "target_lookbehind": null,
+        "assistant_ensemble_weight": null,
+        "speculation_type": null,
+        "compile_config": null,
+        "disable_compile": null,
+        "continuous_batching_config": null,
+        "low_memory": null,
+        "penalty_alpha": null,
+        "dola_layers": null,
+        "diversity_penalty": null,
+        "num_beam_groups": null,
+        "constraints": null,
+        "force_words_ids": null,
+        "prefill_chunk_size": null,
+        "_from_model_config": null,
+        "transformers_version": "5.22.1"
+      },
+      "generation": {
+        "max_length": null,
+        "max_new_tokens": 64,
+        "min_length": null,
+        "min_new_tokens": null,
+        "early_stopping": null,
+        "max_time": null,
+        "stop_strings": null,
+        "do_sample": false,
+        "num_beams": 1,
+        "use_mtp": null,
+        "use_cache": true,
+        "cache_implementation": null,
+        "cache_config": null,
+        "max_cache_len": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null,
+        "min_p": null,
+        "top_h": null,
+        "typical_p": null,
+        "epsilon_cutoff": null,
+        "eta_cutoff": null,
+        "repetition_penalty": null,
+        "encoder_repetition_penalty": null,
+        "length_penalty": null,
+        "no_repeat_ngram_size": null,
+        "bad_words_ids": [
+          [
+            65000
+          ]
+        ],
+        "renormalize_logits": true,
+        "forced_bos_token_id": null,
+        "forced_eos_token_id": null,
+        "remove_invalid_values": null,
+        "exponential_decay_length_penalty": null,
+        "suppress_tokens": null,
+        "begin_suppress_tokens": null,
+        "sequence_bias": null,
+        "token_healing": null,
+        "guidance_scale": null,
+        "watermarking_config": null,
+        "num_return_sequences": 1,
+        "output_attentions": null,
+        "output_hidden_states": null,
+        "output_scores": false,
+        "output_logits": false,
+        "return_dict_in_generate": false,
+        "pad_token_id": 65000,
+        "bos_token_id": 0,
+        "eos_token_id": 0,
+        "encoder_no_repeat_ngram_size": null,
+        "decoder_start_token_id": 65000,
+        "is_assistant": null,
+        "num_assistant_tokens": null,
+        "num_assistant_tokens_schedule": null,
+        "assistant_confidence_threshold": null,
+        "prompt_lookup_num_tokens": null,
+        "max_matching_ngram_size": null,
+        "assistant_early_exit": null,
+        "assistant_lookbehind": null,
+        "target_lookbehind": null,
+        "assistant_ensemble_weight": null,
+        "speculation_type": null,
+        "compile_config": null,
+        "disable_compile": null,
+        "continuous_batching_config": null,
+        "low_memory": null,
+        "penalty_alpha": null,
+        "dola_layers": null,
+        "diversity_penalty": null,
+        "num_beam_groups": null,
+        "constraints": null,
+        "force_words_ids": null,
+        "prefill_chunk_size": null,
+        "_from_model_config": null,
+        "transformers_version": "5.22.1"
+      },
+      "pipeline_version": 1
+    },
+    "baseline": {
+      "model_id": "Helsinki-NLP/opus-mt-zh-en",
+      "revision": "cf109095479db38d6df799875e34039d4938aaa6",
+      "source_model": "Helsinki-NLP/opus-mt-zh-en",
+      "source_revision": "cf109095479db38d6df799875e34039d4938aaa6",
+      "source": {
+        "model_id": "Helsinki-NLP/opus-mt-zh-en",
+        "revision": "cf109095479db38d6df799875e34039d4938aaa6",
+        "license": "cc-by-4.0",
+        "weight_filename": "pytorch_model.bin",
+        "weight_sha256": "9d8ceb91d103ef89400c9d9d62328b4858743cf8924878aee3b8afc594242ce0"
+      },
+      "artifact_fingerprint": "e8d26ec8e92227e9ca5128200ba6ad26892d74f75d770a7e1c4560266a9fa5ee",
+      "artifacts": {
+        "README.md": "7f4b7f90672cd55b85b213bbe21f4b2d0c92327e885734b7e86b019feb145a6b",
+        "config.json": "cee48d4f205210cec6a7cfedf609acd605949ac5392a7e6e9c8c4c0b6670c27c",
+        "generation_config.json": "4f64a04e3bcf3f2f97ea552f83fe1f08a04a52402d29af3008d1644d9f29178c",
+        "model.safetensors": "9866cb7fcb30bca4c91f0ad2bde4183722bf015461aab8a7a6bea0c2cd030250",
+        "source.spm": "e27a3a1b539f4959ec72ea60e453f49156289f95d4e6000b29332efc45616203",
+        "target.spm": "6a881f4717cd7265f53fea54fd3dc689c767c05338fac7a4590f3088cb2d7855",
+        "tokenizer_config.json": "28e575e0beba8b2d4b6f789e91a219cff031e94a9254f027ce7170a48163c01d",
+        "vocab.json": "08a119a1defd522fa047cb5e3bfe3e89633e96caa38ced0dc9cee7ef1021a011"
+      },
+      "artifact_hashes": {
+        "README.md": "7f4b7f90672cd55b85b213bbe21f4b2d0c92327e885734b7e86b019feb145a6b",
+        "config.json": "cee48d4f205210cec6a7cfedf609acd605949ac5392a7e6e9c8c4c0b6670c27c",
+        "generation_config.json": "4f64a04e3bcf3f2f97ea552f83fe1f08a04a52402d29af3008d1644d9f29178c",
+        "model.safetensors": "9866cb7fcb30bca4c91f0ad2bde4183722bf015461aab8a7a6bea0c2cd030250",
+        "source.spm": "e27a3a1b539f4959ec72ea60e453f49156289f95d4e6000b29332efc45616203",
+        "target.spm": "6a881f4717cd7265f53fea54fd3dc689c767c05338fac7a4590f3088cb2d7855",
+        "tokenizer_config.json": "28e575e0beba8b2d4b6f789e91a219cff031e94a9254f027ce7170a48163c01d",
+        "vocab.json": "08a119a1defd522fa047cb5e3bfe3e89633e96caa38ced0dc9cee7ef1021a011"
+      },
+      "tokenizer": "MarianTokenizer",
+      "tokenizer_sha256": "2e8a76d9cb9e1b343fde85441f2fcd1110495fa369edcc8f561aba0020e34e79",
+      "runtime_versions": {
+        "torch": "2.15.0",
+        "transformers": "5.22.1",
+        "tokenizers": "0.23.3",
+        "sentencepiece": "0.2.2",
+        "sacremoses": "0.1.1"
+      },
+      "device": "mps",
+      "dtype": "float32",
+      "source_language": "zh",
+      "target_language": "en",
+      "max_input_tokens": 256,
+      "generation_config": {
+        "max_length": null,
+        "max_new_tokens": 64,
+        "min_length": null,
+        "min_new_tokens": null,
+        "early_stopping": null,
+        "max_time": null,
+        "stop_strings": null,
+        "do_sample": false,
+        "num_beams": 4,
+        "use_mtp": null,
+        "use_cache": true,
+        "cache_implementation": null,
+        "cache_config": null,
+        "max_cache_len": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null,
+        "min_p": null,
+        "top_h": null,
+        "typical_p": null,
+        "epsilon_cutoff": null,
+        "eta_cutoff": null,
+        "repetition_penalty": null,
+        "encoder_repetition_penalty": null,
+        "length_penalty": null,
+        "no_repeat_ngram_size": null,
+        "bad_words_ids": [
+          [
+            65000
+          ]
+        ],
+        "renormalize_logits": true,
+        "forced_bos_token_id": null,
+        "forced_eos_token_id": null,
+        "remove_invalid_values": null,
+        "exponential_decay_length_penalty": null,
+        "suppress_tokens": null,
+        "begin_suppress_tokens": null,
+        "sequence_bias": null,
+        "token_healing": null,
+        "guidance_scale": null,
+        "watermarking_config": null,
+        "num_return_sequences": 1,
+        "output_attentions": null,
+        "output_hidden_states": null,
+        "output_scores": false,
+        "output_logits": false,
+        "return_dict_in_generate": false,
+        "pad_token_id": 65000,
+        "bos_token_id": 0,
+        "eos_token_id": 0,
+        "encoder_no_repeat_ngram_size": null,
+        "decoder_start_token_id": 65000,
+        "is_assistant": null,
+        "num_assistant_tokens": null,
+        "num_assistant_tokens_schedule": null,
+        "assistant_confidence_threshold": null,
+        "prompt_lookup_num_tokens": null,
+        "max_matching_ngram_size": null,
+        "assistant_early_exit": null,
+        "assistant_lookbehind": null,
+        "target_lookbehind": null,
+        "assistant_ensemble_weight": null,
+        "speculation_type": null,
+        "compile_config": null,
+        "disable_compile": null,
+        "continuous_batching_config": null,
+        "low_memory": null,
+        "penalty_alpha": null,
+        "dola_layers": null,
+        "diversity_penalty": null,
+        "num_beam_groups": null,
+        "constraints": null,
+        "force_words_ids": null,
+        "prefill_chunk_size": null,
+        "_from_model_config": null,
+        "transformers_version": "5.22.1"
+      },
+      "generation": {
+        "max_length": null,
+        "max_new_tokens": 64,
+        "min_length": null,
+        "min_new_tokens": null,
+        "early_stopping": null,
+        "max_time": null,
+        "stop_strings": null,
+        "do_sample": false,
+        "num_beams": 4,
+        "use_mtp": null,
+        "use_cache": true,
+        "cache_implementation": null,
+        "cache_config": null,
+        "max_cache_len": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null,
+        "min_p": null,
+        "top_h": null,
+        "typical_p": null,
+        "epsilon_cutoff": null,
+        "eta_cutoff": null,
+        "repetition_penalty": null,
+        "encoder_repetition_penalty": null,
+        "length_penalty": null,
+        "no_repeat_ngram_size": null,
+        "bad_words_ids": [
+          [
+            65000
+          ]
+        ],
+        "renormalize_logits": true,
+        "forced_bos_token_id": null,
+        "forced_eos_token_id": null,
+        "remove_invalid_values": null,
+        "exponential_decay_length_penalty": null,
+        "suppress_tokens": null,
+        "begin_suppress_tokens": null,
+        "sequence_bias": null,
+        "token_healing": null,
+        "guidance_scale": null,
+        "watermarking_config": null,
+        "num_return_sequences": 1,
+        "output_attentions": null,
+        "output_hidden_states": null,
+        "output_scores": false,
+        "output_logits": false,
+        "return_dict_in_generate": false,
+        "pad_token_id": 65000,
+        "bos_token_id": 0,
+        "eos_token_id": 0,
+        "encoder_no_repeat_ngram_size": null,
+        "decoder_start_token_id": 65000,
+        "is_assistant": null,
+        "num_assistant_tokens": null,
+        "num_assistant_tokens_schedule": null,
+        "assistant_confidence_threshold": null,
+        "prompt_lookup_num_tokens": null,
+        "max_matching_ngram_size": null,
+        "assistant_early_exit": null,
+        "assistant_lookbehind": null,
+        "target_lookbehind": null,
+        "assistant_ensemble_weight": null,
+        "speculation_type": null,
+        "compile_config": null,
+        "disable_compile": null,
+        "continuous_batching_config": null,
+        "low_memory": null,
+        "penalty_alpha": null,
+        "dola_layers": null,
+        "diversity_penalty": null,
+        "num_beam_groups": null,
+        "constraints": null,
+        "force_words_ids": null,
+        "prefill_chunk_size": null,
+        "_from_model_config": null,
+        "transformers_version": "5.22.1"
+      },
+      "pipeline_version": 1,
+      "opus_decoding": "constrained_beam4",
+      "constrained": true,
+      "decoder": {
+        "schema_version": 1,
+        "source": {
+          "repo_id": "transformers-community/constrained-beam-search",
+          "revision": "07b2f120b7db38f1d7bac617ad65ea130508f297",
+          "repository_license": null,
+          "license_note": "No repository license; beam_search.py retains Apache-2.0 header.",
+          "url": "https://huggingface.co/transformers-community/constrained-beam-search/tree/07b2f120b7db38f1d7bac617ad65ea130508f297"
+        },
+        "training": false,
+        "weights_downloaded": false,
+        "redistribution": "Local ignored artifact; external Python is not vendored in Git.",
+        "artifacts": {
+          "README.md": "0b550f52f5ffb16b8f36a34b2e5c9cb40076994063dd72b283552370eb43d903",
+          "custom_generate/generate.py": "3f2975a90ef9f506077d8e54d0e145cfd735088c9c082c595d546cfe5cd7eb64",
+          "custom_generate/beam_constraints.py": "72da73e8f601167c895974bbb6064f1be7d14f33247f6a8ea0acc6c162b62704",
+          "custom_generate/beam_search.py": "247baefee037b9cebda29140abcc298ed2d4fdb32b79a40550a06b004a03bda5"
+        }
+      },
+      "glossary": {
+        "profile_id": "power-equipment-v1",
+        "sha256": "20fef944133fe8453e9b60d5d7a6ccabb93ce3a4ffe0565038caaf8f51e3c42e",
+        "profile": {
+          "profile_id": "power-equipment-v1",
+          "version": 1,
+          "scope": "Source-triggered OPUS-MT lexical inclusion constraints; no translation post-editing or model training.",
+          "matching": {
+            "longest_source_first": true,
+            "micro_matches_exclude_generic_inverter": true,
+            "bushing_requires_source_context": "变压器",
+            "bushing_excluded_source_phrases": [
+              "电缆套管",
+              "线缆套管"
+            ],
+            "target_case_variants": [
+              "lowercase",
+              "sentence_initial_capital"
+            ],
+            "no_target_behavior": "ordinary unconstrained beam4; do not inject vocabulary"
+          },
+          "entries": [
+            {
+              "id": "microinverter",
+              "sources": [
+                "微型太阳能逆变器",
+                "微型光伏逆变器",
+                "微型逆变器",
+                "微逆"
+              ],
+              "target_forms": [
+                "microinverter",
+                "microinverters"
+              ]
+            },
+            {
+              "id": "inverter",
+              "sources": [
+                "逆变器"
+              ],
+              "target_forms": [
+                "inverter",
+                "inverters"
+              ]
+            },
+            {
+              "id": "transformer_bushing",
+              "sources": [
+                "套管"
+              ],
+              "target_forms": [
+                "bushing",
+                "bushings"
+              ],
+              "required_context": "变压器",
+              "exclude_within": [
+                "电缆套管",
+                "线缆套管"
+              ]
+            },
+            {
+              "id": "cooling_fins",
+              "sources": [
+                "散热鳍片",
+                "冷却鳍片",
+                "散热片"
+              ],
+              "target_forms": [
+                "cooling fins",
+                "radiator fins"
+              ]
+            }
+          ],
+          "context_not_guaranteed": [
+            "negation",
+            "open or closed casing",
+            "visible wiring",
+            "mounting on wall or post",
+            "under or behind PV panels",
+            "between rows of cabinets",
+            "visibility and OR relationship"
+          ],
+          "frozen_before_new_queries": true,
+          "sources": [
+            {
+              "title": "Enphase microinverters",
+              "url": "https://enphase.com/store/microinverters/iq8-series/iq8ac-microinverter"
+            },
+            {
+              "title": "Hitachi transformer bushings",
+              "url": "https://www.hitachienergy.com/us/en/products-and-solutions/insulation-and-components/transformer-insulation-components/transformer-bushings/bushings-product-selection/ac-bushing-type-goe"
+            },
+            {
+              "title": "Hitachi cooling fins, printed page12",
+              "url": "https://hitachi.asia/ice/brochures/pdf/transformer_accessories.pdf"
+            }
+          ]
+        }
+      }
+    },
+    "guarded": {
+      "model_id": "Helsinki-NLP/opus-mt-zh-en",
+      "revision": "cf109095479db38d6df799875e34039d4938aaa6",
+      "source_model": "Helsinki-NLP/opus-mt-zh-en",
+      "source_revision": "cf109095479db38d6df799875e34039d4938aaa6",
+      "source": {
+        "model_id": "Helsinki-NLP/opus-mt-zh-en",
+        "revision": "cf109095479db38d6df799875e34039d4938aaa6",
+        "license": "cc-by-4.0",
+        "weight_filename": "pytorch_model.bin",
+        "weight_sha256": "9d8ceb91d103ef89400c9d9d62328b4858743cf8924878aee3b8afc594242ce0"
+      },
+      "artifact_fingerprint": "e8d26ec8e92227e9ca5128200ba6ad26892d74f75d770a7e1c4560266a9fa5ee",
+      "artifacts": {
+        "README.md": "7f4b7f90672cd55b85b213bbe21f4b2d0c92327e885734b7e86b019feb145a6b",
+        "config.json": "cee48d4f205210cec6a7cfedf609acd605949ac5392a7e6e9c8c4c0b6670c27c",
+        "generation_config.json": "4f64a04e3bcf3f2f97ea552f83fe1f08a04a52402d29af3008d1644d9f29178c",
+        "model.safetensors": "9866cb7fcb30bca4c91f0ad2bde4183722bf015461aab8a7a6bea0c2cd030250",
+        "source.spm": "e27a3a1b539f4959ec72ea60e453f49156289f95d4e6000b29332efc45616203",
+        "target.spm": "6a881f4717cd7265f53fea54fd3dc689c767c05338fac7a4590f3088cb2d7855",
+        "tokenizer_config.json": "28e575e0beba8b2d4b6f789e91a219cff031e94a9254f027ce7170a48163c01d",
+        "vocab.json": "08a119a1defd522fa047cb5e3bfe3e89633e96caa38ced0dc9cee7ef1021a011"
+      },
+      "artifact_hashes": {
+        "README.md": "7f4b7f90672cd55b85b213bbe21f4b2d0c92327e885734b7e86b019feb145a6b",
+        "config.json": "cee48d4f205210cec6a7cfedf609acd605949ac5392a7e6e9c8c4c0b6670c27c",
+        "generation_config.json": "4f64a04e3bcf3f2f97ea552f83fe1f08a04a52402d29af3008d1644d9f29178c",
+        "model.safetensors": "9866cb7fcb30bca4c91f0ad2bde4183722bf015461aab8a7a6bea0c2cd030250",
+        "source.spm": "e27a3a1b539f4959ec72ea60e453f49156289f95d4e6000b29332efc45616203",
+        "target.spm": "6a881f4717cd7265f53fea54fd3dc689c767c05338fac7a4590f3088cb2d7855",
+        "tokenizer_config.json": "28e575e0beba8b2d4b6f789e91a219cff031e94a9254f027ce7170a48163c01d",
+        "vocab.json": "08a119a1defd522fa047cb5e3bfe3e89633e96caa38ced0dc9cee7ef1021a011"
+      },
+      "tokenizer": "MarianTokenizer",
+      "tokenizer_sha256": "2e8a76d9cb9e1b343fde85441f2fcd1110495fa369edcc8f561aba0020e34e79",
+      "runtime_versions": {
+        "torch": "2.15.0",
+        "transformers": "5.22.1",
+        "tokenizers": "0.23.3",
+        "sentencepiece": "0.2.2",
+        "sacremoses": "0.1.1"
+      },
+      "device": "mps",
+      "dtype": "float32",
+      "source_language": "zh",
+      "target_language": "en",
+      "max_input_tokens": 256,
+      "generation_config": {
+        "max_length": null,
+        "max_new_tokens": 64,
+        "min_length": null,
+        "min_new_tokens": null,
+        "early_stopping": null,
+        "max_time": null,
+        "stop_strings": null,
+        "do_sample": false,
+        "num_beams": 4,
+        "use_mtp": null,
+        "use_cache": true,
+        "cache_implementation": null,
+        "cache_config": null,
+        "max_cache_len": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null,
+        "min_p": null,
+        "top_h": null,
+        "typical_p": null,
+        "epsilon_cutoff": null,
+        "eta_cutoff": null,
+        "repetition_penalty": null,
+        "encoder_repetition_penalty": null,
+        "length_penalty": null,
+        "no_repeat_ngram_size": null,
+        "bad_words_ids": [
+          [
+            65000
+          ]
+        ],
+        "renormalize_logits": true,
+        "forced_bos_token_id": null,
+        "forced_eos_token_id": null,
+        "remove_invalid_values": null,
+        "exponential_decay_length_penalty": null,
+        "suppress_tokens": null,
+        "begin_suppress_tokens": null,
+        "sequence_bias": null,
+        "token_healing": null,
+        "guidance_scale": null,
+        "watermarking_config": null,
+        "num_return_sequences": 1,
+        "output_attentions": null,
+        "output_hidden_states": null,
+        "output_scores": false,
+        "output_logits": false,
+        "return_dict_in_generate": false,
+        "pad_token_id": 65000,
+        "bos_token_id": 0,
+        "eos_token_id": 0,
+        "encoder_no_repeat_ngram_size": null,
+        "decoder_start_token_id": 65000,
+        "is_assistant": null,
+        "num_assistant_tokens": null,
+        "num_assistant_tokens_schedule": null,
+        "assistant_confidence_threshold": null,
+        "prompt_lookup_num_tokens": null,
+        "max_matching_ngram_size": null,
+        "assistant_early_exit": null,
+        "assistant_lookbehind": null,
+        "target_lookbehind": null,
+        "assistant_ensemble_weight": null,
+        "speculation_type": null,
+        "compile_config": null,
+        "disable_compile": null,
+        "continuous_batching_config": null,
+        "low_memory": null,
+        "penalty_alpha": null,
+        "dola_layers": null,
+        "diversity_penalty": null,
+        "num_beam_groups": null,
+        "constraints": null,
+        "force_words_ids": null,
+        "prefill_chunk_size": null,
+        "_from_model_config": null,
+        "transformers_version": "5.22.1"
+      },
+      "generation": {
+        "max_length": null,
+        "max_new_tokens": 64,
+        "min_length": null,
+        "min_new_tokens": null,
+        "early_stopping": null,
+        "max_time": null,
+        "stop_strings": null,
+        "do_sample": false,
+        "num_beams": 4,
+        "use_mtp": null,
+        "use_cache": true,
+        "cache_implementation": null,
+        "cache_config": null,
+        "max_cache_len": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null,
+        "min_p": null,
+        "top_h": null,
+        "typical_p": null,
+        "epsilon_cutoff": null,
+        "eta_cutoff": null,
+        "repetition_penalty": null,
+        "encoder_repetition_penalty": null,
+        "length_penalty": null,
+        "no_repeat_ngram_size": null,
+        "bad_words_ids": [
+          [
+            65000
+          ]
+        ],
+        "renormalize_logits": true,
+        "forced_bos_token_id": null,
+        "forced_eos_token_id": null,
+        "remove_invalid_values": null,
+        "exponential_decay_length_penalty": null,
+        "suppress_tokens": null,
+        "begin_suppress_tokens": null,
+        "sequence_bias": null,
+        "token_healing": null,
+        "guidance_scale": null,
+        "watermarking_config": null,
+        "num_return_sequences": 1,
+        "output_attentions": null,
+        "output_hidden_states": null,
+        "output_scores": false,
+        "output_logits": false,
+        "return_dict_in_generate": false,
+        "pad_token_id": 65000,
+        "bos_token_id": 0,
+        "eos_token_id": 0,
+        "encoder_no_repeat_ngram_size": null,
+        "decoder_start_token_id": 65000,
+        "is_assistant": null,
+        "num_assistant_tokens": null,
+        "num_assistant_tokens_schedule": null,
+        "assistant_confidence_threshold": null,
+        "prompt_lookup_num_tokens": null,
+        "max_matching_ngram_size": null,
+        "assistant_early_exit": null,
+        "assistant_lookbehind": null,
+        "target_lookbehind": null,
+        "assistant_ensemble_weight": null,
+        "speculation_type": null,
+        "compile_config": null,
+        "disable_compile": null,
+        "continuous_batching_config": null,
+        "low_memory": null,
+        "penalty_alpha": null,
+        "dola_layers": null,
+        "diversity_penalty": null,
+        "num_beam_groups": null,
+        "constraints": null,
+        "force_words_ids": null,
+        "prefill_chunk_size": null,
+        "_from_model_config": null,
+        "transformers_version": "5.22.1"
+      },
+      "pipeline_version": 1,
+      "opus_decoding": "constrained_beam4",
+      "constrained": true,
+      "decoder": {
+        "schema_version": 1,
+        "source": {
+          "repo_id": "transformers-community/constrained-beam-search",
+          "revision": "07b2f120b7db38f1d7bac617ad65ea130508f297",
+          "repository_license": null,
+          "license_note": "No repository license; beam_search.py retains Apache-2.0 header.",
+          "url": "https://huggingface.co/transformers-community/constrained-beam-search/tree/07b2f120b7db38f1d7bac617ad65ea130508f297"
+        },
+        "training": false,
+        "weights_downloaded": false,
+        "redistribution": "Local ignored artifact; external Python is not vendored in Git.",
+        "artifacts": {
+          "README.md": "0b550f52f5ffb16b8f36a34b2e5c9cb40076994063dd72b283552370eb43d903",
+          "custom_generate/generate.py": "3f2975a90ef9f506077d8e54d0e145cfd735088c9c082c595d546cfe5cd7eb64",
+          "custom_generate/beam_constraints.py": "72da73e8f601167c895974bbb6064f1be7d14f33247f6a8ea0acc6c162b62704",
+          "custom_generate/beam_search.py": "247baefee037b9cebda29140abcc298ed2d4fdb32b79a40550a06b004a03bda5"
+        }
+      },
+      "glossary": {
+        "profile_id": "power-equipment-v1",
+        "sha256": "20fef944133fe8453e9b60d5d7a6ccabb93ce3a4ffe0565038caaf8f51e3c42e",
+        "profile": {
+          "profile_id": "power-equipment-v1",
+          "version": 1,
+          "scope": "Source-triggered OPUS-MT lexical inclusion constraints; no translation post-editing or model training.",
+          "matching": {
+            "longest_source_first": true,
+            "micro_matches_exclude_generic_inverter": true,
+            "bushing_requires_source_context": "变压器",
+            "bushing_excluded_source_phrases": [
+              "电缆套管",
+              "线缆套管"
+            ],
+            "target_case_variants": [
+              "lowercase",
+              "sentence_initial_capital"
+            ],
+            "no_target_behavior": "ordinary unconstrained beam4; do not inject vocabulary"
+          },
+          "entries": [
+            {
+              "id": "microinverter",
+              "sources": [
+                "微型太阳能逆变器",
+                "微型光伏逆变器",
+                "微型逆变器",
+                "微逆"
+              ],
+              "target_forms": [
+                "microinverter",
+                "microinverters"
+              ]
+            },
+            {
+              "id": "inverter",
+              "sources": [
+                "逆变器"
+              ],
+              "target_forms": [
+                "inverter",
+                "inverters"
+              ]
+            },
+            {
+              "id": "transformer_bushing",
+              "sources": [
+                "套管"
+              ],
+              "target_forms": [
+                "bushing",
+                "bushings"
+              ],
+              "required_context": "变压器",
+              "exclude_within": [
+                "电缆套管",
+                "线缆套管"
+              ]
+            },
+            {
+              "id": "cooling_fins",
+              "sources": [
+                "散热鳍片",
+                "冷却鳍片",
+                "散热片"
+              ],
+              "target_forms": [
+                "cooling fins",
+                "radiator fins"
+              ]
+            }
+          ],
+          "context_not_guaranteed": [
+            "negation",
+            "open or closed casing",
+            "visible wiring",
+            "mounting on wall or post",
+            "under or behind PV panels",
+            "between rows of cabinets",
+            "visibility and OR relationship"
+          ],
+          "frozen_before_new_queries": true,
+          "sources": [
+            {
+              "title": "Enphase microinverters",
+              "url": "https://enphase.com/store/microinverters/iq8-series/iq8ac-microinverter"
+            },
+            {
+              "title": "Hitachi transformer bushings",
+              "url": "https://www.hitachienergy.com/us/en/products-and-solutions/insulation-and-components/transformer-insulation-components/transformer-bushings/bushings-product-selection/ac-bushing-type-goe"
+            },
+            {
+              "title": "Hitachi cooling fins, printed page12",
+              "url": "https://hitachi.asia/ice/brochures/pdf/transformer_accessories.pdf"
+            }
+          ]
+        }
+      },
+      "repetition_stop": {
+        "profile": {
+          "schema_version": 1,
+          "profile_id": "suffix-n8-r4-min32-q4",
+          "algorithm": "suffix_consecutive_token_cycles",
+          "max_new_tokens": 64,
+          "num_beams": 4,
+          "check_every": 4,
+          "max_ngram_size": 8,
+          "repeat_count": 4,
+          "min_new_tokens": 32,
+          "min_repeating_beams": 4
+        },
+        "profile_sha256": "71227b4c000fc261742d3023ee181c4e7db34fe76e2f4257a57cf87cffa98843",
+        "observe_only": false
+      }
+    }
+  },
+  "development_only": true,
+  "training_executed": false,
+  "active_stops_match_replayed_predictions": true
+}
