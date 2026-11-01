@@ -1,0 +1,168 @@
+{
+  "experiment_id": "equipment-constraint-fallback-v1",
+  "created_at_utc": "2026-11-01T00:23:42.976797+00:00",
+  "dataset_hashes": {
+    "manifest": "3487fdf62b90971619ec098b2ec5bbad00e5af2d22ec9183d258bc1a24916975",
+    "queries": "19a1da3d4fa9d961f379af0d56dad9274e698895af0d2800d35ad44dfad445db",
+    "qrels": "0a6c9486084c5108439f642f4440d8ec4191ff8221a2ee0c553f8589f12daf95"
+  },
+  "supporting_hashes": {
+    "annotation-notes.json": "717d4ff5bcaeeadb395f14109fb1e6438db2eb5497cb740b5e68d188ed170c6d",
+    "review-rules.json": "1feccdda7885c3d6f830c63b5613fbf23dbae8b22e9b09a5da839eb3e859829a",
+    "glossary.json": "20fef944133fe8453e9b60d5d7a6ccabb93ce3a4ffe0565038caaf8f51e3c42e",
+    "label-review.json": "f721ca9cc296ccf2fec0c2aa10be121982f85736c69e1242e83229c1803460e7"
+  },
+  "independent_intents": 16,
+  "gallery_images": 40,
+  "policies": {
+    "zh": {
+      "decoder": null,
+      "mode": "zh",
+      "fallback": "error"
+    },
+    "original_en": {
+      "decoder": "original",
+      "mode": "auto_en",
+      "fallback": "error"
+    },
+    "original_fusion": {
+      "decoder": "original",
+      "mode": "auto_fusion",
+      "fallback": "error"
+    },
+    "constrained_en": {
+      "decoder": "constrained",
+      "mode": "auto_en",
+      "fallback": "error"
+    },
+    "constrained_fusion": {
+      "decoder": "constrained",
+      "mode": "auto_fusion",
+      "fallback": "error"
+    },
+    "fallback_opus_en": {
+      "decoder": "constrained",
+      "mode": "auto_en",
+      "fallback": "opus"
+    },
+    "fallback_opus_fusion": {
+      "decoder": "constrained",
+      "mode": "auto_fusion",
+      "fallback": "opus"
+    },
+    "fallback_zh_en": {
+      "decoder": "constrained",
+      "mode": "auto_en",
+      "fallback": "chinese"
+    },
+    "fallback_zh_fusion": {
+      "decoder": "constrained",
+      "mode": "auto_fusion",
+      "fallback": "chinese"
+    }
+  },
+  "translation_model": "Helsinki-NLP/opus-mt-zh-en",
+  "translation_revision": "cf109095479db38d6df799875e34039d4938aaa6",
+  "translation_license": "CC-BY-4.0",
+  "device": "mps",
+  "translator_device": "mps",
+  "dtype": "float32",
+  "translation_text_cache": false,
+  "training": false,
+  "fusion_weights": [
+    0.5,
+    0.5
+  ],
+  "source_token_limit": 256,
+  "max_new_tokens": 64,
+  "num_beams": {
+    "original": 1,
+    "constrained": 4
+  },
+  "do_sample": false,
+  "use_cache": true,
+  "score_atol": 1e-05,
+  "query_warmup": 3,
+  "query_repeats": 5,
+  "implementation_sha256": "e377efdeb1bcfe1ff44ac93eca1ee8489d1a5a2032fcba0eabbfdeae958f8675",
+  "glossary_sha256": "20fef944133fe8453e9b60d5d7a6ccabb93ce3a4ffe0565038caaf8f51e3c42e",
+  "translator_files": {
+    "README.md": "7f4b7f90672cd55b85b213bbe21f4b2d0c92327e885734b7e86b019feb145a6b",
+    "config.json": "cee48d4f205210cec6a7cfedf609acd605949ac5392a7e6e9c8c4c0b6670c27c",
+    "generation_config.json": "4f64a04e3bcf3f2f97ea552f83fe1f08a04a52402d29af3008d1644d9f29178c",
+    "model.safetensors": "9866cb7fcb30bca4c91f0ad2bde4183722bf015461aab8a7a6bea0c2cd030250",
+    "source.spm": "e27a3a1b539f4959ec72ea60e453f49156289f95d4e6000b29332efc45616203",
+    "target.spm": "6a881f4717cd7265f53fea54fd3dc689c767c05338fac7a4590f3088cb2d7855",
+    "tokenizer_config.json": "28e575e0beba8b2d4b6f789e91a219cff031e94a9254f027ce7170a48163c01d",
+    "translation_provenance.json": "39f8c8bd807176f60cfaa87af7ff196bc1dd82d6dde9be5c5500547ab4dcda38",
+    "vocab.json": "08a119a1defd522fa047cb5e3bfe3e89633e96caa38ced0dc9cee7ef1021a011"
+  },
+  "decoder_files": {
+    "README.md": "0b550f52f5ffb16b8f36a34b2e5c9cb40076994063dd72b283552370eb43d903",
+    "custom_generate/beam_constraints.py": "72da73e8f601167c895974bbb6064f1be7d14f33247f6a8ea0acc6c162b62704",
+    "custom_generate/beam_search.py": "247baefee037b9cebda29140abcc298ed2d4fdb32b79a40550a06b004a03bda5",
+    "custom_generate/generate.py": "3f2975a90ef9f506077d8e54d0e145cfd735088c9c082c595d546cfe5cd7eb64",
+    "decoder_provenance.json": "784dd5143ec4b19689bc4fc8991181c9ea1c5e07116f77bfaf2d533cad7d30be"
+  },
+  "source_indexes": {
+    "base": "05ce68f3d5128012636b22fbf05120f3bc45e1f03aa7fd4abc9b1f76fdcd92e2",
+    "quality": "9ebe8155fbe313989d19af093029379c39f9329a5df6036cde6aee9490e8f193"
+  },
+  "retrieval_models": {
+    "base": {
+      "model_id": "google/siglip2-base-patch16-224",
+      "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2"
+    },
+    "quality": {
+      "model_id": "google/siglip2-so400m-patch14-384",
+      "revision": "e8e487298228002f3d8a82e0cd5c8ea9c567f57f"
+    }
+  },
+  "timing": "Fresh actual constraint attempt per automatic request. On rejection, include handling, fresh beam1 MT if selected, and final retrieval in independent synchronized wall-clock total. No failed English is retrieved. 9-policy rotation,5rounds x16intents=80warm samples/policy,720/model. All failures included; first/scored requests excluded from warm stats. Trace serialization/digests after total.",
+  "failure_policy": "Only current decoded constraint-output rejection triggers explicit fallback; OPUS fallback failure is terminal; Chinese fallback searches Chinese once; failed intents score zero.",
+  "first_request_order": [
+    "original",
+    "constrained"
+  ],
+  "first_request_note": "Shared weights/process; first per decoder is not an independent cold start. No fallback first request is labeled cold. Startup validation/load separate.",
+  "reference_english_usage": "Only Chinese goes to translators. Paired reference English never edits or replaces generated text.",
+  "independence": "Same fixed16 queries and same40-image gallery already evaluated/diagnosed in terminology-constraints-v1. No new independent holdout; assistant-only labels, not human/field gold. No per-query routing/tuning or relabeling.",
+  "context_review": "Earlier blinded assistant review applies to unchanged generated outputs; do not equate successful fallback with corrected wiring, mounting, negation or object ownership.",
+  "tuning": false,
+  "execution_order": [
+    "base",
+    "quality"
+  ],
+  "implementation_git_commit": "d005f31ccacc52e7567514f70ae594d4c542e296",
+  "warm_evidence": "Per-request semantic+ranking digest; full scored reference, with full ranking override for nonzero tolerated score drift.",
+  "evaluation_inputs_sha256": "b261540efdab37d31d195f1692d91835a577e810330cee7ecd39f8d7ba104f5c",
+  "retrieval_weights": {
+    "base": {
+      "model_id": "google/siglip2-base-patch16-224",
+      "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2",
+      "filename": "model.safetensors",
+      "sha256": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+      "size_bytes": 1500800904
+    },
+    "quality": {
+      "model_id": "google/siglip2-so400m-patch14-384",
+      "revision": "e8e487298228002f3d8a82e0cd5c8ea9c567f57f",
+      "filename": "model.safetensors",
+      "sha256": "9f4f4a49f908ef0c979bce8ff5a5c0e88882dc6c5dc4304387cbbd152558e2c2",
+      "size_bytes": 4544143072
+    }
+  },
+  "fallback_cascade": false,
+  "fallback_chinese_fusion": "Chinese alone once; requested fusion applies only when a valid English translation exists.",
+  "previous_result_reference": {
+    "base": {
+      "path": "artifacts/terminology-constraints/base-v1/result.json",
+      "sha256": "702a5eda5d61e8723b8a536495a3745cccfd66e0eb5ad2cf5c48277ce9e9a25e"
+    },
+    "quality": {
+      "path": "artifacts/terminology-constraints/quality-v1/result.json",
+      "sha256": "e3998c3cdb4a704008289e09f8faad3800ef7587d195fde8c4519e6a09dcc9c5"
+    }
+  },
+  "previous_reference_usage": "After-run audit only, never consulted for routing or translation. Current control timings are freshly measured."
+}

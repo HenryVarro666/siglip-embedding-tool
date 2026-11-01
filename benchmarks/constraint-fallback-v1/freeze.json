@@ -1,0 +1,49 @@
+{
+  "experiment_id": "equipment-constraint-fallback-v1",
+  "frozen_at_utc": "2026-11-01T00:23:42.976797+00:00",
+  "implementation_git_commit": "d005f31ccacc52e7567514f70ae594d4c542e296",
+  "implementation_sha256": "e377efdeb1bcfe1ff44ac93eca1ee8489d1a5a2032fcba0eabbfdeae958f8675",
+  "previous_core_sha256": "44b19b06d0ffd628ea48ef0bb7ec69c64025637e0e664e43001efdc393ded9df",
+  "protocol_sha256": "b4e64cd4e9a7314a227386c62507363f22c594a9d8856299301bbca4e175efc1",
+  "dataset_hashes": {
+    "manifest": "3487fdf62b90971619ec098b2ec5bbad00e5af2d22ec9183d258bc1a24916975",
+    "queries": "19a1da3d4fa9d961f379af0d56dad9274e698895af0d2800d35ad44dfad445db",
+    "qrels": "0a6c9486084c5108439f642f4440d8ec4191ff8221a2ee0c553f8589f12daf95"
+  },
+  "supporting_hashes": {
+    "annotation-notes.json": "717d4ff5bcaeeadb395f14109fb1e6438db2eb5497cb740b5e68d188ed170c6d",
+    "review-rules.json": "1feccdda7885c3d6f830c63b5613fbf23dbae8b22e9b09a5da839eb3e859829a",
+    "glossary.json": "20fef944133fe8453e9b60d5d7a6ccabb93ce3a4ffe0565038caaf8f51e3c42e",
+    "label-review.json": "f721ca9cc296ccf2fec0c2aa10be121982f85736c69e1242e83229c1803460e7"
+  },
+  "source_indexes": {
+    "base": "05ce68f3d5128012636b22fbf05120f3bc45e1f03aa7fd4abc9b1f76fdcd92e2",
+    "quality": "9ebe8155fbe313989d19af093029379c39f9329a5df6036cde6aee9490e8f193"
+  },
+  "retrieval_weights": {
+    "base": {
+      "model_id": "google/siglip2-base-patch16-224",
+      "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2",
+      "filename": "model.safetensors",
+      "sha256": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+      "size_bytes": 1500800904
+    },
+    "quality": {
+      "model_id": "google/siglip2-so400m-patch14-384",
+      "revision": "e8e487298228002f3d8a82e0cd5c8ea9c567f57f",
+      "filename": "model.safetensors",
+      "sha256": "9f4f4a49f908ef0c979bce8ff5a5c0e88882dc6c5dc4304387cbbd152558e2c2",
+      "size_bytes": 4544143072
+    }
+  },
+  "new_fallback_scored_runs_existed": false,
+  "previous_constraint_results_known": true,
+  "training_executed": false,
+  "pre_run_tests": {
+    "passed": 386,
+    "integration_deselected": 2,
+    "ruff": "passed",
+    "tests_log_sha256": "43d0e88914c0c58ebc97e398761eef501003e0e901ba9c8d423d3c7b66da84ac",
+    "ruff_log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  }
+}
