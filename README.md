@@ -113,6 +113,8 @@ uv run siglip-tools search-text --index artifacts/gallery.npz \
 
 `--opus-decoding beam`为相同beam4无约束对照，`original`为现有默认；非默认选项仅用于OPUS自动翻译。输出保留英文和核验轨迹，约束/EOS失败时明确报错。没有目标术语时约束路径执行普通beam4。词汇出现不能证明完整关系正确；新查询共享旧图库、标签来自助手，尚需现场人工复核。
 
+现在可以显式选择约束输出被拒绝后的回退：加`--constraint-fallback opus`重新执行原始OPUS翻译，或`--constraint-fallback chinese`仅用中文检索一次。默认`error`保持明确失败。JSON区分失败约束文本、备用译文、实际检索文本、路由和完整耗时；总计包含先失败的尝试，最终预期失败保留JSON并退出2。固定16查询上的新比较、代码及复算命令见[回退实验](benchmarks/constraint-fallback-v1/README.md)。原始OPUS默认不变，回退不会自动修复接线/安装等语义关系。
+
 文本上限来自 checkpoint，已验证的默认模型为 64 tokens。过长查询会报错，避免静默截断。长文档的纯文本检索应使用单独的文本 embedding 模型。
 
 ## 以图搜图

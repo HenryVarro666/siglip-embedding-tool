@@ -48,6 +48,7 @@ def fixture(tmp_path, monkeypatch):
             "retrieval_weights": {"base": {"sha256": "fixture-weights"}},
             "failure_policy": runner.FAILURE_POLICY,
             "warm_evidence": runner.WARM_EVIDENCE,
+            "implementation_git_commit": "fixture-commit",
             "evaluation_inputs_sha256": runner.identity_fingerprint(
                 {
                     "gallery_ids": ["a", "b", "c"],

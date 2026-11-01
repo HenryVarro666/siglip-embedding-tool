@@ -1,6 +1,8 @@
 # 工作接续状态
 
-更新：2026-10-31。本轮测量、分析、本地/独立检出和私有代码提交验收完成。测量实现为b68cb99，代码/结果验收提交为bd6d394；主分支最后交接提交只补文档与凭证，不改变程序/冻结输入。目录：`/Users/caochao/Documents/SigLIP`，私有远端`HenryVarro666/siglip-embedding-tool`，开发分支`feat/opus-terminology-constraints`。
+更新：2026-10-31，约束失败回退实验进行中。目录`/Users/caochao/Documents/SigLIP`，私有远端`HenryVarro666/siglip-embedding-tool`，开发分支`feat/constraint-failure-fallback`。新实现d005f31、冻结71ead7f；386离线测试通过、2集成测试排除，Ruff通过。Base真实MPS9策略开始，随后So400m；此段不是完成声明。结果目录`artifacts/constraint-fallback/{base-v1,quality-v1}`，输入`benchmarks/constraint-fallback-v1`，协议SHA b4e64cd4e9a7314a227386c62507363f22c594a9d8856299301bbca4e175efc1，核心SHA e377efdeb1bcfe1ff44ac93eca1ee8489d1a5a2032fcba0eabbfdeae958f8675。查看日志后接续，不能覆盖已有结果或同时占用MPS跑两个模型。台账新增SIG-038/039。
+
+上一轮已完成：测量实现b68cb99、验收bd6d394、文档收尾5ef1c8f，原始7策略报告/协议/负结果保持不变。下文旧轮证据作为历史保留，最终本轮报告/审计完成后更新此接续入口。
 
 ## 先读什么
 

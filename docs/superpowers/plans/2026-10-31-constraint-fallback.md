@@ -29,17 +29,17 @@
 
 Files: constraint_fallback.py, tests/test_constraint_fallback.py. Produces timed_fallback_search(index, encoder, constrained, original, chinese, mode='auto_en', fallback='error', top_k=5) and the spec's returned fields.
 
-- [ ] Write failing tests for rejection→OPUS/Chinese timing, primary success, no cascade, stale trace/input/retrieval/system errors and invalid policies.
-- [ ] Run focused pytest RED; implement minimal engine with search_texts/sync/perf_counter and post-timing diagnostics.
-- [ ] Run focused pytest GREEN and lint; integrate engine/tests after independent review.
+- [x] Write failing tests for rejection→OPUS/Chinese timing, primary success, no cascade, stale trace/input/retrieval/system errors and invalid policies.
+- [x] Run focused pytest RED; implement minimal engine with search_texts/sync/perf_counter and post-timing diagnostics.
+- [x] Run focused pytest GREEN and lint; integrate engine/tests after independent review.
 
 ### Task 2: Benchmark and CLI
 
 Files: fallback_benchmark.py/tests; cli.py/tests. Consumes Task1 API, produces9-policy attempts/samples and frozen comparison.
 
-- [ ] Tests RED for preflight data/source/index binding, policies, repeats, comparison, denominator and CLI validation.
-- [ ] Implement runner and CLI; GREEN plus full offline suite/Ruff.
-- [ ] Freeze copied metadata, code and protocol with5repeats/3warmups; commit before scoring.
+- [x] Tests RED for preflight data/source/index binding, policies, repeats, comparison, denominator and CLI validation.
+- [x] Implement runner and CLI; GREEN plus full offline suite/Ruff.
+- [x] Freeze copied metadata, code and protocol with5repeats/3warmups; commit before scoring.
 - [ ] Run Base thenSo400m in separate processes, preserving logs/results; compare validated results only.
 
 ### Task 3: Results, audit and documentation
@@ -54,3 +54,7 @@ Files: benchmarks/constraint-fallback-v1 metadata/results/audit; docs/constraint
 ## Execution decisions
 
 Proceed under the user's explicit execution request without an extra approval gate for these reversible repository changes. Persist decisions and evidence as work proceeds. Planned tasks remain unchecked until verified.
+
+## Progress evidence
+
+Task1 complete: focused45passed plus independent engine/CLI review; Task2 preflight complete: runner22passed, fullsuite386passed/2deselected, Ruffpass. Implementation d005f31, freeze71ead7f. SIG-039 source/result/branch review findings were reproduced RED then guarded GREEN before measurement. Base/So actual runs and all Task3 results remain pending until their output/audit exists.
