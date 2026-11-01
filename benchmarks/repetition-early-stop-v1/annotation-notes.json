@@ -1,0 +1,1593 @@
+{
+  "schema_version": 1,
+  "dataset_id": "equipment-terminology-constraints-v1",
+  "query_set_id": "new-compositional-intents-t01-t16-v1",
+  "created_at": "2026-10-31T21:43:43.657458+00:00",
+  "author": "assistant_only_visual_source_curation",
+  "frozen_before_new_query_translation_or_model_scoring": true,
+  "annotation_status": "assistant_only_not_independently_human_audited",
+  "independence": {
+    "original40_image_gallery_shared_with_prior_experiments": true,
+    "new_independent_field_image_holdout": false,
+    "old_query_or_qrels_files_accessed": false,
+    "old_or_new_retrieval_output_or_report_files_accessed": false,
+    "translation_outputs_accessed": false,
+    "translation_or_embedding_executed_by_curator": false,
+    "training_executed": false,
+    "query_design_inputs": [
+      "frozen glossary.json",
+      "frozen review-rules.json",
+      "current design spec scope",
+      "original manifest visual descriptions/source metadata",
+      "direct visual inspection of original40 gallery image files",
+      "existing benchmark.py schema after empty graph fallback"
+    ],
+    "permitted_manifest_metadata_caveat": "The unchanged manifest contains coarse earlier curation annotations, including an earlier intent ID reference in e024. No earlier query text/qrel/results file was opened, and no model score informed any decision.",
+    "english_reference_used_for_generation": false,
+    "human_domain_review_completed": false
+  },
+  "source_inputs": {
+    "gallery_manifest_path": "benchmarks/equipment-v1/manifest.json",
+    "gallery_manifest_sha256": "3487fdf62b90971619ec098b2ec5bbad00e5af2d22ec9183d258bc1a24916975",
+    "original_image_root": "data/equipment-v1",
+    "glossary_sha256": "20fef944133fe8453e9b60d5d7a6ccabb93ce3a4ffe0565038caaf8f51e3c42e",
+    "review_rules_sha256": "1feccdda7885c3d6f830c63b5613fbf23dbae8b22e9b09a5da839eb3e859829a",
+    "rules_frozen_commit": "3e0da59"
+  },
+  "visual_review": {
+    "method": "Curator directly viewed each unmodified local original image with view_image before writing the labels; source metadata supports functional class, and visible content controls attributes and relations.",
+    "all_image_ids_viewed": [
+      "e001",
+      "e002",
+      "e003",
+      "e004",
+      "e005",
+      "e006",
+      "e007",
+      "e008",
+      "e009",
+      "e010",
+      "e011",
+      "e012",
+      "e013",
+      "e014",
+      "e015",
+      "e016",
+      "e017",
+      "e018",
+      "e019",
+      "e020",
+      "e021",
+      "e022",
+      "e023",
+      "e024",
+      "e025",
+      "e026",
+      "e027",
+      "e028",
+      "e029",
+      "e030",
+      "e031",
+      "e032",
+      "e033",
+      "e034",
+      "e035",
+      "e036",
+      "e037",
+      "e038",
+      "e039",
+      "e040"
+    ],
+    "all_positive_and_close_negative_decisions_visually_confirmed": true,
+    "image_audit": [
+      {
+        "image_id": "e001",
+        "path": "data/equipment-v1/images/e001.jpg",
+        "sha256": "d6b608ebe5deda3208ebcab84001353282d18213d7b37266aca33d8169d062bb",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=932944415",
+        "observed_features": "Blue closed MPPT charge controller with horizontal ventilation slots and DC labels; no attached external leads. Not an inverter despite original category proximity."
+      },
+      {
+        "image_id": "e002",
+        "path": "data/equipment-v1/images/e002.jpg",
+        "sha256": "50ea0df124634329a46035396fb97612bdb9b74d234069b8fa3493d53d07bac5",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=852604364",
+        "observed_features": "Tall closed white central inverter cabinet beneath panel backs; side boxes, handle and gray conduit; no exposed PCB."
+      },
+      {
+        "image_id": "e003",
+        "path": "data/equipment-v1/images/e003.jpg",
+        "sha256": "35b9441e5ce48719d0fd32e0f7a41c6697b958a5d8d09473108f1ad9c7edd668",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1230503285",
+        "observed_features": "Closed silver microinverter screwed to a horizontal rail; bare copper wire above and attached black cables to right; shingles/wood behind."
+      },
+      {
+        "image_id": "e004",
+        "path": "data/equipment-v1/images/e004.jpg",
+        "sha256": "b5365058e74657464b5e76c869df747596715bf98bf7219c9fa3df183bc16358",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1072991262",
+        "observed_features": "Closed rounded white wall inverter; central dark display, red lower loop and dark lower cables."
+      },
+      {
+        "image_id": "e005",
+        "path": "data/equipment-v1/images/e005.jpg",
+        "sha256": "43eb26b74dbcf91b305b9399ef08928ff7b4c93b6cb90d65a3ff7230511c199c",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1161709181",
+        "observed_features": "Closed ribbed silver-gray wall inverter with blue right indicator strip; several colored leads below. Visible ribs are not independently assigned a cooling function."
+      },
+      {
+        "image_id": "e006",
+        "path": "data/equipment-v1/images/e006.jpg",
+        "sha256": "dd18de13193cc5ebdad1dd80f28480516afb84291350efcfb4288446495ce110",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1281796452",
+        "observed_features": "One large foreground yellow closed inverter behind/below tilted solar panels; vertical metal support beside/below and black cable routing. No wooden post."
+      },
+      {
+        "image_id": "e007",
+        "path": "data/equipment-v1/images/e007.jpg",
+        "sha256": "49535db3820897ae048574cdbabab2086b5775212949f151a3f552514885ffcd",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=680080442",
+        "observed_features": "Microinverter supported in fingers with attached white cable; solar cells behind."
+      },
+      {
+        "image_id": "e008",
+        "path": "data/equipment-v1/images/e008.jpg",
+        "sha256": "dd19ba57a1a7274c034275f7b3086145026f08e91943194fc0ea4d675986a1b1",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1208507868",
+        "observed_features": "Closed silver wall inverter with vertical ribs, central light display and multiple black lower cable loops; red conduit above."
+      },
+      {
+        "image_id": "e009",
+        "path": "data/equipment-v1/images/e009.jpg",
+        "sha256": "243f25273c001d50a515bd6e05cdd780d071cb0c92d75845554710f2a7ecb413",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=703674229",
+        "observed_features": "Closed red wall inverter on brick; reflective central display, lower cables and adjacent rotary disconnect."
+      },
+      {
+        "image_id": "e010",
+        "path": "data/equipment-v1/images/e010.jpg",
+        "sha256": "ac157404eced042a9e4f84861e4a93939395f59d464217b74ceebeae9545bd46",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1130183053",
+        "observed_features": "Several spaced yellow closed inverter units along horizontal array support behind panel backs."
+      },
+      {
+        "image_id": "e011",
+        "path": "data/equipment-v1/images/e011.jpg",
+        "sha256": "fda09e518ea395d9a55d7d8d156d6fbd63c896c10caeb018a8304cb6703802b7",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=680038315",
+        "observed_features": "Closed silver microinverter isolated on white; three cable compression fittings and no emerging wires."
+      },
+      {
+        "image_id": "e012",
+        "path": "data/equipment-v1/images/e012.jpg",
+        "sha256": "823d2bf0220c656fb65cb40f6f244725318ac427ca02ee7e206cd21bfa997466",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1167269968",
+        "observed_features": "Open inverter front exposing green circuit board, many blue cylindrical capacitors, coils and lower terminals/wiring."
+      },
+      {
+        "image_id": "e013",
+        "path": "data/equipment-v1/images/e013.jpg",
+        "sha256": "506ed9c858cb8b0d5b16eab603f1c15de6cd567caac35edc0bbd68c3a107a386",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1026765032",
+        "observed_features": "Distant source-identified inverter stations behind a fence; closed pale enclosures outdoors. No visible microinverter or exposed PCB."
+      },
+      {
+        "image_id": "e014",
+        "path": "data/equipment-v1/images/e014.jpg",
+        "sha256": "d5fb0d82894c90953f067c9e477051ed338a23bb2352ed72f06650b3b94a11ec",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1171649251",
+        "observed_features": "Closed yellow inverter on wooden plank wall; round meter to right and gray protective conduits below; no exposed individual bottom cables."
+      },
+      {
+        "image_id": "e015",
+        "path": "data/equipment-v1/images/e015.jpg",
+        "sha256": "466334aded52fb6e01ecf5d11aa8f223e5225702dbcd2a3c580c7ad081af6e0e",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=810571077",
+        "observed_features": "Tall open control/PLC cabinet with modular hardware, terminal strips, wiring and open door; not exposed inverter capacitor board."
+      },
+      {
+        "image_id": "e016",
+        "path": "data/equipment-v1/images/e016.jpg",
+        "sha256": "c43c94c2272f003f0f8a875b344a5cd7bb1fa33719f528965127dcd4e1444678",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1082468104",
+        "observed_features": "Outdoor portable blue distribution panel on pavement in metal carrying frame; red socket caps, black caps and two thick black front cables. Blue sockets are not asserted."
+      },
+      {
+        "image_id": "e017",
+        "path": "data/equipment-v1/images/e017.jpg",
+        "sha256": "b76fed4bb232162630dd55632aa0e7ec094b6e18839b816712ef761f62eae357",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1206599907",
+        "observed_features": "Open green-edged distribution panel with mixed-color wires and black breakers."
+      },
+      {
+        "image_id": "e018",
+        "path": "data/equipment-v1/images/e018.jpg",
+        "sha256": "614e6260da3b7560246fda19a34789f2c49069fc26dd7ccfb914a1e21121cdb5",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=790269385",
+        "observed_features": "Open wall electrical cabinet with breakers, upper black control/meter unit and visible wires."
+      },
+      {
+        "image_id": "e019",
+        "path": "data/equipment-v1/images/e019.jpg",
+        "sha256": "3e3402b44eecef2427297ee0d61a0a6bc660f6aa41bfd6ccdc4d351bfabe1a92",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1141368991",
+        "observed_features": "Open high-current switchboard with large black breakers, colored busbars and wire routing."
+      },
+      {
+        "image_id": "e020",
+        "path": "data/equipment-v1/images/e020.jpg",
+        "sha256": "0edf365a7c3c44b31fe0948805bce7981d5bd6099a8a6f9a446fc1d5272d7fdf",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1227305805",
+        "observed_features": "Red/pink closed outdoor distribution boxes fixed to structural support; power cables below. Not blue portable carrying-frame unit."
+      },
+      {
+        "image_id": "e021",
+        "path": "data/equipment-v1/images/e021.jpg",
+        "sha256": "11d41f2b7d2476d56480e95ca713537fba2ced8ae4f2efa5ae57fd1c7e73a4d6",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1227455638",
+        "observed_features": "Indoor aisle between two opposing rows of light-gray switchgear; many red handles on front faces."
+      },
+      {
+        "image_id": "e022",
+        "path": "data/equipment-v1/images/e022.jpg",
+        "sha256": "8d43b9589b82da6a65c15ccfd316b6b8d6972c75bb6b29af5e85f0ffc78b172e",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=762175827",
+        "observed_features": "Close open small breaker board with terminal bars and visible colored wiring; no inverter PCB."
+      },
+      {
+        "image_id": "e023",
+        "path": "data/equipment-v1/images/e023.jpg",
+        "sha256": "5604ee99f108bddb4d7c00ef97d71271732c6af617763700b9b9467c2d3fb242",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1107214683",
+        "observed_features": "Burgundy/red source-identified transformer housings with ventilation louvers and closed doors; no exposed bushings or fin banks."
+      },
+      {
+        "image_id": "e024",
+        "path": "data/equipment-v1/images/e024.jpg",
+        "sha256": "c50d9da92736ab3ad3d3c812a42976b1fae94759dfeb2d4fdea4601ecee7051a",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1290646236",
+        "observed_features": "Gray closed source-identified transformer enclosure with two locked vertically louvered doors and a solid top cover; no exposed top bushings. Door louvers are not exposed transformer radiator fins."
+      },
+      {
+        "image_id": "e025",
+        "path": "data/equipment-v1/images/e025.jpg",
+        "sha256": "a8c13470441f457b6a7a1f84cc97059470e0fae2a514016e5b443341111dce80",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1196529913",
+        "observed_features": "Outdoor rural transformer assembly with overhead wires; lower transformer has upper bushings and a finned/radiator side. Attribute decisions refer to that lower transformer."
+      },
+      {
+        "image_id": "e026",
+        "path": "data/equipment-v1/images/e026.jpg",
+        "sha256": "baf0aec7faffcc0811c8e05d567cff3606bd441a69ae7eebe53e1dd9f045cc4c",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1227309328",
+        "observed_features": "Two outdoor cylindrical transformers on an elevated steel platform. Left tank is smooth with top bushings/wiring and looped pipes; right tank has top bushings/wiring and an exposed side fin bank. Per-device ownership matters."
+      },
+      {
+        "image_id": "e027",
+        "path": "data/equipment-v1/images/e027.jpg",
+        "sha256": "66c8b891b84c6dc3536e2e52d747dc871c78f7f0f9ec4a2f6ee11f47ff4f7829",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1251138999",
+        "observed_features": "Outdoor transformer behind chain-link fence; upper bushings connected to overhead wires, finned lower-left radiator and cylindrical lower tank/auxiliary shapes."
+      },
+      {
+        "image_id": "e028",
+        "path": "data/equipment-v1/images/e028.jpg",
+        "sha256": "a8d960f4be514ebb0353b0b18fef8ac79b7991118801bbf6923632cec4546795",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1199702015",
+        "observed_features": "Close gray smooth cylindrical distribution transformer mounted high; upper-side bushings and black wires; no exposed cooling-fin bank on selected main cylinder."
+      },
+      {
+        "image_id": "e029",
+        "path": "data/equipment-v1/images/e029.jpg",
+        "sha256": "b47f5d58a3d7ee865f48ee2d0400a380b6e7cce3953f4f1fc6f2f935a7f839d1",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=994970119",
+        "observed_features": "Outdoor transformer with prominent vertical fin banks, upper bushing terminations and several thick black cables hanging down in front."
+      },
+      {
+        "image_id": "e030",
+        "path": "data/equipment-v1/images/e030.jpg",
+        "sha256": "a2ff57998b5bc6b4936c9dd27f3e3cba0268032a555989ac16700fd4dc55f77e",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1271399779",
+        "observed_features": "Gray tower UPS adjacent to computer/equipment indoors; no glass rack cabinet/server-above composition."
+      },
+      {
+        "image_id": "e031",
+        "path": "data/equipment-v1/images/e031.jpg",
+        "sha256": "cac92362a6d83511f5b3a344dc7959e6b6ab307e8dd495f0ccec00082ff8261a",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1173276463",
+        "observed_features": "Indoor row of closed gray/white source-identified UPS cabinets with front grilles; no two opposing switchgear rows with red handles."
+      },
+      {
+        "image_id": "e032",
+        "path": "data/equipment-v1/images/e032.jpg",
+        "sha256": "1f9c2ef18ce59cb86a9aac0a3de74e2fd54c5ecd4f95e12992b4b927c3f52f79",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1250770130",
+        "observed_features": "Light-gray freestanding tower UPS with stacked status LEDs and round front button."
+      },
+      {
+        "image_id": "e033",
+        "path": "data/equipment-v1/images/e033.jpg",
+        "sha256": "c973e2e03fa991658c229c77d4c06786d34b9e34d4beafad462bbf3a9ef1a7b4",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1222935967",
+        "observed_features": "Dark front-view tower UPS with top status display, buttons and lower vented face."
+      },
+      {
+        "image_id": "e034",
+        "path": "data/equipment-v1/images/e034.jpg",
+        "sha256": "a3d33849a19a71b0b828ec024a741b82ac53cd8544a97278686ec084df1f4458",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1141608363",
+        "observed_features": "Glass-front rack cabinet with UPS at lower left and horizontal servers above; both visible through glass."
+      },
+      {
+        "image_id": "e035",
+        "path": "data/equipment-v1/images/e035.jpg",
+        "sha256": "048edcbd410ddc40c010621d72507992f2d1e920abde4a21936a203290194498",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1259400734",
+        "observed_features": "Black desk UPS with multiple power sockets and a looping external cable; keyboard nearby."
+      },
+      {
+        "image_id": "e036",
+        "path": "data/equipment-v1/images/e036.jpg",
+        "sha256": "c7e9b5007211c22854f8a1367af4b2f9afe6116f64914180ef68aad9c730b378",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1087577323",
+        "observed_features": "Blue photovoltaic modules on sloping tiled house roof; no distinct inverter in frame."
+      },
+      {
+        "image_id": "e037",
+        "path": "data/equipment-v1/images/e037.jpg",
+        "sha256": "239d4742d23c76aa944621daa1acca291bb1b64667f3c3317fd75a0a73aa5315",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1164599986",
+        "observed_features": "High city view of broad rooftop photovoltaic arrays; no distinct inverter in frame."
+      },
+      {
+        "image_id": "e038",
+        "path": "data/equipment-v1/images/e038.jpg",
+        "sha256": "66da716ccc30fc745edae940c5a0c7929ee62937590815356a93f8c968e79a5d",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=996025966",
+        "observed_features": "Outdoor rooftop photovoltaic array on metal supports beside yellow structure; no distinct inverter in frame."
+      },
+      {
+        "image_id": "e039",
+        "path": "data/equipment-v1/images/e039.jpg",
+        "sha256": "e904b5b81b5115f83031c2eb96c61bee1ca473fd3671b841e07285076eb94479",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1091263026",
+        "observed_features": "Close photovoltaic module fronts with trees behind; no distinct inverter in frame."
+      },
+      {
+        "image_id": "e040",
+        "path": "data/equipment-v1/images/e040.jpg",
+        "sha256": "e2357dc8994f9515955634a3d48437f4bac42411455f341aed1b4fe451d7bd8c",
+        "source_revision_url": "https://commons.wikimedia.org/w/index.php?oldid=1118002809",
+        "observed_features": "Small framed solar panel photographed indoors; dark connector lead crosses its face; no inverter in frame."
+      }
+    ]
+  },
+  "label_policy": {
+    "full_binary_coverage": "Every image is judged for every intent. Chinese and English pairs have identical positive lists and full binary rows.",
+    "composition": "All requested clauses must be satisfied by one target device unless the query explicitly names a relationship between devices.",
+    "multiple_device_image": "An image may be relevant when one device satisfies the query even if another device in the same image does not; e026 is intentionally a per-device ownership case.",
+    "visibility_negation": "No visible fins or bushings means the attribute is not visibly exposed on the selected device in this photo, not that the device physically lacks the component.",
+    "wiring": "Attached individual insulated wires/cables count as visible wiring; a protective conduit alone, an unattached fitting, or a printed terminal label does not.",
+    "cooling_fins": "Explicit exposed repeated fin/radiator elements qualify. Door louvers and unspecified casing ribs do not establish transformer cooling fins.",
+    "device_identity": "Function may be supported by source metadata; filenames do not establish SKU, exact physical identity, or ratings.",
+    "reference_english": "Reference pairs are not translator input and do not replace any generated translation."
+  },
+  "coverage": {
+    "new_intents": 16,
+    "chinese_english_pairs": 16,
+    "gallery_images": 40,
+    "binary_judgments_per_language": 640,
+    "microinverter_intents": [
+      "t01",
+      "t02",
+      "t03"
+    ],
+    "generic_inverter_intents": [
+      "t04",
+      "t05",
+      "t06",
+      "t07",
+      "t08",
+      "t09"
+    ],
+    "transformer_bushing_intents": [
+      "t10",
+      "t11",
+      "t12",
+      "t13"
+    ],
+    "explicit_cooling_fin_term_intents": [
+      "t10",
+      "t11",
+      "t12"
+    ],
+    "no_target_term_control_intents": [
+      "t14",
+      "t15",
+      "t16"
+    ],
+    "context_features": [
+      "visible wiring",
+      "no attached wires",
+      "front cover removed",
+      "closed housing",
+      "wall support",
+      "vertical metal post/array support",
+      "below/back of panels",
+      "spaced row",
+      "aisle between cabinet rows",
+      "right-of relationship",
+      "above/below relationship",
+      "per-device ownership",
+      "negated visibility",
+      "wire OR cable"
+    ]
+  },
+  "limitations": [
+    "All40 images are reused from the existing gallery; new language intents do not form an independent field-image test set.",
+    "Labels and bilingual references are assistant-authored and visually/source checked by that assistant, with no independent human or electrical-engineering audit.",
+    "Several intents deliberately have one genuine positive in this small gallery; estimates will be sensitive to individual images.",
+    "The e026 finned right transformer and smooth left transformer make device ownership important; photo-level term presence alone cannot establish relevance.",
+    "e006 supports a visible metal post/array support, not a wooden-post assertion. The direct fastener interface is partly hidden by the inverter casing.",
+    "Coarse source captions cannot prove every requested visual detail; e016 is annotated as blue panel, not blue sockets, and e005 ribs are not assigned an unverified cooling function.",
+    "Visibility negation reflects the photograph and cannot prove component absence outside the view.",
+    "Do not adjust these texts, references or labels after translation/ranking inspection; a correction requires a new query-set version and reevaluation."
+  ],
+  "issue_log_handoff": [
+    {
+      "topic": "Shared-gallery and assistant-label scope",
+      "status": "limitation",
+      "evidence": "All original e001-e040 reused; no independent human labels. Preserve this qualification in every report."
+    },
+    {
+      "topic": "Per-device ownership in e026",
+      "status": "resolved_in_annotation",
+      "evidence": "Right transformer has explicit radiator fins; left smooth cylinder does not. t10 and t11 may both be relevant using different target devices."
+    },
+    {
+      "topic": "Caption detail versus visible hardware",
+      "status": "resolved_by_visual_wording",
+      "evidence": "e016 blue front panel, not blue socket claim; e006 metal support, not wood; e005 visible ribs only; e024 louvers not exposed radiator-fin credit."
+    },
+    {
+      "topic": "Low positive count",
+      "status": "limitation",
+      "evidence": "Most compositional intents have one positive; t04, t10 and t11 have multiple positives. Do not overgeneralize aggregate differences."
+    },
+    {
+      "topic": "Visibility and negation",
+      "status": "requires_separate_translation_context_review",
+      "evidence": "t03 no attached wires; t11 no visible fins on selected device; t13 no visible top bushings. Inclusion of a glossary word is not sufficient for semantic fidelity."
+    }
+  ],
+  "intents": [
+    {
+      "intent_id": "t01",
+      "query_ids": [
+        "t01_zh",
+        "t01_en"
+      ],
+      "source_text": "微型逆变器固定在横向金属导轨上，机身上方有一根裸露铜线，右侧连着黑色电缆。",
+      "reference_english": "A microinverter fixed to a horizontal metal rail, with a bare copper wire above its casing and black cables connected on its right.",
+      "no_target_glossary_control": false,
+      "expected_term_families": [
+        "microinverter"
+      ],
+      "expected_context_slots": {
+        "device": "microinverter",
+        "support": "horizontal metal rail",
+        "wiring": "bare copper wire above casing; attached black cables on right",
+        "housing": "closed"
+      },
+      "relevance_rule": "An image is1 only if at least one visually identifiable target device satisfies all requested attributes/relations; all other gallery images are0. Negative visibility is evaluated only for the selected target device.",
+      "positive_image_ids": [
+        "e003"
+      ],
+      "positive_evidence": {
+        "e003": "Silver microinverter is bolted to the horizontal rail. A bare copper grounding wire crosses above its closed casing; black leads attach on the right. Source independently describes rail mounting and the grounding wire."
+      },
+      "close_negative_evidence": {
+        "e007": "A microinverter with a cable, but held in a hand; no horizontal mounting rail or bare copper grounding wire.",
+        "e011": "Microinverter with cable fittings, isolated on white; no mounting rail or connected cables.",
+        "e008": "Wall-mounted inverter with black cables; not a microinverter mounted on a horizontal rail.",
+        "e001": "Blue MPPT charge controller with closed cover; wrong device and no connected leads shown."
+      },
+      "all40_images_judged": true,
+      "other_negative_image_ids": [
+        "e002",
+        "e004",
+        "e005",
+        "e006",
+        "e009",
+        "e010",
+        "e012",
+        "e013",
+        "e014",
+        "e015",
+        "e016",
+        "e017",
+        "e018",
+        "e019",
+        "e020",
+        "e021",
+        "e022",
+        "e023",
+        "e024",
+        "e025",
+        "e026",
+        "e027",
+        "e028",
+        "e029",
+        "e030",
+        "e031",
+        "e032",
+        "e033",
+        "e034",
+        "e035",
+        "e036",
+        "e037",
+        "e038",
+        "e039",
+        "e040"
+      ]
+    },
+    {
+      "intent_id": "t02",
+      "query_ids": [
+        "t02_zh",
+        "t02_en"
+      ],
+      "source_text": "手掌托着一台微逆，白色电缆从机身引出，背后能看见太阳能电池片。",
+      "reference_english": "A microinverter resting in a hand, with a white cable emerging from its casing and solar cells visible behind it.",
+      "no_target_glossary_control": false,
+      "expected_term_families": [
+        "microinverter"
+      ],
+      "expected_context_slots": {
+        "device": "microinverter",
+        "support": "hand-held",
+        "wiring": "attached white cable emerging from casing",
+        "background": "solar cells behind device"
+      },
+      "relevance_rule": "An image is1 only if at least one visually identifiable target device satisfies all requested attributes/relations; all other gallery images are0. Negative visibility is evaluated only for the selected target device.",
+      "positive_image_ids": [
+        "e007"
+      ],
+      "positive_evidence": {
+        "e007": "Compact silver unit rests across the fingers; its white cable emerges on the right and curves below; solar cells fill the background. Source identifies it as a microinverter."
+      },
+      "close_negative_evidence": {
+        "e003": "Rail-mounted microinverter, with black cables and a wooden/shingled background, not hand-held.",
+        "e011": "Microinverter isolated on white with fittings and no hand or attached cable.",
+        "e040": "A solar panel with a dark lead across its front; no hand-held microinverter."
+      },
+      "all40_images_judged": true,
+      "other_negative_image_ids": [
+        "e001",
+        "e002",
+        "e004",
+        "e005",
+        "e006",
+        "e008",
+        "e009",
+        "e010",
+        "e012",
+        "e013",
+        "e014",
+        "e015",
+        "e016",
+        "e017",
+        "e018",
+        "e019",
+        "e020",
+        "e021",
+        "e022",
+        "e023",
+        "e024",
+        "e025",
+        "e026",
+        "e027",
+        "e028",
+        "e029",
+        "e030",
+        "e031",
+        "e032",
+        "e033",
+        "e034",
+        "e035",
+        "e036",
+        "e037",
+        "e038",
+        "e039"
+      ]
+    },
+    {
+      "intent_id": "t03",
+      "query_ids": [
+        "t03_zh",
+        "t03_en"
+      ],
+      "source_text": "白色背景中的微型太阳能逆变器外壳闭合，一侧有三个电缆接头，但没有接出的电线。",
+      "reference_english": "A closed microinverter against a white background, with three cable fittings on one edge but no wires emerging from them.",
+      "no_target_glossary_control": false,
+      "expected_term_families": [
+        "microinverter"
+      ],
+      "expected_context_slots": {
+        "device": "microinverter",
+        "housing": "closed",
+        "background": "isolated white background",
+        "wiring": "three cable fittings present; no attached wires visible"
+      },
+      "relevance_rule": "An image is1 only if at least one visually identifiable target device satisfies all requested attributes/relations; all other gallery images are0. Negative visibility is evaluated only for the selected target device.",
+      "positive_image_ids": [
+        "e011"
+      ],
+      "positive_evidence": {
+        "e011": "Closed silver microinverter on a white background; three compression fittings line one edge and no attached lead emerges. Source describes these as cable compression fittings."
+      },
+      "close_negative_evidence": {
+        "e003": "Closed microinverter, but rail mounted with attached black cables and bare copper wire.",
+        "e007": "Microinverter, but a white cable is visibly attached and the unit is held in a hand.",
+        "e004": "Closed inverter on a light wall, but larger wall-mounted device with attached bottom cables, not a microinverter isolated on white.",
+        "e040": "White-framed solar panel with a cable across its face; no microinverter."
+      },
+      "all40_images_judged": true,
+      "other_negative_image_ids": [
+        "e001",
+        "e002",
+        "e005",
+        "e006",
+        "e008",
+        "e009",
+        "e010",
+        "e012",
+        "e013",
+        "e014",
+        "e015",
+        "e016",
+        "e017",
+        "e018",
+        "e019",
+        "e020",
+        "e021",
+        "e022",
+        "e023",
+        "e024",
+        "e025",
+        "e026",
+        "e027",
+        "e028",
+        "e029",
+        "e030",
+        "e031",
+        "e032",
+        "e033",
+        "e034",
+        "e035",
+        "e036",
+        "e037",
+        "e038",
+        "e039"
+      ]
+    },
+    {
+      "intent_id": "t04",
+      "query_ids": [
+        "t04_zh",
+        "t04_en"
+      ],
+      "source_text": "壁挂逆变器的外壳闭合，底部伸出多根能看清的独立导线或电缆。",
+      "reference_english": "A wall-mounted inverter with its casing closed and several individual wires or cables visibly emerging from the bottom.",
+      "no_target_glossary_control": false,
+      "expected_term_families": [
+        "inverter"
+      ],
+      "expected_context_slots": {
+        "device": "inverter",
+        "support": "wall-mounted",
+        "housing": "closed",
+        "wiring": "multiple individual visible wires OR cables emerging from bottom; conduit alone does not qualify"
+      },
+      "relevance_rule": "An image is1 only if at least one visually identifiable target device satisfies all requested attributes/relations; all other gallery images are0. Negative visibility is evaluated only for the selected target device.",
+      "positive_image_ids": [
+        "e004",
+        "e005",
+        "e008",
+        "e009"
+      ],
+      "positive_evidence": {
+        "e004": "Closed white inverter mounted on a light wall; a red loop and dark cables visibly emerge from its bottom.",
+        "e005": "Closed silver inverter fixed to a wall/support frame; multiple colored individual leads visibly emerge below the enclosure.",
+        "e008": "Closed tall silver inverter on a wall; several black cable loops and smaller leads emerge from the bottom.",
+        "e009": "Closed red inverter mounted on brickwork; multiple dark and light cables emerge below the casing."
+      },
+      "close_negative_evidence": {
+        "e012": "Wall-mounted inverter with bottom wiring, but front cover is removed and the circuit board is exposed.",
+        "e014": "Closed wall-mounted yellow inverter, but lower routing is enclosed in gray protective conduits; individual wires/cables are not visibly exposed at the bottom.",
+        "e006": "Closed yellow inverter with visible external cabling, but mounted on outdoor array support rather than a wall.",
+        "e002": "Closed central cabinet below panels, with conduit, not a wall-mounted unit showing multiple individual bottom leads.",
+        "e001": "Wall-mounted closed blue charge controller, not an inverter; bottom DC labels are present but no attached external leads are shown.",
+        "e015": "Open wired control cabinet, not a closed inverter."
+      },
+      "all40_images_judged": true,
+      "other_negative_image_ids": [
+        "e003",
+        "e007",
+        "e010",
+        "e011",
+        "e013",
+        "e016",
+        "e017",
+        "e018",
+        "e019",
+        "e020",
+        "e021",
+        "e022",
+        "e023",
+        "e024",
+        "e025",
+        "e026",
+        "e027",
+        "e028",
+        "e029",
+        "e030",
+        "e031",
+        "e032",
+        "e033",
+        "e034",
+        "e035",
+        "e036",
+        "e037",
+        "e038",
+        "e039",
+        "e040"
+      ]
+    },
+    {
+      "intent_id": "t05",
+      "query_ids": [
+        "t05_zh",
+        "t05_en"
+      ],
+      "source_text": "逆变器前盖已拆下，绿色电路板上排列着许多蓝色圆柱电容，底部还能看见接线。",
+      "reference_english": "An inverter with its front cover removed, showing many blue cylindrical capacitors on a green circuit board and visible wiring at the bottom.",
+      "no_target_glossary_control": false,
+      "expected_term_families": [
+        "inverter"
+      ],
+      "expected_context_slots": {
+        "device": "inverter",
+        "housing": "front cover removed; exposed interior",
+        "internal_attributes": "green PCB with many blue cylindrical capacitors",
+        "wiring": "visible lower wiring"
+      },
+      "relevance_rule": "An image is1 only if at least one visually identifiable target device satisfies all requested attributes/relations; all other gallery images are0. Negative visibility is evaluated only for the selected target device.",
+      "positive_image_ids": [
+        "e012"
+      ],
+      "positive_evidence": {
+        "e012": "Open gray wall enclosure reveals a green board with many large blue cylindrical capacitors, copper coils and lower terminal/wire connections. Source identifies the inverter interior."
+      },
+      "close_negative_evidence": {
+        "e015": "Open PLC cabinet with wires and modules; no large green inverter board populated with many blue cylindrical capacitors.",
+        "e017": "Open breaker distribution panel with mixed wiring; not the specified inverter PCB.",
+        "e018": "Open fuse/electrical cabinet with rows of breakers and wires; not an inverter board.",
+        "e019": "Open switchboard with large black breakers and colored busbars, not the specified PCB.",
+        "e022": "Small open breaker panel and terminal bars, not an inverter PCB.",
+        "e001": "Some electronics can be glimpsed through the charge-controller ventilation slots, but the cover is not removed and the device is not an inverter."
+      },
+      "all40_images_judged": true,
+      "other_negative_image_ids": [
+        "e002",
+        "e003",
+        "e004",
+        "e005",
+        "e006",
+        "e007",
+        "e008",
+        "e009",
+        "e010",
+        "e011",
+        "e013",
+        "e014",
+        "e016",
+        "e020",
+        "e021",
+        "e023",
+        "e024",
+        "e025",
+        "e026",
+        "e027",
+        "e028",
+        "e029",
+        "e030",
+        "e031",
+        "e032",
+        "e033",
+        "e034",
+        "e035",
+        "e036",
+        "e037",
+        "e038",
+        "e039",
+        "e040"
+      ]
+    },
+    {
+      "intent_id": "t06",
+      "query_ids": [
+        "t06_zh",
+        "t06_en"
+      ],
+      "source_text": "单台黄色逆变器安装在光伏板背面下方的金属支架上，机壳闭合，旁边能看见竖直立柱。",
+      "reference_english": "A single yellow inverter mounted on a metal support below the back of photovoltaic panels, with its casing closed and a vertical post visible beside it.",
+      "no_target_glossary_control": false,
+      "expected_term_families": [
+        "inverter"
+      ],
+      "expected_context_slots": {
+        "device": "inverter",
+        "quantity_and_view": "single clearly pictured foreground unit",
+        "housing": "closed",
+        "support": "metal array support with visible vertical post",
+        "relation": "below the back of tilted photovoltaic panels"
+      },
+      "relevance_rule": "An image is1 only if at least one visually identifiable target device satisfies all requested attributes/relations; all other gallery images are0. Negative visibility is evaluated only for the selected target device.",
+      "positive_image_ids": [
+        "e006"
+      ],
+      "positive_evidence": {
+        "e006": "One yellow closed inverter dominates the foreground below the rear of tilted panels; metal array supports and a vertical post extending beside/below it are visible. This is metal, not a wooden post."
+      },
+      "close_negative_evidence": {
+        "e010": "Several yellow inverters form a spaced row along panel-back rails; not a single foreground unit.",
+        "e014": "Single yellow inverter on a wooden wall beside a meter; no photovoltaic panel backs above/behind it in frame.",
+        "e002": "Central closed cabinet beneath panel backs, but white/gray rather than the requested yellow foreground unit.",
+        "e003": "Small silver microinverter on a horizontal rail; no yellow closed unit below visible panel backs.",
+        "e038": "Panel array with metal posts; no distinct inverter visible."
+      },
+      "all40_images_judged": true,
+      "other_negative_image_ids": [
+        "e001",
+        "e004",
+        "e005",
+        "e007",
+        "e008",
+        "e009",
+        "e011",
+        "e012",
+        "e013",
+        "e015",
+        "e016",
+        "e017",
+        "e018",
+        "e019",
+        "e020",
+        "e021",
+        "e022",
+        "e023",
+        "e024",
+        "e025",
+        "e026",
+        "e027",
+        "e028",
+        "e029",
+        "e030",
+        "e031",
+        "e032",
+        "e033",
+        "e034",
+        "e035",
+        "e036",
+        "e037",
+        "e039",
+        "e040"
+      ]
+    },
+    {
+      "intent_id": "t07",
+      "query_ids": [
+        "t07_zh",
+        "t07_en"
+      ],
+      "source_text": "一排黄色逆变器沿横向支架安装在光伏板背面，各台之间留有间隔。",
+      "reference_english": "A row of yellow inverters spaced apart along a horizontal support behind photovoltaic panels.",
+      "no_target_glossary_control": false,
+      "expected_term_families": [
+        "inverter"
+      ],
+      "expected_context_slots": {
+        "device": "inverters",
+        "quantity_and_arrangement": "multiple spaced units forming one row",
+        "color": "yellow",
+        "support": "horizontal array support",
+        "relation": "behind photovoltaic panels"
+      },
+      "relevance_rule": "An image is1 only if at least one visually identifiable target device satisfies all requested attributes/relations; all other gallery images are0. Negative visibility is evaluated only for the selected target device.",
+      "positive_image_ids": [
+        "e010"
+      ],
+      "positive_evidence": {
+        "e010": "Multiple yellow closed inverter units are visibly spaced along the same horizontal rail beneath/behind the panel backs. Source identifies a solar plant with inverters."
+      },
+      "close_negative_evidence": {
+        "e006": "A single foreground yellow inverter under panel backs; no row of distinct yellow units.",
+        "e014": "One yellow wall-mounted inverter; no row or panel backs.",
+        "e002": "A single white central inverter cabinet, not spaced yellow units.",
+        "e013": "Multiple distant inverter-station enclosures, but not yellow units mounted behind panels.",
+        "e021": "Two rows of indoor switchgear cabinets, not yellow inverters behind solar panels.",
+        "e031": "An indoor UPS cabinet row, not inverters behind panels.",
+        "e038": "Panel rows and support rails without distinct visible inverters."
+      },
+      "all40_images_judged": true,
+      "other_negative_image_ids": [
+        "e001",
+        "e003",
+        "e004",
+        "e005",
+        "e007",
+        "e008",
+        "e009",
+        "e011",
+        "e012",
+        "e015",
+        "e016",
+        "e017",
+        "e018",
+        "e019",
+        "e020",
+        "e022",
+        "e023",
+        "e024",
+        "e025",
+        "e026",
+        "e027",
+        "e028",
+        "e029",
+        "e030",
+        "e032",
+        "e033",
+        "e034",
+        "e035",
+        "e036",
+        "e037",
+        "e039",
+        "e040"
+      ]
+    },
+    {
+      "intent_id": "t08",
+      "query_ids": [
+        "t08_zh",
+        "t08_en"
+      ],
+      "source_text": "黄色逆变器固定在木板墙上，圆形电表在它右侧，两者下方都有灰色保护管。",
+      "reference_english": "A yellow inverter fixed to a wooden wall, with a round electricity meter to its right and gray protective conduits below both devices.",
+      "no_target_glossary_control": false,
+      "expected_term_families": [
+        "inverter"
+      ],
+      "expected_context_slots": {
+        "device": "inverter",
+        "color": "yellow",
+        "support": "wooden plank wall",
+        "relation": "round meter to the right of inverter",
+        "wiring": "gray protective conduits below both inverter and meter"
+      },
+      "relevance_rule": "An image is1 only if at least one visually identifiable target device satisfies all requested attributes/relations; all other gallery images are0. Negative visibility is evaluated only for the selected target device.",
+      "positive_image_ids": [
+        "e014"
+      ],
+      "positive_evidence": {
+        "e014": "Yellow inverter at left is mounted on horizontal wooden planks; a round meter sits immediately to the right. Gray conduits route downward from both areas."
+      },
+      "close_negative_evidence": {
+        "e006": "Yellow inverter at array supports, with no wooden wall or round electricity meter.",
+        "e010": "Yellow inverter row behind panels, not beside a meter on wood.",
+        "e005": "Silver inverter in a wall/wood framing setting with bottom leads, but no yellow casing or adjacent round meter.",
+        "e009": "Red wall-mounted inverter beside a rotary disconnect switch, which is not the requested round electricity meter.",
+        "e018": "Open electrical cabinet with control hardware and wires; not the specified external yellow inverter/meter arrangement."
+      },
+      "all40_images_judged": true,
+      "other_negative_image_ids": [
+        "e001",
+        "e002",
+        "e003",
+        "e004",
+        "e007",
+        "e008",
+        "e011",
+        "e012",
+        "e013",
+        "e015",
+        "e016",
+        "e017",
+        "e019",
+        "e020",
+        "e021",
+        "e022",
+        "e023",
+        "e024",
+        "e025",
+        "e026",
+        "e027",
+        "e028",
+        "e029",
+        "e030",
+        "e031",
+        "e032",
+        "e033",
+        "e034",
+        "e035",
+        "e036",
+        "e037",
+        "e038",
+        "e039",
+        "e040"
+      ]
+    },
+    {
+      "intent_id": "t09",
+      "query_ids": [
+        "t09_zh",
+        "t09_en"
+      ],
+      "source_text": "银灰色逆变器的机壳表面有竖向筋条，蓝色指示面板在右侧，并有导线从底部引出。",
+      "reference_english": "A silver-gray inverter with vertical ribs on its casing, a blue indicator panel on the right, and wires emerging from the bottom.",
+      "no_target_glossary_control": false,
+      "expected_term_families": [
+        "inverter"
+      ],
+      "expected_context_slots": {
+        "device": "inverter",
+        "housing": "closed silver-gray vertically ribbed casing",
+        "panel": "blue indicator panel on right",
+        "wiring": "visible leads emerging below"
+      },
+      "relevance_rule": "An image is1 only if at least one visually identifiable target device satisfies all requested attributes/relations; all other gallery images are0. Negative visibility is evaluated only for the selected target device.",
+      "positive_image_ids": [
+        "e005"
+      ],
+      "positive_evidence": {
+        "e005": "Silver-gray vertically ribbed closed enclosure has a tall blue indicator strip on its right; colored leads emerge below. The query calls these visible ribs, without asserting a cooling function."
+      },
+      "close_negative_evidence": {
+        "e008": "Silver vertically ribbed inverter with bottom black cables, but central light display rather than a blue indicator panel on the right.",
+        "e004": "White inverter with a central dark round-edged display, not vertical silver ribs and a right blue strip.",
+        "e001": "Blue controller with horizontal ventilation slots and lower terminal labels; wrong device and no right blue strip on a silver casing.",
+        "e011": "Compact silver microinverter with fittings on white; no right blue indicator strip or attached bottom wires."
+      },
+      "all40_images_judged": true,
+      "other_negative_image_ids": [
+        "e002",
+        "e003",
+        "e006",
+        "e007",
+        "e009",
+        "e010",
+        "e012",
+        "e013",
+        "e014",
+        "e015",
+        "e016",
+        "e017",
+        "e018",
+        "e019",
+        "e020",
+        "e021",
+        "e022",
+        "e023",
+        "e024",
+        "e025",
+        "e026",
+        "e027",
+        "e028",
+        "e029",
+        "e030",
+        "e031",
+        "e032",
+        "e033",
+        "e034",
+        "e035",
+        "e036",
+        "e037",
+        "e038",
+        "e039",
+        "e040"
+      ]
+    },
+    {
+      "intent_id": "t10",
+      "query_ids": [
+        "t10_zh",
+        "t10_en"
+      ],
+      "source_text": "同一台变压器上，顶部套管连接着导线，侧面还能看到散热鳍片。",
+      "reference_english": "A transformer with wires connected to its top bushings and visible cooling fins on its side, all on the same device.",
+      "no_target_glossary_control": false,
+      "expected_term_families": [
+        "transformer_bushing",
+        "cooling_fins"
+      ],
+      "expected_context_slots": {
+        "device": "transformer",
+        "bushings": "top bushings visible and connected to external wires",
+        "cooling": "explicit exposed cooling fins on side",
+        "ownership": "bushings, wires and fins must belong to the same transformer"
+      },
+      "relevance_rule": "An image is1 only if at least one visually identifiable target device satisfies all requested attributes/relations; all other gallery images are0. Negative visibility is evaluated only for the selected target device.",
+      "positive_image_ids": [
+        "e025",
+        "e026",
+        "e027",
+        "e029"
+      ],
+      "positive_evidence": {
+        "e025": "The lower outdoor transformer has visible upper bushings/wire connections and closely spaced vertical side radiator elements. The smaller lower transformer, not only the tall structure behind it, supplies the attributes.",
+        "e026": "The right-hand cylindrical transformer has top bushing connections and a clearly exposed finned side radiator. The left-hand smooth cylinder is not used to supply the right-hand device attributes.",
+        "e027": "Outdoor transformer has three upper bushing wire connections and a clearly visible lower-left finned radiator on the same assembled unit.",
+        "e029": "The transformer has upper bushing/cable terminations and prominent vertical fin banks on its front and right side."
+      },
+      "close_negative_evidence": {
+        "e028": "Smooth cylindrical distribution transformer with upper bushing connections, but no exposed bank of cooling fins on that device.",
+        "e023": "Transformers are enclosed in red louvered housings; exposed top bushings and transformer cooling fins are not visible.",
+        "e024": "Closed louvered transformer enclosure. Door ventilation louvers do not establish exposed transformer cooling fins, and no top bushings/wires are exposed.",
+        "e005": "Ribbed casing on an inverter, not a transformer with top bushings.",
+        "e019": "Wires and colored busbars inside a switchboard are not transformer bushings/cooling fins."
+      },
+      "all40_images_judged": true,
+      "other_negative_image_ids": [
+        "e001",
+        "e002",
+        "e003",
+        "e004",
+        "e006",
+        "e007",
+        "e008",
+        "e009",
+        "e010",
+        "e011",
+        "e012",
+        "e013",
+        "e014",
+        "e015",
+        "e016",
+        "e017",
+        "e018",
+        "e020",
+        "e021",
+        "e022",
+        "e030",
+        "e031",
+        "e032",
+        "e033",
+        "e034",
+        "e035",
+        "e036",
+        "e037",
+        "e038",
+        "e039",
+        "e040"
+      ]
+    },
+    {
+      "intent_id": "t11",
+      "query_ids": [
+        "t11_zh",
+        "t11_en"
+      ],
+      "source_text": "找一台筒身光滑、看不到散热片的圆筒形变压器，套管和接线位于它的上部。",
+      "reference_english": "A cylindrical transformer with a smooth tank and no visible cooling fins, with bushings and wiring at its upper part.",
+      "no_target_glossary_control": false,
+      "expected_term_families": [
+        "transformer_bushing",
+        "cooling_fins"
+      ],
+      "expected_context_slots": {
+        "device": "cylindrical transformer",
+        "tank": "smooth cylindrical tank",
+        "cooling": "no exposed cooling fins visible on the target device",
+        "bushings_and_wiring": "visible at upper part, including upper side",
+        "ownership": "existential per device; another transformer elsewhere in frame may have fins"
+      },
+      "relevance_rule": "An image is1 only if at least one visually identifiable target device satisfies all requested attributes/relations; all other gallery images are0. Negative visibility is evaluated only for the selected target device.",
+      "positive_image_ids": [
+        "e026",
+        "e028"
+      ],
+      "positive_evidence": {
+        "e026": "The left transformer is a smooth vertical cylinder with upper bushings and wires. Its outer looped pipes are not a bank of fins. The separate right transformer has fins; the absence condition applies only to the selected left device.",
+        "e028": "Close gray smooth cylindrical tank has upper-side bushings and visible black leads; no exposed cooling-fin bank is visible on the selected cylinder."
+      },
+      "close_negative_evidence": {
+        "e025": "Visible main transformer side has closely spaced radiator elements; no clearly qualifying smooth cylindrical target with the full requested attributes.",
+        "e027": "Transformer has a visible radiator-fin bank; its upper rectilinear casing also is not the requested smooth cylindrical target.",
+        "e029": "Transformer is visibly finned, so the no-visible-fins condition fails.",
+        "e024": "Smooth gray covered parts of the enclosure do not establish a cylindrical tank with visible upper bushings/wiring.",
+        "e023": "Closed louvered enclosures do not expose a smooth cylindrical tank or bushings."
+      },
+      "all40_images_judged": true,
+      "other_negative_image_ids": [
+        "e001",
+        "e002",
+        "e003",
+        "e004",
+        "e005",
+        "e006",
+        "e007",
+        "e008",
+        "e009",
+        "e010",
+        "e011",
+        "e012",
+        "e013",
+        "e014",
+        "e015",
+        "e016",
+        "e017",
+        "e018",
+        "e019",
+        "e020",
+        "e021",
+        "e022",
+        "e030",
+        "e031",
+        "e032",
+        "e033",
+        "e034",
+        "e035",
+        "e036",
+        "e037",
+        "e038",
+        "e039",
+        "e040"
+      ]
+    },
+    {
+      "intent_id": "t12",
+      "query_ids": [
+        "t12_zh",
+        "t12_en"
+      ],
+      "source_text": "变压器的冷却鳍片前垂着几根粗黑电缆，电缆上端接在顶部套管上。",
+      "reference_english": "Several thick black cables hang in front of a transformer’s cooling fins, with their upper ends connected to bushings on top.",
+      "no_target_glossary_control": false,
+      "expected_term_families": [
+        "transformer_bushing",
+        "cooling_fins"
+      ],
+      "expected_context_slots": {
+        "device": "transformer",
+        "cooling": "explicit cooling fins visible",
+        "wiring": "several thick black external cables hanging downward",
+        "relation": "cables in front of fins; upper ends connected to top bushings"
+      },
+      "relevance_rule": "An image is1 only if at least one visually identifiable target device satisfies all requested attributes/relations; all other gallery images are0. Negative visibility is evaluated only for the selected target device.",
+      "positive_image_ids": [
+        "e029"
+      ],
+      "positive_evidence": {
+        "e029": "Several thick black cables connect across the top terminations, curve forward and hang downward in front of the prominent front fin bank."
+      },
+      "close_negative_evidence": {
+        "e025": "Transformer and overhead wires with radiator elements, but wires are mostly thin and do not form several thick black downward cables in front of the fin bank.",
+        "e026": "Exposed fins on right transformer and upper connecting wires, but not the specified bundle of thick hanging black cables in front of its fins.",
+        "e027": "Finned transformer has three wires leading upward from the top, not thick cables hanging down in front of the fins.",
+        "e028": "Smooth cylinder with upper wiring, but no visible cooling-fin bank behind hanging cables.",
+        "e024": "Closed louvered cabinet without exposed top bushings or thick hanging front cables."
+      },
+      "all40_images_judged": true,
+      "other_negative_image_ids": [
+        "e001",
+        "e002",
+        "e003",
+        "e004",
+        "e005",
+        "e006",
+        "e007",
+        "e008",
+        "e009",
+        "e010",
+        "e011",
+        "e012",
+        "e013",
+        "e014",
+        "e015",
+        "e016",
+        "e017",
+        "e018",
+        "e019",
+        "e020",
+        "e021",
+        "e022",
+        "e023",
+        "e030",
+        "e031",
+        "e032",
+        "e033",
+        "e034",
+        "e035",
+        "e036",
+        "e037",
+        "e038",
+        "e039",
+        "e040"
+      ]
+    },
+    {
+      "intent_id": "t13",
+      "query_ids": [
+        "t13_zh",
+        "t13_en"
+      ],
+      "source_text": "灰色变压器箱体的两扇百叶门上着锁，顶部没有可见的套管。",
+      "reference_english": "A gray transformer enclosure with two locked louvered doors and no visible bushings on top.",
+      "no_target_glossary_control": false,
+      "expected_term_families": [
+        "transformer_bushing"
+      ],
+      "expected_context_slots": {
+        "device": "transformer enclosure, function supported by source",
+        "housing": "closed gray enclosure with two locked louvered front doors",
+        "bushings": "not visible on top; visibility negation, not physical absence",
+        "cooling": "door louvers are not described as transformer cooling fins"
+      },
+      "relevance_rule": "An image is1 only if at least one visually identifiable target device satisfies all requested attributes/relations; all other gallery images are0. Negative visibility is evaluated only for the selected target device.",
+      "positive_image_ids": [
+        "e024"
+      ],
+      "positive_evidence": {
+        "e024": "Gray closed transformer enclosure has two front doors with vertical ventilation louvers and visible padlocks/latches; its solid top cover hides any bushing hardware. Source confirms transformer function."
+      },
+      "close_negative_evidence": {
+        "e023": "Closed transformer enclosures have louvers and no visible bushings, but their housings are red/burgundy, not the specified gray locked double-door view.",
+        "e002": "Closed light central inverter cabinet with side boxes and handle; source identifies inverter, not transformer, and no louvered double doors.",
+        "e027": "Gray transformer, but its top bushings are exposed and it lacks the requested closed locked louvered double doors.",
+        "e028": "Gray transformer, but cylindrical with exposed upper bushings, not an enclosed double-door housing.",
+        "e031": "Gray closed UPS cabinets with ventilation grilles; not the source-identified transformer enclosure."
+      },
+      "all40_images_judged": true,
+      "other_negative_image_ids": [
+        "e001",
+        "e003",
+        "e004",
+        "e005",
+        "e006",
+        "e007",
+        "e008",
+        "e009",
+        "e010",
+        "e011",
+        "e012",
+        "e013",
+        "e014",
+        "e015",
+        "e016",
+        "e017",
+        "e018",
+        "e019",
+        "e020",
+        "e021",
+        "e022",
+        "e025",
+        "e026",
+        "e029",
+        "e030",
+        "e032",
+        "e033",
+        "e034",
+        "e035",
+        "e036",
+        "e037",
+        "e038",
+        "e039",
+        "e040"
+      ]
+    },
+    {
+      "intent_id": "t14",
+      "query_ids": [
+        "t14_zh",
+        "t14_en"
+      ],
+      "source_text": "室内通道夹在左右两排灰白色开关柜之间，柜门上有许多红色操作手柄。",
+      "reference_english": "An indoor aisle between two rows of light-gray switchgear cabinets, with many red operating handles on the cabinet fronts.",
+      "no_target_glossary_control": true,
+      "expected_term_families": [],
+      "expected_context_slots": {
+        "device": "switchgear cabinets",
+        "setting": "indoors",
+        "relation": "aisle between left and right cabinet rows",
+        "attribute": "many red operating handles on fronts"
+      },
+      "relevance_rule": "An image is1 only if at least one visually identifiable target device satisfies all requested attributes/relations; all other gallery images are0. Negative visibility is evaluated only for the selected target device.",
+      "positive_image_ids": [
+        "e021"
+      ],
+      "positive_evidence": {
+        "e021": "Light-gray switchgear lines both sides of a central indoor aisle; many conspicuous red lever handles run along both rows."
+      },
+      "close_negative_evidence": {
+        "e031": "Indoor UPS cabinets form a row, but only a single cabinet line borders the visible aisle and there are no many red operating handles.",
+        "e015": "Open wired control cabinet, not a corridor between two rows.",
+        "e023": "Multiple louvered transformer enclosures outdoors, not an indoor aisle with red handles.",
+        "e013": "Several distant outdoor inverter-station enclosures, not the specified indoor switchgear aisle."
+      },
+      "all40_images_judged": true,
+      "other_negative_image_ids": [
+        "e001",
+        "e002",
+        "e003",
+        "e004",
+        "e005",
+        "e006",
+        "e007",
+        "e008",
+        "e009",
+        "e010",
+        "e011",
+        "e012",
+        "e014",
+        "e016",
+        "e017",
+        "e018",
+        "e019",
+        "e020",
+        "e022",
+        "e024",
+        "e025",
+        "e026",
+        "e027",
+        "e028",
+        "e029",
+        "e030",
+        "e032",
+        "e033",
+        "e034",
+        "e035",
+        "e036",
+        "e037",
+        "e038",
+        "e039",
+        "e040"
+      ]
+    },
+    {
+      "intent_id": "t15",
+      "query_ids": [
+        "t15_zh",
+        "t15_en"
+      ],
+      "source_text": "放在室外地面上的便携配电箱，蓝色面板装在金属提架里，前方接着两根粗黑电缆。",
+      "reference_english": "A portable distribution box on the outdoor ground, with a blue front panel in a metal carrying frame and two thick black cables plugged into its front.",
+      "no_target_glossary_control": true,
+      "expected_term_families": [],
+      "expected_context_slots": {
+        "device": "portable distribution box",
+        "setting": "outdoor ground",
+        "housing": "blue panel in metal carrying frame",
+        "wiring": "two thick black cables plugged into front sockets"
+      },
+      "relevance_rule": "An image is1 only if at least one visually identifiable target device satisfies all requested attributes/relations; all other gallery images are0. Negative visibility is evaluated only for the selected target device.",
+      "positive_image_ids": [
+        "e016"
+      ],
+      "positive_evidence": {
+        "e016": "Portable blue distribution panel sits on pavement inside a square metal carrying frame; two large black cables plug into the lower front. The visible blue attribute is the panel, not an invented blue socket."
+      },
+      "close_negative_evidence": {
+        "e020": "Outdoor distribution boxes have connected cables, but are red/pink and fixed to a stand/support, not a blue portable framed unit on the ground.",
+        "e035": "UPS/power strip has a thick cable and multiple sockets, but sits on a desk and lacks the blue framed portable distribution box.",
+        "e017": "Open green-edged breaker panel with wiring, not the portable blue outdoor box.",
+        "e001": "Blue controller mounted vertically, but no metal carrying cage or pair of front plug-in power cables."
+      },
+      "all40_images_judged": true,
+      "other_negative_image_ids": [
+        "e002",
+        "e003",
+        "e004",
+        "e005",
+        "e006",
+        "e007",
+        "e008",
+        "e009",
+        "e010",
+        "e011",
+        "e012",
+        "e013",
+        "e014",
+        "e015",
+        "e018",
+        "e019",
+        "e021",
+        "e022",
+        "e023",
+        "e024",
+        "e025",
+        "e026",
+        "e027",
+        "e028",
+        "e029",
+        "e030",
+        "e031",
+        "e032",
+        "e033",
+        "e034",
+        "e036",
+        "e037",
+        "e038",
+        "e039",
+        "e040"
+      ]
+    },
+    {
+      "intent_id": "t16",
+      "query_ids": [
+        "t16_zh",
+        "t16_en"
+      ],
+      "source_text": "透过玻璃柜门能看到机柜下方的不间断电源，上方装着横放的服务器。",
+      "reference_english": "An uninterruptible power supply visible at the bottom of a cabinet through its glass door, with horizontal rack servers mounted above it.",
+      "no_target_glossary_control": true,
+      "expected_term_families": [],
+      "expected_context_slots": {
+        "device": "UPS with server hardware",
+        "housing": "glass-front cabinet",
+        "relation": "UPS below horizontal rack servers in same cabinet",
+        "view": "visible through glass door"
+      },
+      "relevance_rule": "An image is1 only if at least one visually identifiable target device satisfies all requested attributes/relations; all other gallery images are0. Negative visibility is evaluated only for the selected target device.",
+      "positive_image_ids": [
+        "e034"
+      ],
+      "positive_evidence": {
+        "e034": "Through the glass door, a black UPS sits at the lower left and horizontal rack server units are mounted above; source identifies the UPS/server arrangement."
+      },
+      "close_negative_evidence": {
+        "e030": "Tower UPS beside computer equipment, not below rack servers behind a glass cabinet door.",
+        "e031": "Industrial UPS cabinet row, not a visible small UPS below rack servers in one glass-front cabinet.",
+        "e032": "Isolated white/gray tower UPS, without cabinet glass or rack servers above.",
+        "e033": "Tower UPS front at an exhibition, not a UPS below rack servers inside glass.",
+        "e035": "Desk UPS with sockets near a keyboard, not below rack servers behind glass.",
+        "e015": "Open wired PLC/control cabinet, not the requested glass-fronted server/UPS arrangement."
+      },
+      "all40_images_judged": true,
+      "other_negative_image_ids": [
+        "e001",
+        "e002",
+        "e003",
+        "e004",
+        "e005",
+        "e006",
+        "e007",
+        "e008",
+        "e009",
+        "e010",
+        "e011",
+        "e012",
+        "e013",
+        "e014",
+        "e016",
+        "e017",
+        "e018",
+        "e019",
+        "e020",
+        "e021",
+        "e022",
+        "e023",
+        "e024",
+        "e025",
+        "e026",
+        "e027",
+        "e028",
+        "e029",
+        "e036",
+        "e037",
+        "e038",
+        "e039",
+        "e040"
+      ]
+    }
+  ]
+}

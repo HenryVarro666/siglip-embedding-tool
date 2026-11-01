@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "role": "development_only",
+  "source": "benchmarks/equipment-v1/queries.json",
+  "source_file_sha256": "b29fe8b26c8618c38b0154871b1a288179e0e2be2e7686e07a2d958ebe15556f",
+  "queries": [
+    {
+      "query_id": "i01_zh",
+      "text": "带电气连接接口的小型太阳能微型逆变器。"
+    },
+    {
+      "query_id": "i02_zh",
+      "text": "安装在墙上、外壳闭合的太阳能逆变器。"
+    },
+    {
+      "query_id": "i03_zh",
+      "text": "打开外壳后露出电路板和蓝色电容的太阳能逆变器。"
+    },
+    {
+      "query_id": "i04_zh",
+      "text": "安装在光伏板下方或背面的太阳能逆变器。"
+    },
+    {
+      "query_id": "i05_zh",
+      "text": "打开柜门后能看到接线的电气配电柜或控制柜。"
+    },
+    {
+      "query_id": "i06_zh",
+      "text": "成排工业电气开关柜之间的通道。"
+    },
+    {
+      "query_id": "i07_zh",
+      "text": "能看到套管或散热片的室外电力变压器。"
+    },
+    {
+      "query_id": "i08_zh",
+      "text": "给电脑或服务器提供断电备用电源的 UPS 不间断电源。"
+    }
+  ],
+  "queries_semantic_sha256": "53bfaf65a00cae94a2c578907870c6694b36f3f50c85515038930d19c0de045b",
+  "formal_query_ids_excluded": true,
+  "historical_development_results_known": true,
+  "training": false
+}
