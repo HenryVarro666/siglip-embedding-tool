@@ -1,0 +1,176 @@
+{
+  "experiment_id": "equipment-repetition-early-stop-v1",
+  "created_at_utc": "2026-11-01T06:16:42.220309+00:00",
+  "dataset_hashes": {
+    "manifest": "3487fdf62b90971619ec098b2ec5bbad00e5af2d22ec9183d258bc1a24916975",
+    "queries": "19a1da3d4fa9d961f379af0d56dad9274e698895af0d2800d35ad44dfad445db",
+    "qrels": "0a6c9486084c5108439f642f4440d8ec4191ff8221a2ee0c553f8589f12daf95"
+  },
+  "supporting_hashes": {
+    "annotation-notes.json": "717d4ff5bcaeeadb395f14109fb1e6438db2eb5497cb740b5e68d188ed170c6d",
+    "review-rules.json": "1feccdda7885c3d6f830c63b5613fbf23dbae8b22e9b09a5da839eb3e859829a",
+    "glossary.json": "20fef944133fe8453e9b60d5d7a6ccabb93ce3a4ffe0565038caaf8f51e3c42e",
+    "label-review.json": "f721ca9cc296ccf2fec0c2aa10be121982f85736c69e1242e83229c1803460e7"
+  },
+  "independent_intents": 16,
+  "gallery_images": 40,
+  "policies": {
+    "original_fusion": {
+      "decoder": "original",
+      "mode": "auto_fusion",
+      "fallback": "error"
+    },
+    "fallback_opus_fusion": {
+      "decoder": "constrained",
+      "mode": "auto_fusion",
+      "fallback": "opus"
+    },
+    "early_fallback_fusion": {
+      "decoder": "guarded",
+      "mode": "auto_fusion",
+      "fallback": "opus"
+    }
+  },
+  "translation_model": "Helsinki-NLP/opus-mt-zh-en",
+  "translation_revision": "cf109095479db38d6df799875e34039d4938aaa6",
+  "translation_license": "CC-BY-4.0",
+  "device": "mps",
+  "translator_device": "mps",
+  "dtype": "float32",
+  "translation_text_cache": false,
+  "training": false,
+  "fusion_weights": [
+    0.5,
+    0.5
+  ],
+  "source_token_limit": 256,
+  "max_new_tokens": 64,
+  "num_beams": {
+    "original": 1,
+    "constrained": 4,
+    "guarded": 4
+  },
+  "do_sample": false,
+  "use_cache": true,
+  "score_atol": 1e-05,
+  "query_warmup": 3,
+  "query_repeats": 5,
+  "implementation_sha256": "5508fc7372887770f584065949d19debe77b81fd6d09cf022a432de164d7bc12",
+  "glossary_sha256": "20fef944133fe8453e9b60d5d7a6ccabb93ce3a4ffe0565038caaf8f51e3c42e",
+  "translator_files": {
+    "README.md": "7f4b7f90672cd55b85b213bbe21f4b2d0c92327e885734b7e86b019feb145a6b",
+    "config.json": "cee48d4f205210cec6a7cfedf609acd605949ac5392a7e6e9c8c4c0b6670c27c",
+    "generation_config.json": "4f64a04e3bcf3f2f97ea552f83fe1f08a04a52402d29af3008d1644d9f29178c",
+    "model.safetensors": "9866cb7fcb30bca4c91f0ad2bde4183722bf015461aab8a7a6bea0c2cd030250",
+    "source.spm": "e27a3a1b539f4959ec72ea60e453f49156289f95d4e6000b29332efc45616203",
+    "target.spm": "6a881f4717cd7265f53fea54fd3dc689c767c05338fac7a4590f3088cb2d7855",
+    "tokenizer_config.json": "28e575e0beba8b2d4b6f789e91a219cff031e94a9254f027ce7170a48163c01d",
+    "translation_provenance.json": "39f8c8bd807176f60cfaa87af7ff196bc1dd82d6dde9be5c5500547ab4dcda38",
+    "vocab.json": "08a119a1defd522fa047cb5e3bfe3e89633e96caa38ced0dc9cee7ef1021a011"
+  },
+  "decoder_files": {
+    "README.md": "0b550f52f5ffb16b8f36a34b2e5c9cb40076994063dd72b283552370eb43d903",
+    "custom_generate/beam_constraints.py": "72da73e8f601167c895974bbb6064f1be7d14f33247f6a8ea0acc6c162b62704",
+    "custom_generate/beam_search.py": "247baefee037b9cebda29140abcc298ed2d4fdb32b79a40550a06b004a03bda5",
+    "custom_generate/generate.py": "3f2975a90ef9f506077d8e54d0e145cfd735088c9c082c595d546cfe5cd7eb64",
+    "decoder_provenance.json": "784dd5143ec4b19689bc4fc8991181c9ea1c5e07116f77bfaf2d533cad7d30be"
+  },
+  "source_indexes": {
+    "base": "05ce68f3d5128012636b22fbf05120f3bc45e1f03aa7fd4abc9b1f76fdcd92e2",
+    "quality": "9ebe8155fbe313989d19af093029379c39f9329a5df6036cde6aee9490e8f193"
+  },
+  "retrieval_models": {
+    "base": {
+      "model_id": "google/siglip2-base-patch16-224",
+      "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2"
+    },
+    "quality": {
+      "model_id": "google/siglip2-so400m-patch14-384",
+      "revision": "e8e487298228002f3d8a82e0cd5c8ea9c567f57f"
+    }
+  },
+  "timing": "Threefreshfusionpolicies, each16scored +5x16warm,3warmups; rotate perintent/round. Actual synchronized total includes inloopchecks/snapshots, rejection/cleanup, freshoriginalfallback ifany,and retrieval. No translationtextcache; nofailedsamplecensoring. 240warm/model,480both. Serialization afterrequest.",
+  "failure_policy": "Only current decoded constraint-output rejection triggers fresh original beam1 OPUS; no cascade or rejected-English retrieval; failed intents score zero. Frozen repetition rejection may reject a legacy accepted output and must be reported.",
+  "first_request_order": [
+    "original",
+    "constrained",
+    "guarded"
+  ],
+  "first_request_note": "First per variant shares modelweights/process, not independentcoldstarts. Loading/firstseparate. Original thenlegacy thenfrozen-guard.",
+  "reference_english_usage": "Only Chinese goes to translators. Paired reference English never edits or replaces generated text.",
+  "independence": "Same previously diagnosed16queries/40images, assistantlabels; not a new independentholdout. Rules developed only on fixed8olddevqueries. Stage1negative preserved, stage2declared beforefreshdevcalls, selectedprofilecommitted beforeformalrun. No formaloutputs used to selectrule.",
+  "context_review": "No newhumansemanticreview; acceptedstatus/repetitionstop not semantic correctness. Preserve wiring/mounting/negation/objectownership limits.",
+  "execution_order": [
+    "base",
+    "quality"
+  ],
+  "implementation_git_commit": "905f130767d019a4bcd705f80d3d50ad0eba0924",
+  "warm_evidence": "Per-request semantic+ranking digest; full scored reference, with full ranking override for nonzero tolerated score drift.",
+  "evaluation_inputs_sha256": "b261540efdab37d31d195f1692d91835a577e810330cee7ecd39f8d7ba104f5c",
+  "retrieval_weights": {
+    "base": {
+      "model_id": "google/siglip2-base-patch16-224",
+      "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2",
+      "filename": "model.safetensors",
+      "sha256": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+      "size_bytes": 1500800904
+    },
+    "quality": {
+      "model_id": "google/siglip2-so400m-patch14-384",
+      "revision": "e8e487298228002f3d8a82e0cd5c8ea9c567f57f",
+      "filename": "model.safetensors",
+      "sha256": "9f4f4a49f908ef0c979bce8ff5a5c0e88882dc6c5dc4304387cbbd152558e2c2",
+      "size_bytes": 4544143072
+    }
+  },
+  "fallback_cascade": false,
+  "previous_result_reference": {
+    "base": {
+      "path": "artifacts/constraint-fallback/base-v1/result.json",
+      "sha256": "a7325d62983472e60d820d19cf4fb96daf3318a03b90397dddef6ebfeb86e566"
+    },
+    "quality": {
+      "path": "artifacts/constraint-fallback/quality-v1/result.json",
+      "sha256": "7cd928a22159baf8acf7e6917675451480a1f66569547f6c99f4b2a32e2f95d2"
+    }
+  },
+  "previous_reference_usage": "Afterrun only, to verify original/legacycontrols unchanged; neverusedforrouting/rulechoice, alltimingsfresh.",
+  "repetition_profile_sha256": "e93ee35b4b81fe94a7b2d97c25fa3317bce599e6976d1a54a6a2d90d764b5777",
+  "development_hashes": {
+    "dev-queries.json": "9bd8ca030441b456f9bff546f4fb75e28175c11b7bd8766e5a7b3035fe8def50",
+    "dev-protocol.json": "90ee72ce8b871bd8a44698ca514191ed5ede120939eb53d301cf9209a5e602f8",
+    "dev-observations.json": "152e8d8e27303f0229bde9ec2600077e5f847a8fdb38e7843109a62335f5fdf7",
+    "dev-selection.json": "d63bc6c7af5a812ebea6308f39d96d32da62eae9719b7d937daabfbd38d1fb85",
+    "dev-validation.json": "a0c1632bbf6949f51ebf22f06273cbdc369e315ff8b55d032d9965468470a254"
+  },
+  "repetition_profile": {
+    "schema_version": 2,
+    "profile_id": "bounded-n16-r2-min32-q4-tail4",
+    "algorithm": "bounded_tail_consecutive_token_cycles",
+    "max_new_tokens": 64,
+    "num_beams": 4,
+    "check_every": 4,
+    "max_ngram_size": 16,
+    "repeat_count": 2,
+    "min_new_tokens": 32,
+    "min_repeating_beams": 4,
+    "min_cycle_tokens": 4,
+    "tail_tolerance": 4
+  },
+  "development_coverage": {
+    "baseline_accepted_ids": [
+      "i01_zh",
+      "i02_zh",
+      "i03_zh",
+      "i04_zh",
+      "i05_zh",
+      "i06_zh",
+      "i08_zh"
+    ],
+    "accepted_ids_reaching_active_check": [],
+    "limitation": "All7mechanically accepted dev outputs did not reach selected32tokencheck(or had no glossaryconstraints); zeroobservedfalseearlyrejection is weak evidence for long normal queries. Formaloldacceptedearlyabort must be counted."
+  },
+  "formal_query_tuning": false,
+  "development_rule_selection": true,
+  "parameter_updates": false
+}

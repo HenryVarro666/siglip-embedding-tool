@@ -1,0 +1,66 @@
+{
+  "experiment_id": "equipment-repetition-early-stop-v1",
+  "frozen_at_utc": "2026-11-01T06:16:42.220309+00:00",
+  "implementation_git_commit": "905f130767d019a4bcd705f80d3d50ad0eba0924",
+  "selected_rule_git_commit": "905f130767d019a4bcd705f80d3d50ad0eba0924",
+  "implementation_sha256": "5508fc7372887770f584065949d19debe77b81fd6d09cf022a432de164d7bc12",
+  "previous_core_sha256": "e377efdeb1bcfe1ff44ac93eca1ee8489d1a5a2032fcba0eabbfdeae958f8675",
+  "protocol_sha256": "cfdc70f0d5c75bb5cd2fb242c5eaed033b7b7c975f72f273028659c13ab59229",
+  "dataset_hashes": {
+    "manifest": "3487fdf62b90971619ec098b2ec5bbad00e5af2d22ec9183d258bc1a24916975",
+    "queries": "19a1da3d4fa9d961f379af0d56dad9274e698895af0d2800d35ad44dfad445db",
+    "qrels": "0a6c9486084c5108439f642f4440d8ec4191ff8221a2ee0c553f8589f12daf95"
+  },
+  "supporting_hashes": {
+    "annotation-notes.json": "717d4ff5bcaeeadb395f14109fb1e6438db2eb5497cb740b5e68d188ed170c6d",
+    "review-rules.json": "1feccdda7885c3d6f830c63b5613fbf23dbae8b22e9b09a5da839eb3e859829a",
+    "glossary.json": "20fef944133fe8453e9b60d5d7a6ccabb93ce3a4ffe0565038caaf8f51e3c42e",
+    "label-review.json": "f721ca9cc296ccf2fec0c2aa10be121982f85736c69e1242e83229c1803460e7"
+  },
+  "development_hashes": {
+    "dev-queries.json": "9bd8ca030441b456f9bff546f4fb75e28175c11b7bd8766e5a7b3035fe8def50",
+    "dev-protocol.json": "90ee72ce8b871bd8a44698ca514191ed5ede120939eb53d301cf9209a5e602f8",
+    "dev-observations.json": "152e8d8e27303f0229bde9ec2600077e5f847a8fdb38e7843109a62335f5fdf7",
+    "dev-selection.json": "d63bc6c7af5a812ebea6308f39d96d32da62eae9719b7d937daabfbd38d1fb85",
+    "dev-validation.json": "a0c1632bbf6949f51ebf22f06273cbdc369e315ff8b55d032d9965468470a254"
+  },
+  "repetition_profile_sha256": "e93ee35b4b81fe94a7b2d97c25fa3317bce599e6976d1a54a6a2d90d764b5777",
+  "source_indexes": {
+    "base": "05ce68f3d5128012636b22fbf05120f3bc45e1f03aa7fd4abc9b1f76fdcd92e2",
+    "quality": "9ebe8155fbe313989d19af093029379c39f9329a5df6036cde6aee9490e8f193"
+  },
+  "retrieval_weights": {
+    "base": {
+      "model_id": "google/siglip2-base-patch16-224",
+      "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2",
+      "filename": "model.safetensors",
+      "sha256": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+      "size_bytes": 1500800904
+    },
+    "quality": {
+      "model_id": "google/siglip2-so400m-patch14-384",
+      "revision": "e8e487298228002f3d8a82e0cd5c8ea9c567f57f",
+      "filename": "model.safetensors",
+      "sha256": "9f4f4a49f908ef0c979bce8ff5a5c0e88882dc6c5dc4304387cbbd152558e2c2",
+      "size_bytes": 4544143072
+    }
+  },
+  "new_formal_runs_existed": false,
+  "prior16results_known": true,
+  "training_executed": false,
+  "pre_run_tests": {
+    "passed": 496,
+    "integration_deselected": 2,
+    "ruff": "passed",
+    "log_sha256": "23904b75d626da2efa24331af3d27dcd1c750cfe7f36628304f5257da2810b17"
+  },
+  "development_stages": {
+    "negative_stage1_commit": "7fb0973",
+    "stage2_predeclaration_commit": "2802893",
+    "selected_rule": "bounded-n16-r2-min32-q4-tail4",
+    "active_dev_stop_tokens": 48,
+    "oldcap_tokens": 64,
+    "false_early_rejections": 0,
+    "accepted_dev": 7
+  }
+}
