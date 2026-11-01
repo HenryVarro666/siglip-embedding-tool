@@ -115,6 +115,8 @@ uv run siglip-tools search-text --index artifacts/gallery.npz \
 
 现在可以显式选择约束输出被拒绝后的回退：加`--constraint-fallback opus`重新执行原始OPUS翻译，或`--constraint-fallback chinese`仅用中文检索一次。默认`error`保持明确失败。JSON区分失败约束文本、备用译文、实际检索文本、路由和完整耗时；总计包含先失败的尝试，最终预期失败保留JSON并退出2。固定16查询上的新比较、代码及复算命令见[回退实验](benchmarks/constraint-fallback-v1/README.md)。该16意图小集已测完：两模型最终失败6/16→0/16，主约束拒绝仍37.5%。So400m原始/约束→OPUS融合mAP为0.8534/0.8221，完整p50为117.66/656.95ms；原始默认不变。回退不会自动修复接线/安装等语义关系。[完整结果与限制](docs/constraint-fallback-v1.md)
 
+新增显式[重复早停实验](docs/repetition-early-stop-v1.md)：先用8开发查询固定规则，再测同16查询。新旧回退mAP相同，但新增1条旧可接受输出的早拒绝；Base总体未省时、So约省7%，原始默认仍保留。使用独立模块`python -m siglip_tools.repetition_stop search`启用，开发负结果、原样轨迹、完整耗时与未来改进均已保存。[调用与复现](benchmarks/repetition-early-stop-v1/README.md)
+
 文本上限来自 checkpoint，已验证的默认模型为 64 tokens。过长查询会报错，避免静默截断。长文档的纯文本检索应使用单独的文本 embedding 模型。
 
 ## 以图搜图

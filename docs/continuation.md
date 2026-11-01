@@ -1,5 +1,9 @@
 # 工作接续状态
 
+追加进行中（2026-11-01）：重复检测/提前拒绝新轮，开发分支feat/repetition-early-stop。阶段1严格后缀16候选全未抓住开发i07，负结果保存在7fb0973及benchmarks/repetition-early-stop-v1/development-stage1；根据开发beam尾部术语插入现象，阶段2在2802893先声明有界尾部规则，再用同8开发查询观测/选择。最终profile在905f130冻结：bounded-n16-r2-min32-q4-tail4，四beam共识，min32、每4步、周期4–16重复2次、容忍4尾token；真实开发i07在48步中断并原始回退，7旧机械成功未早拒绝，但它们没有进入最终32步检测区间，不能当长句误拒绝率证据。
+
+正式3融合策略（原始、现有约束→原始、新早停约束→原始）协议已于b6d0aec在新16输出前冻结，核心SHA5508fc7372887770f584065949d19debe77b81fd6d09cf022a432de164d7bc12、协议SHAcfdc70f0d5c75bb5cd2fb242c5eaed033b7b7c975f72f273028659c13ab59229、profile字节SHAe93ee35b4b81fe94a7b2d97c25fa3317bce599e6976d1a54a6a2d90d764b5777。496离线测试通过/2排除，Ruff通过。Base已完整完成，原始/旧回退/新早停mAP0.79783/0.76137/0.76137、p50 89.84/433.25/449.96ms；早拒t09/t12/t13、捕捉旧失败2/6，t09为旧机械接受反例，规则未调。So400m正在artifacts/repetition-early-stop/quality-v1.log运行；不要覆盖已有result或同时跑另一GPU模型。新结果/独立复算/完整报告与最新验收仍待完成。台账新增SIG-044–049。下文是上一轮已完成证据，结束本轮后改成本轮完整接续。
+
 更新：2026-11-01。最新约束失败回退实验已完成两模型实测、独立算法复算、本地401项离线测试、真实MPS CLI及打包检查；最终检出/上传凭证以本页末尾和verification.json为准。仓库`/Users/caochao/Documents/SigLIP`，私有远端`HenryVarro666/siglip-embedding-tool`，开发分支`feat/constraint-failure-fallback`，最终从主分支main接续。
 
 ## 从这里开始
