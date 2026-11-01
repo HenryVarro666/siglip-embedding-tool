@@ -16,6 +16,12 @@
 
 冻结selected profile及开发输出/选择表后，才运行正式16。历史正式结果已知，但不得用ID或正式译文选择/调整规则；不因正式效果或漏检重调阈值。
 
+### 开发阶段2修订（阶段1结束后、正式16开始前）
+
+阶段1全部16候选未捕捉i07失败，证据/源码提交7fb0973及development-stage1保留。开发beam显示循环之后有约束术语的少量尾部token，严格后缀失配。此时追加第二开发协议，不冒称阶段2事先见于初始网格：周期最少4token、允许循环后最多4尾token；候选max_ngram_size∈{8,16}、repeat_count∈{2,3}、min_new_tokens∈{24,32}、min_repeating_beams∈{3,4}共16个。其余生成参数不变。证据选择先最小尾部修剪、再最小符合周期；原beam序列不修剪输出，仅检测时检查前缀，主动拒绝仍保留全序列。成功开发误拒绝过滤和候选优先级不变；无可用时保守候选改为n8/r3/min32/q4。
+
+阶段2重新冻结开发代码/协议、同8源查询真实观测和主动验证，然后才生成最终正式profile。旧candidate_profiles/算法继续支持阶段1重放；当前正式库默认使用最终文件，不按正式查询动态选择。此前尚无本轮正式16输出。
+
 ## 运行时行为
 
 新GuardedOPUSConstraintTranslator(base, *, profile:dict, observe_only=False, decoder_dir=...)继承旧包装器，通过已核验本地decoder callable传入每请求新建的StoppingCriteria。只在实际词汇约束路径启用；无目标词继续原有普通beam4。观测模式返回False并存检查快照；主动模式达到阈值时从停止回调抛专门ValueError中断真实生成，避免finalize给截断片段追加EOS后被误认为完整译文。

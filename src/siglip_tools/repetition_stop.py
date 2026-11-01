@@ -46,17 +46,38 @@ def candidate_profiles() -> list[dict]:
     ]
 
 
+def candidate_profiles_v2() -> list[dict]:
+    """Return the additive development grid allowing a bounded nonrepeating tail."""
+    return [
+        {
+            "schema_version": 2,
+            "profile_id": f"bounded-n{size}-r{count}-min{minimum}-q{quorum}-tail4",
+            "algorithm": "bounded_tail_consecutive_token_cycles",
+            "max_new_tokens": 64,
+            "num_beams": 4,
+            "check_every": 4,
+            "max_ngram_size": size,
+            "repeat_count": count,
+            "min_new_tokens": minimum,
+            "min_repeating_beams": quorum,
+            "min_cycle_tokens": 4,
+            "tail_tolerance": 4,
+        }
+        for size, count, minimum, quorum in product((8, 16), (2, 3), (24, 32), (3, 4))
+    ]
+
+
 def validate_profile(profile: dict) -> dict:
     """Validate the frozen algorithm/grid and return an independent profile."""
     if not isinstance(profile, dict):
         raise ValueError("Repetition profile must be an object")
-    expected_keys = set(candidate_profiles()[0])
-    if set(profile) != expected_keys:
+    profiles = candidate_profiles() + candidate_profiles_v2()
+    if not any(set(profile) == set(candidate) for candidate in profiles):
         raise ValueError("Repetition profile has missing or unexpected fields")
-    numeric = expected_keys - {"profile_id", "algorithm"}
+    numeric = set(profile) - {"profile_id", "algorithm"}
     if any(type(profile[key]) is not int for key in numeric):
         raise ValueError("Repetition profile numeric fields must be integers")
-    if profile not in candidate_profiles():
+    if profile not in profiles:
         raise ValueError("Repetition profile differs from the predeclared candidate grid")
     return deepcopy(profile)
 
@@ -69,7 +90,9 @@ def profile_sha256(profile: dict) -> str:
 def detect_repetition(beams, profile: dict, special_ids) -> dict:
     """Replay one prompt-inclusive four-beam snapshot using a frozen profile.
 
-    A match uses the smallest qualifying suffix period. ``repeat_count`` is the
+    V1 uses the smallest qualifying suffix period. V2 tests tail trims 0..4,
+    then the smallest qualifying period >=4; it records the selected trim as
+    ``tail_tokens`` without changing any generated tokens. ``repeat_count`` is the
     actual consecutive count, and ``suffix_start`` indexes the raw sequence,
     including its single prompt token. A nonmatch has period/start ``None``, an
     empty cycle and count zero. Repetition evidence is reported at every supplied
@@ -91,6 +114,9 @@ def detect_repetition(beams, profile: dict, special_ids) -> dict:
         and new_tokens % profile["check_every"] == 0
     )
     evidence = []
+    bounded = profile["schema_version"] == 2
+    tail_tolerance = profile["tail_tolerance"] if bounded else 0
+    minimum_period = profile["min_cycle_tokens"] if bounded else 1
     for index, beam in enumerate(beams):
         tokens = list(beam[1:])
         match = {
@@ -100,24 +126,32 @@ def detect_repetition(beams, profile: dict, special_ids) -> dict:
             "repeat_count": 0,
             "suffix_start": None,
         }
-        maximum = min(profile["max_ngram_size"], len(tokens) // profile["repeat_count"])
-        for period in range(1, maximum + 1):
-            cycle = tokens[-period:]
-            if special_ids.intersection(cycle):
-                continue
-            count = 1
-            while (count + 1) * period <= len(tokens):
-                start = len(tokens) - (count + 1) * period
-                if tokens[start : start + period] != cycle:
+        if bounded:
+            match["tail_tokens"] = None
+        for tail in range(tail_tolerance + 1):
+            end = len(tokens) - tail
+            maximum = min(profile["max_ngram_size"], end // profile["repeat_count"])
+            for period in range(minimum_period, maximum + 1):
+                cycle = tokens[end - period : end]
+                if special_ids.intersection(cycle):
+                    continue
+                count = 1
+                while (count + 1) * period <= end:
+                    start = end - (count + 1) * period
+                    if tokens[start : start + period] != cycle:
+                        break
+                    count += 1
+                if count >= profile["repeat_count"]:
+                    match.update(
+                        period=period,
+                        cycle=cycle,
+                        repeat_count=count,
+                        suffix_start=1 + end - count * period,
+                    )
+                    if bounded:
+                        match["tail_tokens"] = tail
                     break
-                count += 1
-            if count >= profile["repeat_count"]:
-                match.update(
-                    period=period,
-                    cycle=cycle,
-                    repeat_count=count,
-                    suffix_start=len(beam) - count * period,
-                )
+            if match["period"] is not None:
                 break
         evidence.append(match)
     repeating = sum(match["period"] is not None for match in evidence)

@@ -20,8 +20,15 @@ SELECTION_RULE = (
     "Exclude candidates rejecting any baseline-accepted dev output; maximize caught baseline "
     "failures, then higher beam quorum, lower mean trigger tokens, more copies, smaller maximum "
     "ngram, larger minimum tokens, lexical profile ID. If no viable candidate, freeze "
-    "n8/r4/min32/q4 and mark nonviable."
+    "n8/max_declared_repeat/min32/q4 and mark nonviable."
 )
+
+
+def development_candidates():
+    """Stage2 grid declared after preserving unsuccessful stage1 development."""
+    from .repetition_stop import candidate_profiles_v2
+
+    return candidate_profiles_v2()
 
 
 def development_implementation_hash():
@@ -114,7 +121,7 @@ def select_profile(candidates, observations):
                 r["profile"]["min_new_tokens"],
                 r["profile"]["min_repeating_beams"],
             )
-            == (8, 4, 32, 4)
+            == (8, max(p["repeat_count"] for p in candidates), 32, 4)
         )
     return {
         "viable": bool(viable),
@@ -129,7 +136,7 @@ def select_profile(candidates, observations):
 
 def validate_development_evidence(metadata, profile):
     """Bind the active profile to replayed fixed-development observations and validation."""
-    from .repetition_stop import candidate_profiles, detect_repetition, validate_profile
+    from .repetition_stop import detect_repetition, validate_profile
 
     root = Path(metadata)
     profile = validate_profile(profile)
@@ -138,7 +145,7 @@ def validate_development_evidence(metadata, profile):
     observations, observed_hash = _json_snapshot(root / "dev-observations.json")
     selection, selection_hash = _json_snapshot(root / "dev-selection.json")
     validation, _ = _json_snapshot(root / "dev-validation.json")
-    candidates = candidate_profiles()
+    candidates = development_candidates()
     expected = {
         "queries_sha256": file_sha256(root / "dev-queries.json"),
         "candidate_profiles": candidates,
@@ -186,7 +193,7 @@ def validate_development_evidence(metadata, profile):
         p
         for p in candidates
         if (p["max_ngram_size"], p["repeat_count"], p["min_new_tokens"], p["min_repeating_beams"])
-        == (12, 3, 24, 3)
+        == (16, 2, 24, 3)
     )
     for query, row in zip(queries, observations["rows"]):
         baseline, observed = row["baseline"], row["observer"]
@@ -246,13 +253,11 @@ def validate_development_evidence(metadata, profile):
 
 
 def load_protocol(args):
-    from .repetition_stop import candidate_profiles
-
     rows = load_development_queries(args.queries)
     protocol, digest = _json_snapshot(args.protocol)
     expected = {
         "queries_sha256": file_sha256(args.queries),
-        "candidate_profiles": candidate_profiles(),
+        "candidate_profiles": development_candidates(),
         "selection_rule": SELECTION_RULE,
         "development_implementation_sha256": development_implementation_hash(),
         "training": False,
@@ -292,16 +297,16 @@ def _translate(translator, text):
 
 
 def run_observation(args):
-    from .repetition_stop import GuardedOPUSConstraintTranslator, candidate_profiles
+    from .repetition_stop import GuardedOPUSConstraintTranslator
 
     if args.output.exists():
         raise FileExistsError("Development observations exist; use a new output path")
     rows, protocol, digest = load_protocol(args)
     profile = next(
         p
-        for p in candidate_profiles()
+        for p in development_candidates()
         if (p["max_ngram_size"], p["repeat_count"], p["min_new_tokens"], p["min_repeating_beams"])
-        == (12, 3, 24, 3)
+        == (16, 2, 24, 3)
     )
     original = LocalTranslator(args.translation_dir, device=protocol["device"])
     baseline = OPUSConstraintTranslator(original, decoder_dir=args.decoder_dir)
@@ -354,8 +359,6 @@ def run_observation(args):
 
 
 def run_selection(args):
-    from .repetition_stop import candidate_profiles
-
     if args.output.exists() or args.profile_output.exists():
         raise FileExistsError("Selection/profile exists; do not overwrite frozen development")
     rows, protocol, digest = load_protocol(args)
@@ -364,7 +367,7 @@ def run_selection(args):
         raise ValueError("Observations differ from frozen development protocol")
     if [{"query_id": r["query_id"], "text": r["text"]} for r in observations["rows"]] != rows:
         raise ValueError("Observations differ from development source strings")
-    selected = select_profile(candidate_profiles(), observations)
+    selected = select_profile(development_candidates(), observations)
     selected.update({"protocol_sha256": digest, "observations_sha256": observations_hash})
     _save_new(args.output, selected)
     _save_new(args.profile_output, selected["selected_profile"])

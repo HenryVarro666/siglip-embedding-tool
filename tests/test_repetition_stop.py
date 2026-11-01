@@ -30,6 +30,16 @@ PROFILE = {
     "min_repeating_beams": 3,
 }
 
+PROFILE_V2 = {
+    **PROFILE,
+    "schema_version": 2,
+    "profile_id": "bounded-n8-r2-min24-q3-tail4",
+    "algorithm": "bounded_tail_consecutive_token_cycles",
+    "repeat_count": 2,
+    "min_cycle_tokens": 4,
+    "tail_tolerance": 4,
+}
+
 
 def beams_at(new_tokens, repeating=4, *, period=(7, 8)):
     repeated = ([23] * new_tokens + list(period) * (new_tokens // len(period) + 1))[-new_tokens:]
@@ -357,6 +367,7 @@ def cli_fixture(tmp_path, monkeypatch, scripted_guard):
             "cpu",
             True,
         )
+
         class QueryEncoder(FusionEncoder):
             def encode_texts(self, texts, batch_size=8):
                 return super().encode_texts(
@@ -453,3 +464,117 @@ def test_invalid_profile_cli_reports_json_before_allocating_weights(tmp_path, mo
     payload = json.loads(capsys.readouterr().out)
     assert payload["ok"] is False
     assert payload["results"] == []
+
+
+def bounded_beams(tail_length, *, repeating=4, cycle=(10, 11, 12, 13), step=24):
+    """Literal repeated blocks followed by a unique forced-token tail."""
+    prefix = list(range(200, 200 + step - 4 * len(cycle) - tail_length))
+    sequence = [1] + prefix + list(cycle) * 4 + list(range(90, 90 + tail_length))
+    ordinary = [1] + list(range(300, 300 + step))
+    return [list(sequence if beam < repeating else ordinary) for beam in range(4)]
+
+
+def test_v2_candidates_add_a_separate_predeclared_grid_without_changing_v1():
+    """Selecting the new grid must neither replace nor mutate phase-one profiles."""
+    module = guard_module()
+    original = module.candidate_profiles()
+    candidates = module.candidate_profiles_v2()
+    assert len(candidates) == len({p["profile_id"] for p in candidates}) == 16
+    assert {
+        (p["max_ngram_size"], p["repeat_count"], p["min_new_tokens"], p["min_repeating_beams"])
+        for p in candidates
+    } == {
+        (n, r, minimum, quorum)
+        for n in (8, 16)
+        for r in (2, 3)
+        for minimum in (24, 32)
+        for quorum in (3, 4)
+    }
+    assert all(module.validate_profile(profile) == profile for profile in candidates)
+    assert all(
+        profile["min_cycle_tokens"] == profile["tail_tolerance"] == 4 for profile in candidates
+    )
+    candidates[0]["tail_tolerance"] = 99
+    assert module.candidate_profiles() == original
+    assert module.candidate_profiles_v2()[0]["tail_tolerance"] == 4
+
+
+@pytest.mark.parametrize("tail", [2, 4])
+def test_bounded_tail_detects_internal_cycles_without_changing_the_saved_beams(tail):
+    """A short forced tail must no longer hide the immediately preceding loop."""
+    module = guard_module()
+    beams = bounded_beams(tail)
+    before = deepcopy(beams)
+    result = module.detect_repetition(beams, PROFILE_V2, {0, 1, 2})
+    assert result["triggered"] is True
+    assert result["new_tokens"] == 24
+    assert result["repeating_beams"] == 4
+    assert result["beam_evidence"][0] == {
+        "beam_index": 0,
+        "period": 4,
+        "cycle": [10, 11, 12, 13],
+        "repeat_count": 4,
+        "suffix_start": 9 - tail,
+        "tail_tokens": tail,
+    }
+    assert beams == before
+    # The archived phase-one detector remains a strict suffix rule.
+    old = module.detect_repetition(beams, PROFILE, {0, 1, 2})
+    assert old["triggered"] is False
+    assert "tail_tokens" not in old["beam_evidence"][0]
+
+
+def test_bounded_tail_does_not_scan_past_the_four_token_tolerance():
+    result = guard_module().detect_repetition(bounded_beams(5, step=28), PROFILE_V2, {0, 1, 2})
+    assert result["triggered"] is False
+    assert result["repeating_beams"] == 0
+    assert all(e["tail_tokens"] is None for e in result["beam_evidence"])
+
+
+@pytest.mark.parametrize("special", [0, 1, 2, 31])
+def test_bounded_tail_still_excludes_special_tokens_inside_cycles(special):
+    result = guard_module().detect_repetition(
+        bounded_beams(2, cycle=(10, 11, special, 13)), PROFILE_V2, {0, 1, 2, 31}
+    )
+    assert result["triggered"] is False
+    assert result["repeating_beams"] == 0
+
+
+def test_bounded_tail_keeps_independent_cycles_and_requires_the_profile_quorum():
+    module = guard_module()
+    beams = bounded_beams(2, repeating=3)
+    # The second repeating beam has a different four-token cycle.
+    beams[1] = bounded_beams(4, cycle=(20, 21, 22, 23))[1]
+    result = module.detect_repetition(beams, PROFILE_V2, {0, 1, 2})
+    assert result["triggered"] is True
+    assert result["repeating_beams"] == 3
+    assert result["beam_evidence"][1]["cycle"] == [20, 21, 22, 23]
+    strict = {**PROFILE_V2, "profile_id": "bounded-n8-r2-min24-q4-tail4", "min_repeating_beams": 4}
+    assert module.detect_repetition(beams, strict, {0, 1, 2})["triggered"] is False
+    assert (
+        module.detect_repetition(bounded_beams(2, repeating=2), PROFILE_V2, {0, 1, 2})["triggered"]
+        is False
+    )
+
+
+def test_bounded_tail_uses_the_earliest_trim_and_smallest_qualifying_period():
+    # Six exact four-token copies at the suffix must use trim zero, period four.
+    result = guard_module().detect_repetition(
+        beams_at(24, period=(10, 11, 12, 13)), PROFILE_V2, {0, 1, 2}
+    )
+    assert result["beam_evidence"][0]["tail_tokens"] == 0
+    assert result["beam_evidence"][0]["period"] == 4
+    assert result["beam_evidence"][0]["repeat_count"] == 6
+
+
+def test_v2_profile_still_aborts_inside_the_existing_callback(scripted_guard):
+    construct, decoder, _ = scripted_guard
+    translator = construct(profile=PROFILE_V2)
+    with pytest.raises(guard_module().RepetitionAbort):
+        translator.translate("一台逆变器")
+    stop = translator.last_trace["repetition_stop"]
+    assert stop["generated_new_tokens"] == stop["trigger_new_tokens"] == 24
+    assert stop["snapshots"][-1]["beams"] == beams_at(24)
+    assert stop["snapshots"][-1]["beam_evidence"][0]["period"] == 4
+    assert stop["profile"] == PROFILE_V2
+    assert decoder.finalized is False

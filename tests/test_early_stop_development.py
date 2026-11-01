@@ -130,18 +130,18 @@ def test_valid_fixed_development_queries_are_accepted():
 def development_bundle(tmp_path):
     dev = import_module("siglip_tools.early_stop_development")
     from siglip_tools.images import file_sha256
-    from siglip_tools.repetition_stop import candidate_profiles, detect_repetition
+    from siglip_tools.repetition_stop import detect_repetition
 
     source = (
         Path(__file__).resolve().parents[1] / "benchmarks/repetition-early-stop-v1/dev-queries.json"
     )
     (tmp_path / "dev-queries.json").write_bytes(source.read_bytes())
-    candidates = candidate_profiles()
+    candidates = dev.development_candidates()
     observer_profile = next(
         p
         for p in candidates
         if (p["max_ngram_size"], p["repeat_count"], p["min_new_tokens"], p["min_repeating_beams"])
-        == (12, 3, 24, 3)
+        == (16, 2, 24, 3)
     )
     protocol = {
         "queries_sha256": file_sha256(tmp_path / "dev-queries.json"),
@@ -266,7 +266,9 @@ def test_coherent_hashes_cannot_hide_wrong_development_semantics(tmp_path, corru
     if corruption == "selection":
         p = tmp_path / "dev-selection.json"
         doc = json.loads(p.read_text())
-        doc["selected_profile"]["repeat_count"] = 3
+        doc["selected_profile"]["repeat_count"] = (
+            2 if doc["selected_profile"]["repeat_count"] == 3 else 3
+        )
         p.write_text(json.dumps(doc))
     elif corruption == "active_prediction":
         p = tmp_path / "dev-validation.json"
