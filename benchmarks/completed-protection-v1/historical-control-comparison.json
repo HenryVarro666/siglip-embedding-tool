@@ -1,0 +1,42 @@
+{
+  "base": {
+    "original_fusion": {
+      "intents": 16,
+      "same_final_english_routes_and_full_traces": true,
+      "same_full_ranking_scores": true,
+      "timing_reused": false
+    },
+    "fallback_opus_fusion": {
+      "intents": 16,
+      "same_final_english_routes_and_full_traces": true,
+      "same_full_ranking_scores": true,
+      "timing_reused": false
+    },
+    "early_fallback_fusion": {
+      "intents": 16,
+      "same_final_english_routes_and_full_traces": true,
+      "same_full_ranking_scores": true,
+      "timing_reused": false
+    }
+  },
+  "quality": {
+    "original_fusion": {
+      "intents": 16,
+      "same_final_english_routes_and_full_traces": true,
+      "same_full_ranking_scores": true,
+      "timing_reused": false
+    },
+    "fallback_opus_fusion": {
+      "intents": 16,
+      "same_final_english_routes_and_full_traces": true,
+      "same_full_ranking_scores": true,
+      "timing_reused": false
+    },
+    "early_fallback_fusion": {
+      "intents": 16,
+      "same_final_english_routes_and_full_traces": true,
+      "same_full_ranking_scores": true,
+      "timing_reused": false
+    }
+  }
+}

@@ -1,70 +1,73 @@
 # 工作接续状态
 
-进行中（2026-11-01）：completed-protection-v1 已完成 683 项离线测试/2 排除、Ruff，以及 24 开发源的 96 次四方法主调用与实际备用。新源代码768ea62、开发协议5e52774；原样固定规则在合法重复r02保护了已34步EOS的候选（旧56步拒绝，新56/60步继续），17旧接受无新误拒绝，新增10条接受的长/重复控制实际进入≥32检测。独立开发复算138335项通过。下一步冻结正式四策略协议，再 Base→So400m 跑同16/40；尚无本轮正式模型结果，不能用下文上一轮数字替代。台账SIG-051–058已记录设计、预运行修复及开发边界。
-
-更新：2026-11-01。本轮重复检测与提前拒绝实验已完成，没有训练。仓库为 `/Users/caochao/Documents/SigLIP`，私有远端为 `HenryVarro666/siglip-embedding-tool`。代码、两模型实测、独立复算、真实 CLI、打包、干净克隆与 515 项测试均已完成。代码检查点为 `053caa86417072f434b894173a2a86bf68b3b0b2`；后续从 `main` 接续，最新文档提交的检查以 GitHub 对应提交的 Actions 为准。
+更新：2026-11-01。最新“已完成候选保护”实验已完成，无训练。仓库 `/Users/caochao/Documents/SigLIP`，私有远端 `HenryVarro666/siglip-embedding-tool`；后续从 `main` 接续。源码/冻结检查点 fa8eddf 已上传且 CI683 通过，最新文档/结果提交须查看对应逐提交 CI，不能用旧回执冒充未来 HEAD。
 
 ## 从这里开始
 
-[文档索引](README.md) → [本轮完整报告](repetition-early-stop-v1.md) → [开发与复现/API](../benchmarks/repetition-early-stop-v1/README.md) → [问题 SIG-044–050](issue-log.md) → [验收凭证](../benchmarks/repetition-early-stop-v1/verification.json)。
+[文档索引](README.md) → [最新完整报告](completed-protection-v1.md) → [开发/复现/直接调用](../benchmarks/completed-protection-v1/README.md) → [台账 SIG-051–061](issue-log.md) → [验收凭证](../benchmarks/completed-protection-v1/verification.json)。用户要求之前、现在、未来每次问题和改进持久化；发现即登记编号/证据/影响/下一步，修复写实际验证及剩余限制，每次结束同步本页、索引和改进路线。AGENTS.md 已固化。
 
-用户要求过去、现在、未来每次问题与改进持续保存。发现即登记稳定编号、证据、影响和下一步；修复后补实际验证与剩余边界，结束更新本页、索引和改进路线。规则已写入 AGENTS.md。旧报告与负结果不得覆盖。
+## 最新结论
 
-## 结论与当前默认
+先声明24开发句（原8、8长正常、8合法重复），实际17条旧约束接受、其中10条新增长/重复控制进入≥32检查。r02在34步已有真实EOS候选，旧早停56步拒绝，新保护在56/60步继续至64并保留旧输出；开发17旧接受无新误拒绝。再用同一已诊断16查询/40图比较四个融合控制，每模型每策略3预热、16完整评分及5×16热请求，共128评分/640热请求；全部真实翻译/备用，无译文缓存。
 
-同一批已诊断的 16 条查询、40 张图，比较 3 个中英融合方案：原始 OPUS、现有约束失败后回退原始 OPUS、新增重复早停后回退原始 OPUS。每策略每模型 3 次预热、16 次完整评分及 5×16 次热请求，共 96 次评分、480 次热请求。每次真实翻译，未缓存译文；完整耗时包含先失败尝试、检测、异常清理、备用翻译及检索。
-
-| 策略 | Base mAP / 完整 p50 ms | So400m mAP / 完整 p50 ms |
+| 方案 | Base mAP / 完整p50 ms | So400m mAP / 完整p50 ms |
 |---|---:|---:|
-| 原始 OPUS 融合 | 0.7978 / 89.84 | 0.8534 / 113.65 |
-| 现有约束→原始 OPUS 融合 | 0.7614 / 433.25 | 0.8221 / 506.81 |
-| 重复早停→原始 OPUS 融合 | 0.7614 / 449.96 | 0.8221 / 472.90 |
+| 原始 OPUS 融合 | 0.7978 / 89.18 | 0.8534 / 110.92 |
+| 旧约束失败→OPUS | 0.7614 / 413.69 | 0.8221 / 444.83 |
+| 旧重复早停→OPUS | 0.7614 / 429.80 | 0.8221 / 442.53 |
+| 完成候选保护早停→OPUS | 0.7614 / 411.18 | 0.8221 / 445.23 |
 
-新方案主拒绝率由 6/16（37.5%）增至 7/16（43.75%），最终失败仍为 0/16，实际备用成功 7/7。早停 t09/t12/t13，触发步数为 60/60/36；只捕捉旧 6 条失败中的 t12/t13，另 4 条漏检。t09 为旧机械检查接受、新方案早拒绝的反例，不能把“活动 beam 重复”当作全部候选无效或语义错误的证明。
+新保护t09在60步抑制拒绝，最早真实EOS32步、继续64并返回32-token候选；主拒绝7/16→6/16（43.75%→37.5%）、实际早拒绝3/16→2/16，新增早拒旧接受0/10，最终0/16；备用6/6成功。仍提前捕捉t12/t13（60/36步），仍漏t02/t04/t10/t11。两模型集合相同。
 
-同旧 6 条失败的完整平均耗时降低约 4.27% / 10.37%，但全 16 条的平均耗时 Base +0.61%、So400m −7.02%；整体收益不稳定。新旧聚合检索指标相同，t09 实际英文已有改变，不声称所有分数完全相同。**原始 OPUS 融合仍为默认，早停作为显式实验选项。**
+整体均值相对旧早停 Base+0.69%、So−0.91%，p50−4.33%/+0.61%；t09组均值降低约6.75%/4.15%，总体不构成稳定加速。推荐基线继续原始OPUS融合，保护器显式启用，原有默认接口未变。词汇/EOS保护没有修复筋条/导线、否定、接线/安装或对象归属语义；同16为已知工程回归和助手标签，不是新独立现场验证。
 
-## 开发冻结与不可改写的证据
+SIG-059更正：上一轮报告误把t09失败诊断片段变化写成最终检索英文变化。核对旧两模型原数据及本轮，新旧最终英文/query_texts/排名分数相同，改变的是诊断、主路径和备用调用。旧报告已附日期更正，原数据/协议/计时不变；没有逐维保存/核对embedding的额外声明。
 
-1. 阶段 1 先声明严格后缀 16 候选，8 条开发查询中 7 成功、1 条 i07 无 EOS；全部候选未捕捉失败。完整负结果保存在 `7fb0973` 与 `benchmarks/repetition-early-stop-v1/development-stage1/`。
-2. 仅依据开发观测修订有界尾部检测，先在 `2802893` 声明新网格，再重新观测同 8 条开发查询。最终 profile `bounded-n16-r2-min32-q4-tail4` 于 `905f130767d019a4bcd705f80d3d50ad0eba0924` 冻结：32 token 起每 4 步、4–16 token 周期重复至少 2 次、最多 4 个尾 token、4/4 活动 beam 共识；64 上限不算提前。
-3. 实际开发 i07 在 48 步抛拒绝异常并新运行原始 OPUS。7 条成功例都没进入选中规则的 32 步检查区间，因此不能由零误拒绝推出长正常查询安全。开发覆盖缺口见 SIG-048。
-4. 正式协议于 `b6d0aec1f64310913517a6f27e6c70d95a0eb7bf` 冻结后才运行本轮 16 条。没有据正式结果重调规则。历史正式结果原已知；当前数据不是新的独立现场留出，标签仍非人类领域真值。
+## 精确版本与协议
 
-精确摘要：
+- 源句/固定结构规则预声明 `70cf127`；测量源代码 `768ea626c555d6214ceca04fab24b8ee992b02b2`。
+- 开发协议 `5e527747c7944195466e1347b243d474303c63ab`，开发实测冻结 `150558cdfc12bd52be694fadbf45e01e5198a340`。
+- 正式冻结 `fa8eddfb3245ab5bc6f40f07adc3a753e22d6cae`，新核心 SHA256 `b120dd7193236fdbb3f965274b45436d2d2c3008f9d3b1bf3fbcbd55b61ee2ad`。
+- 正式协议 SHA256 `b60158caa27b6855ed995cdc956cb5b6f89bf59f369ed560ccf883c9e43324fc`。
+- 新规则字节 SHA256 `a8fb1d276fc53ace8c59b76dabd13a24035c323aa637f184c768b20db2464cdc`，原重复profile `e93ee35b4b81fe94a7b2d97c25fa3317bce599e6976d1a54a6a2d90d764b5777` 不变。旧5508/e377/44b核心、CLI、词表、权重、外部解码源及原学习/训练备用代码保持。
 
-- 新测量核心 SHA256：`5508fc7372887770f584065949d19debe77b81fd6d09cf022a432de164d7bc12`。
-- 正式协议 SHA256：`cfdc70f0d5c75bb5cd2fb242c5eaed033b7b7c975f72f273028659c13ab59229`。
-- profile 字节 SHA256：`e93ee35b4b81fe94a7b2d97c25fa3317bce599e6976d1a54a6a2d90d764b5777`。
-- 旧回退核心 `e377efde…`、旧术语核心 `44b19b06…`、旧 CLI、词表、权重、解码器均保持不变。原始损失示例与备用训练代码保留，没有启动预训练模型训练。
+固定保护仅在当前仍保留、process中实际选中EOS且全部token/完整词形/非空通过的候选存在时抑制重复拒绝，继续原搜索/finalize；不补救/替换候选，不把finalize补EOS当真实完成。请求局部函数/类，不改全局/源码；记录EOS提案/得分/成员、在线词检查和实际abort。最终接受与精确回调覆盖已按SIG-054补验证，scorer_done_before_finalize只在finalize前读取一次。
 
-## 路径与验证
+## 代码、结果与验收
 
-- 代码：`src/siglip_tools/repetition_stop.py`、`early_stop_development.py`、`early_stop_benchmark.py`；新增模块入口显式启用，旧默认接口不变。
-- Git 内证据：`benchmarks/repetition-early-stop-v1/` 的冻结输入、两阶段开发记录、profile、results-summary.json、requests.json、audit.json、verification.json。requests 保存完整评分排名/原样轨迹及每次热请求计时与可重建摘要。
-- 本机原始结果：`artifacts/repetition-early-stop/{base-v1,quality-v1}/result.json`。Base SHA256 `d728d9412ab1410c71aca46cd5f448a1fdc33dc057abc7bda33606dd6763f894`；So400m `1ec659c53182e8d5112dbee0c092b7ec42af81910b025806ed5a415a00929ba2`。
-- 原图 `data/equipment-v1/images/`；索引 `artifacts/equipment-benchmark/{base-v1,quality-v1}/index.npz`；OPUS/解码器 `models/opus-mt-zh-en`、`models/opus-constrained-decoder`。这些均不上传 Git，两模型索引不可混用。
-- 独立记录复算通过 404,544 项检查、106,488 次数值比较，最大差 `2.842170943040401e-14`。包括开发选择、触发证据、指标/失败率、全部计时、控制与跨模型一致性；不是独立神经重放或人类语义审核。
-- 本地、独立克隆及[代码检查点 CI 41281069556](https://github.com/HenryVarro666/siglip-embedding-tool/actions/runs/41281069556) 均 515 通过、2 项真实模型测试默认排除，无 skip；Ruff 与原始 CLIP/SigLIP 有限差分演示通过。克隆复用本地虚拟环境及已固定的外部解码代码缓存，71 个源/测试/示例/训练/构建/CI 文件字节一致。
-- 真实 MPS 模块 CLI 的 t13 真早停、t09 旧接受早停、t14 无约束和 t01 正常约束通过，轨迹/Top5 与正式 Base 一致；仅功能验证，不混入性能统计。wheel/sdist、包内模块/profile 字节及仓库外导入通过。
-- SIG-050：首次审计与 pytest 日志写入并行，科学数值均通过但一个日志摘要尚未闭合。等所有写入结束后顺序重审计，数值/源结果完全不变，全部日志摘要一致；初版快照保留。以后日志 glob 必须依赖所有写入者完成。
+代码 `src/siglip_tools/{completed_protection,protected_development,protected_benchmark}.py`；完整输入/开发/协议/摘要/requests/复算/验收在 `benchmarks/completed-protection-v1/`。requests保存128次完整评分及640次逐热计时/可重建摘要。当前旧3控制与上轮两模型的英文、轨迹、路由及排名分数完全一致，当前时延全部重新实测。
 
-最新主分支提交与逐提交 CI 见[提交历史](https://github.com/HenryVarro666/siglip-embedding-tool/commits/main/)和[Actions](https://github.com/HenryVarro666/siglip-embedding-tool/actions)。固定凭证绑定上述代码检查点，不能把旧 CI 冒充未来 HEAD。最终上传凭证保存在本机 `artifacts/repetition-early-stop/publication.json`。
+本机原始结果 `artifacts/completed-protection/{base-v1,quality-v1}/result.json`：
 
-## 下次执行入口
+- Base SHA256 `fc63e57520cbe6ea98a549812e3d020d758167e785a32d26c93cdba92931f2a4`。
+- So400m SHA256 `fa531354d035c1fefe720444e0b51590aa5da6584bb6604a144bbfae21a2d30e`。
+
+原图仍 `data/equipment-v1/images/`；索引 `artifacts/equipment-benchmark/{base-v1,quality-v1}/index.npz`；模型/代码缓存 `models/opus-mt-zh-en`、`models/opus-constrained-decoder` 及固定HF缓存。均不上传Git，严格匹配索引/model/processor/runtime身份，不以相同维度绕过兼容检查。
+
+实际验证完成：
+
+- 独立开发复算138335检查/51034数值，正式880301检查/257832数值，最大差0；另有只读终审890项记录核对，无可操作发现。复算不等于独立神经重放、重分词或人类语义真值。
+- 本地/干净克隆683通过、2真实模型测试默认排除、无skip；Ruff和原始CLIP/SigLIP有限差分演示通过。82个源/测试/示例/训练/构建/CI文件与检查点相同。克隆复用已装虚拟环境及固定外部解码代码缓存，备份训练测试只用玩具fixture，本轮没有预训练模型训练。
+- 真实MPS模块CLI：t09保护、t13真早拒绝→OPUS、t14无约束、t01正常约束，完整轨迹/Top5匹配正式Base；功能验证不并入性能样本。
+- wheel/sdist、模块/两profile/词表字节及仓库外导入/帮助通过。python -m build入口不可用的初次尝试保留，使用已装uv离线构建，未安装/升级推理依赖。
+- 源码/冻结检查点[CI41283470859](https://github.com/HenryVarro666/siglip-embedding-tool/actions/runs/41283470859)实际683通过。最终文档/结果HEAD另有CI，见[提交历史](https://github.com/HenryVarro666/siglip-embedding-tool/commits/main/)和[Actions](https://github.com/HenryVarro666/siglip-embedding-tool/actions)；最终上传凭证为本机 `artifacts/completed-protection/publication.json`。
+
+所有检测、观察/CPU复制、在线词检查、先失败/清理、实际备用、检索和返回轨迹复制都在报告的外层同步总时间内；完整记录科学重放和排名/JSON整理放在计时后（SIG-056）。全部尾样本保留，无模型失败尝试被删除/排除，无为改善分数重跑。等所有日志写完后才作审计摘要，SIG-050流程没有复发。
+
+## 下次入口与尚未执行的方向
 
 ```bash
 cd /Users/caochao/Documents/SigLIP
 git status --short --branch
 uv run pytest -m 'not integration'
-uv run python -m siglip_tools.repetition_stop search \
+uv run python -m siglip_tools.completed_protection search \
   --index artifacts/equipment-benchmark/base-v1/index.npz \
   --query '变压器的散热片在垂下的黑色粗电缆后方，电缆连接顶部的套管。' \
   --mode auto_fusion --fallback opus --device mps --local-files-only
 ```
 
-实测已完成，不必为了继续阅读重跑模型。比较、导出与复算命令见本轮 README，输出存在时拒绝覆盖，使用新路径。先等全部日志写完，再收集文件摘要。
+阅读报告不必重跑模型。比较/导出/复算和自定义开发路径见本轮README，现有文件拒绝覆盖，重跑用新目录；共享日志摘要必须等全部写入结束。
 
-下一轮候选工作尚未执行：补长正常句、合法重复和列表开发控制；研究如何感知/保护已完成且满足约束的候选；分析 4 条漏检的循环/停滞形式；领域人员复核术语与接线/否定/安装关系；另立新版本和独立现场留出。耗时需交错模型/时段、多会话及 CPU/GPU/内存 profiling，当前没有缓存、OCR、局部特征、并发服务或训练。不要据本 16 条修改当前阈值或回写标签。
+下一轮仍未执行：真实现场/人类审核留出；EOS出现前的合法重复与词汇合法但坏语义候选；4条漏检；软约束/源槽位/其他预训练翻译；多会话交错模型/时段、CPU/GPU profiling、内存峰值/并发/大库。任何方法/数据改动另建版本，不据本16调当前阈值，不隐式加训练、OCR、局部特征或缓存。用户若仅要求继续当前任务，先核对Git和本页，不重跑已完成实验。
 
-旧进展均保留：[设备](equipment-benchmark-v1.md)、[中英融合](bilingual-fusion-v1.md)、[自动翻译](auto-translation-v1.md)、[更大译者](stronger-translation-v1.md)、[术语约束](terminology-constraints-v1.md)、[失败回退](constraint-fallback-v1.md)。上一轮完整接续在 Git `40e29ac`；历史 SIG-001–019 与后续 SIG-020–050 持续衔接。
+旧进展保留：[设备](equipment-benchmark-v1.md)、[双语](bilingual-fusion-v1.md)、[自动翻译](auto-translation-v1.md)、[更大译者](stronger-translation-v1.md)、[术语约束](terminology-constraints-v1.md)、[失败回退](constraint-fallback-v1.md)、[原重复早停](repetition-early-stop-v1.md)。上一轮完整接续在Git7386423；历史SIG-001–050与新SIG-051–061持续衔接。

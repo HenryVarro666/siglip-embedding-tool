@@ -1,0 +1,22 @@
+{
+  "base": {
+    "source_result": "artifacts/repetition-early-stop/base-v1/result.json",
+    "source_sha256": "d728d9412ab1410c71aca46cd5f448a1fdc33dc057abc7bda33606dd6763f894",
+    "t09_same_final_english": true,
+    "t09_same_query_texts": true,
+    "t09_same_full_ranking_scores": true,
+    "t09_same_primary_diagnostic": false,
+    "all16_same_final_english": true,
+    "all16_same_full_ranking_scores": true
+  },
+  "quality": {
+    "source_result": "artifacts/repetition-early-stop/quality-v1/result.json",
+    "source_sha256": "1ec659c53182e8d5112dbee0c092b7ec42af81910b025806ed5a415a00929ba2",
+    "t09_same_final_english": true,
+    "t09_same_query_texts": true,
+    "t09_same_full_ranking_scores": true,
+    "t09_same_primary_diagnostic": false,
+    "all16_same_final_english": true,
+    "all16_same_full_ranking_scores": true
+  }
+}

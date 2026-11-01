@@ -199,6 +199,10 @@ uv run python examples/equipment_review.py
 
 本机 M4 Pro / MPS 结果：Base / So400m 的 Hit@1 为 **68.75% / 87.50%**，mAP 为 **0.693 / 0.824**，常驻查询 p50 为 **6.84 / 21.29 ms**。So400m 部分中文查询退步；16 条查询只代表 8 个意图。详见 [完整评估报告与待解决问题](docs/equipment-benchmark-v1.md)。本轮没有训练，默认模型保持 Base。
 
+## 已完成候选保护与四方案比较
+
+新增显式模块 `uv run python -m siglip_tools.completed_protection search ...`。重复触发时，仅对当前保留、真实EOS完成并通过全部词汇/非空检查的候选保护，继续原搜索。先用24开发句固定验证，再测同16意图/40图；t09额外早拒绝被避免，旧早停主拒绝7/16→6/16，最终0/16，mAP不变。Base/So400m新保护完整p50为411.18/445.23ms，总体平均耗时相对旧早停+0.69%/−0.91%，不构成稳定加速，原始OPUS融合仍为推荐基线。没有训练，原有默认接口保持。详见[完整报告](docs/completed-protection-v1.md)、[直接调用和复现](benchmarks/completed-protection-v1/README.md)、[问题台账与接续](docs/continuation.md)。
+
 ## 保留的训练代码与学习资料
 
 - [学习笔记](SigLIP学习笔记.md)：介绍、损失公式、猫狗数值例子与梯度。
