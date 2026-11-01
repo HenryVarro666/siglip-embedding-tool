@@ -1,0 +1,79 @@
+{
+  "experiment_id": "equipment-completed-protection-v1-development",
+  "created_at_utc": "2026-11-01T07:03:07.652723+00:00",
+  "source_git_commit": "768ea626c555d6214ceca04fab24b8ee992b02b2",
+  "queries_sha256": "bd92d1a84ae20cf1e3b4ea6a1cb9778adee2b704740465729e8f524bf7670425",
+  "queries_semantic_sha256": "2917c1aea48f166ad2af5c07664b979902fe11ef6ac59e28843fc09744e9919c",
+  "development_implementation_sha256": "36ab546fb131d60879168ab818bf7e463233b3801fe91e840d27c5c1ffd30753",
+  "repetition_profile_sha256": "e93ee35b4b81fe94a7b2d97c25fa3317bce599e6976d1a54a6a2d90d764b5777",
+  "protection_rule_sha256": "a8fb1d276fc53ace8c59b76dabd13a24035c323aa637f184c768b20db2464cdc",
+  "fixed_rule": {
+    "schema_version": 1,
+    "profile_id": "retained-eos-full-lexical-protection-v1",
+    "repetition_profile": {
+      "schema_version": 2,
+      "profile_id": "bounded-n16-r2-min32-q4-tail4",
+      "algorithm": "bounded_tail_consecutive_token_cycles",
+      "max_new_tokens": 64,
+      "num_beams": 4,
+      "check_every": 4,
+      "max_ngram_size": 16,
+      "repeat_count": 2,
+      "min_new_tokens": 32,
+      "min_repeating_beams": 4,
+      "min_cycle_tokens": 4,
+      "tail_tolerance": 4
+    },
+    "protection": "If any currently retained, pre-finalize genuine selected-EOS candidate passes original token alternatives, whole-word target forms and nonempty checks, suppress repetition rejection and continue unchanged search. Otherwise retain previous repetition rejection.",
+    "candidate_source": "request_local_scorer_process_selected_eos",
+    "decoder_prompt_len": 1,
+    "source_token_limit": 256,
+    "max_new_tokens": 64,
+    "no_candidate_rescue_or_early_return": true,
+    "no_formal_id_routing": true,
+    "training": false
+  },
+  "methods": [
+    "original",
+    "constrained",
+    "guarded",
+    "protected"
+  ],
+  "translation_model": "Helsinki-NLP/opus-mt-zh-en",
+  "translation_revision": "cf109095479db38d6df799875e34039d4938aaa6",
+  "device": "mps",
+  "translator_device": "mps",
+  "dtype": "float32",
+  "max_input_tokens": 256,
+  "max_new_tokens": 64,
+  "translator_files": {
+    "README.md": "7f4b7f90672cd55b85b213bbe21f4b2d0c92327e885734b7e86b019feb145a6b",
+    "config.json": "cee48d4f205210cec6a7cfedf609acd605949ac5392a7e6e9c8c4c0b6670c27c",
+    "generation_config.json": "4f64a04e3bcf3f2f97ea552f83fe1f08a04a52402d29af3008d1644d9f29178c",
+    "model.safetensors": "9866cb7fcb30bca4c91f0ad2bde4183722bf015461aab8a7a6bea0c2cd030250",
+    "source.spm": "e27a3a1b539f4959ec72ea60e453f49156289f95d4e6000b29332efc45616203",
+    "target.spm": "6a881f4717cd7265f53fea54fd3dc689c767c05338fac7a4590f3088cb2d7855",
+    "tokenizer_config.json": "28e575e0beba8b2d4b6f789e91a219cff031e94a9254f027ce7170a48163c01d",
+    "translation_provenance.json": "39f8c8bd807176f60cfaa87af7ff196bc1dd82d6dde9be5c5500547ab4dcda38",
+    "vocab.json": "08a119a1defd522fa047cb5e3bfe3e89633e96caa38ced0dc9cee7ef1021a011"
+  },
+  "decoder_files": {
+    "README.md": "0b550f52f5ffb16b8f36a34b2e5c9cb40076994063dd72b283552370eb43d903",
+    "custom_generate/beam_constraints.py": "72da73e8f601167c895974bbb6064f1be7d14f33247f6a8ea0acc6c162b62704",
+    "custom_generate/beam_search.py": "247baefee037b9cebda29140abcc298ed2d4fdb32b79a40550a06b004a03bda5",
+    "custom_generate/generate.py": "3f2975a90ef9f506077d8e54d0e145cfd735088c9c082c595d546cfe5cd7eb64",
+    "decoder_provenance.json": "784dd5143ec4b19689bc4fc8991181c9ea1c5e07116f77bfaf2d533cad7d30be"
+  },
+  "training": false,
+  "formal_queries_or_retrieval_used": false,
+  "translation_text_cache": false,
+  "rule_selection": "One predeclared structural protection policy; unchanged numeric repetition profile; no outcome-dependent grid or formal tuning.",
+  "coverage": "Report actual baseline acceptance and eligible checks separately by old/long_normal/legitimate_repetition. Intended normal/repeated source is not human gold.",
+  "pre_run_suite": {
+    "passed": 683,
+    "integration_deselected": 2,
+    "skipped": 0,
+    "ruff": "passed",
+    "log_sha256": "7e63c3aa49b2e09a7f443abd0e30b0b58986fb369775c0283a5729b9285fa5a4"
+  }
+}
