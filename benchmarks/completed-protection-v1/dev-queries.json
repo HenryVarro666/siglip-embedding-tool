@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "role": "development_only",
+  "queries": [
+    {
+      "query_id": "i01_zh",
+      "text": "带电气连接接口的小型太阳能微型逆变器。",
+      "group": "old_development"
+    },
+    {
+      "query_id": "i02_zh",
+      "text": "安装在墙上、外壳闭合的太阳能逆变器。",
+      "group": "old_development"
+    },
+    {
+      "query_id": "i03_zh",
+      "text": "打开外壳后露出电路板和蓝色电容的太阳能逆变器。",
+      "group": "old_development"
+    },
+    {
+      "query_id": "i04_zh",
+      "text": "安装在光伏板下方或背面的太阳能逆变器。",
+      "group": "old_development"
+    },
+    {
+      "query_id": "i05_zh",
+      "text": "打开柜门后能看到接线的电气配电柜或控制柜。",
+      "group": "old_development"
+    },
+    {
+      "query_id": "i06_zh",
+      "text": "成排工业电气开关柜之间的通道。",
+      "group": "old_development"
+    },
+    {
+      "query_id": "i07_zh",
+      "text": "能看到套管或散热片的室外电力变压器。",
+      "group": "old_development"
+    },
+    {
+      "query_id": "i08_zh",
+      "text": "给电脑或服务器提供断电备用电源的 UPS 不间断电源。",
+      "group": "old_development"
+    },
+    {
+      "query_id": "l01_zh",
+      "text": "请寻找安装在砖墙上的太阳能逆变器，机壳保持闭合，侧面可以看到通风口，电缆从底部进入线槽，附近没有打开的柜门。",
+      "group": "long_normal"
+    },
+    {
+      "query_id": "l02_zh",
+      "text": "一台逆变器固定在室内支架上，前面有显示屏，下面有两根向左延伸的电缆，上面保留检修空间，周围没有遮挡通风口的杂物。",
+      "group": "long_normal"
+    },
+    {
+      "query_id": "l03_zh",
+      "text": "照片中的太阳能逆变器安装在车库内，左边是电表，右边是配电箱，几根电缆经过底部接头后进入墙面的保护管。",
+      "group": "long_normal"
+    },
+    {
+      "query_id": "l04_zh",
+      "text": "我要查找并排安装的两台逆变器，两者都有闭合机壳和清晰标签，电缆沿同一条线槽向下走，地面保持整洁且没有工具。",
+      "group": "long_normal"
+    },
+    {
+      "query_id": "l05_zh",
+      "text": "室外变压器放在围栏里面，套管位于顶部，几根电线向远处延伸，旁边留有维护通道，围栏外没有车辆或行人。",
+      "group": "long_normal"
+    },
+    {
+      "query_id": "l06_zh",
+      "text": "一台变压器的散热片沿箱体侧面均匀排列，顶部电线连接套管，底座放在水泥平台上，前面保留通道供工作人员检查。",
+      "group": "long_normal"
+    },
+    {
+      "query_id": "l07_zh",
+      "text": "请寻找用于光伏系统的微型逆变器，金属机壳固定在支撑架上，接头朝向左右两侧，铭牌可以看见，电缆没有盖住标签。",
+      "group": "long_normal"
+    },
+    {
+      "query_id": "l08_zh",
+      "text": "控制室里的一台逆变器放在金属支架上，上方留出通风空间，右边的电缆沿竖直线槽向下排列，左边没有堆放箱子。",
+      "group": "long_normal"
+    },
+    {
+      "query_id": "r01_zh",
+      "text": "第一台逆变器连接第一组电池板，第二台逆变器连接第二组电池板，第三台逆变器连接第三组电池板，三台设备各有独立标签。",
+      "group": "legitimate_repetition"
+    },
+    {
+      "query_id": "r02_zh",
+      "text": "左边的逆变器有红色开关，中间的逆变器有红色开关，右边的逆变器也有红色开关，但只有中间设备的显示屏亮着。",
+      "group": "legitimate_repetition"
+    },
+    {
+      "query_id": "r03_zh",
+      "text": "检查逆变器的输入电缆，检查逆变器的输出电缆，检查逆变器的接地电缆，三条电缆分别进入不同接头且不能互相混淆。",
+      "group": "legitimate_repetition"
+    },
+    {
+      "query_id": "r04_zh",
+      "text": "第一排散热片位于变压器左侧，第二排散热片位于变压器右侧，两排散热片之间是箱体，箱体顶部可以看到套管。",
+      "group": "legitimate_repetition"
+    },
+    {
+      "query_id": "r05_zh",
+      "text": "一号逆变器的机壳是白色，二号逆变器的机壳是白色，三号逆变器的机壳也是白色，各自底部的接线仍然分别可见。",
+      "group": "legitimate_repetition"
+    },
+    {
+      "query_id": "r06_zh",
+      "text": "一根电线连接第一个套管，一根电线连接第二个套管，一根电线连接第三个套管，这些套管都安装在同一台变压器顶部。",
+      "group": "legitimate_repetition"
+    },
+    {
+      "query_id": "r07_zh",
+      "text": "逆变器旁边有一只空箱子、一只空箱子和一只空箱子，重复列出是因为照片中确实有三只相同箱子，箱子没有挡住通风口。",
+      "group": "legitimate_repetition"
+    },
+    {
+      "query_id": "r08_zh",
+      "text": "同一面墙上是逆变器、间隔、逆变器、间隔和逆变器，这个重复排列表示三台独立设备，设备下方分别连接独立电缆。",
+      "group": "legitimate_repetition"
+    }
+  ],
+  "queries_semantic_sha256": "2917c1aea48f166ad2af5c07664b979902fe11ef6ac59e28843fc09744e9919c",
+  "authorship": "Assistant-written controls, not human semantic gold. New rows frozen before current model outputs.",
+  "historical_formal_outcomes_known": true,
+  "formal_strings_or_reference_english_used": false,
+  "training": false
+}

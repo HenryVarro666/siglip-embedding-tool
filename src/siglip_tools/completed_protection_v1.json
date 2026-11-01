@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "profile_id": "retained-eos-full-lexical-protection-v1",
+  "repetition_profile": {
+    "schema_version": 2,
+    "profile_id": "bounded-n16-r2-min32-q4-tail4",
+    "algorithm": "bounded_tail_consecutive_token_cycles",
+    "max_new_tokens": 64,
+    "num_beams": 4,
+    "check_every": 4,
+    "max_ngram_size": 16,
+    "repeat_count": 2,
+    "min_new_tokens": 32,
+    "min_repeating_beams": 4,
+    "min_cycle_tokens": 4,
+    "tail_tolerance": 4
+  },
+  "protection": "If any currently retained, pre-finalize genuine selected-EOS candidate passes original token alternatives, whole-word target forms and nonempty checks, suppress repetition rejection and continue unchanged search. Otherwise retain previous repetition rejection.",
+  "candidate_source": "request_local_scorer_process_selected_eos",
+  "decoder_prompt_len": 1,
+  "source_token_limit": 256,
+  "max_new_tokens": 64,
+  "no_candidate_rescue_or_early_return": true,
+  "no_formal_id_routing": true,
+  "training": false
+}

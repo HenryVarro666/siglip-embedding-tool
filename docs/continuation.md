@@ -1,5 +1,7 @@
 # 工作接续状态
 
+进行中（2026-11-01）：新轮 completed-protection-v1 已在 feat/completed-candidate-protection 设计/实现，24 开发源句和保护规则已保存。先真实开发验证并冻结，再跑同16/40的四融合控制（原始、旧约束回退、旧早停回退、新候选保护回退）Base→So400m。新源/实测尚未完成，不能把下文上一轮结果当本轮结果。台账 SIG-051/052 记录当前边界。
+
 更新：2026-11-01。本轮重复检测与提前拒绝实验已完成，没有训练。仓库为 `/Users/caochao/Documents/SigLIP`，私有远端为 `HenryVarro666/siglip-embedding-tool`。代码、两模型实测、独立复算、真实 CLI、打包、干净克隆与 515 项测试均已完成。代码检查点为 `053caa86417072f434b894173a2a86bf68b3b0b2`；后续从 `main` 接续，最新文档提交的检查以 GitHub 对应提交的 Actions 为准。
 
 ## 从这里开始
