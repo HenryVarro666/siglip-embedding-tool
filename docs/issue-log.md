@@ -7,6 +7,41 @@
 ## 本轮即时记录
 
 
+### SIG-054：完成候选保护的保存轨迹还需重放最终接受与精确检查覆盖
+
+- 状态：新模型调用前独立只读审阅复现并修复，52项保护器/9项开发测试通过；尚无开发/正式模型结果受影响。
+- 证据一：40次 process 历史的正常轨迹可把 observed_generation_steps 改为0、清空 snapshots 后仍通过旧新版验证器，掩盖≥32检查覆盖。固定解码器只有最后 scorer.is_done 会短路回调，不能任意省略。
+- 证据二：非中止轨迹可改为 status=success、无EOS、空英文、词检查false而仍通过纯轨迹检查；开发旧版本仅从 status/ok 推导接受，也缺最终 EOS/非空/词形重放。
+- 修复方向：finalize 前只记录一次 scorer_done_before_finalize，正常观测步数必须等于 process 数或有据少最后一步；实际中止相等且不进入 finalize。统一纯函数重放最终序列EOS、非空、词汇/要求flags和成功状态，开发各控制及备用均调用。原模型/规则/默认不改。
+- 验证：task1 追加 RED/GREEN、development-acceptance-red/green、audit-terminal-callback 与 audit-final-acceptance 日志；独立审计63项合成测试、统一离线683通过/2排除、Ruff通过。第一次 development-acceptance-green.log 因同伴 helper 尚未落地而 ImportError，保留为中间失败；最终 development-acceptance-final-green.log 9项通过。记录审计仍不是独立重分词/神经重放或人类语义真值。
+
+### SIG-055：开发自定义输出路径必须校验实际新文件
+
+- 状态：预运行修复，未发生新模型测量。
+- 证据：run_development 写 args.output/validation 后，最初仍校验源目录里的固定 dev-observations/dev-validation，可能误读旧文件或在测量后找不到 canonical 文件。
+- 修复：验证 API 可显式传 observations_path/validation_path，执行器传本次实际路径；正式预检仍默认固定目录。新测试在不存在 canonical 文件时确认真正读取并拒绝自定义坏数据，不允许路径被忽略。
+- 验证：development-custom-path-red.log 的意图失败与 green.log 通过；README 提醒新路径、原输出不覆盖。
+
+### SIG-056：科学记录重放不应只计入新保护方案的在线耗时
+
+- 状态：模型运行前已修复并通过受控时钟回归。
+- 证据：评估新实现起初把完整保存轨迹的离线重放放在请求计时内，而实际保护器/CLI不做这次重放，使保护方案独有额外审计费用。受控时钟测试模拟100秒重放，原总计为103秒而真实请求段应为3秒。
+- 修复：独立同步总计时保留真实生成、观察/CPU复制、在线词检查、清理、失败/备用、检索和返回轨迹复制；记录总计后再进行科学重放与排名/JSON整理。每次仍校验，只不把离线检查冒充在线成本。所有四控制采用同一总计边界。
+- 验证：benchmark-audit-timing-red/green.log，修复后37项runner测试通过；开发/正式协议将明确这条边界。不是删去真实检测或失败回退时间。
+
+### SIG-057：热请求布尔状态和四种首调用证据也应校验
+
+- 状态：新实验预运行修复，RED/GREEN及一次638项离线全套通过；后续审阅补强后统一重新验证。
+- 证据：合成篡改发现热状态1/0会被当True/False接受，四种首请求的顺序/存在性/时间/轨迹未完整校验。6个新增回归先失败，再严格要求布尔字段和四种实际首调用与同意图正式控制一致。
+- 验证：benchmark-status-startup-red/green.log；全套日志 benchmark-offline-suite.log。更早 task1-green-offline-suite.log 记620通过/18失败，是其他所有者仍在写RED测试时的中间状态，不冒作最终绿色。模型运行未开始、没有排除或重跑模型样本。
+
+### SIG-053：开发覆盖记录需要绑定源词表匹配，不能只相信启用标志
+
+- 状态：模型观测前已补防护并进行 RED/GREEN 验证。
+- 证据：新开发验证最初只绑定源句/文件摘要、保护轨迹和主分支结果，没有独立重建源文本应触发的词表要求。若保存记录把 constraints_applied 关闭、清空要求或换成 sleeve，可能把未执行约束误计为覆盖。
+- 修复：按固定 glossary_requirements 重建 id/source_terms/target_forms，要求启用状态相符、目标 token alternatives 非空且合法；原始无约束 beam1 单独处理。四个篡改用例先失败，补函数并接入主验证后通过。
+- 验证：artifacts/completed-protection/development-source-red/green.log；当前开发源/规则不变，尚未运行新模型。绑定 token 替代的实际 SPM 来源仍依赖已冻结译者身份/文件及运行轨迹，不冒称纯记录审计重新分词或神经重放。
+
 ### SIG-051：已完成候选保护必须证明来自真实 EOS 分支，而非 finalize 补 EOS
 
 - 状态：新轮设计/实现中，尚未运行新模型实验；承接 SIG-045/049。
