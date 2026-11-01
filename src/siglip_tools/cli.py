@@ -7,6 +7,7 @@ from pathlib import Path
 from time import perf_counter
 
 from .auto_retrieval import timed_search
+from .constraint_fallback import timed_fallback_search
 from .encoder import DEFAULT_MODEL, QUALITY_MODEL, SigLIPEmbedder, identity_fingerprint
 from .fusion import search_texts
 from .images import load_rgb, pixel_sha256, scan_images
@@ -79,6 +80,12 @@ def _parser() -> argparse.ArgumentParser:
                 type=Path,
                 default=Path("models/opus-constrained-decoder"),
             )
+            query.add_argument(
+                "--constraint-fallback",
+                choices=("error", "opus", "chinese"),
+                default="error",
+                help="On rejected constrained output: error, fresh original OPUS, or Chinese only",
+            )
         query.set_defaults(handler=_search)
 
     inspect = sub.add_parser("inspect", help="Inspect index metadata without downloading a model")
@@ -126,7 +133,15 @@ def _build(args) -> None:
     )
 
 
-def _search(args) -> None:
+def _search(args) -> int | None:
+    fallback_request = args.command == "search-text" and args.constraint_fallback != "error"
+    if fallback_request and (
+        not args.auto_translate or args.translator != "opus" or args.opus_decoding != "constrained"
+    ):
+        raise ValueError(
+            "--constraint-fallback requires --auto-translate, --translator opus "
+            "and --opus-decoding constrained"
+        )
     if (
         args.command == "search-text"
         and args.opus_decoding != "original"
@@ -140,12 +155,13 @@ def _search(args) -> None:
         identity["model_id"], identity["revision"], args.device, args.local_files_only
     )
     index.assert_compatible(encoder.identity)
-    translator = None
+    translator = original = None
     if args.command == "search-text" and args.auto_translate:
         if args.translator == "opus":
             translator = LocalTranslator(
                 args.translation_dir or Path("models/opus-mt-zh-en"), device=str(encoder.device)
             )
+            original = translator
             if args.opus_decoding != "original":
                 from .opus_constraints import OPUSConstraintTranslator
 
@@ -167,7 +183,19 @@ def _search(args) -> None:
     query_timing = None
     if translator is not None:
         mode = "auto_en" if args.auto_translate == "english" else "auto_fusion"
-        measured = timed_search(index, encoder, translator, args.query, mode, args.top_k)
+        if fallback_request:
+            measured = timed_fallback_search(
+                index,
+                encoder,
+                translator,
+                original,
+                args.query,
+                mode,
+                args.constraint_fallback,
+                args.top_k,
+            )
+        else:
+            measured = timed_search(index, encoder, translator, args.query, mode, args.top_k)
         matches, query_timing = measured["matches"], measured["timing"]
         automatic = {
             "english": measured["translation"],
@@ -178,6 +206,26 @@ def _search(args) -> None:
             **(
                 {"constraint_trace": translator.last_trace}
                 if hasattr(translator, "last_trace")
+                else {}
+            ),
+            **(
+                {
+                    "constraint_fallback": args.constraint_fallback,
+                    **{
+                        key: measured[key]
+                        for key in (
+                            "ok",
+                            "failure",
+                            "primary_failure",
+                            "constraint_trace",
+                            "fallback_trace",
+                            "fallback_triggered",
+                            "effective_route",
+                            "query_texts",
+                        )
+                    },
+                }
+                if fallback_request
                 else {}
             ),
         }
@@ -206,6 +254,7 @@ def _search(args) -> None:
             "device": str(encoder.device),
             **({"query_fusion": fusion} if fusion else {}),
             **({"automatic_translation": automatic} if automatic else {}),
+            **({"query_timing_ms": query_timing} if fallback_request else {}),
             "results": [
                 {**asdict(match), "full_path": str(image_root / match.path)} for match in matches
             ],
@@ -222,10 +271,19 @@ def _search(args) -> None:
                     if query_timing
                     else {}
                 ),
+                **(
+                    {
+                        "constraint_translation": query_timing["constraint_translation_ms"] / 1000,
+                        "fallback_translation": query_timing["fallback_translation_ms"] / 1000,
+                    }
+                    if fallback_request
+                    else {}
+                ),
                 "total": perf_counter() - started,
             },
         }
     )
+    return 2 if fallback_request and not measured["ok"] else None
 
 
 def _inspect(args) -> None:
@@ -246,7 +304,7 @@ def main(argv=None) -> int:
     parser = _parser()
     args = parser.parse_args(argv)
     try:
-        args.handler(args)
+        status = args.handler(args)
     except (ValueError, OSError, RuntimeError) as exc:
         parser.exit(2, f"error: {exc}\n")
-    return 0
+    return status or 0
