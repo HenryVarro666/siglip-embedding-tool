@@ -1,0 +1,400 @@
+{
+  "viable": true,
+  "selection_rule": "Exclude candidates rejecting any baseline-accepted dev output; maximize caught baseline failures, then higher beam quorum, lower mean trigger tokens, more copies, smaller maximum ngram, larger minimum tokens, lexical profile ID. If no viable candidate, freeze n8/max_declared_repeat/min32/q4 and mark nonviable.",
+  "selected_profile": {
+    "schema_version": 2,
+    "profile_id": "bounded-n16-r2-min32-q4-tail4",
+    "algorithm": "bounded_tail_consecutive_token_cycles",
+    "max_new_tokens": 64,
+    "num_beams": 4,
+    "check_every": 4,
+    "max_ngram_size": 16,
+    "repeat_count": 2,
+    "min_new_tokens": 32,
+    "min_repeating_beams": 4,
+    "min_cycle_tokens": 4,
+    "tail_tolerance": 4
+  },
+  "selected_row": {
+    "profile": {
+      "schema_version": 2,
+      "profile_id": "bounded-n16-r2-min32-q4-tail4",
+      "algorithm": "bounded_tail_consecutive_token_cycles",
+      "max_new_tokens": 64,
+      "num_beams": 4,
+      "check_every": 4,
+      "max_ngram_size": 16,
+      "repeat_count": 2,
+      "min_new_tokens": 32,
+      "min_repeating_beams": 4,
+      "min_cycle_tokens": 4,
+      "tail_tolerance": 4
+    },
+    "trigger_new_tokens": {
+      "i07_zh": 48
+    },
+    "early_rejected_baseline_accepted_ids": [],
+    "caught_baseline_failure_ids": [
+      "i07_zh"
+    ],
+    "mean_failure_trigger_tokens": 48.0
+  },
+  "candidates": [
+    {
+      "profile": {
+        "schema_version": 2,
+        "profile_id": "bounded-n16-r2-min24-q3-tail4",
+        "algorithm": "bounded_tail_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 16,
+        "repeat_count": 2,
+        "min_new_tokens": 24,
+        "min_repeating_beams": 3,
+        "min_cycle_tokens": 4,
+        "tail_tolerance": 4
+      },
+      "trigger_new_tokens": {
+        "i07_zh": 48
+      },
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [
+        "i07_zh"
+      ],
+      "mean_failure_trigger_tokens": 48.0
+    },
+    {
+      "profile": {
+        "schema_version": 2,
+        "profile_id": "bounded-n16-r2-min24-q4-tail4",
+        "algorithm": "bounded_tail_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 16,
+        "repeat_count": 2,
+        "min_new_tokens": 24,
+        "min_repeating_beams": 4,
+        "min_cycle_tokens": 4,
+        "tail_tolerance": 4
+      },
+      "trigger_new_tokens": {
+        "i07_zh": 48
+      },
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [
+        "i07_zh"
+      ],
+      "mean_failure_trigger_tokens": 48.0
+    },
+    {
+      "profile": {
+        "schema_version": 2,
+        "profile_id": "bounded-n16-r2-min32-q3-tail4",
+        "algorithm": "bounded_tail_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 16,
+        "repeat_count": 2,
+        "min_new_tokens": 32,
+        "min_repeating_beams": 3,
+        "min_cycle_tokens": 4,
+        "tail_tolerance": 4
+      },
+      "trigger_new_tokens": {
+        "i07_zh": 48
+      },
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [
+        "i07_zh"
+      ],
+      "mean_failure_trigger_tokens": 48.0
+    },
+    {
+      "profile": {
+        "schema_version": 2,
+        "profile_id": "bounded-n16-r2-min32-q4-tail4",
+        "algorithm": "bounded_tail_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 16,
+        "repeat_count": 2,
+        "min_new_tokens": 32,
+        "min_repeating_beams": 4,
+        "min_cycle_tokens": 4,
+        "tail_tolerance": 4
+      },
+      "trigger_new_tokens": {
+        "i07_zh": 48
+      },
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [
+        "i07_zh"
+      ],
+      "mean_failure_trigger_tokens": 48.0
+    },
+    {
+      "profile": {
+        "schema_version": 2,
+        "profile_id": "bounded-n16-r3-min24-q3-tail4",
+        "algorithm": "bounded_tail_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 16,
+        "repeat_count": 3,
+        "min_new_tokens": 24,
+        "min_repeating_beams": 3,
+        "min_cycle_tokens": 4,
+        "tail_tolerance": 4
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 2,
+        "profile_id": "bounded-n16-r3-min24-q4-tail4",
+        "algorithm": "bounded_tail_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 16,
+        "repeat_count": 3,
+        "min_new_tokens": 24,
+        "min_repeating_beams": 4,
+        "min_cycle_tokens": 4,
+        "tail_tolerance": 4
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 2,
+        "profile_id": "bounded-n16-r3-min32-q3-tail4",
+        "algorithm": "bounded_tail_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 16,
+        "repeat_count": 3,
+        "min_new_tokens": 32,
+        "min_repeating_beams": 3,
+        "min_cycle_tokens": 4,
+        "tail_tolerance": 4
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 2,
+        "profile_id": "bounded-n16-r3-min32-q4-tail4",
+        "algorithm": "bounded_tail_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 16,
+        "repeat_count": 3,
+        "min_new_tokens": 32,
+        "min_repeating_beams": 4,
+        "min_cycle_tokens": 4,
+        "tail_tolerance": 4
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 2,
+        "profile_id": "bounded-n8-r2-min24-q3-tail4",
+        "algorithm": "bounded_tail_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 8,
+        "repeat_count": 2,
+        "min_new_tokens": 24,
+        "min_repeating_beams": 3,
+        "min_cycle_tokens": 4,
+        "tail_tolerance": 4
+      },
+      "trigger_new_tokens": {
+        "i07_zh": 60
+      },
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [
+        "i07_zh"
+      ],
+      "mean_failure_trigger_tokens": 60.0
+    },
+    {
+      "profile": {
+        "schema_version": 2,
+        "profile_id": "bounded-n8-r2-min24-q4-tail4",
+        "algorithm": "bounded_tail_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 8,
+        "repeat_count": 2,
+        "min_new_tokens": 24,
+        "min_repeating_beams": 4,
+        "min_cycle_tokens": 4,
+        "tail_tolerance": 4
+      },
+      "trigger_new_tokens": {
+        "i07_zh": 60
+      },
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [
+        "i07_zh"
+      ],
+      "mean_failure_trigger_tokens": 60.0
+    },
+    {
+      "profile": {
+        "schema_version": 2,
+        "profile_id": "bounded-n8-r2-min32-q3-tail4",
+        "algorithm": "bounded_tail_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 8,
+        "repeat_count": 2,
+        "min_new_tokens": 32,
+        "min_repeating_beams": 3,
+        "min_cycle_tokens": 4,
+        "tail_tolerance": 4
+      },
+      "trigger_new_tokens": {
+        "i07_zh": 60
+      },
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [
+        "i07_zh"
+      ],
+      "mean_failure_trigger_tokens": 60.0
+    },
+    {
+      "profile": {
+        "schema_version": 2,
+        "profile_id": "bounded-n8-r2-min32-q4-tail4",
+        "algorithm": "bounded_tail_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 8,
+        "repeat_count": 2,
+        "min_new_tokens": 32,
+        "min_repeating_beams": 4,
+        "min_cycle_tokens": 4,
+        "tail_tolerance": 4
+      },
+      "trigger_new_tokens": {
+        "i07_zh": 60
+      },
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [
+        "i07_zh"
+      ],
+      "mean_failure_trigger_tokens": 60.0
+    },
+    {
+      "profile": {
+        "schema_version": 2,
+        "profile_id": "bounded-n8-r3-min24-q3-tail4",
+        "algorithm": "bounded_tail_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 8,
+        "repeat_count": 3,
+        "min_new_tokens": 24,
+        "min_repeating_beams": 3,
+        "min_cycle_tokens": 4,
+        "tail_tolerance": 4
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 2,
+        "profile_id": "bounded-n8-r3-min24-q4-tail4",
+        "algorithm": "bounded_tail_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 8,
+        "repeat_count": 3,
+        "min_new_tokens": 24,
+        "min_repeating_beams": 4,
+        "min_cycle_tokens": 4,
+        "tail_tolerance": 4
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 2,
+        "profile_id": "bounded-n8-r3-min32-q3-tail4",
+        "algorithm": "bounded_tail_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 8,
+        "repeat_count": 3,
+        "min_new_tokens": 32,
+        "min_repeating_beams": 3,
+        "min_cycle_tokens": 4,
+        "tail_tolerance": 4
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    },
+    {
+      "profile": {
+        "schema_version": 2,
+        "profile_id": "bounded-n8-r3-min32-q4-tail4",
+        "algorithm": "bounded_tail_consecutive_token_cycles",
+        "max_new_tokens": 64,
+        "num_beams": 4,
+        "check_every": 4,
+        "max_ngram_size": 8,
+        "repeat_count": 3,
+        "min_new_tokens": 32,
+        "min_repeating_beams": 4,
+        "min_cycle_tokens": 4,
+        "tail_tolerance": 4
+      },
+      "trigger_new_tokens": {},
+      "early_rejected_baseline_accepted_ids": [],
+      "caught_baseline_failure_ids": [],
+      "mean_failure_trigger_tokens": null
+    }
+  ],
+  "training_executed": false,
+  "formal_queries_or_retrieval_used": false,
+  "protocol_sha256": "90ee72ce8b871bd8a44698ca514191ed5ede120939eb53d301cf9209a5e602f8",
+  "observations_sha256": "152e8d8e27303f0229bde9ec2600077e5f847a8fdb38e7843109a62335f5fdf7"
+}
