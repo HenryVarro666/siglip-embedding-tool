@@ -3,6 +3,8 @@
 import hashlib
 import importlib.util
 import json
+import subprocess
+import sys
 from copy import deepcopy
 from pathlib import Path
 
@@ -322,3 +324,26 @@ def test_existing_output_is_preserved_before_any_result_is_read(tmp_path):
     with pytest.raises(FileExistsError):
         load_audit().main(["--base", "missing", "--quality", "missing", "--output", str(output)])
     assert output.read_text() == "preserve evidence"
+
+
+def test_open_stdout_log_is_excluded_while_closed_evidence_remains_hashable(tmp_path):
+    stable = tmp_path / "stable.log"
+    stable.write_text("closed evidence")
+    active = tmp_path / "active.log"
+    script = Path(__file__).resolve().parents[1] / "examples/audit_fallback_benchmark.py"
+    code = (
+        "import importlib.util,json,sys; from pathlib import Path; "
+        "s=importlib.util.spec_from_file_location('audit',sys.argv[1]); "
+        "m=importlib.util.module_from_spec(s); s.loader.exec_module(m); "
+        "print(json.dumps(m.evidence_log_snapshot(Path(sys.argv[2]))))"
+    )
+    with active.open("w") as stream:
+        result = subprocess.run(
+            [sys.executable, "-c", code, str(script), str(tmp_path)],
+            stdout=stream,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+    assert result.returncode == 0, result.stderr
+    captured = json.loads(active.read_text())
+    assert captured == {str(stable): hashlib.sha256(b"closed evidence").hexdigest()}

@@ -38,6 +38,23 @@ def read_json(path):
     return json.loads(Path(path).read_text())
 
 
+def evidence_log_snapshot(directory):
+    """Exclude this process's open stdout/stderr from whole-file attestations."""
+    active = set()
+    for descriptor in (1, 2):
+        try:
+            stat = os.fstat(descriptor)
+        except OSError:
+            continue
+        active.add((stat.st_dev, stat.st_ino))
+    snapshot = {}
+    for path in sorted(Path(directory).glob("*.log")):
+        stat = path.stat()
+        if (stat.st_dev, stat.st_ino) not in active:
+            snapshot[str(path)] = file_hash(path)
+    return snapshot
+
+
 class Checks:
     def __init__(self):
         self.count = self.numeric = 0
@@ -662,9 +679,12 @@ def main(argv=None):
             models=audits,
             historical_comparison=historical,
             evidence_file_sha256={
-                str(p.relative_to(root)): file_hash(p)
-                for p in sorted((root / "artifacts/constraint-fallback").glob("*.log"))
+                str(Path(p).relative_to(root)): digest
+                for p, digest in evidence_log_snapshot(
+                    root / "artifacts/constraint-fallback"
+                ).items()
             },
+            evidence_log_scope="Completed logs snapshot; current stdout/stderr files excluded.",
             auditor_sha256=file_hash(__file__),
             limits=[
                 "Earlier diagnostic results were known; "
