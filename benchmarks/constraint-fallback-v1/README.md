@@ -45,7 +45,7 @@ uv run python examples/audit_fallback_benchmark.py \
   --output artifacts/constraint-fallback/reaudit-v1.json
 ```
 
-输出存在时拒绝覆盖，重跑必须新目录。`results-summary.json`保存全部指标/率/阶段及分支耗时、身份/加载和源结果SHA；`requests.json`保存完整评分排名/原样轨迹及每次热请求时间/分支/可重建摘要；`audit.json`为不调用生产评分/统计函数的独立复算；`verification.json`保存测试/打包/真实CLI/检出/CI验收口径。运行完成后才写这些结果，候选改进不是已验证结论。
+输出存在时拒绝覆盖，重跑必须新目录。`results-summary.json`保存全部指标/率/阶段及分支耗时、身份/加载和源结果SHA；`requests.json`保存完整评分排名/原样轨迹及每次热请求时间/分支/可重建摘要；`audit.json`为不调用生产评分/统计函数的独立复算；`verification.json`保存测试/打包/真实CLI/检出/CI验收口径。本轮两模型已完成、独立算法复算通过。analysis.json追加同6/10意图组的描述分析及尾延迟样本；候选改进不是已验证结论。
 
 ## 直接调用
 
@@ -82,4 +82,4 @@ print(result["effective_route"], result["timing"], result["matches"])
 # 后续请求复用上面的三个对象；只替换查询，不缓存译文。
 ```
 
-回退提高可返回率，不能证明逆变器/套管/散热片的译法、否定、接线、安装和对象归属得到修复；上一轮匿名审阅与全部负结果保留。
+本固定小集中回退提高可返回率，不能证明逆变器/套管/散热片的译法、否定、接线、安装和对象归属得到修复；上一轮匿名审阅与全部负结果保留。

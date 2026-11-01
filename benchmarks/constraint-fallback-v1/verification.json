@@ -1,0 +1,202 @@
+{
+  "updated_at_utc": "2026-11-01T05:09:13.515605+00:00",
+  "training_executed": false,
+  "measured_implementation_git_commit": "d005f31ccacc52e7567514f70ae594d4c542e296",
+  "freeze_git_commit": "71ead7f9ebbc71ba8aa5e2d93f413642d29ab98f",
+  "core_sha256": "e377efdeb1bcfe1ff44ac93eca1ee8489d1a5a2032fcba0eabbfdeae958f8675",
+  "previous_core_sha256": "44b19b06d0ffd628ea48ef0bb7ec69c64025637e0e664e43001efdc393ded9df",
+  "protocol_sha256": "b4e64cd4e9a7314a227386c62507363f22c594a9d8856299301bbca4e175efc1",
+  "source_results": {
+    "base": {
+      "path": "artifacts/constraint-fallback/base-v1/result.json",
+      "sha256": "a7325d62983472e60d820d19cf4fb96daf3318a03b90397dddef6ebfeb86e566"
+    },
+    "quality": {
+      "path": "artifacts/constraint-fallback/quality-v1/result.json",
+      "sha256": "7cd928a22159baf8acf7e6917675451480a1f66569547f6c99f4b2a32e2f95d2"
+    }
+  },
+  "local_offline_suite": {
+    "passed": 400,
+    "integration_deselected": 2,
+    "skipped": 0,
+    "log": "artifacts/constraint-fallback/final-tests.log"
+  },
+  "ruff": "passed",
+  "original_loss_demo_and_finite_difference": "passed",
+  "independent_algorithm_audit": {
+    "passed": true,
+    "sha256": "590a990229b3624cbd4f7a7367ea29c5ba43d3235cd5002f3d6024e14785b240",
+    "checks": 748678,
+    "numeric_comparisons": 131907,
+    "max_numeric_absolute_difference": 1.1368683772161603e-13,
+    "written_by_separate_assistant": true,
+    "real_execution_by_root": true,
+    "independent_neural_replay": false
+  },
+  "real_mps_cli": {
+    "passed": true,
+    "cases": [
+      {
+        "fallback": "opus",
+        "intent": "t02",
+        "policy": "fallback_opus_fusion",
+        "exit_code": 0
+      },
+      {
+        "fallback": "chinese",
+        "intent": "t02",
+        "policy": "fallback_zh_fusion",
+        "exit_code": 0
+      },
+      {
+        "fallback": "opus",
+        "intent": "t01",
+        "policy": "fallback_opus_fusion",
+        "exit_code": 0
+      }
+    ],
+    "log": "artifacts/constraint-fallback/cli-smoke.log",
+    "record_sha256": "4ee0973595fb52d5713eb43fd33d4c162ccec6eec0c837c760742fe9eaf40adf",
+    "functional_check_only_not_added_to_benchmark_times": true
+  },
+  "package_check": {
+    "passed": true,
+    "wheel": "artifacts/constraint-fallback/dist/siglip_embedding_tool-0.1.0-py3-none-any.whl",
+    "wheel_sha256": "ce5115a6eb8f59ae841af46ea323f3137a1b7c2774cfb2b2e80d61ade614a638",
+    "member_sha256": {
+      "constraint_fallback.py": "d5a434e2969c931e6184c547095898bc45ac488f4645c7153e6e44b0c39e8898",
+      "fallback_benchmark.py": "d47f6fd4e700c4542b0ed9f3b62cca4f21d287f95154c2ccdd81de50eb0e60b2",
+      "cli.py": "10fd9f0813383d1bd1a97ed720dae51af331baa97129edb3814eaa4640e8512a",
+      "opus_constraints.py": "b92c787e70703f8bd620ebd7d3ce55b59a7d8301e46d77fec23791e44984b9dc",
+      "power_glossary_v1.json": "20fef944133fe8453e9b60d5d7a6ccabb93ce3a4ffe0565038caaf8f51e3c42e"
+    },
+    "imported_from_outside_repo": true,
+    "cli_help_exposes_fallback": true,
+    "stdout": "/private/var/folders/c8/z7rkgj2x1fz_257xzx4c_vdh0000gn/T/siglip-fallback-wheel-tb4p2914/unpacked/siglip_tools/constraint_fallback.py\n",
+    "training_executed": false
+  },
+  "distribution_files": {
+    "artifacts/constraint-fallback/dist/siglip_embedding_tool-0.1.0.tar.gz": "59e0d64653894bbf4f7851632c02148a96d8b653e7e3abfd413a266ef51f5c43",
+    "artifacts/constraint-fallback/dist/siglip_embedding_tool-0.1.0-py3-none-any.whl": "ce5115a6eb8f59ae841af46ea323f3137a1b7c2774cfb2b2e80d61ade614a638",
+    "artifacts/constraint-fallback/dist/.gitignore": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1"
+  },
+  "code_checkpoint_ci": {
+    "commit": "2f2e84488905b2dbed9caef8e24c8ce642daa3b3",
+    "run_id": 41275120486,
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/HenryVarro666/siglip-embedding-tool/actions/runs/41275120486",
+    "tests_passed": 400,
+    "integration_deselected": 2,
+    "scope": "All source/test/example/training/CI files are unchanged since this checked commit; later commits contain results/docs/verification."
+  },
+  "code_file_sha256": {
+    ".github/workflows/tests.yml": "83efd39158de528a0c3bcc1e8b37af707d2ffe885fde27c01252e2abf664a937",
+    "examples/audit_fallback_benchmark.py": "1ce367720c95e42b0583f667043395e5865d5c9f4c9137f7b141f2a46e8876a4",
+    "examples/equipment_review.py": "9af2423c9dd6a402a9c6b0eb9c42c88371ff6f42776732a2ff262668866dbb08",
+    "examples/summarize_fallback_benchmark.py": "e424d24e76cb5acdb79d091053d74cd650c5a43553c95185f2fbac16a9fca6a1",
+    "examples/summarize_term_benchmark.py": "b09b8bc7a5458fb3c423e9117fd7f12e720e3535203cbd4677f78cf5eb7ea97b",
+    "src/siglip_tools/__init__.py": "afcceab11e1d6b12a5905d044b5c0503d42b501d6a67a109a0541bdac4e013dd",
+    "src/siglip_tools/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/siglip_tools/auto_benchmark.py": "6b48b7442ee5d2a91539a0c2dda295b79351599dcc1a9b49bec495329a6253e1",
+    "src/siglip_tools/auto_retrieval.py": "bf029d19d7a12ceea4a65655a1f71dba0256580012bb42a4a1cb9d0cc2ded657",
+    "src/siglip_tools/benchmark.py": "2f250feeabbaa439f7e0c032849ab8313b81cad9c07417cb537f3c16ce3a5ecd",
+    "src/siglip_tools/cli.py": "10fd9f0813383d1bd1a97ed720dae51af331baa97129edb3814eaa4640e8512a",
+    "src/siglip_tools/commons.py": "3d0aab0e390866bc682e027f55d5aec695387e990de6a8ed75c8190c796c05ad",
+    "src/siglip_tools/constraint_fallback.py": "d5a434e2969c931e6184c547095898bc45ac488f4645c7153e6e44b0c39e8898",
+    "src/siglip_tools/encoder.py": "e9163aadf62ffd26fc543f9e3f31fb266eaab7eba6c48cf524e30f923f929dab",
+    "src/siglip_tools/evaluation.py": "f51e75cd1b51529b57b55f094724960806509b4793fc4ddebb54818437483e7f",
+    "src/siglip_tools/fallback_benchmark.py": "d47f6fd4e700c4542b0ed9f3b62cca4f21d287f95154c2ccdd81de50eb0e60b2",
+    "src/siglip_tools/finetune.py": "06e8cecbc89206097727a5833df2db788ced6ca2bbe442627962d2ba37cb940d",
+    "src/siglip_tools/fusion.py": "ac91eba4902a40b8a40d4bfc4f0da07b5eb8d3d814cc9b15ed60824a7b627d13",
+    "src/siglip_tools/fusion_benchmark.py": "a4f349561b997ee67f85165b3733aa27a40a9fedbad5bef40bc564a7a1655b83",
+    "src/siglip_tools/images.py": "a7c9fd2313faa361ba93deaf92239708e78f979de0225f973a44d3bc4c01941e",
+    "src/siglip_tools/index.py": "24c9457d1b6f8d7889983f8e1b5348b31e62b7f446d8a5d1dc2df2a276d0eaf2",
+    "src/siglip_tools/losses.py": "da5112264d904b981fd046385bb4e73eb1a3afd8b2c86ef98e96934d7b9ea99a",
+    "src/siglip_tools/nllb_translation.py": "c111f75eccf44a9c2944aff0e4df208aff1485418a1b05e4bc6cdbd54f9ec663",
+    "src/siglip_tools/opus_constraints.py": "b92c787e70703f8bd620ebd7d3ce55b59a7d8301e46d77fec23791e44984b9dc",
+    "src/siglip_tools/power_glossary_v1.json": "20fef944133fe8453e9b60d5d7a6ccabb93ce3a4ffe0565038caaf8f51e3c42e",
+    "src/siglip_tools/term_benchmark.py": "9bff5e2fcc5d21c67bbb84163a980eda641a4033e963ee676634cc47d7b99ff5",
+    "src/siglip_tools/translation.py": "ba21dedd1e9ffb166f4731df8567f9ccba5cf6c37232104991262c9cc16b1fa7",
+    "tests/test_auto_benchmark.py": "c3d244b0a9c7dabbc5b96dcece5edb3ecc26be3a5112b72e984f1cb2b0e3b7d5",
+    "tests/test_auto_retrieval.py": "eb610216e3af4968f728a610fe6bf59ac636fc34e7329c810ad6298caf92fa5b",
+    "tests/test_benchmark.py": "319bab66ff960765e56652996c2bc81d00cb2e1a2cebfb135f7a31a79440c1d6",
+    "tests/test_cli.py": "e4019a733535c02b54ee12c3425f9cdc1244fc146cbe3671024c31499bc545e0",
+    "tests/test_commons.py": "41f49b7ebee90080b2e1a15e6f69b79bc07ff0fae85219f14467644987d3b74c",
+    "tests/test_constraint_fallback.py": "bf8593924146a9540259f53fe3e349d7dc0f6aa2ec3934970a4f13c37dd56dfb",
+    "tests/test_encoder.py": "48f80910891fe2bf795094070773898a308fabfe7ddc1e4721a9f9b09494c2e0",
+    "tests/test_evaluation.py": "ae3ea21b74983668cf48795250d67d69ad71041a2b892a4c55b67f521f2638da",
+    "tests/test_fallback_audit.py": "c5b51b4d1feb2abaa729edd556711245b368a2c27c0c2270e82a8b127b6648de",
+    "tests/test_fallback_benchmark.py": "4e43dbb590a8e1fe5d263b86cd14abea249a0b51aac640cd08804ae653b3c6e4",
+    "tests/test_fallback_cli.py": "cedc2ca253d402fc2ccfba3794c970482aed0117754b017e070ebc14c27614eb",
+    "tests/test_fallback_export.py": "0c1fd203747c9cb869f59d69396b00c80ba79412e37fe8275a1f7482f93bfd8e",
+    "tests/test_fusion.py": "2783fb6f31600fe804b854e2d5c174234c513d295e334ac29e0722d32b8ad97b",
+    "tests/test_fusion_benchmark.py": "dab62320520b1698349e25d3fa36f34219a79d30d0b238f9794401559a8e5625",
+    "tests/test_images.py": "5686804a2e86617c28e6548ce4a73789685600b6492d638c4d3067e186f0aaa3",
+    "tests/test_index.py": "1e6a763c252f74dbf3c61004af5d977648cca326e05dd1ae66e4e60d87ed416a",
+    "tests/test_mutating_inputs.py": "5cf25e34f74e1d468294cfce5bc5336747cb3c992fcac2ad623863595966620e",
+    "tests/test_nllb_translation.py": "8dce3e78cf53af1aaf0c821965540311a1f7712fe6258e64dcb3652611b79452",
+    "tests/test_opus_constraint_cli.py": "f1fd3da983fd0863a050a3fa485828206077b717e1ac450b0ae31620a2044028",
+    "tests/test_opus_constraints.py": "7411e444ce7961ba4bb80ab2daf5a3854ffaa4950cf50d366925ea26290bbee9",
+    "tests/test_packaging.py": "4e0e3e51a6795dbec7a8dcbd78334a962c9db5d85ec75362c784df9a32bd7df5",
+    "tests/test_pretrained.py": "502ca112113afb6b55a890206eef14ccb2d8d9951b9e891de623c2120479a9ba",
+    "tests/test_stronger_translation.py": "c82b5261e284336feac734df882cdd50a5b77a44148a38b711ad2378ea9ba49f",
+    "tests/test_term_benchmark.py": "1482063572335b392ddc813cd5351dc7311619683d7635c01e9cabcfa808616e",
+    "tests/test_term_export.py": "7c015cbdff140aa8732ec50fa831e3cb5fe7e4330f07b455fc6629124519a625",
+    "tests/test_training.py": "f4f61d9fc90f3d86bf6effce0fe25137e1154c8ce190c293da4ee90e6f19a88a",
+    "tests/test_translation.py": "73ff0a6b22b0766452cc9666ac8e6e7384b1d41baa8be51b9c0c1489324c4d82",
+    "training/README.md": "1084df464fa0b1fcb75ba5d3e7514b2d23f6927ff8f1ccdb5dbcd9bc191d901c",
+    "training/finetune.py": "542efeb0d663605a33db8cb7dd0fea401a08125831ed0a42a5f2b20647eb5228"
+  },
+  "evidence_log_sha256": {
+    "artifacts/constraint-fallback/engine-green.log": "ea25c718f65996f346b89148563e2a81594c00b50b86bc4a953305597b684b10",
+    "artifacts/constraint-fallback/base-v1.log": "bf4b5145f75d144e48afd85422fd64c740cb4cd03fbfdfd60217e99437511445",
+    "artifacts/constraint-fallback/result-guards-red.log": "8705d15402e379deadbddc049234c7e5a1da039927085b4719862004dca427f8",
+    "artifacts/constraint-fallback/quality-v1.log": "1c85341c72e7b3e2745d242d5231ed171a9572d8a0c20c54bd8b92121b318cdb",
+    "artifacts/constraint-fallback/export-green.log": "3a3c2a1889431af87bf78fc4d98a99b3af4135444a7f14264b05af8182db1426",
+    "artifacts/constraint-fallback/audit-red.log": "3180ccc7b7ae503592f83ef185937e4dec8714d8ad4b2af09513049575f1f7e7",
+    "artifacts/constraint-fallback/runner-current.log": "bae4586f456e5393881152c42517ee55bfd0bd26d53234b74fa3160852c144ef",
+    "artifacts/constraint-fallback/pre-run-ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "artifacts/constraint-fallback/engine-regression.log": "1377b7660170f1497d1bdf21ce0c9445a155744cd24b19398cd050bb94684027",
+    "artifacts/constraint-fallback/engine-red.log": "7be6e996cb570bcfdea820d12886eef6142e6193cb7c84958b6f29fb143e70a2",
+    "artifacts/constraint-fallback/audit-green-final.log": "1253f6ca793d46eb9c48b6f1606064815d0bb62be75a701be4c49494044e47ce",
+    "artifacts/constraint-fallback/audit-green-initial.log": "82d4f21078212c4d83db8d4397da9298cabccd404a1c60bccb1cfcb120f1127f",
+    "artifacts/constraint-fallback/pre-run-tests.log": "43d0e88914c0c58ebc97e398761eef501003e0e901ba9c8d423d3c7b66da84ac",
+    "artifacts/constraint-fallback/cli-smoke.log": "c699dcff18841d471f56df618efdec5ea6e12c6b2405b061f5b14b84f4da8b12",
+    "artifacts/constraint-fallback/checkpoint-ci.log": "7c67d60ee148cc8c9e274374cefa5aaee5505653b6fc7208f4f8406fc6dcf8a7",
+    "artifacts/constraint-fallback/final-ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "artifacts/constraint-fallback/result-guards-green.log": "c23172d3bb6c93add2765ae959787b3e5b35912240df83225b090b403e91199a",
+    "artifacts/constraint-fallback/package-check.log": "e8a928c0025a560e8800b52a1b2b2e15cf726c726ce5b0a7fb223384beed80ee",
+    "artifacts/constraint-fallback/audit-green.log": "7b3b0d5a921d7788afd5d0591f4f23616773499e68d52f759b0a65c29bc0ff2c",
+    "artifacts/constraint-fallback/final-loss-demo.log": "34ee9c7597d93b5aa8ef6c7e2bd5961e197fa24a6ebd764d0107fad1e6dd4716",
+    "artifacts/constraint-fallback/runner-green-attempt.log": "53b3a69287e4f8460bf2e6e4a57e84de7ee99e7980c1befd3311a1995039e674",
+    "artifacts/constraint-fallback/export-red.log": "3b082779a153b643c3dc06176680fa5cdb147f7c9bdfcc5bdfa0ddcf9e258f0e",
+    "artifacts/constraint-fallback/source-anchor-red.log": "961913e41e8277de677de66d529af375fd69309eeecfe9a1ea436cfca0ed048f",
+    "artifacts/constraint-fallback/final-tests.log": "de2ce5c7f64b84bd4de2cf4c8d7f6adfad1a2fe2e40f6bd06a1b878d0a97abbb",
+    "artifacts/constraint-fallback/audit-ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "artifacts/constraint-fallback/runner-red.log": "7cf8b134f8e1e804495d6ea003e6427eac5b543cb9f662d49c344f3fb654f05f",
+    "artifacts/constraint-fallback/audit-real.log": "c6d8f731aff104d065234b491432a0ef14d0de89a6cebf213ffe8b6e70bdf6ea",
+    "artifacts/constraint-fallback/build.log": "6fc218772b3a514f0635a30559fa074ed85f960ef68da54aa1371b40ed185207"
+  },
+  "resume_event": {
+    "resumed_at_utc": "2026-11-01T04:58:13.275426+00:00",
+    "base_result_mtime_utc": "2026-11-01T00:30:43.316249+00:00",
+    "base_result_sha256": "a7325d62983472e60d820d19cf4fb96daf3318a03b90397dddef6ebfeb86e566",
+    "base_complete": true,
+    "base_rerun": false,
+    "quality_partial_result_existed": false,
+    "quality_started_after_resume": true,
+    "interruption_inside_completed_base_measurement": false,
+    "note": "Pause between model processes, not a resumed partial timing round. No result/protocol/source change. Same permodel freshcontrols; order/thermal/time-of-day not counterbalanced. Independent audit code exists; root will execute it after bothruns because auditworker ended on usage limit whilewaiting."
+  },
+  "curated_result_files_sha256": {
+    "results-summary.json": "0b999170cce7a8b4c4f2c46e540804a2ac36738267655fe35686b76602f76ebc",
+    "requests.json": "0ed13c6196f6dd8a7a0192eb18ba179c79fa99057e0595240dc788886efc4452",
+    "analysis.json": "08221cc3f31dc31eca72a3a1a66ce3bea996ec28b50a88753b18903bc24354dc"
+  },
+  "fresh_checkout": {
+    "status": "pending"
+  },
+  "latest_main_ci": "Use per-commit GitHub Actions; code-checkpoint receipt does not claim futureHEAD CI."
+}
