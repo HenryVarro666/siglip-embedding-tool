@@ -1,0 +1,127 @@
+{
+  "passed": true,
+  "checks": 138335,
+  "numeric_comparisons": 51034,
+  "maximum_numeric_absolute_difference": 0.0,
+  "sources": 24,
+  "method_requests": 96,
+  "summary": {
+    "all": {
+      "count": 24,
+      "baseline_accepted_ids": [
+        "i01_zh",
+        "i02_zh",
+        "i03_zh",
+        "i04_zh",
+        "i05_zh",
+        "i06_zh",
+        "i08_zh",
+        "l01_zh",
+        "l03_zh",
+        "l04_zh",
+        "l07_zh",
+        "l08_zh",
+        "r01_zh",
+        "r02_zh",
+        "r03_zh",
+        "r07_zh",
+        "r08_zh"
+      ],
+      "accepted_eligible_ids": [
+        "l01_zh",
+        "l03_zh",
+        "l04_zh",
+        "l07_zh",
+        "l08_zh",
+        "r01_zh",
+        "r02_zh",
+        "r03_zh",
+        "r07_zh",
+        "r08_zh"
+      ],
+      "old_early_rejected_ids": [
+        "i07_zh",
+        "r02_zh"
+      ],
+      "new_early_rejected_ids": [
+        "i07_zh"
+      ],
+      "protected_ids": [
+        "r02_zh"
+      ],
+      "old_accepted_new_rejected_ids": []
+    },
+    "old_development": {
+      "count": 8,
+      "baseline_accepted_ids": [
+        "i01_zh",
+        "i02_zh",
+        "i03_zh",
+        "i04_zh",
+        "i05_zh",
+        "i06_zh",
+        "i08_zh"
+      ],
+      "accepted_eligible_ids": [],
+      "old_early_rejected_ids": [
+        "i07_zh"
+      ],
+      "new_early_rejected_ids": [
+        "i07_zh"
+      ],
+      "protected_ids": [],
+      "old_accepted_new_rejected_ids": []
+    },
+    "long_normal": {
+      "count": 8,
+      "baseline_accepted_ids": [
+        "l01_zh",
+        "l03_zh",
+        "l04_zh",
+        "l07_zh",
+        "l08_zh"
+      ],
+      "accepted_eligible_ids": [
+        "l01_zh",
+        "l03_zh",
+        "l04_zh",
+        "l07_zh",
+        "l08_zh"
+      ],
+      "old_early_rejected_ids": [],
+      "new_early_rejected_ids": [],
+      "protected_ids": [],
+      "old_accepted_new_rejected_ids": []
+    },
+    "legitimate_repetition": {
+      "count": 8,
+      "baseline_accepted_ids": [
+        "r01_zh",
+        "r02_zh",
+        "r03_zh",
+        "r07_zh",
+        "r08_zh"
+      ],
+      "accepted_eligible_ids": [
+        "r01_zh",
+        "r02_zh",
+        "r03_zh",
+        "r07_zh",
+        "r08_zh"
+      ],
+      "old_early_rejected_ids": [
+        "r02_zh"
+      ],
+      "new_early_rejected_ids": [],
+      "protected_ids": [
+        "r02_zh"
+      ],
+      "old_accepted_new_rejected_ids": []
+    }
+  },
+  "observations_sha256": "cfbb1eb614c53206a5c39e2395670bf15dae23616db5d3a97bb5c8d016138eaf",
+  "validation_sha256": "9eaf67b683882b34baa3bc29e42a3f7b484174aa8ce5b40255e28885f41c3f3a",
+  "auditor_sha256": "b263597160c43186e8fdb3eb49dcc82f097c1abd5c316701f4a42621ec9c1c0a",
+  "training_executed": false,
+  "formal_outputs_existed": false
+}

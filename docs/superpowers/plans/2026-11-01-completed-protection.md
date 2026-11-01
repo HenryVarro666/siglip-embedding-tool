@@ -31,8 +31,8 @@ Owned files: src/siglip_tools/completed_protection.py, tests/test_completed_prot
 Owned files: src/siglip_tools/protected_development.py, tests/test_protected_development.py, benchmarks/completed-protection-v1/dev-*.json.
 
 - [x] RED→GREEN fixed24 input binding, rule and semantic validation, complete observed eligibility and primary-acceptance comparisons.
-- [ ] Commit source/rules before new model calls; run four fresh MT controls on24 dev cases. Preserve all controls/errors/evidence; no retrieval or formal queries.
-- [ ] Validate fixed protection and coverage, save decisions/identities/times and commit before formal outputs.
+- [x] Commit source/rules before new model calls; run four fresh MT controls on24 dev cases. Preserve all controls/errors/evidence; no retrieval or formal queries.
+- [x] Validate fixed protection and coverage, save decisions/identities/times and commit before formal outputs.
 
 ### Task3: Four-policy measured benchmark
 
@@ -55,3 +55,5 @@ Owned files: examples/audit_completed_protection.py, examples/summarize_complete
 Baseline source7386423; graph queried empty (SIG-021). In-place feature branch preserves shared local artifacts, authorized by current task. Decoder mechanics read-only subagent completed; implementation/review delegation follows scoped file ownership. All decisions/failed attempts are also persisted in docs/issue-log.md.
 
 Pre-inference verification: 683 passed,2 integration deselected, no skips; full Ruff passed. SIG-054–057 fixes all precede model calls. Old measured core remains5508fc; no development/formal results exist at source freeze.
+
+Development complete: source768ea62/protocol5e52774,24sources/96methodcalls,17legacyaccepted/10acceptedeligible,new17acceptedpreserved; r02 genuineEOS34 protectsraw56/60. Independentdevelopmentaudit138335checks/51034numbers,max0. Noformaloutputs; oldnumericprofile andstructuralrule unchanged.

@@ -1,0 +1,122 @@
+{
+  "protocol_sha256": "e618c56b6baed9663bb7384df2dacb75f4524e6d454170aa35023dcd305a4474",
+  "observations_sha256": "cfbb1eb614c53206a5c39e2395670bf15dae23616db5d3a97bb5c8d016138eaf",
+  "repetition_profile_sha256": "e93ee35b4b81fe94a7b2d97c25fa3317bce599e6976d1a54a6a2d90d764b5777",
+  "protection_rule_sha256": "a8fb1d276fc53ace8c59b76dabd13a24035c323aa637f184c768b20db2464cdc",
+  "development_only": true,
+  "training_executed": false,
+  "summary": {
+    "all": {
+      "count": 24,
+      "baseline_accepted_ids": [
+        "i01_zh",
+        "i02_zh",
+        "i03_zh",
+        "i04_zh",
+        "i05_zh",
+        "i06_zh",
+        "i08_zh",
+        "l01_zh",
+        "l03_zh",
+        "l04_zh",
+        "l07_zh",
+        "l08_zh",
+        "r01_zh",
+        "r02_zh",
+        "r03_zh",
+        "r07_zh",
+        "r08_zh"
+      ],
+      "accepted_eligible_ids": [
+        "l01_zh",
+        "l03_zh",
+        "l04_zh",
+        "l07_zh",
+        "l08_zh",
+        "r01_zh",
+        "r02_zh",
+        "r03_zh",
+        "r07_zh",
+        "r08_zh"
+      ],
+      "old_early_rejected_ids": [
+        "i07_zh",
+        "r02_zh"
+      ],
+      "new_early_rejected_ids": [
+        "i07_zh"
+      ],
+      "protected_ids": [
+        "r02_zh"
+      ],
+      "old_accepted_new_rejected_ids": []
+    },
+    "old_development": {
+      "count": 8,
+      "baseline_accepted_ids": [
+        "i01_zh",
+        "i02_zh",
+        "i03_zh",
+        "i04_zh",
+        "i05_zh",
+        "i06_zh",
+        "i08_zh"
+      ],
+      "accepted_eligible_ids": [],
+      "old_early_rejected_ids": [
+        "i07_zh"
+      ],
+      "new_early_rejected_ids": [
+        "i07_zh"
+      ],
+      "protected_ids": [],
+      "old_accepted_new_rejected_ids": []
+    },
+    "long_normal": {
+      "count": 8,
+      "baseline_accepted_ids": [
+        "l01_zh",
+        "l03_zh",
+        "l04_zh",
+        "l07_zh",
+        "l08_zh"
+      ],
+      "accepted_eligible_ids": [
+        "l01_zh",
+        "l03_zh",
+        "l04_zh",
+        "l07_zh",
+        "l08_zh"
+      ],
+      "old_early_rejected_ids": [],
+      "new_early_rejected_ids": [],
+      "protected_ids": [],
+      "old_accepted_new_rejected_ids": []
+    },
+    "legitimate_repetition": {
+      "count": 8,
+      "baseline_accepted_ids": [
+        "r01_zh",
+        "r02_zh",
+        "r03_zh",
+        "r07_zh",
+        "r08_zh"
+      ],
+      "accepted_eligible_ids": [
+        "r01_zh",
+        "r02_zh",
+        "r03_zh",
+        "r07_zh",
+        "r08_zh"
+      ],
+      "old_early_rejected_ids": [
+        "r02_zh"
+      ],
+      "new_early_rejected_ids": [],
+      "protected_ids": [
+        "r02_zh"
+      ],
+      "old_accepted_new_rejected_ids": []
+    }
+  }
+}
