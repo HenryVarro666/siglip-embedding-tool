@@ -1,5 +1,5 @@
 {
-  "updated_at_utc": "2026-11-01T05:09:13.515605+00:00",
+  "updated_at_utc": "2026-11-01T05:15:21.432967+00:00",
   "training_executed": false,
   "measured_implementation_git_commit": "d005f31ccacc52e7567514f70ae594d4c542e296",
   "freeze_git_commit": "71ead7f9ebbc71ba8aa5e2d93f413642d29ab98f",
@@ -17,22 +17,25 @@
     }
   },
   "local_offline_suite": {
-    "passed": 400,
+    "passed": 401,
     "integration_deselected": 2,
     "skipped": 0,
-    "log": "artifacts/constraint-fallback/final-tests.log"
+    "log": "artifacts/constraint-fallback/final-tests-v2.log"
   },
   "ruff": "passed",
   "original_loss_demo_and_finite_difference": "passed",
   "independent_algorithm_audit": {
     "passed": true,
-    "sha256": "590a990229b3624cbd4f7a7367ea29c5ba43d3235cd5002f3d6024e14785b240",
+    "sha256": "d4b5f1cfd5642da72ef7bc80219f7b53a0088d1b5635c84042a0950063a24861",
     "checks": 748678,
     "numeric_comparisons": 131907,
     "max_numeric_absolute_difference": 1.1368683772161603e-13,
     "written_by_separate_assistant": true,
     "real_execution_by_root": true,
-    "independent_neural_replay": false
+    "independent_neural_replay": false,
+    "root_fixed_log_attestation_only": true,
+    "synthetic_audit_tests_passed": 11,
+    "measurements_rerun": false
   },
   "real_mps_cli": {
     "passed": true,
@@ -81,19 +84,9 @@
     "artifacts/constraint-fallback/dist/siglip_embedding_tool-0.1.0-py3-none-any.whl": "ce5115a6eb8f59ae841af46ea323f3137a1b7c2774cfb2b2e80d61ade614a638",
     "artifacts/constraint-fallback/dist/.gitignore": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1"
   },
-  "code_checkpoint_ci": {
-    "commit": "2f2e84488905b2dbed9caef8e24c8ce642daa3b3",
-    "run_id": 41275120486,
-    "status": "completed",
-    "conclusion": "success",
-    "url": "https://github.com/HenryVarro666/siglip-embedding-tool/actions/runs/41275120486",
-    "tests_passed": 400,
-    "integration_deselected": 2,
-    "scope": "All source/test/example/training/CI files are unchanged since this checked commit; later commits contain results/docs/verification."
-  },
   "code_file_sha256": {
     ".github/workflows/tests.yml": "83efd39158de528a0c3bcc1e8b37af707d2ffe885fde27c01252e2abf664a937",
-    "examples/audit_fallback_benchmark.py": "1ce367720c95e42b0583f667043395e5865d5c9f4c9137f7b141f2a46e8876a4",
+    "examples/audit_fallback_benchmark.py": "494ec368dc759eb1dc024062f0db2af6ffe2fe2a2718240f393fd26b6ec8cfca",
     "examples/equipment_review.py": "9af2423c9dd6a402a9c6b0eb9c42c88371ff6f42776732a2ff262668866dbb08",
     "examples/summarize_fallback_benchmark.py": "e424d24e76cb5acdb79d091053d74cd650c5a43553c95185f2fbac16a9fca6a1",
     "examples/summarize_term_benchmark.py": "b09b8bc7a5458fb3c423e9117fd7f12e720e3535203cbd4677f78cf5eb7ea97b",
@@ -127,7 +120,7 @@
     "tests/test_constraint_fallback.py": "bf8593924146a9540259f53fe3e349d7dc0f6aa2ec3934970a4f13c37dd56dfb",
     "tests/test_encoder.py": "48f80910891fe2bf795094070773898a308fabfe7ddc1e4721a9f9b09494c2e0",
     "tests/test_evaluation.py": "ae3ea21b74983668cf48795250d67d69ad71041a2b892a4c55b67f521f2638da",
-    "tests/test_fallback_audit.py": "c5b51b4d1feb2abaa729edd556711245b368a2c27c0c2270e82a8b127b6648de",
+    "tests/test_fallback_audit.py": "6742daa52dcba5a68acb638f30e02e3c997c8bfcdb75e7219e9788586d5080d7",
     "tests/test_fallback_benchmark.py": "4e43dbb590a8e1fe5d263b86cd14abea249a0b51aac640cd08804ae653b3c6e4",
     "tests/test_fallback_cli.py": "cedc2ca253d402fc2ccfba3794c970482aed0117754b017e070ebc14c27614eb",
     "tests/test_fallback_export.py": "0c1fd203747c9cb869f59d69396b00c80ba79412e37fe8275a1f7482f93bfd8e",
@@ -150,6 +143,7 @@
     "training/finetune.py": "542efeb0d663605a33db8cb7dd0fea401a08125831ed0a42a5f2b20647eb5228"
   },
   "evidence_log_sha256": {
+    "artifacts/constraint-fallback/fresh-checkout.log": "3df5b67e6ecdbeea6f3071fab1be625592afead5e3e43c6c9d44f506b01b26fa",
     "artifacts/constraint-fallback/engine-green.log": "ea25c718f65996f346b89148563e2a81594c00b50b86bc4a953305597b684b10",
     "artifacts/constraint-fallback/base-v1.log": "bf4b5145f75d144e48afd85422fd64c740cb4cd03fbfdfd60217e99437511445",
     "artifacts/constraint-fallback/result-guards-red.log": "8705d15402e379deadbddc049234c7e5a1da039927085b4719862004dca427f8",
@@ -158,16 +152,22 @@
     "artifacts/constraint-fallback/audit-red.log": "3180ccc7b7ae503592f83ef185937e4dec8714d8ad4b2af09513049575f1f7e7",
     "artifacts/constraint-fallback/runner-current.log": "bae4586f456e5393881152c42517ee55bfd0bd26d53234b74fa3160852c144ef",
     "artifacts/constraint-fallback/pre-run-ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "artifacts/constraint-fallback/final-ruff-v2.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
     "artifacts/constraint-fallback/engine-regression.log": "1377b7660170f1497d1bdf21ce0c9445a155744cd24b19398cd050bb94684027",
     "artifacts/constraint-fallback/engine-red.log": "7be6e996cb570bcfdea820d12886eef6142e6193cb7c84958b6f29fb143e70a2",
     "artifacts/constraint-fallback/audit-green-final.log": "1253f6ca793d46eb9c48b6f1606064815d0bb62be75a701be4c49494044e47ce",
     "artifacts/constraint-fallback/audit-green-initial.log": "82d4f21078212c4d83db8d4397da9298cabccd404a1c60bccb1cfcb120f1127f",
+    "artifacts/constraint-fallback/final-tests-v2.log": "1f13cbbb96accdb5cb1cd6dda5c6a16ec18a4effc4fb414fd465c72339cae28d",
     "artifacts/constraint-fallback/pre-run-tests.log": "43d0e88914c0c58ebc97e398761eef501003e0e901ba9c8d423d3c7b66da84ac",
     "artifacts/constraint-fallback/cli-smoke.log": "c699dcff18841d471f56df618efdec5ea6e12c6b2405b061f5b14b84f4da8b12",
+    "artifacts/constraint-fallback/self-log-red.log": "527c278202c5d280ebee6aa9cb9a19ceab0ef3935c68fe02e6d7d425bb7db73b",
     "artifacts/constraint-fallback/checkpoint-ci.log": "7c67d60ee148cc8c9e274374cefa5aaee5505653b6fc7208f4f8406fc6dcf8a7",
+    "artifacts/constraint-fallback/checkpoint-ci-v2.log": "3e8929d46ce0c28a9e7ce305c43260ebae5f681ac7bbfb29b019bda4b877bb2b",
     "artifacts/constraint-fallback/final-ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
     "artifacts/constraint-fallback/result-guards-green.log": "c23172d3bb6c93add2765ae959787b3e5b35912240df83225b090b403e91199a",
     "artifacts/constraint-fallback/package-check.log": "e8a928c0025a560e8800b52a1b2b2e15cf726c726ce5b0a7fb223384beed80ee",
+    "artifacts/constraint-fallback/self-log-green.log": "0c394615874d874af11ec1ba465e8d8bb64998cf503a1f1dd54e79518a79aea9",
+    "artifacts/constraint-fallback/fresh-checkout-v2.log": "7d28ca5fdf3be5c3d3628129f93303e46aaea767b88b7380780a3c723dd3bf40",
     "artifacts/constraint-fallback/audit-green.log": "7b3b0d5a921d7788afd5d0591f4f23616773499e68d52f759b0a65c29bc0ff2c",
     "artifacts/constraint-fallback/final-loss-demo.log": "34ee9c7597d93b5aa8ef6c7e2bd5961e197fa24a6ebd764d0107fad1e6dd4716",
     "artifacts/constraint-fallback/runner-green-attempt.log": "53b3a69287e4f8460bf2e6e4a57e84de7ee99e7980c1befd3311a1995039e674",
@@ -175,6 +175,7 @@
     "artifacts/constraint-fallback/source-anchor-red.log": "961913e41e8277de677de66d529af375fd69309eeecfe9a1ea436cfca0ed048f",
     "artifacts/constraint-fallback/final-tests.log": "de2ce5c7f64b84bd4de2cf4c8d7f6adfad1a2fe2e40f6bd06a1b878d0a97abbb",
     "artifacts/constraint-fallback/audit-ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "artifacts/constraint-fallback/audit-real-v2.log": "fc4b816ae3c30c634aa72b9a51857aa3c2ec7cdf482a72c0c71dd8c931ca309b",
     "artifacts/constraint-fallback/runner-red.log": "7cf8b134f8e1e804495d6ea003e6427eac5b543cb9f662d49c344f3fb654f05f",
     "artifacts/constraint-fallback/audit-real.log": "c6d8f731aff104d065234b491432a0ef14d0de89a6cebf213ffe8b6e70bdf6ea",
     "artifacts/constraint-fallback/build.log": "6fc218772b3a514f0635a30559fa074ed85f960ef68da54aa1371b40ed185207"
@@ -196,7 +197,67 @@
     "analysis.json": "08221cc3f31dc31eca72a3a1a66ce3bea996ec28b50a88753b18903bc24354dc"
   },
   "fresh_checkout": {
-    "status": "pending"
+    "passed": true,
+    "commit": "c33476d4f7b230a6b3a17c009f15ba0a15206227",
+    "completed_at_utc": "2026-11-01T05:13:27.603605+00:00",
+    "tests_passed": 401,
+    "integration_deselected": 2,
+    "skipped": 0,
+    "source_import_verified_inside_checkout": true,
+    "clone_method": "git clone --local --no-hardlinks; existing venv with PYTHONPATH=checkout/src",
+    "decoder_code_cache": "existing pinned4file source cache reused; no model weights in checkout",
+    "training_executed": false
   },
-  "latest_main_ci": "Use per-commit GitHub Actions; code-checkpoint receipt does not claim futureHEAD CI."
+  "latest_main_ci": "Use per-commit GitHub Actions; code-checkpoint receipt does not claim futureHEAD CI.",
+  "historical_code_checkpoint_ci": {
+    "commit": "2f2e84488905b2dbed9caef8e24c8ce642daa3b3",
+    "run_id": 41275120486,
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/HenryVarro666/siglip-embedding-tool/actions/runs/41275120486",
+    "tests_passed": 400,
+    "integration_deselected": 2,
+    "scope": "Historical pre-SIG-043 code receipt:400tests. Auditing log scope subsequently fixed; current401receipt is separate."
+  },
+  "historical_fresh_checkout_v1": {
+    "passed": true,
+    "commit": "fdfeb64eef0844631c566f7984a720e94d6342bc",
+    "completed_at_utc": "2026-11-01T05:10:30.162554+00:00",
+    "tests_passed": 400,
+    "integration_deselected": 2,
+    "skipped": 0,
+    "source_import_verified_inside_checkout": true,
+    "clone_method": "git clone --local --no-hardlinks into TemporaryDirectory; shared existing venv with PYTHONPATH set to checkout/src",
+    "decoder_code_cache": "existing pinned4file HF source cache reused; no model weights in checkout",
+    "training_executed": false
+  },
+  "code_checkpoint_ci": {
+    "commit": "c33476d4f7b230a6b3a17c009f15ba0a15206227",
+    "run_id": 41276088083,
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/HenryVarro666/siglip-embedding-tool/actions/runs/41276088083",
+    "scope": "Current source/test/example/training/CI files match c33476d exactly. Later receipt/documentation commits do not change them.",
+    "tests_passed": 401,
+    "integration_deselected": 2
+  },
+  "auditor_log_fix": {
+    "issue": "SIG-043",
+    "commit": "c33476d4f7b230a6b3a17c009f15ba0a15206227",
+    "old_audit_git_commit": "fdfeb64eef0844631c566f7984a720e94d6342bc",
+    "old_audit_local_backup_sha256": "590a990229b3624cbd4f7a7367ea29c5ba43d3235cd5002f3d6024e14785b240",
+    "audit_v2_sha256": "d4b5f1cfd5642da72ef7bc80219f7b53a0088d1b5635c84042a0950063a24861",
+    "all_metrics_traces_timings_artifacts_identical": true,
+    "active_stdout_stderr_excluded": true,
+    "all_recorded_completed_logs_match": true
+  },
+  "publication": {
+    "repository": "HenryVarro666/siglip-embedding-tool",
+    "visibility": "private",
+    "validated_code_commit": "c33476d4f7b230a6b3a17c009f15ba0a15206227",
+    "results_initial_commit": "fdfeb64eef0844631c566f7984a720e94d6342bc",
+    "latest_main_commits": "https://github.com/HenryVarro666/siglip-embedding-tool/commits/main/",
+    "latest_main_ci": "https://github.com/HenryVarro666/siglip-embedding-tool/actions",
+    "note": "Exact future documentation commit and its CI are resolved by percommitGitHub records; this receipt claims the verified c334code only."
+  }
 }

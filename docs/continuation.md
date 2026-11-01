@@ -1,10 +1,10 @@
 # 工作接续状态
 
-更新：2026-11-01。最新约束失败回退实验已完成两模型实测、独立算法复算、本地400项离线测试、真实MPS CLI及打包检查；最终检出/上传凭证以本页末尾和verification.json为准。仓库`/Users/caochao/Documents/SigLIP`，私有远端`HenryVarro666/siglip-embedding-tool`，工作分支`feat/constraint-failure-fallback`。
+更新：2026-11-01。最新约束失败回退实验已完成两模型实测、独立算法复算、本地401项离线测试、真实MPS CLI及打包检查；最终检出/上传凭证以本页末尾和verification.json为准。仓库`/Users/caochao/Documents/SigLIP`，私有远端`HenryVarro666/siglip-embedding-tool`，开发分支`feat/constraint-failure-fallback`，最终从主分支main接续。
 
 ## 从这里开始
 
-[文档索引](README.md) → [本轮完整报告](constraint-fallback-v1.md) → [输入/复现](../benchmarks/constraint-fallback-v1/README.md) → [台账SIG-038–042](issue-log.md)。用户要求过去、现在和未来每次问题/改进都持久化：发现即登记，修复写实际验证与剩余边界，结束更新本接续和索引；AGENTS.md已固化规则。
+[文档索引](README.md) → [本轮完整报告](constraint-fallback-v1.md) → [输入/复现](../benchmarks/constraint-fallback-v1/README.md) → [台账SIG-038–043](issue-log.md)。用户要求过去、现在和未来每次问题/改进都持久化：发现即登记，修复写实际验证与剩余边界，结束更新本接续和索引；AGENTS.md已固化规则。
 
 ## 本轮完成内容
 
@@ -24,9 +24,9 @@
 
 ## 验证状态
 
-本地400通过、2真实模型测试默认排除、无skip；Ruff和原始损失/有限差分演示通过。真实MPS CLI的t02→原始、t02→中文及t01成功不回退，轨迹/Top5与正式结果一致；这些功能验证不加入性能统计。wheel/sdist构建、模块/词表字节核对和仓库外导入/帮助通过。
+本地401通过、2真实模型测试默认排除、无skip；Ruff和原始损失/有限差分演示通过。真实MPS CLI的t02→原始、t02→中文及t01成功不回退，轨迹/Top5与正式结果一致；这些功能验证不加入性能统计。wheel/sdist构建、模块/词表字节核对和仓库外导入/帮助通过。
 
-代码检查点2f2e844已推私有分支，[CI41275120486](https://github.com/HenryVarro666/siglip-embedding-tool/actions/runs/41275120486)成功、400通过/2排除。后续仅结果/文档/凭证提交不冒用此CI为未来HEAD结果。最新真实main/CI看[提交](https://github.com/HenryVarro666/siglip-embedding-tool/commits/main/)与[Actions](https://github.com/HenryVarro666/siglip-embedding-tool/actions)；独立检出/最终上传凭证待补。
+当前审计修复/代码验收提交c33476d4f7b230a6b3a17c009f15ba0a15206227已上传私有仓库，[CI41276088083](https://github.com/HenryVarro666/siglip-embedding-tool/actions/runs/41276088083)成功；本地及该提交独立检出均401通过/2排除，所有56个源/测试/示例/训练/CI文件与该提交相同。SIG-043仅修复审计活动日志摘要，新版复算原数值完全不变；旧400项验证保留为历史，不冒作当前401覆盖。证据见verification.json。最终文档/凭证提交不冒用旧CI为未来HEAD结果，最新真实main及per-commitCI看[提交](https://github.com/HenryVarro666/siglip-embedding-tool/commits/main/)与[Actions](https://github.com/HenryVarro666/siglip-embedding-tool/actions)。
 
 ## 下一步（未执行，继续不训练）
 
@@ -34,4 +34,4 @@
 2. 在独立开发集预定重复/停滞早拒绝、时间/长度预算、软约束或源槽位保护，再用新现场留出集测完整效果/成本；不按本16条挑规则，不放宽EOS掩盖失败。
 3. 交错模型顺序/时段、多会话及CPU/GPU/内存profiling、峰值/并发/大库。当前并未实现缓存、OCR、局部特征或几何重建，也没有训练。
 
-旧进展入口：[原始设备](equipment-benchmark-v1.md)、[中英融合](bilingual-fusion-v1.md)、[自动翻译](auto-translation-v1.md)、[更大译者](stronger-translation-v1.md)、[术语约束](terminology-constraints-v1.md)，历史台账SIG-001–019与当前SIG-020–042全部保留。上一次完整接续内容在Git提交5ef1c8f及对应报告中，不覆盖历史负结果。
+旧进展入口：[原始设备](equipment-benchmark-v1.md)、[中英融合](bilingual-fusion-v1.md)、[自动翻译](auto-translation-v1.md)、[更大译者](stronger-translation-v1.md)、[术语约束](terminology-constraints-v1.md)，历史台账SIG-001–019与当前SIG-020–043全部保留。上一次完整接续内容在Git提交5ef1c8f及对应报告中，不覆盖历史负结果。

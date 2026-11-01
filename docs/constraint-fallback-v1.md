@@ -11,7 +11,7 @@
 
 表中p50是常驻模型的实际完整请求时间，包含先失败的约束尝试、备用翻译（若有）和检索。不是只测备用模型，也不是把阶段分位数相加。中文回退没有第二次翻译，但先失败的时间仍在。
 
-[固定输入/复现与Python调用](../benchmarks/constraint-fallback-v1/README.md) · [完整结果](../benchmarks/constraint-fallback-v1/results-summary.json) · [逐次证据](../benchmarks/constraint-fallback-v1/requests.json) · [独立复算](../benchmarks/constraint-fallback-v1/audit.json) · [分组与尾延迟分析](../benchmarks/constraint-fallback-v1/analysis.json) · [台账SIG-038–042](issue-log.md)。
+[固定输入/复现与Python调用](../benchmarks/constraint-fallback-v1/README.md) · [完整结果](../benchmarks/constraint-fallback-v1/results-summary.json) · [逐次证据](../benchmarks/constraint-fallback-v1/requests.json) · [独立复算](../benchmarks/constraint-fallback-v1/audit.json) · [分组与尾延迟分析](../benchmarks/constraint-fallback-v1/analysis.json) · [台账SIG-038–043](issue-log.md)。
 
 ## 固定内容与证据口径
 
@@ -135,10 +135,10 @@ Apple M4 Pro/24GiB，Python3.12.16、PyTorch2.15.0、Transformers5.22.1、float3
 ## 工程检查、复算与保存
 
 - 独立标准库程序重新计算全部完整排名指标、率、分组阶段分位数、每热摘要/覆盖、跨模型译文/轨迹、应选分支以及当前/历史控制，**748,678项检查、131,907数值比较通过**；最大数值差1.14e-13，来自浮点统计。另保留审计派生的@3，主结果口径仍@1/5/10及完整mAP。
-- 复算程序由另一助手在未看本轮结果时编写、10项合成测试验证；其等待期间因用量限制停止，真实运行由主执行器完成。独立性指算法/代码来源，不是人类签字或独立神经推理重放。热摘要从评分参考和必要的ranking_override重建，证明已记录的一致性，不能独立证明每次推理重放。
-- 本地400离线测试通过、2真实模型集成测试按默认排除，Ruff及原始CLIP/SigLIP有限差分演示通过；真实MPS CLI验证t02→原始、t02→中文和t01成功不回退，原样轨迹/Top5与测量结果相同。wheel/sdist已构建；后续检出/包内核对及CI证据以[验收文件](../benchmarks/constraint-fallback-v1/verification.json)为准。
+- 复算程序由另一助手在未看本轮结果时编写、原10项合成测试验证（另补1项活动日志重定向回归）；其等待期间因用量限制停止，真实运行由主执行器完成。独立性指算法/代码来源，不是人类签字或独立神经推理重放。热摘要从评分参考和必要的ranking_override重建，证明已记录的一致性，不能独立证明每次推理重放。
+- 本地401离线测试通过、2真实模型集成测试按默认排除，Ruff及原始CLIP/SigLIP有限差分演示通过；真实MPS CLI验证t02→原始、t02→中文和t01成功不回退，原样轨迹/Top5与测量结果相同。wheel/sdist及包内/仓库外导入已核对；审计修复提交c33476d的独立检出401通过且CI成功。完整范围/凭证以[验收文件](../benchmarks/constraint-fallback-v1/verification.json)为准。
 - 保存结果前/比较前/导出前绑定固定源文件、协议/执行实现、模型槽位、标签摘要、完整排名指标/率及热摘要/时间统计；错误输入/旧trace、备用失败、检索错误、系统异常均有回归。SIG-039的3种轨迹和6种结果篡改、连改查询/protocol/freeze已先复现RED再修复。
-- 原始结果在忽略目录`artifacts/constraint-fallback/{base-v1,quality-v1}/result.json`，源码输入/精选全评分/逐热记录、审计和报告保存在Git。模型、图片、向量索引及外部未声明仓库级许可的解码源不重新分发；原始损失学习笔记和备用训练代码保留。
+- 原始结果在忽略目录`artifacts/constraint-fallback/{base-v1,quality-v1}/result.json`，源码输入/精选全评分/逐热记录、审计和报告保存在Git。SIG-043修复审计器对自身活动stdout日志取摘要的问题，先真实子进程RED/GREEN，再重出v2；全部数值/轨迹/源结果完全相同，旧版保留于Git fdfeb64及本机备份，没有重测模型。模型、图片、向量索引及外部未声明仓库级许可的解码源不重新分发；原始损失学习笔记和备用训练代码保留。
 
 ## 后续改进（未执行，继续不训练）
 

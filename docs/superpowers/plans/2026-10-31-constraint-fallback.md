@@ -49,7 +49,7 @@ Files: benchmarks/constraint-fallback-v1 metadata/results/audit; docs/constraint
 - [x] Independently recompute all metrics/rates/percentiles and branch equality from saved raw evidence.
 - [x] Report16-intent metrics, branch/failure costs, p50/p95, loading and semantic limits.
 - [x] Fresh code/result review; regression RED/GREEN for findings; suite/Ruff, real CLI and package checks.
-- [ ] Commit/push private repo, verify exact-commit CI, update ledger/handoff.
+- [x] Commit/push private repo, verify exact-commit CI, update ledger/handoff.
 
 ## Execution decisions
 
@@ -57,4 +57,6 @@ Proceed under the user's explicit execution request without an extra approval ga
 
 ## Progress evidence
 
-Task1 complete: focused45passed plus independent engine/CLI review; Task2 preflight complete: runner22passed, fullsuite386passed/2deselected, Ruffpass. Implementation d005f31, freeze71ead7f. SIG-039 source/result/branch review findings were reproduced RED then guarded GREEN before measurement. Both model runs complete:288scored/1440warm requests, all240triggered warm fallbacks returned. Independent standardlibrary audit748678checks/131907numeric comparisons passed. Local400passed/2deselected, Ruff/lossdemo/MPSCLI3cases/wheel checks passed. SIG-040 records the between-model pause; SIG-041/042 retain semantic and latency limits. Final freshcheckout/push receipt remains pending until verified.
+Task1 complete: focused45passed plus independent engine/CLI review; Task2 preflight complete: runner22passed, fullsuite386passed/2deselected, Ruffpass. Implementation d005f31, freeze71ead7f. SIG-039 source/result/branch review findings were reproduced RED then guarded GREEN before measurement. Both model runs complete:288scored/1440warm requests, all240triggered warm fallbacks returned. Independent standardlibrary audit748678checks/131907numeric comparisons passed. Local400passed/2deselected, Ruff/lossdemo/MPSCLI3cases/wheel checks passed. SIG-040 records the between-model pause; SIG-041/042 retain semantic and latency limits. Final receipt updated after SIG-043:c33476d freshclone401/2 and exactcommit CI41276088083success; no remaining implementation/measurement task. Final documentation upload follows the checked code.
+
+Final artifact check found SIG-043:own active stdout log was hashed before finalprint. Real subprocess RED→GREEN;11audit tests/full401+2deselected/Ruff pass. V2 audit preserves all numeric results exactly, excludes active descriptors, attests matching closed logs. V1 Git fdfeb64 retained. Fresh clone of c33476d passes401+2deselected and source import pointsinsideclone. No model rerun or measured-core changes.
