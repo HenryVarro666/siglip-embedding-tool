@@ -1,10 +1,18 @@
 # 工作接续状态
 
+## 2026-11-04（下午）冻结绑定改为源码快照，核心补丁已应用
+
+SIG-073：冻结导出器与审计不再对工作区源码计算实现指纹，而是对每个基准目录的 `frozen-source.json`（测量提交中被绑定文件的 SHA-256 表）复算；快照来源提交：equipment/bilingual/terminology/constraint-fallback/repetition/completed 为 f079027，stronger-translation 为 3e0da59，auto-translation 为 f0cd1ab（后者按历史公式、不含 nllb 文件）。冻结协议、结果文件、数值与 `implementation_sha256` 一字未改，全部由快照复算通过。执行冻结协议的新测量（`run_benchmark`/`load_inputs` 的 `executing=True`）仍要求当前源码等于快照，否则报 “Executing implementation differs”。核对命令：`uv run python -m siglip_tools.frozen_source verify benchmarks/*/`；新基准版本用 `snapshot --commit <测量提交> <目录>` 生成快照，不得手工编辑快照或冻结结果去迁就新代码。
+
+在此基础上 `docs/patches/2026-11-04-core-hardening.diff` 已应用（images/index/encoder/commons/cli/translation/nllb_translation/opus_constraints），`tests/test_hardening.py` 的 11 个 xfail 移除并全部通过；`src/` 全部按 ruff 格式化，CI 格式检查扩大到 `src`，并新增快照核对与 `--version` 冒烟。本机 652 通过/57 跳过（57 项仍是固定解码代码缓存缺失的既有跳过）、ruff 与格式检查通过。补丁文件保留作记录。
+
+下一步：真实模型（MPS）下复跑一次任一冻结基准的 `run` 只能在新版本目录进行并记录为新测量；若要给旧版本换核心（例如 16 位灰度缩放会改变 I;16 输入的向量），同样是新版本，不覆盖旧数值。
+
 ## 2026-11-04 生产化审查与工程补齐
 
 全面审查后核心模块发现 9 项健壮性缺陷（SIG-062–070，16 位灰度被裁剪为最高），但所有核心文件被冻结导出器的实现哈希绑定（SIG-071）：应用修复会使 34 个冻结复算测试失败。因此修复保存为 `docs/patches/2026-11-04-core-hardening.diff`，`tests/test_hardening.py` 以 11 个严格 xfail 记录缺陷；核心源码、协议、结果与数值一字未改。工程层面补齐 CI 格式检查/打包/CLI 冒烟、pytest 不写缓存、元数据（SIG-072）。本机 627 通过/57 跳过/11 xfail、ruff 与格式检查通过。
 
-下一步：若决定修复，开新基准版本（建议绑定测量提交的 blob 哈希而非实时文件），应用补丁，移除 xfail，重新冻结并重测；在此之前不要直接改动核心文件。
+下一步（当时）：若决定修复，开新基准版本（建议绑定测量提交的 blob 哈希而非实时文件），应用补丁，移除 xfail，重新冻结并重测；在此之前不要直接改动核心文件。——同日下午以源码快照方式完成，见上节；旧结果未重新冻结，因为快照证明它们由记录的源码产生。
 
 更新：2026-11-01。最新“已完成候选保护”实验已完成，无训练。仓库 `/Users/caochao/Documents/SigLIP`，私有远端 `HenryVarro666/siglip-embedding-tool`；后续从 `main` 接续。源码/冻结检查点 fa8eddf 已上传且 CI683 通过，最新文档/结果提交须查看对应逐提交 CI，不能用旧回执冒充未来 HEAD。
 

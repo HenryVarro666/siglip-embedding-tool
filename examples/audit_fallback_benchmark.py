@@ -390,12 +390,22 @@ def audit_result(result, inputs, chinese):
     }
 
 
-def source_hashes(root):
+def source_hashes(root, metadata=None):
+    """Hashes of the bound package files: from the frozen-source snapshot of ``metadata``
+    when one exists (the measured blobs), otherwise from the working tree."""
     source = root / "src/siglip_tools"
     hashes = {}
+    table = None
+    if metadata is not None and (Path(metadata) / "frozen-source.json").is_file():
+        table = read_json(Path(metadata) / "frozen-source.json")["files"]
 
     def group(files, **dependencies):
-        values = {name: hashes.setdefault(name, file_hash(source / name)) for name in files.split()}
+        values = {
+            name: hashes.setdefault(
+                name, table[name] if table is not None else file_hash(source / name)
+            )
+            for name in files.split()
+        }
         return fingerprint({**dependencies, **values})
 
     baseline = group("benchmark.py evaluation.py commons.py encoder.py index.py images.py")
@@ -424,7 +434,7 @@ def main(argv=None):
             read_json(metadata / "protocol.json"),
             read_json(metadata / "freeze.json"),
         )
-        sources = source_hashes(root)
+        sources = source_hashes(root, metadata)
         c.same(file_hash(metadata / "protocol.json"), freeze["protocol_sha256"], "protocol_hash")
         for key in (
             "implementation_sha256",

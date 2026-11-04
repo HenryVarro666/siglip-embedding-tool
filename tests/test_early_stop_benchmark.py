@@ -134,6 +134,7 @@ def fixture(tmp_path, monkeypatch, *, legacy_success=False, guard_trigger=True):
     monkeypatch.setattr(runner, "GALLERY_COUNT", 3)
     monkeypatch.setattr(runner, "validate_development_evidence", lambda *a: True, raising=False)
     monkeypatch.setattr(runner, "implementation_hash", lambda: "fixture-code")
+    monkeypatch.setattr(runner, "previous_core_hash", lambda: runner.PREVIOUS_CORE_SHA256)
     monkeypatch.setattr(
         runner, "retrieval_weight_snapshot", lambda alias: {"sha256": "fixture-weights"}
     )
@@ -360,7 +361,9 @@ def test_saved_result_cannot_rebind_frozen_artifact_identity(tmp_path, monkeypat
         result["implementation_sha256"] = "wrong"
         result["protocol"]["implementation_sha256"] = "wrong"
     with pytest.raises(ValueError):
-        runner.validate_saved_result(result)
+        # A coherently rewritten implementation claim is caught where it matters: when the
+        # runner validates what it just executed. Exports catch it against the committed protocol.
+        runner.validate_saved_result(result, executing=changed == "code")
 
 
 @pytest.mark.parametrize("changed", ["quorum", "step", "missing", "disabled"])

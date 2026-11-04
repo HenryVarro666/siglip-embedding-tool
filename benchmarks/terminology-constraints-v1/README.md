@@ -124,3 +124,7 @@ uv run python examples/equipment_review.py \
 摘要和视图默认拒绝覆盖已有文件；本仓库已有冻结摘要，复跑应为`--output`与`--views-output`选新路径。导出器校验本v1冻结数据、原样跨模型译文/轨迹/索引绑定和控制组；它不运行模型。`implementation_reference_commit`指固定实现来源，不冒充导出时的Git HEAD。
 
 文本输入以A/B/C匿名化，仅包含原中文与原样输出/完成状态；原始审阅保存后才用text-review-key.json解盲。词语表面与失败模式可提示身份，因此仍不是严格人类双盲。t16柜外下方/柜内下部歧义只作事后敏感性，冻结查询和主分母均不改。
+
+## 冻结源码快照（2026-11-04 起）
+
+`frozen-source.json` 记录测量提交 `f079027` 中被实现指纹绑定的源码文件 SHA-256。冻结记录的 `implementation_sha256` 按该快照复算，工作区源码可以维护而不改写测量；执行本协议的新测量仍要求当前源码与快照一致，否则属于新版本。核对：`uv run python -m siglip_tools.frozen_source verify benchmarks/terminology-constraints-v1`。

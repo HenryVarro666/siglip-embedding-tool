@@ -22,6 +22,7 @@ from .benchmark import (
 )
 from .encoder import SigLIPEmbedder, identity_fingerprint
 from .evaluation import evaluate_rankings
+from .frozen_source import frozen_hash, has_snapshot, source_sha256
 from .fusion import search_texts
 from .images import file_sha256
 from .index import ImageIndex
@@ -45,11 +46,10 @@ def check_ranking_and_scores(actual, expected):
 
 
 def implementation_hash():
-    root = Path(__file__).parent
     return identity_fingerprint(
         {
             "baseline": baseline_implementation_hash(),
-            **{name: file_sha256(root / name) for name in ("fusion.py", "fusion_benchmark.py")},
+            **{name: source_sha256(name) for name in ("fusion.py", "fusion_benchmark.py")},
         }
     )
 
@@ -123,14 +123,15 @@ def _save_new(path, payload):
             temporary.unlink(missing_ok=True)
 
 
-def _check_reference(path, payload, pairs):
+def _check_reference(path, payload, pairs, accepted_baselines=None):
     if path is None:
         return None
     reference, digest = _json_snapshot(path)
+    baselines = set(accepted_baselines or ()) | {baseline_implementation_hash()}
     if (
         reference["model_identity"] != payload["model_identity"]
         or reference["dataset_hashes"] != payload["dataset_hashes"]
-        or reference["implementation_sha256"] != baseline_implementation_hash()
+        or reference["implementation_sha256"] not in baselines
     ):
         raise ValueError("Historical reference identity, data or baseline implementation differs")
     max_error = 0.0
@@ -247,7 +248,12 @@ def run_benchmark(args):
         "diagnostics": diagnostics,
         "training_executed": False,
     }
-    payload["historical_reference"] = _check_reference(args.reference_result, payload, pairs)
+    accepted = set()
+    if has_snapshot(args.metadata):
+        accepted.add(frozen_hash(args.metadata, baseline_implementation_hash))
+    payload["historical_reference"] = _check_reference(
+        args.reference_result, payload, pairs, accepted
+    )
     if (
         any(
             file_sha256(Path(args.metadata) / f"{name}.json") != digest

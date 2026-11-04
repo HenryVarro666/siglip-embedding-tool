@@ -57,3 +57,7 @@ Python 入口是 `CompletedProtectedTranslator(base, profile=profile, decoder_di
 原图/权重/索引/原始运行结果留在本机忽略目录；Git 内保存输入、开发观测/验证、冻结规则/协议、完整评分与热计时摘要、复算、验收和报告。旧结果与失败尝试保留，来源和许可见 [上一轮 README](../repetition-early-stop-v1/README.md)。
 
 命令JSON沿用已有timed helper的阶段字段；报告采用外层完整墙钟并包含返回轨迹复制，计时边界不是同一个数值。真实CLI验证只检查功能/轨迹/TopK，未混入报告的性能样本。
+
+## 冻结源码快照（2026-11-04 起）
+
+`frozen-source.json` 记录测量提交 `f079027` 中被实现指纹绑定的源码文件 SHA-256。冻结记录的 `implementation_sha256` 按该快照复算，工作区源码可以维护而不改写测量；执行本协议的新测量仍要求当前源码与快照一致，否则属于新版本。核对：`uv run python -m siglip_tools.frozen_source verify benchmarks/completed-protection-v1`。

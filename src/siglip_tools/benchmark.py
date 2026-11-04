@@ -17,6 +17,7 @@ import torch
 from .commons import validate_source_record
 from .encoder import DEFAULT_MODEL, QUALITY_MODEL, SigLIPEmbedder, identity_fingerprint
 from .evaluation import evaluate_rankings
+from .frozen_source import source_sha256
 from .images import file_sha256, scan_images
 from .index import ImageIndex
 
@@ -143,10 +144,9 @@ def _stats(samples):
 
 
 def _implementation_hash():
-    root = Path(__file__).parent
     return identity_fingerprint(
         {
-            name: file_sha256(root / name)
+            name: source_sha256(name)
             for name in (
                 "benchmark.py",
                 "evaluation.py",

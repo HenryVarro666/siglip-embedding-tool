@@ -22,6 +22,7 @@ def fixture(tmp_path):
     for name in (
         "protocol.json",
         "freeze.json",
+        "frozen-source.json",
         "manifest.json",
         "queries.json",
         "qrels.json",

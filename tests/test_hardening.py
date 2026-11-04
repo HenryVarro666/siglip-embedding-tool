@@ -1,11 +1,8 @@
-"""Executable record of core robustness defects (SIG-062 to SIG-070).
+"""Core robustness fixes recorded as SIG-062 to SIG-070.
 
-Every frozen benchmark exporter binds the byte content of the retrieval core
-(images.py, index.py, encoder.py, commons.py, translation.py, cli.py, ...), so
-the fixes cannot be applied without opening a new benchmark version. The
-proposed patch is docs/patches/2026-11-04-core-hardening.diff. Each test below
-is a strict expected failure until that patch lands in a versioned release;
-when it does, remove the marker and the test must pass.
+These were first kept as strict expected failures because every frozen benchmark
+exporter bound the working tree byte for byte. Since the exporters bind the
+measured source snapshot (SIG-073), the patch is applied and the tests must pass.
 """
 
 import json
@@ -23,9 +20,6 @@ from siglip_tools.images import ImageRecord, load_rgb, scan_images
 from siglip_tools.index import ImageIndex, _relative_path
 
 
-@pytest.mark.xfail(
-    strict=True, reason="SIG-062: 16-bit grayscale is clipped to white by convert(RGB)"
-)
 def test_sixteen_bit_grayscale_is_rescaled_not_clipped(tmp_path):
     gradient = np.linspace(0, 65535, 8, dtype=np.uint16).reshape(1, 8)
     path = tmp_path / "gradient.png"
@@ -37,7 +31,6 @@ def test_sixteen_bit_grayscale_is_rescaled_not_clipped(tmp_path):
     assert reds == sorted(reds) and len(set(reds)) == 8, "all levels must survive the rescale"
 
 
-@pytest.mark.xfail(strict=True, reason="SIG-062: clipped 16-bit images hash identical and collapse")
 def test_distinct_sixteen_bit_images_are_not_collapsed_into_one_record(tmp_path):
     rng = np.random.default_rng(0)
     for name in ("a", "b"):
@@ -54,7 +47,6 @@ def test_eight_bit_inputs_keep_their_pixel_hash_so_existing_indexes_stay_valid(t
     assert np.asarray(load_rgb(mode_l))[0, 0].tolist() == [77, 77, 77]
 
 
-@pytest.mark.xfail(strict=True, reason="SIG-062: I/F modes are clipped instead of rescaled")
 def test_float_and_32bit_integer_images_map_their_value_range(tmp_path):
     values = np.array([[0.0, 0.5, 1.0]], dtype=np.float32)
     rgb = load_rgb(Image.fromarray(values, mode="F"))
@@ -65,9 +57,6 @@ def test_float_and_32bit_integer_images_map_their_value_range(tmp_path):
     assert flat.getpixel((0, 0)) == (0, 0, 0)
 
 
-@pytest.mark.xfail(
-    strict=True, reason="SIG-063: DecompressionBombError/SyntaxError escape load_rgb"
-)
 def test_decompression_bomb_and_corrupt_exif_become_named_value_errors(tmp_path):
     bomb = tmp_path / "bomb.png"
     bomb.write_bytes(
@@ -92,7 +81,6 @@ def test_decompression_bomb_and_corrupt_exif_become_named_value_errors(tmp_path)
         assert "exif.jpg" in str(error)
 
 
-@pytest.mark.xfail(strict=True, reason="SIG-064: EOFError/BadZipFile escape ImageIndex.load")
 def test_empty_or_truncated_index_files_are_value_errors(tmp_path):
     empty = tmp_path / "empty.npz"
     empty.write_bytes(b"")
@@ -113,9 +101,6 @@ def test_empty_or_truncated_index_files_are_value_errors(tmp_path):
     assert error.value.code == 2
 
 
-@pytest.mark.xfail(
-    strict=True, reason="SIG-065: published index keeps NamedTemporaryFile 0600 mode"
-)
 def test_saved_index_honors_the_umask_instead_of_owner_only(tmp_path):
     path = tmp_path / "index.npz"
     previous = os.umask(0o022)
@@ -138,7 +123,6 @@ def test_saved_index_honors_the_umask_instead_of_owner_only(tmp_path):
         ).save(path)
 
 
-@pytest.mark.xfail(strict=True, reason="SIG-066: os.link has no fallback on link-less file systems")
 def test_no_clobber_publication_falls_back_when_hard_links_are_unsupported(tmp_path, monkeypatch):
     from siglip_tools import index as index_module
 
@@ -159,9 +143,6 @@ def test_no_clobber_publication_falls_back_when_hard_links_are_unsupported(tmp_p
         stored.save(path)
 
 
-@pytest.mark.xfail(
-    strict=True, reason="SIG-067: non-string digests and non-canonical paths accepted"
-)
 def test_records_require_string_digests_and_canonical_paths(tmp_path):
     with pytest.raises(ValueError, match="SHA-256"):
         ImageIndex(
@@ -176,7 +157,6 @@ def test_records_require_string_digests_and_canonical_paths(tmp_path):
     _relative_path("dir/sub/a.png")
 
 
-@pytest.mark.xfail(strict=True, reason="SIG-068: _device raises RuntimeError and accepts cpu:N")
 def test_device_parsing_rejects_garbage_and_ordinals_on_non_cuda_devices():
     for bad in ("", "   ", "gpu", "cpu:3", "mps:0", "cuda:abc", "tpu"):
         with pytest.raises(ValueError):
@@ -185,9 +165,6 @@ def test_device_parsing_rejects_garbage_and_ordinals_on_non_cuda_devices():
     assert _device("auto").type in {"cpu", "cuda", "mps"}
 
 
-@pytest.mark.xfail(
-    strict=True, reason="SIG-069: no --version; surrogate-escaped paths abort output"
-)
 def test_cli_prints_version_and_handles_undecodable_paths(capsys, monkeypatch):
     with pytest.raises(SystemExit) as error:
         cli.main(["--version"])
@@ -205,7 +182,6 @@ def test_cli_prints_version_and_handles_undecodable_paths(capsys, monkeypatch):
     assert json.loads(printed[-1])["path"] == "bad\udcffname"
 
 
-@pytest.mark.xfail(strict=True, reason="SIG-070: translator default device is mps")
 def test_default_translator_device_is_auto_not_mps():
     import inspect
 

@@ -63,3 +63,7 @@ JSON保留主/备用轨迹、部分英文的诊断角色、实际使用文本/�
 Python可复用原始OPUS/GuardedOPUSConstraintTranslator、SigLIPEmbedder和ImageIndex，再调用现有`timed_fallback_search(...,mode='auto_fusion',fallback='opus')`。显式传入`json.load(open(.../repetition_profile_v1.json))`作为guard的profile；原始与guard共享同一套冻结OPUS权重。
 
 早停是成本启发式，不证明术语/接线/否定/安装关系正确。规则已锁定，即使正式结果不好也不就地重调。
+
+## 冻结源码快照（2026-11-04 起）
+
+`frozen-source.json` 记录测量提交 `f079027` 中被实现指纹绑定的源码文件 SHA-256。冻结记录的 `implementation_sha256` 按该快照复算，工作区源码可以维护而不改写测量；执行本协议的新测量仍要求当前源码与快照一致，否则属于新版本。核对：`uv run python -m siglip_tools.frozen_source verify benchmarks/repetition-early-stop-v1`。

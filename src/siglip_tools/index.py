@@ -3,6 +3,7 @@
 import json
 import os
 import tempfile
+import zipfile
 from dataclasses import asdict, dataclass
 from numbers import Integral
 from pathlib import Path, PurePosixPath, PureWindowsPath
@@ -10,7 +11,14 @@ from pathlib import Path, PurePosixPath, PureWindowsPath
 import numpy as np
 
 from .encoder import identity_fingerprint
-from .images import ImageRecord, pixel_sha256, read_image_snapshot, scan_images, validate_records
+from .images import (
+    ImageRecord,
+    default_file_mode,
+    pixel_sha256,
+    read_image_snapshot,
+    scan_images,
+    validate_records,
+)
 
 SCHEMA_VERSION = 1
 
@@ -30,7 +38,9 @@ def _relative_path(path: str) -> None:
     if (
         parsed.is_absolute()
         or ".." in parsed.parts
+        or "." in parsed.parts
         or path in {".", ""}
+        or parsed.as_posix() != path  # canonical form only: no "./", "//" or trailing "/"
         or PureWindowsPath(path).drive
         or PureWindowsPath(path).root
     ):
@@ -81,7 +91,11 @@ class ImageIndex:
                     raise ValueError(f"Duplicate path in index records: {path}")
                 seen_paths.add(path)
             for digest in (record.sha256, record.pixel_sha256):
-                if len(digest) != 64 or any(c not in "0123456789abcdef" for c in digest):
+                if (
+                    not isinstance(digest, str)
+                    or len(digest) != 64
+                    or any(c not in "0123456789abcdef" for c in digest)
+                ):
                     raise ValueError("Image records require SHA-256 hashes")
         if not isinstance(model_identity, dict) or any(
             not isinstance(model_identity.get(key), str) or not model_identity[key]
@@ -152,11 +166,11 @@ class ImageIndex:
                 )
                 stream.flush()
                 os.fsync(stream.fileno())
+            os.chmod(temporary, default_file_mode())
             if overwrite:
                 os.replace(temporary, path)
             else:
-                # Atomic no-clobber publication, even if another writer races us.
-                os.link(temporary, path)
+                _publish_no_clobber(temporary, path)
         finally:
             if temporary is not None:
                 temporary.unlink(missing_ok=True)
@@ -182,3 +196,26 @@ class ImageIndex:
             return index
         except (KeyError, TypeError, AttributeError, json.JSONDecodeError) as exc:
             raise ValueError(f"Invalid index metadata: {exc}") from exc
+        except (zipfile.BadZipFile, EOFError) as exc:
+            raise ValueError(f"Invalid index file {path}: {exc}") from exc
+
+
+def _publish_no_clobber(temporary: Path, path: Path) -> None:
+    """Publish atomically without replacing an existing file, even if another writer races us."""
+    try:
+        os.link(temporary, path)
+        return
+    except FileExistsError:
+        raise
+    except OSError:
+        pass  # Hard links unsupported here (some network/FAT file systems); fall back below.
+    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, default_file_mode())
+    try:
+        with open(fd, "wb") as target, temporary.open("rb") as source:
+            while chunk := source.read(1024 * 1024):
+                target.write(chunk)
+            target.flush()
+            os.fsync(target.fileno())
+    except BaseException:
+        Path(path).unlink(missing_ok=True)
+        raise

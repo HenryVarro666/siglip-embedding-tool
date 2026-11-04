@@ -18,7 +18,7 @@ from urllib.request import Request, urlopen
 
 from PIL import Image
 
-from .images import file_sha256
+from .images import default_file_mode, file_sha256
 
 USER_AGENT = "SigLIPEquipmentPilot/0.1 (personal research; frozen Commons equipment images)"
 DOWNLOAD_HOSTS = {"upload.wikimedia.org", "thumb.wikimedia.org"}
@@ -110,6 +110,7 @@ def _publish_image(content, target):
             stream.write(content)
             stream.flush()
             os.fsync(stream.fileno())
+        os.chmod(temporary, default_file_mode())
         # A hard link publishes the complete file atomically without clobbering
         # a file that appeared after the initial existing-file check.
         os.link(temporary, target)

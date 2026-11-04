@@ -33,13 +33,15 @@ jobs:
       - name: Lint
         run: ruff check src tests training examples
       - name: Format check
-        run: ruff format --check tests training examples
+        run: ruff format --check src tests training examples
       - name: Prepare pinned decoder code (no model weights)
         run: python -m siglip_tools.opus_constraints prepare --output models/opus-constrained-decoder
       - name: Test without pretrained downloads
         run: pytest -m 'not integration'
+      - name: Verify frozen source snapshots
+        run: python -m siglip_tools.frozen_source verify benchmarks/*/
       - name: CLI smoke
-        run: siglip-tools --help >/dev/null && siglip-tools inspect --help >/dev/null
+        run: siglip-tools --version && siglip-tools --help >/dev/null && siglip-tools inspect --help >/dev/null
       - name: Check original loss example
         run: python clip_siglip_demo.py
       - name: Build distributions

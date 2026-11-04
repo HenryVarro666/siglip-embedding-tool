@@ -1,10 +1,13 @@
 """Deterministic RGB preprocessing and exact-pixel duplicate discovery."""
 
+import os
+import struct
 from dataclasses import dataclass, replace
 from hashlib import sha256
 from io import BytesIO
 from pathlib import Path
 
+import numpy as np
 from PIL import Image, ImageOps
 
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp", ".bmp", ".tif", ".tiff"}
@@ -17,6 +20,37 @@ class ImageRecord:
     sha256: str
     pixel_sha256: str
     aliases: tuple[str, ...] = ()
+
+
+_DECODE_ERRORS = (OSError, ValueError, SyntaxError, struct.error, Image.DecompressionBombError)
+
+
+def _eight_bit(image: Image.Image) -> Image.Image:
+    """Rescale high-bit-depth grayscale to 8 bits; Pillow's convert() would clip at 255.
+
+    16-bit samples map linearly from 0..65535. Other integer or float modes map their
+    actual value range, which is the only deterministic choice without a declared scale.
+    Eight-bit inputs are returned unchanged, so existing indexes keep their pixel hashes.
+    """
+    if image.mode in ("I;16", "I;16L", "I;16B", "I;16N"):
+        values = np.asarray(image.convert("I"), dtype=np.float64)
+        scaled = np.rint(values / 257.0)
+    elif image.mode in ("I", "F"):
+        values = np.asarray(image, dtype=np.float64)
+        if not np.isfinite(values).all():
+            raise ValueError("Image contains non-finite samples")
+        low, high = float(values.min()), float(values.max())
+        if 0 <= low and high <= 65535 and image.mode == "I":
+            scaled = np.rint(values / 257.0)
+        else:
+            scaled = (
+                np.rint((values - low) / (high - low) * 255.0)
+                if high > low
+                else np.zeros_like(values)
+            )
+    else:
+        return image
+    return Image.fromarray(np.clip(scaled, 0, 255).astype(np.uint8), mode="L")
 
 
 def load_rgb(source: ImageSource) -> Image.Image:
@@ -32,9 +66,16 @@ def load_rgb(source: ImageSource) -> Image.Image:
             rgba = image.convert("RGBA")
             background = Image.new("RGBA", rgba.size, "white")
             image = Image.alpha_composite(background, rgba)
-        return image.convert("RGB")
-    except (OSError, ValueError) as exc:
+        return _eight_bit(image).convert("RGB")
+    except _DECODE_ERRORS as exc:
         raise ValueError(f"Could not decode image {source}: {exc}") from exc
+
+
+def default_file_mode() -> int:
+    """Permissions an ordinary new file would get, so published artifacts honor the umask."""
+    current = os.umask(0o022)
+    os.umask(current)
+    return 0o666 & ~current
 
 
 def file_sha256(path: str | Path) -> str:
@@ -52,7 +93,7 @@ def read_image_snapshot(path: str | Path) -> tuple[Image.Image, str]:
         with Image.open(BytesIO(content)) as opened:
             rgb = load_rgb(opened)
         return rgb, sha256(content).hexdigest()
-    except (OSError, ValueError) as exc:
+    except _DECODE_ERRORS as exc:
         raise ValueError(f"Could not decode image {path}: {exc}") from exc
 
 

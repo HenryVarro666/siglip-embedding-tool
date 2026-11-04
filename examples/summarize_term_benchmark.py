@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from siglip_tools.benchmark import _stats
+from siglip_tools.frozen_source import execution_drift, reference_implementation
 from siglip_tools.fusion_benchmark import _save_new
 from siglip_tools.images import file_sha256
 from siglip_tools.opus_constraints import GLOSSARY_PATH, glossary_requirements
@@ -25,8 +26,9 @@ def validate_fixed_inputs(results, metadata):
     hashes = {n: file_sha256(metadata / f"{n}.json") for n in ("manifest", "queries", "qrels")}
     if file_sha256(metadata / "protocol.json") != freeze["protocol_sha256"]:
         raise ValueError("Current file differs from the frozen protocol")
-    if implementation_hash() != freeze["implementation_sha256"]:
-        raise ValueError("Current analysis helpers differ from the frozen implementation")
+    reference_implementation(
+        metadata, implementation_hash, expected=freeze["implementation_sha256"]
+    )
     for result in results.values():
         if result["protocol_sha256"] != freeze["protocol_sha256"] or result["protocol"] != protocol:
             raise ValueError("Result differs from the frozen protocol")
@@ -75,6 +77,7 @@ def main():
         "exported_at_utc": datetime.now(timezone.utc).isoformat(),
         "implementation_reference_commit": "b68cb99",
         "implementation_sha256": results["base"]["implementation_sha256"],
+        "analysis_helpers": execution_drift(args.metadata, implementation_hash),
         "protocol_sha256": results["base"]["protocol_sha256"],
         "dataset_hashes": hashes,
         "gallery_images": len(gallery),

@@ -48,6 +48,9 @@ def feature_matrix(features: torch.Tensor) -> np.ndarray:
 
 
 def _device(requested: str) -> torch.device:
+    """Resolve auto/cpu/mps/cuda[:N] to an available device; raise ValueError otherwise."""
+    if not isinstance(requested, str) or not requested.strip():
+        raise ValueError("Device must be a nonempty string such as auto, cpu, mps or cuda")
     if requested == "auto":
         requested = (
             "cuda"
@@ -56,13 +59,23 @@ def _device(requested: str) -> torch.device:
             if torch.backends.mps.is_available()
             else "cpu"
         )
-    device = torch.device(requested)
-    if device.type == "cuda" and not torch.cuda.is_available():
-        raise ValueError("CUDA was requested but is unavailable")
-    if device.type == "mps" and not torch.backends.mps.is_available():
-        raise ValueError("MPS was requested but is unavailable")
+    try:
+        device = torch.device(requested)
+    except RuntimeError as exc:
+        raise ValueError(f"Unsupported device: {requested}") from exc
     if device.type not in {"cpu", "cuda", "mps"}:
         raise ValueError(f"Unsupported device: {requested}")
+    if device.index is not None and device.type != "cuda":
+        raise ValueError(f"{device.type} does not take a device ordinal: {requested}")
+    if device.type == "cuda":
+        if not torch.cuda.is_available():
+            raise ValueError("CUDA was requested but is unavailable")
+        if device.index is not None and device.index >= torch.cuda.device_count():
+            raise ValueError(
+                f"CUDA device {device.index} does not exist; {torch.cuda.device_count()} available"
+            )
+    if device.type == "mps" and not torch.backends.mps.is_available():
+        raise ValueError("MPS was requested but is unavailable")
     return device
 
 

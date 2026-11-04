@@ -1057,10 +1057,10 @@ def audit_development(metadata, profile, implementation_hash, c):
     }
 
 
-def source_hashes(root):
-    prior = previous.source_hashes(root)
+def source_hashes(root, metadata=None):
+    prior = previous.source_hashes(root, metadata)
     files = {
-        name: legacy.file_hash(root / "src/siglip_tools" / name)
+        name: previous._bound_file_hash(root, metadata, name)
         for name in (
             "completed_protection.py",
             "protected_development.py",
@@ -1085,7 +1085,7 @@ def source_hashes(root):
 
 def bind_metadata(metadata, root, c):
     protocol, freeze = (legacy.read_json(metadata / n) for n in ("protocol.json", "freeze.json"))
-    source = source_hashes(root)
+    source = source_hashes(root, metadata)
     c.same(
         source["previous_core_sha256"], PREVIOUS_CORE_SHA256, "unchanged_measured_early_stop_core"
     )

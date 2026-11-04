@@ -10,6 +10,7 @@ from .auto_benchmark import check_translator_files, translator_snapshot
 from .benchmark import _json_snapshot, _sync
 from .encoder import identity_fingerprint
 from .fallback_benchmark import implementation_hash as legacy_hash
+from .frozen_source import reference_implementation, source_sha256
 from .fusion_benchmark import _save_new
 from .images import file_sha256
 from .opus_constraints import OPUSConstraintTranslator
@@ -32,14 +33,10 @@ def development_candidates():
 
 
 def development_implementation_hash():
-    root = Path(__file__).parent
     return identity_fingerprint(
         {
             "legacy": legacy_hash(),
-            **{
-                n: file_sha256(root / n)
-                for n in ("repetition_stop.py", "early_stop_development.py")
-            },
+            **{n: source_sha256(n) for n in ("repetition_stop.py", "early_stop_development.py")},
         }
     )
 
@@ -150,7 +147,9 @@ def validate_development_evidence(metadata, profile):
         "queries_sha256": file_sha256(root / "dev-queries.json"),
         "candidate_profiles": candidates,
         "selection_rule": SELECTION_RULE,
-        "development_implementation_sha256": development_implementation_hash(),
+        "development_implementation_sha256": reference_implementation(
+            root, development_implementation_hash
+        ),
         "training": False,
         "formal_queries_or_retrieval_used": False,
     }

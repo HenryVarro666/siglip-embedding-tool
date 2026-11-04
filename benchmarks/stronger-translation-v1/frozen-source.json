@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "package_directory": "src/siglip_tools",
+  "source_commit": "3e0da59d72d40e9681547a18460176777c11c98d",
+  "created_at_utc": "2026-11-04T06:45:35.878452+00:00",
+  "note": "SHA-256 of every package file bound by the frozen implementation fingerprint, taken from the measured commit. Validation evaluates the fingerprint over this table so the working tree may change without relabelling the measurement.",
+  "files": {
+    "auto_benchmark.py": "6b48b7442ee5d2a91539a0c2dda295b79351599dcc1a9b49bec495329a6253e1",
+    "auto_retrieval.py": "bf029d19d7a12ceea4a65655a1f71dba0256580012bb42a4a1cb9d0cc2ded657",
+    "benchmark.py": "2f250feeabbaa439f7e0c032849ab8313b81cad9c07417cb537f3c16ce3a5ecd",
+    "commons.py": "3d0aab0e390866bc682e027f55d5aec695387e990de6a8ed75c8190c796c05ad",
+    "encoder.py": "e9163aadf62ffd26fc543f9e3f31fb266eaab7eba6c48cf524e30f923f929dab",
+    "evaluation.py": "f51e75cd1b51529b57b55f094724960806509b4793fc4ddebb54818437483e7f",
+    "fusion.py": "ac91eba4902a40b8a40d4bfc4f0da07b5eb8d3d814cc9b15ed60824a7b627d13",
+    "fusion_benchmark.py": "a4f349561b997ee67f85165b3733aa27a40a9fedbad5bef40bc564a7a1655b83",
+    "images.py": "a7c9fd2313faa361ba93deaf92239708e78f979de0225f973a44d3bc4c01941e",
+    "index.py": "24c9457d1b6f8d7889983f8e1b5348b31e62b7f446d8a5d1dc2df2a276d0eaf2",
+    "nllb_translation.py": "c111f75eccf44a9c2944aff0e4df208aff1485418a1b05e4bc6cdbd54f9ec663",
+    "translation.py": "82d2135b8a4e23696f0dc35f39aa5cfc9c25780f0ce973215b54600c9e7b2082"
+  },
+  "bindings": {
+    "implementation_sha256": {
+      "formula": "auto_benchmark:implementation_hash",
+      "value": "561abda1fe22711b1617c73802a6a8a35215faa5fee13abb2b5af87b429fe575"
+    }
+  }
+}

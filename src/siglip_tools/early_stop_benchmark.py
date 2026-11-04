@@ -30,6 +30,7 @@ from .fallback_benchmark import implementation_hash as previous_core_hash
 from .fallback_benchmark import (
     request_rates as legacy_rates,
 )
+from .frozen_source import reference_implementation, source_sha256
 from .fusion_benchmark import _save_new, check_ranking_and_scores
 from .images import file_sha256
 from .index import ImageIndex
@@ -60,12 +61,11 @@ PREVIOUS_CORE_SHA256 = "e377efdeb1bcfe1ff44ac93eca1ee8489d1a5a2032fcba0eabbfdeae
 
 
 def implementation_hash():
-    root = Path(__file__).parent
     return identity_fingerprint(
         {
             "previous_core": previous_core_hash(),
             **{
-                n: file_sha256(root / n)
+                n: source_sha256(n)
                 for n in (
                     "repetition_stop.py",
                     "early_stop_benchmark.py",
@@ -77,19 +77,21 @@ def implementation_hash():
     )
 
 
-def validate_frozen_inputs(metadata, protocol_path):
-    """Bind current code/profile/dev evidence and unchanged historical source bytes."""
+def validate_frozen_inputs(metadata, protocol_path, *, executing=False):
+    """Bind the record to its measured source and profile; require live code only when executing."""
     from .repetition_stop import validate_profile
 
     metadata = Path(metadata)
     protocol, digest = _json_snapshot(protocol_path)
     freeze, _ = _json_snapshot(metadata / "freeze.json")
-    code = implementation_hash()
-    if previous_core_hash() != PREVIOUS_CORE_SHA256:
+    code = reference_implementation(metadata, implementation_hash)
+    if reference_implementation(metadata, previous_core_hash) != PREVIOUS_CORE_SHA256:
         raise ValueError("Historical fallback implementation changed")
     if freeze.get("protocol_sha256") != digest:
         raise ValueError("Protocol differs from the committed freeze")
     if freeze.get("implementation_sha256") != code or protocol.get("implementation_sha256") != code:
+        raise ValueError("Frozen record does not match its measured implementation")
+    if executing and implementation_hash() != code:
         raise ValueError("Executing implementation differs from frozen implementation")
     for key in (
         "dataset_hashes",
@@ -155,7 +157,7 @@ def _fixed_protocol(protocol, hashes):
 
 
 def load_inputs(args):
-    protocol, protocol_hash = validate_frozen_inputs(args.metadata, args.protocol)
+    protocol, protocol_hash = validate_frozen_inputs(args.metadata, args.protocol, executing=True)
     data = load_evaluation_data(
         args.metadata / "manifest.json",
         args.metadata / "queries.json",
@@ -425,7 +427,7 @@ def _validate_timing(timing):
         raise ValueError("Invalid timing or hidden primary/detector/fallback cost")
 
 
-def validate_saved_result(result):
+def validate_saved_result(result, *, executing=False):
     """Rebuild metrics, rates, warm digests/timings and the three-branch audit."""
     protocol, inputs = result["protocol"], result["evaluation_inputs"]
     _fixed_protocol(protocol, SOURCE_DATA_HASHES)
@@ -435,11 +437,12 @@ def validate_saved_result(result):
         or result.get("dataset_hashes") != SOURCE_DATA_HASHES
         or result.get("development_hashes") != protocol.get("development_hashes")
         or result.get("implementation_sha256") != protocol.get("implementation_sha256")
-        or result.get("implementation_sha256") != implementation_hash()
         or result.get("repetition_profile_sha256") != protocol.get("repetition_profile_sha256")
         or result.get("repetition_profile_sha256") != file_sha256(PROFILE_PATH)
     ):
         raise ValueError("Saved inputs, profile binding or three policies differ from protocol")
+    if executing and result.get("implementation_sha256") != implementation_hash():
+        raise ValueError("Saved result was not produced by the executing implementation")
     gallery, qrels = inputs["gallery_ids"], inputs["qrels"]
     if len(gallery) != GALLERY_COUNT or len(qrels) != INTENT_COUNT:
         raise ValueError("Saved gallery/intents differ from fixed input counts")
@@ -730,7 +733,7 @@ def run_benchmark(args):
             "first_request_order": ["original", "constrained", "guarded"],
         },
     }
-    validate_saved_result(payload)
+    validate_saved_result(payload, executing=True)
     _save_new(output, payload)
     print(
         {

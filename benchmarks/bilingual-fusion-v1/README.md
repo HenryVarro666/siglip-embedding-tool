@@ -60,3 +60,7 @@ uv run python examples/equipment_review.py \
 其他硬件请复制protocol.json为新实验文件并修改device，再给两条run命令传同一`--protocol`。新索引重建会把路径/运行身份写入元数据，因此二进制索引哈希可能变化；freeze.json中的索引哈希对应本次发布，重新运行会记录实际文件哈希。对比要求两套结果的数据、协议、实现、硬件环境和运行库一致。
 
 耗时包括文字分词、编码、CPU搬运、身份核对、平均分数和40图完整排序；不包括模型加载、图库编码、翻译、下载和报告写入。模型/索引加载另行记录。原始计时和完整排名保留在本机`artifacts/bilingual-fusion/`。
+
+## 冻结源码快照（2026-11-04 起）
+
+`frozen-source.json` 记录测量提交 `f079027` 中被实现指纹绑定的源码文件 SHA-256。冻结记录的 `implementation_sha256` 按该快照复算，工作区源码可以维护而不改写测量；执行本协议的新测量仍要求当前源码与快照一致，否则属于新版本。核对：`uv run python -m siglip_tools.frozen_source verify benchmarks/bilingual-fusion-v1`。

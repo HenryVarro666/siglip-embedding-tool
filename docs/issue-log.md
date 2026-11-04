@@ -6,22 +6,28 @@
 
 ## 本轮即时记录
 
+### SIG-073：冻结导出器改绑测量提交的源码快照，核心补丁已应用
+
+- 状态：已解决（有验证）。新增 `src/siglip_tools/frozen_source.py`：每个基准目录保存 `frozen-source.json`（测量提交中被实现指纹绑定的文件 SHA-256 表与来源提交）；各冻结导出器/审计的 `implementation_hash` 公式改为经 `source_sha256(name)` 取哈希，验证冻结记录时在快照表上复算（`reference_implementation`），执行冻结协议时（`executing=True`）另外要求当前源码等于快照。`auto-translation-v1` 按其测量时的历史公式（不含 nllb 文件）复算。
+- 证据：8 个基准目录的快照来源提交 f079027（6 个）、3e0da59（stronger-translation）、f0cd1ab（auto-translation）；`python -m siglip_tools.frozen_source verify benchmarks/*/` 全部通过，冻结协议/结果/数值零改动。补丁应用后 `tests/test_hardening.py` 11 个 xfail 移除并通过，`tests/test_frozen_source.py` 7 项覆盖快照解析、工作区漂移不影响复算、执行时漂移报错、历史公式。本机 652 通过/57 跳过，ruff 与 `ruff format --check src tests training examples` 通过。
+- 边界：快照只证明冻结记录由记录的源码产生，不证明新代码会得到相同数值；在当前核心上的新测量必须开新版本并生成新快照（`frozen_source snapshot --commit <提交> <目录>`）。不得手工编辑快照或冻结结果。
+
 ### SIG-072：工程基础补齐（CI 格式/打包/CLI 冒烟、pytest 缓存、元数据）
 
 - 状态：已解决。CI 新增 `ruff format --check`、`siglip-tools --version`/`--help` 冒烟与 sdist/wheel 构建，并发取消与超时；`pytest` 默认 `-p no:cacheprovider`（SIG-050 的共享日志目录问题不再被 `.pytest_cache` 写入干扰）；`pyproject` 补 classifiers/urls（仓库无 LICENSE 文件，不声明许可）。
 - 证据：本机 `627 passed, 57 skipped, 11 xfailed`（57 项为固定解码代码缓存缺失的既有跳过），ruff 与格式检查通过，原始损失示例通过。
-- 边界：`src/` 中 `nllb_translation.py`、`opus_constraints.py` 未按 ruff 格式化，因为它们被冻结导出器哈希绑定（见 SIG-071）；格式检查范围为 `tests training examples` 与已格式化的 src 文件。
+- 边界（当时）：`src/` 中 `nllb_translation.py`、`opus_constraints.py` 未按 ruff 格式化，因为它们被冻结导出器哈希绑定（见 SIG-071）；格式检查范围为 `tests training examples` 与已格式化的 src 文件。SIG-073 后 `src/` 全部格式化，CI 格式检查扩大到 `src`，并新增快照核对步骤与 `--version` 冒烟。
 
 ### SIG-071：冻结导出器直接绑定实时源码，任何核心维护改动都使 34 个测试失败
 
-- 状态：已观察，属可维护性风险；本轮按现有规则处理（不改核心）。
+- 状态：已解决（SIG-073，同日下午）：导出器改为对测量提交的源码快照复算指纹，工作区可维护；以下为发现时的记录。
 - 证据：对 `images.py/index.py/encoder.py/commons.py/translation.py/cli.py` 等做健壮性修复后，`tests/test_term_export.py` 与 `tests/test_early_stop_*` 共 34 项失败，报错“Current analysis helpers differ from the frozen implementation”；恢复原文件后全部通过。`benchmark.py`（equipment-v1）同样把 `commons/encoder/index/images.py` 计入实现哈希。
 - 影响：修复 SIG-062–070 必须开新基准版本并重新冻结/测量；在此之前任何对核心的改动（包括格式化）都会破坏旧版本复算入口。
-- 下一步：新版本可改为绑定测量提交的 git blob 哈希或 vendored 快照，而不是工作区实时文件；本轮不改。
+- 下一步（当时）：新版本可改为绑定测量提交的 git blob 哈希或 vendored 快照，而不是工作区实时文件。——已按快照方式实现，见 SIG-073。
 
 ### SIG-062 至 SIG-070：核心模块健壮性缺陷（已复现，修复以补丁与严格 xfail 保存）
 
-- 状态：已复现，未应用（受 SIG-071 约束）。修复补丁 `docs/patches/2026-11-04-core-hardening.diff`（345 行）；`tests/test_hardening.py` 中 11 个 `xfail(strict=True)` 用例在补丁应用后必须转绿。
+- 状态：已解决（有验证，同日下午）。补丁 `docs/patches/2026-11-04-core-hardening.diff`（345 行）在 SIG-073 解除绑定后应用，`tests/test_hardening.py` 的 11 个用例移除 xfail 后全部通过；补丁文件保留作记录。下列为发现时的描述。
 - SIG-062（高）：`load_rgb` 对 16 位灰度（`I;16`）及 `I/F` 模式用 `convert("RGB")` 裁剪到 255，图像几乎全白；两张不同的 16 位图像被 `scan_images` 当作像素相同合并为一条记录，只编码一张。补丁按 65535→255 线性缩放（`I/F` 按实际范围），8 位输入字节不变，索引像素哈希不变。
 - SIG-063（中）：`PIL.Image.DecompressionBombError` 与损坏 EXIF 的 `SyntaxError` 不是 `OSError/ValueError`，逃出 `load_rgb`，CLI 以原始回溯退出 1 且不指出文件名。
 - SIG-064（中低）：0 字节索引触发 `EOFError`、截断索引触发 `zipfile.BadZipFile`，`ImageIndex.load` 与 CLI 均未捕获。

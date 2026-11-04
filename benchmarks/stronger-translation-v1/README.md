@@ -106,3 +106,7 @@ uv run python examples/equipment_review.py \
 本次冻结的计时代码 commit 为 `f023fa2`；旧 OPUS 报告保留原测量口径，不能将旧耗时混入本次对照。完整源权重和索引二进制哈希可能随转换环境或重建而变化，复跑须另存自身清单与结果。换硬件/生成设置也应另建实验协议，保留本次记录。
 
 该小集已经多次用于诊断，只有 8 个意图，标签来自助手，未经独立人类审核，公开图片的预训练重叠未知。时间是本机单次实验的重复请求分位数，不能代替真实现场留出集和并发服务评估。
+
+## 冻结源码快照（2026-11-04 起）
+
+`frozen-source.json` 记录测量提交 `3e0da59` 中被实现指纹绑定的源码文件 SHA-256。冻结记录的 `implementation_sha256` 按该快照复算，工作区源码可以维护而不改写测量；执行本协议的新测量仍要求当前源码与快照一致，否则属于新版本。核对：`uv run python -m siglip_tools.frozen_source verify benchmarks/stronger-translation-v1`。

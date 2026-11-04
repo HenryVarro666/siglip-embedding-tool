@@ -15,6 +15,7 @@ from .benchmark import (
     load_evaluation_data,
 )
 from .encoder import SigLIPEmbedder, identity_fingerprint
+from .frozen_source import reference_implementation, source_sha256
 from .fusion_benchmark import _save_new, check_ranking_and_scores
 from .images import file_sha256
 from .index import ImageIndex
@@ -72,12 +73,11 @@ SOURCE_SUPPORT_HASHES = {
 
 
 def implementation_hash():
-    root = Path(__file__).parent
     return identity_fingerprint(
         {
             "previous_core": previous_core_hash(),
             **{
-                n: file_sha256(root / n)
+                n: source_sha256(n)
                 for n in (
                     "constraint_fallback.py",
                     "fallback_benchmark.py",
@@ -110,14 +110,17 @@ def retrieval_weight_snapshot(alias):
     }
 
 
-def validate_frozen_inputs(metadata, protocol_path):
+def validate_frozen_inputs(metadata, protocol_path, *, executing=False):
+    """Bind the frozen record to its measured source; require live code only when executing."""
     metadata = Path(metadata)
     protocol, digest = _json_snapshot(protocol_path)
     freeze, _ = _json_snapshot(metadata / "freeze.json")
-    code = implementation_hash()
+    code = reference_implementation(metadata, implementation_hash)
     if freeze.get("protocol_sha256") != digest:
         raise ValueError("Protocol differs from the committed freeze")
     if freeze.get("implementation_sha256") != code or protocol.get("implementation_sha256") != code:
+        raise ValueError("Frozen record does not match its measured implementation")
+    if executing and implementation_hash() != code:
         raise ValueError("Executing implementation differs from the frozen implementation")
     for key in ("dataset_hashes", "supporting_hashes"):
         if freeze.get(key) != protocol.get(key):
@@ -139,7 +142,7 @@ def validate_frozen_inputs(metadata, protocol_path):
 
 
 def load_inputs(args):
-    protocol, protocol_hash = validate_frozen_inputs(args.metadata, args.protocol)
+    protocol, protocol_hash = validate_frozen_inputs(args.metadata, args.protocol, executing=True)
     data = load_evaluation_data(
         args.metadata / "manifest.json",
         args.metadata / "queries.json",
@@ -305,7 +308,7 @@ def audit_branches(strategies):
     }
 
 
-def validate_saved_result(result):
+def validate_saved_result(result, *, executing=False):
     """Reconstruct saved evidence, metrics, rates and timing before publishing comparisons."""
     protocol = result["protocol"]
     inputs = result["evaluation_inputs"]
@@ -613,7 +616,7 @@ def run_benchmark(args):
         },
     }
     payload["evaluation_inputs"] = {"gallery_ids": data["image_ids"], "qrels": relevance}
-    validate_saved_result(payload)
+    validate_saved_result(payload, executing=True)
     _save_new(output, payload)
     print(
         {

@@ -6,6 +6,7 @@ from dataclasses import asdict
 from pathlib import Path
 from time import perf_counter
 
+from . import __version__
 from .auto_retrieval import timed_search
 from .constraint_fallback import timed_fallback_search
 from .encoder import DEFAULT_MODEL, QUALITY_MODEL, SigLIPEmbedder, identity_fingerprint
@@ -29,6 +30,7 @@ def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Local pretrained SigLIP image embeddings/retrieval"
     )
+    parser.add_argument("--version", action="version", version=f"siglip-tools {__version__}")
     sub = parser.add_subparsers(dest="command", required=True)
     build = sub.add_parser(
         "index", aliases=["embed-images"], help="Batch-encode a picture directory"
@@ -95,7 +97,13 @@ def _parser() -> argparse.ArgumentParser:
 
 
 def _print(payload: dict) -> None:
-    print(json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False))
+    text = json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False)
+    try:
+        print(text)
+    except UnicodeEncodeError:
+        # Paths that are not valid UTF-8 are carried as surrogate escapes; emit them as
+        # JSON \uXXXX escapes rather than failing after a successful query.
+        print(json.dumps(payload, indent=2, ensure_ascii=True, allow_nan=False))
 
 
 def _build(args) -> None:
@@ -307,4 +315,6 @@ def main(argv=None) -> int:
         status = args.handler(args)
     except (ValueError, OSError, RuntimeError) as exc:
         parser.exit(2, f"error: {exc}\n")
+    except KeyboardInterrupt:
+        parser.exit(130, "interrupted\n")
     return status or 0

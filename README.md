@@ -221,11 +221,12 @@ uv run python examples/equipment_review.py
 uv sync --frozen --extra dev --extra translation
 uv run pytest -m 'not integration'
 uv run ruff check src tests training examples
-uv run ruff format --check tests training examples
+uv run ruff format --check src tests training examples
+uv run python -m siglip_tools.frozen_source verify benchmarks/*/
 uv run python clip_siglip_demo.py
 ```
 
-`tests/test_hardening.py` 中 11 个严格 xfail 用例记录了尚未应用的核心健壮性修复（SIG-062–070）；核心文件被冻结基准哈希绑定，修复补丁见 `docs/patches/`。GitHub Actions 对每次推送执行以上检查并构建 sdist/wheel。
+核心健壮性修复（SIG-062–070）已于 2026-11-04 应用，`tests/test_hardening.py` 的 11 个用例是常规回归测试。冻结基准不再绑定工作区源码，而是绑定测量提交的源码快照（各 `benchmarks/*/frozen-source.json`，SIG-073）：冻结记录按快照复算实现指纹，执行冻结协议的新测量仍要求当前源码与快照一致；`frozen_source verify` 核对快照与冻结记录。GitHub Actions 对每次推送执行以上检查并构建 sdist/wheel。
 
 默认模型完整缓存后，可以额外运行真实模型检查；这些检查只做推理，不执行训练：
 

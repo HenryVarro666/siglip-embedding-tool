@@ -17,6 +17,7 @@ from .benchmark import (
 )
 from .encoder import SigLIPEmbedder, identity_fingerprint
 from .evaluation import evaluate_rankings
+from .frozen_source import source_sha256
 from .fusion import search_texts
 from .fusion_benchmark import _save_new, check_ranking_and_scores
 from .fusion_benchmark import implementation_hash as fusion_hash
@@ -118,12 +119,11 @@ def evaluate_attempts(rankings, qrels, gallery_ids):
 
 
 def implementation_hash():
-    root = Path(__file__).parent
     return identity_fingerprint(
         {
             "fusion": fusion_hash(),
             **{
-                name: file_sha256(root / name)
+                name: source_sha256(name)
                 for name in (
                     "translation.py",
                     "auto_benchmark.py",

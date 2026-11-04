@@ -595,10 +595,17 @@ def audit_development(metadata, profile, code_hash, c):
     )
 
 
-def source_hashes(root):
-    prior = legacy.source_hashes(root)
+def _bound_file_hash(root, metadata, name):
+    """Measured blob hash from the frozen-source snapshot when present, else the working tree."""
+    if metadata is not None and (Path(metadata) / "frozen-source.json").is_file():
+        return legacy.read_json(Path(metadata) / "frozen-source.json")["files"][name]
+    return legacy.file_hash(root / "src/siglip_tools" / name)
+
+
+def source_hashes(root, metadata=None):
+    prior = legacy.source_hashes(root, metadata)
     files = {
-        name: legacy.file_hash(root / "src/siglip_tools" / name)
+        name: _bound_file_hash(root, metadata, name)
         for name in (
             "repetition_stop.py",
             "early_stop_development.py",
@@ -624,7 +631,7 @@ def source_hashes(root):
 
 def bind_metadata(metadata, root, c):
     protocol, freeze = (legacy.read_json(metadata / n) for n in ("protocol.json", "freeze.json"))
-    source = source_hashes(root)
+    source = source_hashes(root, metadata)
     c.same(
         source["previous_core_sha256"],
         "e377efdeb1bcfe1ff44ac93eca1ee8489d1a5a2032fcba0eabbfdeae958f8675",

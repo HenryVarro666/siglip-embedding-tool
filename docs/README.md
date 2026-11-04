@@ -17,7 +17,7 @@
 | 重复检测/真实提前拒绝→OPUS回退 | [早停报告](repetition-early-stop-v1.md)、[开发两阶段及复现](../benchmarks/repetition-early-stop-v1/README.md)、[计划](superpowers/plans/2026-11-01-repetition-early-stop.md) |
 | 已完成候选保护 / 长正常与合法重复开发 | [保护报告](completed-protection-v1.md)、[24开发与四方案复现](../benchmarks/completed-protection-v1/README.md)、[验收](../benchmarks/completed-protection-v1/verification.json) |
 | 所有问题、修复与后续动作 | [当前台账](issue-log.md)、[历史台账](historical-issues.md)、[改进路线](improvements.md) |
-| 2026-11-04 审查：核心缺陷补丁与冻结约束 | [SIG-062–072](issue-log.md)、[补丁](patches/2026-11-04-core-hardening.diff)、[xfail 记录测试](../tests/test_hardening.py) |
+| 2026-11-04 审查：核心缺陷修复与冻结源码快照 | [SIG-062–073](issue-log.md)、[已应用的补丁](patches/2026-11-04-core-hardening.diff)、[回归测试](../tests/test_hardening.py)、[快照工具](../src/siglip_tools/frozen_source.py)、各基准目录 `frozen-source.json` |
 | 后续执行入口与未完成事项 | [接续状态](continuation.md)、[项目工作约束](../AGENTS.md) |
 | 备用训练代码 | [训练说明](../training/README.md)，检索命令不会自动训练 |
 

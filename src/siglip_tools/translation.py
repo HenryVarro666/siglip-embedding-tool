@@ -152,7 +152,7 @@ def prepare_translator(output: Path) -> Path:
 class LocalTranslator:
     """Fixed pretrained zh→en translation with no query or output memoization."""
 
-    def __init__(self, model_dir: Path, device: str = "mps"):
+    def __init__(self, model_dir: Path, device: str = "auto"):
         directory = Path(model_dir).expanduser().resolve()
         provenance = _validated_provenance(directory)
         from transformers import AutoModelForSeq2SeqLM, AutoTokenizer

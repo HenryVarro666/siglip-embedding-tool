@@ -47,9 +47,7 @@ _SOURCE_FILES = [
 
 def _valid_hashes(hashes: dict) -> bool:
     return isinstance(hashes, dict) and all(
-        isinstance(name, str)
-        and isinstance(digest, str)
-        and re.fullmatch(r"[0-9a-f]{64}", digest)
+        isinstance(name, str) and isinstance(digest, str) and re.fullmatch(r"[0-9a-f]{64}", digest)
         for name, digest in hashes.items()
     )
 
@@ -202,7 +200,7 @@ def prepare_translator(output: Path) -> Path:
 class NLLBTranslator(LocalTranslator):
     """Fixed zho_Hans→eng_Latn translation with fresh generation every request."""
 
-    def __init__(self, model_dir: Path, device: str = "mps"):
+    def __init__(self, model_dir: Path, device: str = "auto"):
         directory = Path(model_dir).expanduser().resolve()
         provenance = _validated_provenance(directory)
         from transformers import AutoModelForSeq2SeqLM, AutoTokenizer

@@ -29,16 +29,13 @@ DECODER_FILES = (
 DECODER_HASHES = {
     "README.md": "0b550f52f5ffb16b8f36a34b2e5c9cb40076994063dd72b283552370eb43d903",
     "custom_generate/generate.py": (
-        "3f2975a90ef9f506077d8e54d0e145cfd"
-        "735088c9c082c595d546cfe5cd7eb64"
+        "3f2975a90ef9f506077d8e54d0e145cfd735088c9c082c595d546cfe5cd7eb64"
     ),
     "custom_generate/beam_constraints.py": (
-        "72da73e8f601167c895974bbb6064f1be"
-        "7d14f33247f6a8ea0acc6c162b62704"
+        "72da73e8f601167c895974bbb6064f1be7d14f33247f6a8ea0acc6c162b62704"
     ),
     "custom_generate/beam_search.py": (
-        "247baefee037b9cebda29140abcc298ed"
-        "2d4fdb32b79a40550a06b004a03bda5"
+        "247baefee037b9cebda29140abcc298ed2d4fdb32b79a40550a06b004a03bda5"
     ),
 }
 

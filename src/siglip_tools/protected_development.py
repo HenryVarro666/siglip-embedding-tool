@@ -10,6 +10,7 @@ from .early_stop_benchmark import _validate_guard, _without_guard
 from .early_stop_benchmark import implementation_hash as previous_hash
 from .early_stop_development import _translate
 from .encoder import identity_fingerprint
+from .frozen_source import reference_implementation, source_sha256
 from .fusion_benchmark import _save_new
 from .images import file_sha256
 from .opus_constraints import OPUSConstraintTranslator, glossary_requirements
@@ -31,12 +32,11 @@ DEVELOPMENT_FILES = (
 
 
 def development_implementation_hash():
-    root = Path(__file__).parent
     return identity_fingerprint(
         {
             "previous_core": previous_hash(),
             **{
-                n: file_sha256(root / n)
+                n: source_sha256(n)
                 for n in (
                     "completed_protection.py",
                     "completed_protection_v1.json",
@@ -198,7 +198,8 @@ def validate_development_evidence(
     saved, _ = _json_snapshot(validation_path or metadata / "dev-validation.json")
     if (
         protocol.get("queries_sha256") != file_sha256(metadata / "dev-queries.json")
-        or protocol.get("development_implementation_sha256") != development_implementation_hash()
+        or protocol.get("development_implementation_sha256")
+        != reference_implementation(metadata, development_implementation_hash)
         or protocol.get("fixed_rule") != _json_snapshot(RULE_PATH)[0]
         or protocol.get("repetition_profile_sha256") != file_sha256(PROFILE_PATH)
         or protocol.get("protection_rule_sha256") != file_sha256(RULE_PATH)
