@@ -315,7 +315,9 @@ def test_redirect_outside_commons_never_publishes_an_image(tmp_path, monkeypatch
     item = source_record(content)
     root = tmp_path / "data"
     monkeypatch.setattr(
-        commons, "urlopen", lambda request, timeout: Response(content, "https://example.com/image.png")
+        commons,
+        "urlopen",
+        lambda request, timeout: Response(content, "https://example.com/image.png"),
     )
 
     with pytest.raises(ValueError, match="redirect"):

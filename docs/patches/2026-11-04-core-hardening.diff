@@ -1,0 +1,345 @@
+diff --git a/src/siglip_tools/cli.py b/src/siglip_tools/cli.py
+index c1db18a..745934c 100644
+--- a/src/siglip_tools/cli.py
++++ b/src/siglip_tools/cli.py
+@@ -6,6 +6,7 @@ from dataclasses import asdict
+ from pathlib import Path
+ from time import perf_counter
+ 
++from . import __version__
+ from .auto_retrieval import timed_search
+ from .constraint_fallback import timed_fallback_search
+ from .encoder import DEFAULT_MODEL, QUALITY_MODEL, SigLIPEmbedder, identity_fingerprint
+@@ -29,6 +30,7 @@ def _parser() -> argparse.ArgumentParser:
+     parser = argparse.ArgumentParser(
+         description="Local pretrained SigLIP image embeddings/retrieval"
+     )
++    parser.add_argument("--version", action="version", version=f"siglip-tools {__version__}")
+     sub = parser.add_subparsers(dest="command", required=True)
+     build = sub.add_parser(
+         "index", aliases=["embed-images"], help="Batch-encode a picture directory"
+@@ -95,7 +97,13 @@ def _parser() -> argparse.ArgumentParser:
+ 
+ 
+ def _print(payload: dict) -> None:
+-    print(json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False))
++    text = json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False)
++    try:
++        print(text)
++    except UnicodeEncodeError:
++        # Paths that are not valid UTF-8 are carried as surrogate escapes; emit them as
++        # JSON \uXXXX escapes rather than failing after a successful query.
++        print(json.dumps(payload, indent=2, ensure_ascii=True, allow_nan=False))
+ 
+ 
+ def _build(args) -> None:
+@@ -307,4 +315,6 @@ def main(argv=None) -> int:
+         status = args.handler(args)
+     except (ValueError, OSError, RuntimeError) as exc:
+         parser.exit(2, f"error: {exc}\n")
++    except KeyboardInterrupt:
++        parser.exit(130, "interrupted\n")
+     return status or 0
+diff --git a/src/siglip_tools/commons.py b/src/siglip_tools/commons.py
+index 329057c..6a04268 100644
+--- a/src/siglip_tools/commons.py
++++ b/src/siglip_tools/commons.py
+@@ -18,7 +18,7 @@ from urllib.request import Request, urlopen
+ 
+ from PIL import Image
+ 
+-from .images import file_sha256
++from .images import default_file_mode, file_sha256
+ 
+ USER_AGENT = "SigLIPEquipmentPilot/0.1 (personal research; frozen Commons equipment images)"
+ DOWNLOAD_HOSTS = {"upload.wikimedia.org", "thumb.wikimedia.org"}
+@@ -110,6 +110,7 @@ def _publish_image(content, target):
+             stream.write(content)
+             stream.flush()
+             os.fsync(stream.fileno())
++        os.chmod(temporary, default_file_mode())
+         # A hard link publishes the complete file atomically without clobbering
+         # a file that appeared after the initial existing-file check.
+         os.link(temporary, target)
+diff --git a/src/siglip_tools/encoder.py b/src/siglip_tools/encoder.py
+index fb28c3a..a19fb78 100644
+--- a/src/siglip_tools/encoder.py
++++ b/src/siglip_tools/encoder.py
+@@ -48,6 +48,9 @@ def feature_matrix(features: torch.Tensor) -> np.ndarray:
+ 
+ 
+ def _device(requested: str) -> torch.device:
++    """Resolve auto/cpu/mps/cuda[:N] to an available device; raise ValueError otherwise."""
++    if not isinstance(requested, str) or not requested.strip():
++        raise ValueError("Device must be a nonempty string such as auto, cpu, mps or cuda")
+     if requested == "auto":
+         requested = (
+             "cuda"
+@@ -56,13 +59,23 @@ def _device(requested: str) -> torch.device:
+             if torch.backends.mps.is_available()
+             else "cpu"
+         )
+-    device = torch.device(requested)
+-    if device.type == "cuda" and not torch.cuda.is_available():
+-        raise ValueError("CUDA was requested but is unavailable")
+-    if device.type == "mps" and not torch.backends.mps.is_available():
+-        raise ValueError("MPS was requested but is unavailable")
++    try:
++        device = torch.device(requested)
++    except RuntimeError as exc:
++        raise ValueError(f"Unsupported device: {requested}") from exc
+     if device.type not in {"cpu", "cuda", "mps"}:
+         raise ValueError(f"Unsupported device: {requested}")
++    if device.index is not None and device.type != "cuda":
++        raise ValueError(f"{device.type} does not take a device ordinal: {requested}")
++    if device.type == "cuda":
++        if not torch.cuda.is_available():
++            raise ValueError("CUDA was requested but is unavailable")
++        if device.index is not None and device.index >= torch.cuda.device_count():
++            raise ValueError(
++                f"CUDA device {device.index} does not exist; {torch.cuda.device_count()} available"
++            )
++    if device.type == "mps" and not torch.backends.mps.is_available():
++        raise ValueError("MPS was requested but is unavailable")
+     return device
+ 
+ 
+diff --git a/src/siglip_tools/images.py b/src/siglip_tools/images.py
+index fca762d..e9d5f82 100644
+--- a/src/siglip_tools/images.py
++++ b/src/siglip_tools/images.py
+@@ -1,10 +1,13 @@
+ """Deterministic RGB preprocessing and exact-pixel duplicate discovery."""
+ 
++import os
++import struct
+ from dataclasses import dataclass, replace
+ from hashlib import sha256
+ from io import BytesIO
+ from pathlib import Path
+ 
++import numpy as np
+ from PIL import Image, ImageOps
+ 
+ IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp", ".bmp", ".tif", ".tiff"}
+@@ -19,6 +22,37 @@ class ImageRecord:
+     aliases: tuple[str, ...] = ()
+ 
+ 
++_DECODE_ERRORS = (OSError, ValueError, SyntaxError, struct.error, Image.DecompressionBombError)
++
++
++def _eight_bit(image: Image.Image) -> Image.Image:
++    """Rescale high-bit-depth grayscale to 8 bits; Pillow's convert() would clip at 255.
++
++    16-bit samples map linearly from 0..65535. Other integer or float modes map their
++    actual value range, which is the only deterministic choice without a declared scale.
++    Eight-bit inputs are returned unchanged, so existing indexes keep their pixel hashes.
++    """
++    if image.mode in ("I;16", "I;16L", "I;16B", "I;16N"):
++        values = np.asarray(image.convert("I"), dtype=np.float64)
++        scaled = np.rint(values / 257.0)
++    elif image.mode in ("I", "F"):
++        values = np.asarray(image, dtype=np.float64)
++        if not np.isfinite(values).all():
++            raise ValueError("Image contains non-finite samples")
++        low, high = float(values.min()), float(values.max())
++        if 0 <= low and high <= 65535 and image.mode == "I":
++            scaled = np.rint(values / 257.0)
++        else:
++            scaled = (
++                np.rint((values - low) / (high - low) * 255.0)
++                if high > low
++                else np.zeros_like(values)
++            )
++    else:
++        return image
++    return Image.fromarray(np.clip(scaled, 0, 255).astype(np.uint8), mode="L")
++
++
+ def load_rgb(source: ImageSource) -> Image.Image:
+     """Return an independent, oriented RGB image; composite transparency on white."""
+     try:
+@@ -32,11 +66,18 @@ def load_rgb(source: ImageSource) -> Image.Image:
+             rgba = image.convert("RGBA")
+             background = Image.new("RGBA", rgba.size, "white")
+             image = Image.alpha_composite(background, rgba)
+-        return image.convert("RGB")
+-    except (OSError, ValueError) as exc:
++        return _eight_bit(image).convert("RGB")
++    except _DECODE_ERRORS as exc:
+         raise ValueError(f"Could not decode image {source}: {exc}") from exc
+ 
+ 
++def default_file_mode() -> int:
++    """Permissions an ordinary new file would get, so published artifacts honor the umask."""
++    current = os.umask(0o022)
++    os.umask(current)
++    return 0o666 & ~current
++
++
+ def file_sha256(path: str | Path) -> str:
+     digest = sha256()
+     with Path(path).open("rb") as stream:
+@@ -52,7 +93,7 @@ def read_image_snapshot(path: str | Path) -> tuple[Image.Image, str]:
+         with Image.open(BytesIO(content)) as opened:
+             rgb = load_rgb(opened)
+         return rgb, sha256(content).hexdigest()
+-    except (OSError, ValueError) as exc:
++    except _DECODE_ERRORS as exc:
+         raise ValueError(f"Could not decode image {path}: {exc}") from exc
+ 
+ 
+diff --git a/src/siglip_tools/index.py b/src/siglip_tools/index.py
+index 4e51300..50bab48 100644
+--- a/src/siglip_tools/index.py
++++ b/src/siglip_tools/index.py
+@@ -3,6 +3,7 @@
+ import json
+ import os
+ import tempfile
++import zipfile
+ from dataclasses import asdict, dataclass
+ from numbers import Integral
+ from pathlib import Path, PurePosixPath, PureWindowsPath
+@@ -10,7 +11,14 @@ from pathlib import Path, PurePosixPath, PureWindowsPath
+ import numpy as np
+ 
+ from .encoder import identity_fingerprint
+-from .images import ImageRecord, pixel_sha256, read_image_snapshot, scan_images, validate_records
++from .images import (
++    ImageRecord,
++    default_file_mode,
++    pixel_sha256,
++    read_image_snapshot,
++    scan_images,
++    validate_records,
++)
+ 
+ SCHEMA_VERSION = 1
+ 
+@@ -30,7 +38,9 @@ def _relative_path(path: str) -> None:
+     if (
+         parsed.is_absolute()
+         or ".." in parsed.parts
++        or "." in parsed.parts
+         or path in {".", ""}
++        or parsed.as_posix() != path  # canonical form only: no "./", "//" or trailing "/"
+         or PureWindowsPath(path).drive
+         or PureWindowsPath(path).root
+     ):
+@@ -81,7 +91,11 @@ class ImageIndex:
+                     raise ValueError(f"Duplicate path in index records: {path}")
+                 seen_paths.add(path)
+             for digest in (record.sha256, record.pixel_sha256):
+-                if len(digest) != 64 or any(c not in "0123456789abcdef" for c in digest):
++                if (
++                    not isinstance(digest, str)
++                    or len(digest) != 64
++                    or any(c not in "0123456789abcdef" for c in digest)
++                ):
+                     raise ValueError("Image records require SHA-256 hashes")
+         if not isinstance(model_identity, dict) or any(
+             not isinstance(model_identity.get(key), str) or not model_identity[key]
+@@ -152,11 +166,11 @@ class ImageIndex:
+                 )
+                 stream.flush()
+                 os.fsync(stream.fileno())
++            os.chmod(temporary, default_file_mode())
+             if overwrite:
+                 os.replace(temporary, path)
+             else:
+-                # Atomic no-clobber publication, even if another writer races us.
+-                os.link(temporary, path)
++                _publish_no_clobber(temporary, path)
+         finally:
+             if temporary is not None:
+                 temporary.unlink(missing_ok=True)
+@@ -182,3 +196,26 @@ class ImageIndex:
+             return index
+         except (KeyError, TypeError, AttributeError, json.JSONDecodeError) as exc:
+             raise ValueError(f"Invalid index metadata: {exc}") from exc
++        except (zipfile.BadZipFile, EOFError) as exc:
++            raise ValueError(f"Invalid index file {path}: {exc}") from exc
++
++
++def _publish_no_clobber(temporary: Path, path: Path) -> None:
++    """Publish atomically without replacing an existing file, even if another writer races us."""
++    try:
++        os.link(temporary, path)
++        return
++    except FileExistsError:
++        raise
++    except OSError:
++        pass  # Hard links unsupported here (some network/FAT file systems); fall back below.
++    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, default_file_mode())
++    try:
++        with open(fd, "wb") as target, temporary.open("rb") as source:
++            while chunk := source.read(1024 * 1024):
++                target.write(chunk)
++            target.flush()
++            os.fsync(target.fileno())
++    except BaseException:
++        Path(path).unlink(missing_ok=True)
++        raise
+diff --git a/src/siglip_tools/nllb_translation.py b/src/siglip_tools/nllb_translation.py
+index ee5c971..7f3b629 100644
+--- a/src/siglip_tools/nllb_translation.py
++++ b/src/siglip_tools/nllb_translation.py
+@@ -47,9 +47,7 @@ _SOURCE_FILES = [
+ 
+ def _valid_hashes(hashes: dict) -> bool:
+     return isinstance(hashes, dict) and all(
+-        isinstance(name, str)
+-        and isinstance(digest, str)
+-        and re.fullmatch(r"[0-9a-f]{64}", digest)
++        isinstance(name, str) and isinstance(digest, str) and re.fullmatch(r"[0-9a-f]{64}", digest)
+         for name, digest in hashes.items()
+     )
+ 
+@@ -202,7 +200,7 @@ def prepare_translator(output: Path) -> Path:
+ class NLLBTranslator(LocalTranslator):
+     """Fixed zho_Hans→eng_Latn translation with fresh generation every request."""
+ 
+-    def __init__(self, model_dir: Path, device: str = "mps"):
++    def __init__(self, model_dir: Path, device: str = "auto"):
+         directory = Path(model_dir).expanduser().resolve()
+         provenance = _validated_provenance(directory)
+         from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+diff --git a/src/siglip_tools/opus_constraints.py b/src/siglip_tools/opus_constraints.py
+index f55a307..cd07d5b 100644
+--- a/src/siglip_tools/opus_constraints.py
++++ b/src/siglip_tools/opus_constraints.py
+@@ -29,16 +29,13 @@ DECODER_FILES = (
+ DECODER_HASHES = {
+     "README.md": "0b550f52f5ffb16b8f36a34b2e5c9cb40076994063dd72b283552370eb43d903",
+     "custom_generate/generate.py": (
+-        "3f2975a90ef9f506077d8e54d0e145cfd"
+-        "735088c9c082c595d546cfe5cd7eb64"
++        "3f2975a90ef9f506077d8e54d0e145cfd735088c9c082c595d546cfe5cd7eb64"
+     ),
+     "custom_generate/beam_constraints.py": (
+-        "72da73e8f601167c895974bbb6064f1be"
+-        "7d14f33247f6a8ea0acc6c162b62704"
++        "72da73e8f601167c895974bbb6064f1be7d14f33247f6a8ea0acc6c162b62704"
+     ),
+     "custom_generate/beam_search.py": (
+-        "247baefee037b9cebda29140abcc298ed"
+-        "2d4fdb32b79a40550a06b004a03bda5"
++        "247baefee037b9cebda29140abcc298ed2d4fdb32b79a40550a06b004a03bda5"
+     ),
+ }
+ 
+diff --git a/src/siglip_tools/translation.py b/src/siglip_tools/translation.py
+index 414eabb..acef106 100644
+--- a/src/siglip_tools/translation.py
++++ b/src/siglip_tools/translation.py
+@@ -152,7 +152,7 @@ def prepare_translator(output: Path) -> Path:
+ class LocalTranslator:
+     """Fixed pretrained zh→en translation with no query or output memoization."""
+ 
+-    def __init__(self, model_dir: Path, device: str = "mps"):
++    def __init__(self, model_dir: Path, device: str = "auto"):
+         directory = Path(model_dir).expanduser().resolve()
+         provenance = _validated_provenance(directory)
+         from transformers import AutoModelForSeq2SeqLM, AutoTokenizer

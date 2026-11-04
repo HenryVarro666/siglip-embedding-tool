@@ -221,8 +221,11 @@ uv run python examples/equipment_review.py
 uv sync --frozen --extra dev --extra translation
 uv run pytest -m 'not integration'
 uv run ruff check src tests training examples
+uv run ruff format --check tests training examples
 uv run python clip_siglip_demo.py
 ```
+
+`tests/test_hardening.py` 中 11 个严格 xfail 用例记录了尚未应用的核心健壮性修复（SIG-062–070）；核心文件被冻结基准哈希绑定，修复补丁见 `docs/patches/`。GitHub Actions 对每次推送执行以上检查并构建 sdist/wheel。
 
 默认模型完整缓存后，可以额外运行真实模型检查；这些检查只做推理，不执行训练：
 

@@ -6,6 +6,34 @@
 
 ## 本轮即时记录
 
+### SIG-072：工程基础补齐（CI 格式/打包/CLI 冒烟、pytest 缓存、元数据）
+
+- 状态：已解决。CI 新增 `ruff format --check`、`siglip-tools --version`/`--help` 冒烟与 sdist/wheel 构建，并发取消与超时；`pytest` 默认 `-p no:cacheprovider`（SIG-050 的共享日志目录问题不再被 `.pytest_cache` 写入干扰）；`pyproject` 补 classifiers/urls（仓库无 LICENSE 文件，不声明许可）。
+- 证据：本机 `627 passed, 57 skipped, 11 xfailed`（57 项为固定解码代码缓存缺失的既有跳过），ruff 与格式检查通过，原始损失示例通过。
+- 边界：`src/` 中 `nllb_translation.py`、`opus_constraints.py` 未按 ruff 格式化，因为它们被冻结导出器哈希绑定（见 SIG-071）；格式检查范围为 `tests training examples` 与已格式化的 src 文件。
+
+### SIG-071：冻结导出器直接绑定实时源码，任何核心维护改动都使 34 个测试失败
+
+- 状态：已观察，属可维护性风险；本轮按现有规则处理（不改核心）。
+- 证据：对 `images.py/index.py/encoder.py/commons.py/translation.py/cli.py` 等做健壮性修复后，`tests/test_term_export.py` 与 `tests/test_early_stop_*` 共 34 项失败，报错“Current analysis helpers differ from the frozen implementation”；恢复原文件后全部通过。`benchmark.py`（equipment-v1）同样把 `commons/encoder/index/images.py` 计入实现哈希。
+- 影响：修复 SIG-062–070 必须开新基准版本并重新冻结/测量；在此之前任何对核心的改动（包括格式化）都会破坏旧版本复算入口。
+- 下一步：新版本可改为绑定测量提交的 git blob 哈希或 vendored 快照，而不是工作区实时文件；本轮不改。
+
+### SIG-062 至 SIG-070：核心模块健壮性缺陷（已复现，修复以补丁与严格 xfail 保存）
+
+- 状态：已复现，未应用（受 SIG-071 约束）。修复补丁 `docs/patches/2026-11-04-core-hardening.diff`（345 行）；`tests/test_hardening.py` 中 11 个 `xfail(strict=True)` 用例在补丁应用后必须转绿。
+- SIG-062（高）：`load_rgb` 对 16 位灰度（`I;16`）及 `I/F` 模式用 `convert("RGB")` 裁剪到 255，图像几乎全白；两张不同的 16 位图像被 `scan_images` 当作像素相同合并为一条记录，只编码一张。补丁按 65535→255 线性缩放（`I/F` 按实际范围），8 位输入字节不变，索引像素哈希不变。
+- SIG-063（中）：`PIL.Image.DecompressionBombError` 与损坏 EXIF 的 `SyntaxError` 不是 `OSError/ValueError`，逃出 `load_rgb`，CLI 以原始回溯退出 1 且不指出文件名。
+- SIG-064（中低）：0 字节索引触发 `EOFError`、截断索引触发 `zipfile.BadZipFile`，`ImageIndex.load` 与 CLI 均未捕获。
+- SIG-065（低）：发布的索引与下载图片沿用 `NamedTemporaryFile` 的 0600 权限，忽略 umask。
+- SIG-066（低）：`os.link` 在不支持硬链接的文件系统上失败且无回退。
+- SIG-067（低）：记录摘要未检查 `isinstance(str)`；`"./a"`、`"a//b"`、`"dir/"` 等非规范路径被接受。
+- SIG-068（低）：`_device` 对非法字符串抛 torch `RuntimeError` 而非约定的 `ValueError`；接受 `cpu:3`，`cuda:99` 直到模型加载后才失败。
+- SIG-069（低）：CLI 无 `--version`；非 UTF-8 文件名以 surrogate 形式输出时 `print` 失败使成功查询无输出；`KeyboardInterrupt` 回溯。
+- SIG-070（低）：`LocalTranslator`/`NLLBTranslator` 默认 `device="mps"`，非 Apple 主机直接构造即报错（CLI 因显式传参未受影响）。
+- 已核对无问题：固定解码代码的哈希/加载路径无绕过；beam/greedy 的 EOS 截断检测；NLLB 语言控制；融合与评估数学；路径穿越；线程安全；回退逻辑。TOCTOU（列表后换成符号链接、校验后替换权重）记录为已知本地攻击模型限制，不改。
+
+
 
 ### SIG-061：保护恢复 t09 主路径，但未改善最终检索质量或证明稳定加速
 

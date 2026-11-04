@@ -69,9 +69,7 @@ def test_aggregate_means_weight_queries_equally_with_custom_cutoffs():
 
 
 def test_average_precision_uses_relevant_items_beyond_largest_cutoff():
-    result = evaluate_rankings(
-        {"query": ["a", "b", "c", "d"]}, {"query": ["a", "d"]}, ks=(1,)
-    )
+    result = evaluate_rankings({"query": ["a", "b", "c", "d"]}, {"query": ["a", "d"]}, ks=(1,))
 
     assert result["aggregate"] == pytest.approx(
         {"hit_at_1": 1.0, "recall_at_1": 0.5, "mrr": 1.0, "average_precision": 0.75}
