@@ -39,7 +39,7 @@ jobs:
       - name: Test without pretrained downloads
         run: pytest -m 'not integration'
       - name: CLI smoke
-        run: siglip-tools --version && siglip-tools --help >/dev/null
+        run: siglip-tools --help >/dev/null && siglip-tools inspect --help >/dev/null
       - name: Check original loss example
         run: python clip_siglip_demo.py
       - name: Build distributions
